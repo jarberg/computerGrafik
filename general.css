@@ -1,0 +1,171 @@
+
+
+@import url(https://fonts.googleapis.com/css?family=Roboto+Mono);
+
+
+:root {
+    --color_primary: #f0d800;
+    --color_primary_dark: #2b2700;
+    --color_secondary: #333540;
+    --color_accent: #ff8878;
+    --color_code: #dad1a2;
+}
+
+
+body {
+    font-family: 'Roboto Mono';
+    text-align: center;
+    align-content: center;
+    font-size: 15px;
+    color: white;
+    background-color: var(--color_primary_dark);
+}
+
+
+.seperator {
+    margin: 1%;
+    margin-right: auto;
+    margin-left: auto;
+    width: 60%;
+    border-top: dashed;
+    border-width: 1.75px;
+    opacity: 50%;
+    border-color: white;
+}
+
+
+.description {
+    margin: auto;
+    margin-top: 1%;
+    margin-bottom: 5%;
+    width: 55%;
+    min-width: 700px;
+    text-align: center;
+    
+}   
+
+
+.canvas {
+    margin: 0% auto;
+}
+
+
+.program-container {
+    margin: auto;
+}
+
+.program-container td {
+    padding: 0%;
+    vertical-align: top;
+    height: 100%;
+}
+
+
+
+.toolbox {
+    width: 200px;
+    margin: auto; /* Center in cell */
+
+    /* Without the row border doesn't work*/ 
+    border-collapse: collapse; 
+    /* margin-left: auto;
+    margin-right: auto;
+    display: table; */
+}
+
+
+.toolbox-row {
+    border-bottom: solid;
+    border-color: var(--color_primary_dark);
+}
+
+.toolbox-row td {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+
+.toolbox .toolbox-row:last-child {
+    border-bottom: none;
+    padding-bottom: 0px;
+}
+
+
+.radio-list {
+    width: 150px;
+    height: 100px;
+    background-color: var(--color_secondary);
+    margin: auto;
+    overflow: auto;
+    
+}
+
+/* I.e. used to label options in toolbox */
+.label {
+    margin: 0% auto 8px auto;
+    font-weight: bold;
+}
+
+
+/* Generic link style */
+a {
+    font-size: 18px;
+    display: inline-block;
+    margin-top: 10px;
+    color: var(--color_accent);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+
+
+
+button {
+
+    height: 25px;
+
+    font-family: "Roboto Mono";
+    color: var(--color_primary);
+
+    background-color: white;
+
+    border: none;
+    padding: 3px 5px;
+
+    border-radius: 5px;
+    /* border-color: unset; */
+
+    
+    outline: none;
+}
+
+
+
+button:hover {
+    color: white;
+    background-color: var(--color_accent);
+    transition: transform 0.15s;
+}
+
+button:active {
+    transform: scale(0.95);
+    transition: transform 0.15s;
+}
+
+
+
+strong {
+    display: block;
+    margin: 20px;
+    font-weight: normal;
+    font-style: italic;
+    color: var(--color_code); 
+}
+
+
+p.fps-text {
+    color: greenyellow;
+}

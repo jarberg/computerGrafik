@@ -1,0 +1,12 @@
+vec4 ambient = ambientProduct;                  // Compute terms in the illumination equation
+
+    vec3 H = normalize( L + E );                    // halfway vector
+
+    float Kd = max( dot(L, N), 0.0 );
+    vec4  diffuse = Kd*diffuseProduct;
+
+    float Ks = pow( max(dot(N, H), 0.0), shininess );
+    vec4  specular = Ks * specularProduct;
+
+    if( dot(L, N) < 0.0 ) {
+    specular = vec4(0.0, 0.0, 0.0, 1.0);

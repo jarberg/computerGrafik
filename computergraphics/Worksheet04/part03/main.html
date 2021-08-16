@@ -1,0 +1,142 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+    <title>Worksheet01</title>
+
+    <script id = "vertex-shader" type="x-shader/x-vertex">
+        uniform mat4 objTransform;
+        attribute vec4 a_Position;
+        attribute vec4 a_Color;
+        varying vec4 v_Color;
+
+        uniform mat4 modelViewMatrix;
+        uniform mat4 projection;
+        uniform mat3 normalMatrix;
+
+        uniform vec4 ambientProduct, diffuseProduct, specularProduct;
+        attribute vec4 vNormal;
+        vec4 ambient, diffuse, specular;
+
+        uniform vec4 lightPosition;
+        uniform float shininess;
+
+        void main() {
+
+            vec3 pos = (modelViewMatrix * a_Position).xyz;               // pos is vertex position in eye coordinates
+            vec3 L = -normalize( lightPosition.xyz - pos );               // vector from vertex position to light source
+
+            if(lightPosition.w == 0.0) L = -normalize(lightPosition.xyz); // check for non-directional light
+
+            vec3 N = normalize( normalMatrix*vNormal.xyz);               // Transform vertex normal into eye coordinates
+
+            float Kd = max( dot(L, N), 0.0 );                            // diffuse reflection coefficient
+            vec4  diffuse = Kd*diffuseProduct;                           // diffuseProduct = lightEmmission*MaterialEmission
+
+            v_Color = diffuse;
+            v_Color.a = 1.0;
+
+            gl_Position = projection * modelViewMatrix * a_Position;
+        }
+    </script>
+
+    <script id="fragment-shader" type="x-shader/x-fragment">
+        precision mediump float;
+        varying vec4 v_Color;
+        void main()
+        {
+            gl_FragColor = v_Color;
+        }
+    </script>
+    <script type="text/javascript"  src="../../commonJS/webgl-utils.js"></script>
+    <script type="text/javascript"  src="../../commonJS/initShaders.js"></script>
+
+    <script type="text/javascript"  src="../../commonJS/MV.js"></script>
+    <script type="text/javascript"  src="main.js"></script>
+
+    }
+</head>
+
+
+<!-- Add your site or application content here -->
+
+<body>
+<table class="program-container" align="center">
+    <tbody><tr>
+        <!-- Left toolbox -->
+        <td><table class="toolbox">
+            <!-- Camera -->
+            <tbody><tr class="toolbox-row"><td>
+                <b>Camera</b><br>
+                <input type="checkbox" id="rotate_Camera" name="rotate"> Rotate<br><br>
+
+            </td></tr>
+
+            <!-- Sphere -->
+            <tr class="toolbox-row"><td>
+                <b>Sphere</b><br><br>
+                Subdivisions<br>
+                <input id="subdivisions" class="slider" type="range" min="0" max="8" value="0" step="1"><p id="subdivNum" style="margin: 0px;">0</p>
+            </td></tr>
+            </tbody></table></td>
+
+        <td>
+            <canvas id="glCanvas" width="512" height="512"></canvas>
+
+        </td>
+
+        <!-- Right toolbox -->
+        <td><table class="toolbox">
+
+
+
+
+
+            </tbody></table>
+        </td>
+    </tr>
+
+
+    </td>
+    </tbody></table>
+<p align="center" id="fpsOutput" class="fps-text">FPS: 60</p>
+</body>
+</html>
+<!-- Light rotation checkbox -->
+<tbody><tr class="toolbox-row"><td>
+    <b>Directional Light</b><br><br>
+    <input type="checkbox" id="rotate_light" name="rotate"> Rotate<br><br>
+    <input id="directional-light-color" type="color" value="#808080"> Color
+</td></tr>
+
+<!-- Ambient Light -->
+<tr class="toolbox-row"><td>
+    <b>Ambient Light</b><br><br>
+    <input id="ambient-color" type="color" value="#404040"> Color
+</td></tr>
+
+<br>Distance<br>
+<input id="camera-distance" class="slider" type="range" min="25" max="600" value="200" step="1"><p style="margin: 0px;">389</p>
+
+<br>Horizontal angle<br>
+<input id="camera-horizontal" class="slider" type="range" min="-360" max="360" value="0" step="1"><p style="margin: 0px;">223</p>
+
+<br>Vertical angle<br>
+<input id="camera-vertical" class="slider" type="range" min="-89" max="89" value="20" step="0.5"><p style="margin: 0px;">12.00</p>
+
+
+
+<tr class="toolbox-row"><td>
+    <b>Material</b><br><br>
+    Diffuse<br>
+    <input id="mat-slider-diffuse" class="slider" type="range" min="0" max="1" step="0.025" value="0.5"><br>
+
+    Ambient<br>
+    <input id="mat-slider-ambient" class="slider" type="range" min="0" max="1" step="0.025" value="0.5"><br>
+
+    Specular<br>
+    <input id="mat-slider-specular" class="slider" type="range" min="0" max="1" step="0.025" value="0.5"><br>
+
+    Shine<br>
+    <input id="mat-slider-shine" class="slider" type="range" min="1" max="1000" step="1" value="100"><br>
+</td></tr>

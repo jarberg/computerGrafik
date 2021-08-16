@@ -1,0 +1,59 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+    <title>Worksheet01</title>
+    <script id = "vertex-shader" type="x-shader/x-vertex">
+        attribute vec4 a_Position;
+        attribute vec4 a_Color;
+        varying vec4 v_Color;
+        void main() {
+            gl_Position = a_Position;
+            gl_PointSize = 20.0;
+            v_Color = a_Color;
+        }
+    </script>
+    <script id="fragment-shader" type="x-shader/x-fragment">
+        precision mediump float;
+        varying vec4 v_Color;
+        void main()
+        {
+            gl_FragColor = v_Color;
+        }
+    </script>
+    <script type="text/javascript"  src="../../commonJS/webgl-utils.js"></script>
+    <script type="text/javascript"  src="../../commonJS/initShaders.js"></script>
+
+    <script type="text/javascript"  src="../../commonJS/MV.js"></script>
+    <script type="text/javascript"  src="main.js"></script>
+</head>
+
+
+<!-- Add your site or application content here -->
+
+<body>
+<div align="top">
+    <select id="colorMenu" size="8">
+        <option value="0">Fire Red</option>
+        <option value="1">Titanium white</option>
+        <option value="2">Mega yellow</option>
+        <option value="3">Subversive Green</option>
+        <option value="4">Almost racist Black</option>
+        <option value="5">Cornflower</option>
+        <option value="6">Cornflower</option>
+        <option value="7">Cornflower</option>
+
+    </select>
+    <select id="clearMenu" size="5">
+        <option value="0">Fire Red</option>
+        <option value="1">Titanium white</option>
+        <option value="2">Mega yellow</option>
+        <option value="3">Subversive Green</option>
+        <option value="4">Almost racist Black</option>
+        <option value="5" selected>Cornflower</option>
+    </select><br/>
+    <button id="clearButton">clear canvas</button>
+</div>
+<canvas id="glCanvas" width="512" height="512"></canvas>
+</body>
+</html>

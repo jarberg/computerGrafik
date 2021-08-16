@@ -1,0 +1,124 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+    <title>Worksheet06</title>
+
+    <script id = "vertex-shader" type="x-shader/x-vertex">
+        attribute vec4 a_Position;
+        attribute vec4 vNormal;
+
+        uniform mat4 modelViewMatrix;
+        uniform mat4 projection;
+        uniform mat4 objTransform;
+
+        uniform mat3 normalMatrix;
+
+        uniform vec4 a_camPos;
+        uniform vec4 lightPosition;
+
+        varying vec3 o_ObserverDirection;
+        varying vec3 N, L, E;
+
+        attribute  vec4 a_Color;
+        attribute  vec2 vTexCoord;
+
+        varying vec4 v_Color;
+        varying vec2 fTexCoord;
+
+        void main()
+        {
+
+            gl_Position = projection * modelViewMatrix *objTransform* a_Position;
+            v_Color = a_Color;
+            fTexCoord = vTexCoord;
+        }
+
+
+
+    </script>
+
+    <script id="fragment-shader" type="x-shader/x-fragment">
+    precision mediump float;
+
+    varying vec4 v_Color;
+    varying  vec2 fTexCoord;
+
+    uniform sampler2D texture;
+
+    void main()
+    {
+        gl_FragColor = v_Color*texture2D( texture, fTexCoord );
+    }
+    </script>
+    <script type="text/javascript"  src="../../commonJS/webgl-utils.js"></script>
+    <script type="text/javascript"  src="../../commonJS/initShaders.js"></script>
+    <script type="text/javascript"  src="../../utils/Camera.js"></script>
+    <script type="text/javascript"  src="../../utils/geomitry.js"></script>
+    <script type="text/javascript"  src="../../commonJS/MV.js"></script>
+    <script type="text/javascript"  src="main.js"></script>
+</head>
+
+
+<!-- Add your site or application content here -->
+
+<body>
+
+<table class="program-container" align="center">
+    <tbody><tr>
+        <!-- Left toolbox -->
+        <td><table class="toolbox">
+            <!-- Camera -->
+            <tbody><tr class="toolbox-row"><td>
+                <b>Camera</b><br>
+                <input type="checkbox" id="rotate_Camera" name="rotate"> Rotate<br><br>
+
+            </td></tr>
+            </tbody></table></td>
+        <td>
+            <canvas id="glCanvas" width="400" height="400"></canvas>
+        </td>
+
+        <!-- Right toolbox -->
+        <td><table class="toolbox">
+            <tr class="toolbox-row"><td>
+                <b>texture</b><br><br>
+                <p>minification</p>
+                <input id="button_nearest_min" type="button" value="Nearest" ><br>
+                <input id="button_linear_min" type="button" value="Linear" ><br>
+                <input id="button_mm_linearNear_min" type="button" value="mipmap linear nearest" ><br>
+                <input id="button_mm_linearLinear_min" type="button" value="mipmap linear linear" ><br>
+                <input id="button_mm_nearestLinear_min" type="button" value="mipmap nearest linear" ><br>
+                <input id="button_mm_nearestNear_min" type="button" value="mipmap nearest near" ><br>
+
+                <p>magnification</p>
+                <input id="button_nearest_mag" type="button" value="Nearest" ><br>
+                <input id="button_linear_mag" type="button" value="Linear" ><br>
+
+                <p>Wrap Mode</p>
+                <input id="button_repeat" type="button" value="Repeat" ><br>
+                <input id="button_clamp" type="button" value="Clamp" ><br>
+            </td></tr>
+            </tbody></table>
+        </td>
+    </tr>
+    </td>
+    </tbody></table>
+    <p align="center" id="fpsOutput" class="fps-text">FPS: 60</p>
+    <p align="center">Linear:
+    <br>
+    linear filtering is the averaging of nearby texels of a given texel to smooth out the final image.<br>
+    Linear filtering produces a smoother result when a texel is scaled but also with enough colour contrast between texels, <br>makes the image more blury as observed in the rendering above<br>
+    for minification of a given texel linear also works well as each pixel becomes an average of texels in the vicinity
+    <br><br>Nearest:<br>
+    nearest filtering or point sampeling, takes the nearest texel to a given pixel being rendered. <br>
+    a random subpoint of a pixel is generated
+    which is used to decide which texel is "nearest"<br><br>
+    Mipmapping:<br>
+    Mipmapping is the procedure of creating an array of lower resolution versions of the same texture.<br>
+    This is great for magnification and minification as if a texel is smaller than a pixel then a lower resolution version of the texture is used.<br>
+    Combining this techinque with texel filtering makes it that the final image is produced at the highest smoothness levels.<br>
+    </p>
+</body>
+</html>
+

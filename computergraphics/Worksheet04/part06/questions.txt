@@ -1,0 +1,76 @@
+a) What is the difference between Phong shading and Phong lighting (the
+Phong reflection model)?
+
+The phong reflection model is lighting calculations made for any given normals of a point or surface if needed.
+it includes the terms, diffuse, ambient and reflection
+
+Phong shading is the method of calculation normals between vertexes on a per pixel basis rather
+than doing it on a per vertex normal
+
+
+b) What is the difference between flat shading, Gouraud shading, and Phong
+shading? List pros and cons of each.
+
+Flat shading
+This is super fast and precise when it comes to very specific situations.
+
+with the vectors n = point normal, l = light intensity, and v = viewer or COP some assumptions can be made to
+make these variables, constants.
+in the case that a surface is a perfect plane, n becomes constant. all points and faces point in the exact same direction
+and n can be calculated once for all points.
+l and v can become a constant if distant enough to n. with a large enough distance or plane size difference to the light source and viewer
+all points on a given plane will, at least to within a satisfactory error margin, in relation the the viewer be illuminated equally.
+
+a pro could be that no interpolations are needed with is also a con as this produces march bands.
+
+The big drawback is the very specific situations this requires to be producing a satisfactory results
+as mach bands become frequent outside optimal usecases.
+
+
+Gouraud shading
+Also known as smooth shading, Gouraud uses the same vectors n, l, and v to calculate color values on each vertex
+where the rasterizer interpolates the difference between the different colors giving the illusion of a smoother highpoly mesh.
+This results in a smooth transition of vertex colors between adjacent vertex colors which is still fast but slower than flat shading.
+but this can be used in other settings so its a con/pro.
+
+A big drawback to this method would be that highlights or areas with a high contrast will be appearing
+to "jump" around the mesh on low poly meshes. this is due to calculations are done on a per vertex basis instead on a pixel or surface base.
+
+Another drawback would be that this shading method requires more data structures to handle correct vertex normal calculations
+as this method needs a vertex normal to be the averaged normals of all adjacent polygons that share that vertex.
+
+
+Phong shading.
+Phong shading dont need the rasterizer to interpolate between vertex colors but in contrast interpolates
+the surface normals which gets renormalized in the the fragment shader.
+this is slower as it is on a per pixel basis not a vertex one but will produce better and more realistic results.
+
+
+c) What is the difference between a directional light and a point light?
+
+point lights have a position in the coordinate space and will illuminate in all directions.
+directional lights only have an direction and will only light any polygon facing the directional light source
+
+directional lights have no position so has no distance to anything. this means that ALL facing polygons gets lit.
+point lights DO have a position and therefore a distance to polygons in worldspace.
+Meaning that facing it is not enought to get lit, the polygon must also be close enough.
+
+
+d) Does the eye position influence the shading of an object in any way?
+Only the reflection of a surface gets influenced by the observing eyes position.
+a single reflection can be observered differently based on the position of the eye.
+
+
+Ambient light is practically constant around the entire object even if it cant be seen by the eye.
+Diffuse light is also constant as no different position will have a lit point change in values.
+
+e) What is the effect of setting the specular term to (0, 0, 0)?
+The observed highlights would simply disappear
+
+f) What is the effect of increasing the shininess exponent (𝛼𝛼)?
+
+The effect is that as the shininess exponent increases so does the highlight point on a mesh decrease in size.
+the higher the exponent the closer to "the perfect reflection" angle is needed to produce a highlight
+
+g) In what coordinate space did you compute the lighting?
+I did it in eye-space as the book dictated.

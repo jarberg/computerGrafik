@@ -1,0 +1,148 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+    <title>Worksheet01</title>
+
+    <script id = "vertex-shader" type="x-shader/x-vertex">
+        attribute vec4 a_Position;
+        attribute vec4 vNormal;
+        attribute vec4 a_Color;
+
+        uniform mat4 modelViewMatrix;
+        uniform mat4 projection;
+        uniform mat4 objTransform;
+
+        uniform mat3 normalMatrix;
+
+        uniform vec4 a_camPos;
+        uniform vec4 lightPosition;
+
+        varying vec3 o_ObserverDirection;
+        varying vec3 N, L, E;
+        varying vec4 v_Color;
+
+
+        void main()
+        {
+            vec3 light = lightPosition.xyz;
+            vec3 pos = -(modelViewMatrix * a_Position).xyz;
+            o_ObserverDirection = normalize(a_camPos.xyz - pos.xyz);
+
+            if(lightPosition.w == 0.0)  L = normalize(lightPosition.xyz);
+            else  L = normalize(lightPosition).xyz - pos;
+
+            L = normalize(light - pos);
+            E = -pos;
+            N = normalize(normalMatrix * vNormal.xyz);
+
+            gl_Position = projection * modelViewMatrix * a_Position;
+        }
+
+
+
+    </script>
+
+    <script id="fragment-shader" type="x-shader/x-fragment">
+        precision mediump float;
+        uniform vec4 ambientProduct;
+        uniform vec4 diffuseProduct;
+        uniform vec4 specularProduct;
+        uniform float shininess;
+        varying vec3 N, L, E;
+        varying vec4 v_Color;
+
+        varying vec3 o_ObserverDirection;
+
+        void main()
+        {
+            vec4 fColor;
+
+            vec3 surfaceNormal = normalize(N);
+            vec3 directionToObserver = normalize(o_ObserverDirection);
+            vec3 directionToLight = normalize(L);
+
+            vec3 H = normalize( L + E );
+            vec4 ambient = ambientProduct;
+
+            float Kd = max( dot(L, N), 0.0 );
+            vec4  diffuse = Kd*diffuseProduct;
+
+            vec3 perfectReflection = normalize(2.0 * dot(directionToLight, surfaceNormal) * surfaceNormal - directionToLight);
+            float Ks = pow( max(dot(perfectReflection, directionToObserver), 0.0), shininess );
+            vec4  specular = Ks * specularProduct;
+            if( dot(L, N) < 0.0 ) specular = vec4(0.0,  0.0, 0.0, 1.0);
+
+            fColor = ambient + diffuse + specular;
+            fColor.a = 1.0;
+
+            gl_FragColor = fColor;
+        }
+
+    </script>
+    <script type="text/javascript"  src="../../commonJS/webgl-utils.js"></script>
+    <script type="text/javascript"  src="../../commonJS/initShaders.js"></script>
+    <script type="text/javascript"  src="../../commonJS/MV.js"></script>
+    <script type="text/javascript"  src="main.js"></script>
+    }
+</head>
+
+
+<!-- Add your site or application content here -->
+
+<body>
+<table class="program-container" align="center">
+    <tbody><tr>
+        <!-- Left toolbox -->
+        <td><table class="toolbox">
+            <!-- Camera -->
+            <tbody><tr class="toolbox-row"><td>
+                <b>Camera</b><br>
+                <input type="checkbox" id="rotate_Camera" name="rotate"> Rotate<br><br>
+
+            </td></tr>
+
+            <!-- Sphere -->
+            <tr class="toolbox-row"><td>
+                <b>Sphere</b><br><br>
+                Subdivisions<br>
+                <input id="subdivisions" class="slider" type="range" min="0" max="8" value="0" step="1"><p id="subdivNum" style="margin: 0px;">0</p>
+            </td></tr>
+            </tbody></table></td>
+
+        <td>
+            <canvas id="glCanvas" width="512" height="512"></canvas>
+
+        </td>
+
+        <!-- Right toolbox -->
+        <td><table class="toolbox">
+            <tr class="toolbox-row"><td>
+                <b>Material</b><br><br>
+                Diffuse<br>
+                <input id="mat-slider-diffuse" type="color" value="#404040" ><br>
+
+                Ambient<br>
+                <input id="mat-slider-ambient" type="color" value="#404040"><br>
+
+                Specular<br>
+                <input id="mat-slider-specular" type="color" value="#404040"><br>
+
+                Shine<br>
+                <input id="mat-slider-shine" class="slider" type="range" min="0.1" max="100" value="20" step="1"><p>20</p>
+
+            </td></tr>
+
+
+
+
+            </tbody></table>
+        </td>
+    </tr>
+
+    </td>
+    </tbody></table>
+<p align="center" id="fpsOutput" class="fps-text">FPS: 60</p>
+</body>
+</html>
+

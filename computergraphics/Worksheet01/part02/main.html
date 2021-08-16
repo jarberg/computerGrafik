@@ -1,0 +1,43 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+    <title>Worksheet01</title>
+    <script id = "vertex-shader" type="x-shader/x-vertex">
+        attribute vec4 a_Position;
+        void main() {
+            gl_Position = a_Position;
+            gl_PointSize = 10.0;
+        }
+    </script>
+    <script id="fragment-shader" type="x-shader/x-fragment">
+        precision mediump float;
+        void main()
+        {
+            gl_FragColor = vec4(1.0, 0.0, 0.0, 1.0);
+        }
+    </script>
+    <script type="text/javascript"  src="../../commonJS/webgl-utils.js"></script>
+    <script type="text/javascript"  src="../../commonJS/initShaders.js"></script>
+
+    <script type="text/javascript"  src="../../commonJS/MV.js"></script>
+    <script type="text/javascript"  src="main.js"></script>
+</head>
+
+
+
+<!-- Add your site or application content here -->
+
+<body>
+<canvas id="glCanvas" width="512" height="512">
+
+
+</canvas>
+</body>
+
+<p>Hello world! This is HTML5 Boilerplate.</p>
+<!--  <script src="js/vendor/modernizr-3.11.2.min.js"></script>
+<script src="js/plugins.js"></script>
+-->
+
+</html>

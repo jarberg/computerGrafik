@@ -1,0 +1,102 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+    <title>Worksheet01</title>
+    <script id = "vertex-shader" type="x-shader/x-vertex">
+        uniform mat4 objTransform;
+        attribute vec4 a_Position;
+        attribute vec4 a_Color;
+        varying vec4 v_Color;
+        uniform mat4 modelViewMatrix;
+        uniform mat4 projection;
+        uniform mat3 normalMatrix;
+
+        uniform vec4 ambientProduct, diffuseProduct, specularProduct;
+        attribute vec4 vNormal;
+        vec4 ambient, diffuse, specular;
+        uniform vec4 lightPosition;
+        uniform float shininess;
+
+        void main() {
+
+            // pos is vertex position in eye coordinates
+
+            vec3 pos = (modelViewMatrix * a_Position).xyz;
+
+            // vector from vertex position to light source
+
+            vec3 L;
+
+            // check for directional light
+
+            if(lightPosition.w == 0.0) L = normalize(lightPosition.xyz);
+            else L = normalize( lightPosition.xyz - pos );
+
+            // Because the eye point the is at the orgin
+            // the vector from the vertex position to the eye is
+
+            vec3 E = -normalize( pos );
+
+            // halfway vector
+
+            vec3 H = normalize( L + E );
+
+            // Transform vertex normal into eye coordinates
+
+            vec3 N = normalize( normalMatrix*vNormal.xyz);
+
+
+            // Compute terms in the illumination equation
+            vec4 ambient = ambientProduct;
+
+            float Kd = max( dot(L, N), 0.0 );
+            vec4  diffuse = Kd*diffuseProduct;
+
+            float Ks = pow( max(dot(N, H), 0.0), shininess );
+            vec4  specular = Ks * specularProduct;
+
+            if( dot(L, N) < 0.0 ) {
+                specular = vec4(0.0, 0.0, 0.0, 1.0);
+            }
+
+            gl_Position = projection * modelViewMatrix * a_Position;
+
+            v_Color = ambient + diffuse + specular;
+
+            v_Color.a = 1.0;
+        }
+    </script>
+    <script id="fragment-shader" type="x-shader/x-fragment">
+        precision mediump float;
+        varying vec4 v_Color;
+        void main()
+        {
+            gl_FragColor = v_Color;
+        }
+    </script>
+    <script type="text/javascript"  src="../../commonJS/webgl-utils.js"></script>
+    <script type="text/javascript"  src="../../commonJS/initShaders.js"></script>
+
+    <script type="text/javascript"  src="../../commonJS/MV.js"></script>
+    <script type="text/javascript"  src="main.js"></script>
+</head>
+
+
+<!-- Add your site or application content here -->
+
+
+<body>
+
+
+
+
+<div align="center">
+    <div align="left">
+        <button id="ButtonX">increment</button>
+        <button id="ButtonY">decrement</button>
+    </div>
+    <canvas id="glCanvas" width="512" height="512"></canvas>
+</div>
+</body>
+</html>

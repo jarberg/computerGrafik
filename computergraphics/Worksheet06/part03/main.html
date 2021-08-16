@@ -1,0 +1,181 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+    <title>Worksheet01</title>
+
+    <script id = "vertex-shader" type="x-shader/x-vertex">
+        attribute vec4 a_Position;
+        attribute vec4 vNormal;
+
+        uniform mat4 modelViewMatrix;
+        uniform mat4 projection;
+        uniform mat4 objTransform;
+
+        uniform mat3 normalMatrix;
+
+        uniform vec4 a_camPos;
+        uniform vec4 lightPosition;
+
+        varying vec3 o_ObserverDirection;
+        varying vec3 N, L, E;
+
+
+        attribute  vec4 a_Color;
+        attribute  vec2 vTexCoord;
+
+        varying vec4 v_Color;
+        varying vec2 fTexCoord;
+        varying float s, t;
+
+        void main()
+        {
+            float pi = acos(0.0);
+            t = 0.5*acos(a_Position.x)/pi;
+            s = 0.5*asin(a_Position.y/sqrt(1.0-a_Position.x*a_Position.x))/pi;
+
+
+            vec3 light = (projection*modelViewMatrix*lightPosition).xyz;
+            vec3 pos = -(modelViewMatrix * a_Position).xyz;
+            o_ObserverDirection = normalize(a_camPos.xyz - pos.xyz);
+
+            if(lightPosition.w == 0.0)  L = normalize(lightPosition.xyz);
+            else  L = normalize(lightPosition.xyz).xyz - pos;
+
+            L = normalize(light - pos);
+            E = -pos;
+            N = normalize(a_Position.xyz);
+
+            gl_Position = projection * modelViewMatrix *objTransform* a_Position;
+            v_Color = a_Color;
+            fTexCoord = vTexCoord;
+        }
+
+
+
+    </script>
+
+    <script id="fragment-shader" type="x-shader/x-fragment">
+    precision mediump float;
+    #define PI 3.1415926538
+
+
+    varying vec3 N, L, E;
+    varying vec3 o_ObserverDirection;
+    uniform vec4 ambientProduct;
+    uniform vec4 diffuseProduct;
+    uniform vec4 specularProduct;
+    uniform float shininess;
+    varying vec4 v_Color;
+    varying  vec2 fTexCoord;
+    varying float s, t;
+    uniform sampler2D texture;
+
+    void main()
+    {
+    vec4 fColor;
+
+            vec3 surfaceNormal = N;
+            float u = 1.0 - atan(surfaceNormal.z, surfaceNormal.x)/(2.0 * PI);
+            float v = acos(surfaceNormal.y)/(PI);
+
+            vec3 directionToObserver = normalize(o_ObserverDirection);
+            vec3 directionToLight = normalize(L);
+
+            vec3 H = normalize( L + E );
+            vec4 ambient = texture2D( texture, vec2(u, v))*ambientProduct;
+
+            float Kd = max( dot(L, N), 0.0 );
+            vec4  diffuse = texture2D( texture, vec2(u, v))*Kd;
+
+            vec3 perfectReflection = normalize(2.0 * dot(directionToLight, surfaceNormal) * surfaceNormal - directionToLight);
+            float Ks = pow( max(dot(perfectReflection, directionToObserver), 0.0), shininess );
+            vec4  specular = Ks * specularProduct;
+            if( dot(L, N) < 0.0 ) specular = vec4(0.0,  0.0, 0.0, 1.0);
+            fColor = ambient + diffuse + specular;
+            fColor.a = 1.0;
+            gl_FragColor = fColor;
+
+
+
+    }
+    </script>
+    <script type="text/javascript"  src="../../commonJS/webgl-utils.js"></script>
+    <script type="text/javascript"  src="../../commonJS/initShaders.js"></script>
+    <script type="text/javascript"  src="../../utils/Camera.js"></script>
+    <script type="text/javascript"  src="../../utils/geomitry.js"></script>
+    <script type="text/javascript"  src="../../commonJS/MV.js"></script>
+    <script type="text/javascript"  src="main.js"></script>
+</head>
+
+
+<!-- Add your site or application content here -->
+
+<body>
+
+<table class="program-container" align="center">
+    <tbody><tr>
+        <!-- Left toolbox -->
+        <td><table class="toolbox">
+            <!-- Camera -->
+            <tbody><tr class="toolbox-row"><td>
+                <b>Camera</b><br>
+                <input type="checkbox" id="rotate_Camera" name="rotate"> Rotate<br><br>
+
+            </td></tr>
+            </tbody></table></td>
+        <td>
+            <canvas id="glCanvas" width="400" height="400"></canvas>
+        </td>
+
+        <!-- Right toolbox -->
+        <td><table class="toolbox">
+            <tr class="toolbox-row"><td>
+                <b>texture</b><br><br>
+                <p>minification</p>
+                <input id="button_nearest_min" type="button" value="Nearest" ><br>
+                <input id="button_linear_min" type="button" value="Linear" ><br>
+                <input id="button_mm_linearNear_min" type="button" value="mipmap linear nearest" ><br>
+                <input id="button_mm_linearLinear_min" type="button" value="mipmap linear linear" ><br>
+                <input id="button_mm_nearestLinear_min" type="button" value="mipmap nearest linear" ><br>
+                <input id="button_mm_nearestNear_min" type="button" value="mipmap nearest near" ><br>
+
+                <p>magnification</p>
+                <input id="button_nearest_mag" type="button" value="Nearest" ><br>
+                <input id="button_linear_mag" type="button" value="Linear" ><br>
+
+                <p>Wrap Mode</p>
+                <input id="button_repeat" type="button" value="Repeat" ><br>
+                <input id="button_clamp" type="button" value="Clamp" ><br>
+            </td></tr>
+            </tbody></table>
+        </td>
+    </tr>
+    </td>
+    </tbody></table>
+    <p align="center" id="fpsOutput" class="fps-text">FPS: 60</p>
+    <p align="center">Linear:
+    <br>
+    <p >
+    There is a wide variety of challenges for sampling which be state as ...<br>
+    <tab>1. large colour variance<br>
+        <tab>2. smooth colour transistions in same areas and large colour contrast in others<br>
+            <tab>3. motion<br>
+    mipmaping is required as nearest and linear will only use the fulls scale image map and will introduce to much flickering due to pixel/texel size difference<br>
+    <br>
+    chosing to linearly picking mipmaps results in the most smooth motion.<br>
+    linear linear mipmap makes the smoothest result but also blurs the image the most<br>
+    linear nearst also smooths out the image quite well with motion but while oversmoothing in areas also blurs the image a bit<br>
+
+    chosing nearest mipmaping.<br>
+    closer than linear to original image detail.<br>
+    image looks relatively smooth in a still frame but with motion the high contrast areas flicker quite a lot.<br>
+    as the assignment requires motion this noise flickering duiring motion is to much for this to be viable<br>
+                <br>
+    ive chosen linear_mipmap_linear for minification as this seemed to fit this particular case of quality and motion the best<br>
+
+
+    </p>
+</body>
+</html>
+
