@@ -86,7 +86,7 @@ function setupControls(){
     gl.texParameteri( gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER,
         gl.NEAREST_MIPMAP_NEAREST );
   };
-;
+  ;
   fpsOutput = document.getElementById("fpsOutput")
   let rotateCamera = document.getElementById("rotate_Camera")
   rotateCamera.addEventListener('input', () =>{
@@ -99,21 +99,19 @@ function setupControls(){
 function main() {
   init()
 
-  objects.push(new Sphere(vec4(0,0,0,0)))
-  //objects[0].transformMatrix = mult(scalem(5,5,5), objects[0].transformMatrix)
   camera = new Camera()
-
-
+  camera.pMatrix = ortho(-1, 1, -1, 1, camera.near, camera.far);
+  camera.update_projection_matrix()
+  camera.fovy = 90;
   gl.clearColor(0, 0.5843, 0.9294, 1.0);
 
   setupControls();
 
-  objects.push( new Sphere(vec4(0, -2, 0, 0), ) );
-  objects.push( new backFace(vec4(0, 0, 0, 0)) );
-  objects[0].transformMatrix = mult(scalem(3,3,3), objects[0].transformMatrix)
-  objects[0].transformMatrix = mult(translate(0,3,0), objects[0].transformMatrix)
-  create_cube_map(false)
-  create_cube_map(false)
+  objects.push(new Sphere(vec4(0,0,0,0)))
+  objects[0].transformMatrix = mult(scalem(0.5,0.5,0.5) ,objects[0].transformMatrix)
+  objects.push(new backFace(vec4(0,0,0,0)))
+
+  create_cube_map();
 
   render()
 }
@@ -144,7 +142,6 @@ function render(){
   gl.uniformMatrix3fv(gl.getUniformLocation( program, "normalMatrix" ), false, flatten(normalMatrix) );
 
   objects[0].draw()
-
   objects[1].draw()
 
 

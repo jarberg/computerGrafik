@@ -28,15 +28,12 @@
         varying vec4 v_Color;
         varying vec2 fTexCoord;
 
-       uniform mat4 mTex;
-
-
         void main()
         {
 
-            vec4 pos = (objTransform * a_Position);
+            vec3 pos = (objTransform * a_Position).xyz;
 
-            R = (mTex*pos).xyz;
+            R = pos;
 
             gl_Position = projection * modelViewMatrix *objTransform* a_Position;
             v_Color = a_Color;
@@ -109,7 +106,7 @@
     </tr>
     </td>
     </tbody></table>
-    <p align="center" id="fpsOutput" class="fps-text">FPS: 60</p>
+<p align="center" id="fpsOutput" class="fps-text">FPS: 60</p>
 
 </body>
 </html>

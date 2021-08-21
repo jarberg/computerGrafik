@@ -100,7 +100,6 @@ function main() {
   init()
 
   objects.push(new Sphere(vec4(0,0,0,0)))
-  //objects[0].transformMatrix = mult(scalem(5,5,5), objects[0].transformMatrix)
   camera = new Camera()
   camera.pMatrix = ortho(-1, 1, -1, 1, camera.near, camera.far);
   camera.update_projection_matrix()

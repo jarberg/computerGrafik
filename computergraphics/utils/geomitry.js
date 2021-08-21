@@ -14,11 +14,6 @@ class Sphere{
 
     constructor(_center) {
         this.center = _center
-        this.transformMatrix = mult(scalem(1,1,1), this.transformMatrix)
-        this.transformMatrix = mult(rotateX(0), this.transformMatrix)
-        this.transformMatrix = mult(rotateY(0), this.transformMatrix)
-        this.transformMatrix = mult(rotateZ(0), this.transformMatrix)
-        this.transformMatrix = mult(translate(0,0,0), this.transformMatrix)
         this.transformMatrix = mult(translate(_center[0],_center[1],_center[2]), this.transformMatrix)
 
 
@@ -72,14 +67,6 @@ class Sphere{
         this.nBuffer = gl.createBuffer();
         this.tBuffer = gl.createBuffer();
 
-        gl.bindBuffer(gl.ARRAY_BUFFER, this.vBuffer);
-
-        gl.bindBuffer(gl.ARRAY_BUFFER, this.cBuffer);
-
-        gl.bindBuffer(gl.ARRAY_BUFFER, this.nBuffer);
-
-        gl.bindBuffer(gl.ARRAY_BUFFER, this.tBuffer);
-
 
         gl.bindBuffer(gl.ARRAY_BUFFER, this.vBuffer);
         gl.bufferData(gl.ARRAY_BUFFER, flatten(this.vertexes), gl.STATIC_DRAW);
@@ -115,13 +102,31 @@ class Sphere{
     draw(){
 
         gl.bindBuffer(gl.ARRAY_BUFFER, this.vBuffer);
-        gl.enableVertexAttribArray(this.vPosition);
-        gl.bindBuffer(gl.ARRAY_BUFFER, this.cBuffer);
-        gl.enableVertexAttribArray(this.vColor);
+        var vPosition = gl.getAttribLocation(program, "a_Position");
+        gl.vertexAttribPointer(vPosition, 4, gl.FLOAT, false, 0, 0);
+        gl.enableVertexAttribArray(vPosition);
+
         gl.bindBuffer(gl.ARRAY_BUFFER, this.nBuffer);
-        gl.enableVertexAttribArray(this.vNormal);
+        var vNormal = gl.getAttribLocation(program, "vNormal");
+        gl.vertexAttribPointer(vNormal, 4, gl.FLOAT, false, 0, 0);
+        gl.enableVertexAttribArray(vNormal);
+
+        gl.bindBuffer(gl.ARRAY_BUFFER, this.cBuffer);
+        var vColor = gl.getAttribLocation(program, "a_Color");
+        gl.vertexAttribPointer(vColor, 4, gl.FLOAT, false, 0, 0);
+        gl.enableVertexAttribArray(vColor);
+
+        this.tBuffer = gl.createBuffer();
         gl.bindBuffer(gl.ARRAY_BUFFER, this.tBuffer);
-        gl.enableVertexAttribArray(this.vTexCoord)
+        var vTexCoord = gl.getAttribLocation(program, "vTexCoord");
+        gl.vertexAttribPointer(vTexCoord, 2, gl.FLOAT, false, 0, 0);
+        gl.enableVertexAttribArray(vTexCoord);
+
+        gl.bindBuffer(gl.ARRAY_BUFFER, this.tBuffer);
+        gl.bufferData(gl.ARRAY_BUFFER, flatten(this.texCoordsArray), gl.STATIC_DRAW)
+
+        gl.uniformMatrix4fv(gl.getUniformLocation(program,"objTransform"), false, flatten(this.transformMatrix));
+
 
 
         var centerLoc = gl.getUniformLocation(program,"objTransform")
