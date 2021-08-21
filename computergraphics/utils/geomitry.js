@@ -70,7 +70,6 @@ class Sphere{
 
         gl.bindBuffer(gl.ARRAY_BUFFER, this.vBuffer);
         gl.bufferData(gl.ARRAY_BUFFER, flatten(this.vertexes), gl.STATIC_DRAW);
-
         this.vPosition = gl.getAttribLocation(program, "a_Position");
         gl.vertexAttribPointer(this.vPosition, 4, gl.FLOAT, false, 0, 0);
         gl.enableVertexAttribArray(this.vPosition);
@@ -87,51 +86,39 @@ class Sphere{
         gl.vertexAttribPointer(this.vColor, 4, gl.FLOAT, false, 0, 0);
         gl.enableVertexAttribArray(this.vColor);
 
-        this.tBuffer = gl.createBuffer();
         gl.bindBuffer(gl.ARRAY_BUFFER, this.tBuffer);
         gl.bufferData(gl.ARRAY_BUFFER, flatten(this.texCoordsArray), gl.STATIC_DRAW);
-
         this.vTexCoord = gl.getAttribLocation(program, "vTexCoord");
         gl.vertexAttribPointer(this.vTexCoord, 2, gl.FLOAT, false, 0, 0);
         gl.enableVertexAttribArray(this.vTexCoord)
 
-        gl.bindBuffer(gl.ARRAY_BUFFER, this.tBuffer);
-        gl.bufferData(gl.ARRAY_BUFFER, flatten(this.texCoordsArray), gl.STATIC_DRAW)
     }
 
     draw(){
 
         gl.bindBuffer(gl.ARRAY_BUFFER, this.vBuffer);
-        var vPosition = gl.getAttribLocation(program, "a_Position");
-        gl.vertexAttribPointer(vPosition, 4, gl.FLOAT, false, 0, 0);
-        gl.enableVertexAttribArray(vPosition);
+        gl.vertexAttribPointer(this.vPosition, 4, gl.FLOAT, false, 0, 0);
+        gl.enableVertexAttribArray(this.vPosition);
 
         gl.bindBuffer(gl.ARRAY_BUFFER, this.nBuffer);
-        var vNormal = gl.getAttribLocation(program, "vNormal");
-        gl.vertexAttribPointer(vNormal, 4, gl.FLOAT, false, 0, 0);
-        gl.enableVertexAttribArray(vNormal);
+        gl.vertexAttribPointer(this.vNormal, 4, gl.FLOAT, false, 0, 0);
+        gl.enableVertexAttribArray(this.vNormal);
 
         gl.bindBuffer(gl.ARRAY_BUFFER, this.cBuffer);
-        var vColor = gl.getAttribLocation(program, "a_Color");
-        gl.vertexAttribPointer(vColor, 4, gl.FLOAT, false, 0, 0);
-        gl.enableVertexAttribArray(vColor);
+        gl.vertexAttribPointer(this.vColor, 4, gl.FLOAT, false, 0, 0);
+        gl.enableVertexAttribArray(this.vColor);
 
-        this.tBuffer = gl.createBuffer();
         gl.bindBuffer(gl.ARRAY_BUFFER, this.tBuffer);
-        var vTexCoord = gl.getAttribLocation(program, "vTexCoord");
-        gl.vertexAttribPointer(vTexCoord, 2, gl.FLOAT, false, 0, 0);
-        gl.enableVertexAttribArray(vTexCoord);
+        gl.vertexAttribPointer(this.vTexCoord, 2, gl.FLOAT, false, 0, 0);
+        gl.enableVertexAttribArray(this.vTexCoord);
 
         gl.bindBuffer(gl.ARRAY_BUFFER, this.tBuffer);
         gl.bufferData(gl.ARRAY_BUFFER, flatten(this.texCoordsArray), gl.STATIC_DRAW)
 
         gl.uniformMatrix4fv(gl.getUniformLocation(program,"objTransform"), false, flatten(this.transformMatrix));
+        gl.uniformMatrix4fv( gl.getUniformLocation(program,"mTex"), false, flatten(mat4()));
 
-
-
-        var centerLoc = gl.getUniformLocation(program,"objTransform")
-        gl.uniformMatrix4fv(centerLoc, false, flatten(this.transformMatrix));
-
+        gl.bindBuffer(gl.ARRAY_BUFFER, this.vBuffer);
         gl.drawArrays(gl.TRIANGLES, 0, this.vertexes.length);
     }
 
@@ -436,12 +423,29 @@ class backFace{
 
         gl.bindBuffer(gl.ARRAY_BUFFER, this.vBuffer);
         gl.bufferData(gl.ARRAY_BUFFER, flatten(this.vertexes), gl.STATIC_DRAW)
+        this.vPosition = gl.getAttribLocation(program, "a_Position");
+        gl.vertexAttribPointer(this.vPosition, 4, gl.FLOAT, false, 0, 0);
+        gl.enableVertexAttribArray(this.vPosition);
+
         gl.bindBuffer(gl.ARRAY_BUFFER, this.cBuffer);
         gl.bufferData(gl.ARRAY_BUFFER, flatten(this.vertexColors), gl.STATIC_DRAW);
+        this.vColor = gl.getAttribLocation(program, "a_Color");
+        gl.vertexAttribPointer(this.vColor, 4, gl.FLOAT, false, 0, 0);
+        gl.enableVertexAttribArray(this.vColor);
+
         gl.bindBuffer(gl.ARRAY_BUFFER, this.nBuffer);
         gl.bufferData(gl.ARRAY_BUFFER, flatten(this.normals), gl.STATIC_DRAW);
+        this.vNormal = gl.getAttribLocation(program, "vNormal");
+        gl.vertexAttribPointer(this.vNormal, 4, gl.FLOAT, false, 0, 0);
+        gl.enableVertexAttribArray(this.vNormal);
+
+
         gl.bindBuffer(gl.ARRAY_BUFFER, this.tBuffer);
         gl.bufferData(gl.ARRAY_BUFFER, flatten(this.texCoordsArray), gl.STATIC_DRAW);
+        this.vTexCoord = gl.getAttribLocation(program, "vTexCoord");
+        gl.vertexAttribPointer(this.vTexCoord, 2, gl.FLOAT, false, 0, 0);
+        gl.enableVertexAttribArray(this.vTexCoord);
+
 
     }
 
@@ -450,26 +454,22 @@ class backFace{
     draw(camera){
 
         gl.bindBuffer(gl.ARRAY_BUFFER, this.vBuffer);
-        var vPosition = gl.getAttribLocation(program, "a_Position");
-        gl.vertexAttribPointer(vPosition, 4, gl.FLOAT, false, 0, 0);
-        gl.enableVertexAttribArray(vPosition);
+        gl.vertexAttribPointer(this.vPosition, 4, gl.FLOAT, false, 0, 0);
+        gl.enableVertexAttribArray(this.vPosition);
 
         gl.bindBuffer(gl.ARRAY_BUFFER, this.cBuffer);
-        var vColor = gl.getAttribLocation(program, "a_Color");
-        gl.vertexAttribPointer(vColor, 4, gl.FLOAT, false, 0, 0);
-        gl.enableVertexAttribArray(vColor);
+        gl.vertexAttribPointer(this.vColor, 4, gl.FLOAT, false, 0, 0);
+        gl.enableVertexAttribArray(this.vColor);
 
         gl.bindBuffer(gl.ARRAY_BUFFER, this.nBuffer);
-        var vNormal = gl.getAttribLocation(program, "vNormal");
-        gl.vertexAttribPointer(vNormal, 4, gl.FLOAT, false, 0, 0);
-        gl.enableVertexAttribArray(vNormal);
+        gl.vertexAttribPointer(this.vNormal, 4, gl.FLOAT, false, 0, 0);
+        gl.enableVertexAttribArray(this.vNormal);
 
         gl.bindBuffer(gl.ARRAY_BUFFER, this.tBuffer);
-        var vTexCoord = gl.getAttribLocation(program, "vTexCoord");
-        gl.vertexAttribPointer(vTexCoord, 2, gl.FLOAT, false, 0, 0);
-        gl.enableVertexAttribArray(vTexCoord);
+        gl.vertexAttribPointer(this.vTexCoord, 2, gl.FLOAT, false, 0, 0);
+        gl.enableVertexAttribArray(this.vTexCoord);
 
-
+        gl.bindBuffer(gl.ARRAY_BUFFER, this.vBuffer);
         gl.uniformMatrix4fv(gl.getUniformLocation(program,"projection"), false, flatten(mat4()));
         gl.uniformMatrix4fv(gl.getUniformLocation(program,"modelViewMatrix"), false, flatten(mat4()));
         gl.uniformMatrix4fv(gl.getUniformLocation(program,"objTransform"), false, flatten(mat4()));

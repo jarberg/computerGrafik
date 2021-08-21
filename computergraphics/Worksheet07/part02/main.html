@@ -33,7 +33,7 @@
 
             vec3 pos = (objTransform * a_Position).xyz;
 
-            R = pos;
+            R = a_Position.xyz;
 
             gl_Position = projection * modelViewMatrix *objTransform* a_Position;
             v_Color = a_Color;

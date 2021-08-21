@@ -100,16 +100,16 @@ function main() {
   init()
 
   camera = new Camera()
-  camera.pMatrix = ortho(-1, 1, -1, 1, camera.near, camera.far);
-  camera.update_projection_matrix()
-  camera.fovy = 90;
+  //camera.pMatrix = ortho(-1, 1, -1, 1, camera.near, camera.far);
+  //camera.update_projection_matrix()
+  //camera.fovy = 90;
   gl.clearColor(0, 0.5843, 0.9294, 1.0);
 
   setupControls();
 
-  objects.push(new Sphere2(vec4(0,0,0,0)))
+  objects.push(new Sphere(vec4(0,0,0,0)))
   objects[0].transformMatrix = mult(scalem(0.5,0.5,0.5) ,objects[0].transformMatrix)
-  objects.push(new backFace2(vec4(0,0,0,0)))
+  objects.push(new backFace(vec4(0,0,0,0)))
 
   create_cube_map();
 
@@ -119,19 +119,7 @@ function main() {
 function render(){
   gl.clear( gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
 
-
   camera.update(takeTime())
-
-  gl.uniform4fv( gl.getUniformLocation(program,
-      "ambientProduct"),flatten(ambientProduct) );
-  gl.uniform4fv( gl.getUniformLocation(program,
-      "diffuseProduct"),flatten(diffuseProduct) );
-  gl.uniform4fv( gl.getUniformLocation(program,
-      "specularProduct"),flatten(specularProduct) );
-  gl.uniform4fv( gl.getUniformLocation(program,
-      "lightPosition"),flatten(lightPosition) );
-  gl.uniform1f( gl.getUniformLocation(program,
-      "shininess"),materialShininess );
 
   var normalMatrix = [
     vec3(camera.mvMatrix[0][0], camera.mvMatrix[0][1], camera.mvMatrix[0][2]),
@@ -141,8 +129,8 @@ function render(){
   gl.uniformMatrix4fv( gl.getUniformLocation(program,"modelViewMatrix"), false, flatten(camera.mvMatrix));
   gl.uniformMatrix3fv(gl.getUniformLocation( program, "normalMatrix" ), false, flatten(normalMatrix) );
 
-  objects[0].draw(camera)
   objects[1].draw(camera)
+  objects[0].draw(camera)
 
 
   requestAnimFrame(render);
