@@ -120,16 +120,6 @@ function render(){
 
   camera.update(takeTime())
 
-  gl.uniform4fv( gl.getUniformLocation(program,
-      "ambientProduct"),flatten(ambientProduct) );
-  gl.uniform4fv( gl.getUniformLocation(program,
-      "diffuseProduct"),flatten(diffuseProduct) );
-  gl.uniform4fv( gl.getUniformLocation(program,
-      "specularProduct"),flatten(specularProduct) );
-  gl.uniform4fv( gl.getUniformLocation(program,
-      "lightPosition"),flatten(lightPosition) );
-  gl.uniform1f( gl.getUniformLocation(program,
-      "shininess"),materialShininess );
 
   var normalMatrix = [
     vec3(camera.mvMatrix[0][0], camera.mvMatrix[0][1], camera.mvMatrix[0][2]),
@@ -140,7 +130,7 @@ function render(){
   gl.uniformMatrix3fv(gl.getUniformLocation( program, "normalMatrix" ), false, flatten(normalMatrix) );
 
   objects.forEach(function(obj) {
-    obj.draw();
+    obj.draw(camera);
   });
 
   requestAnimFrame(render);

@@ -1,33 +1,9 @@
-//
-// start here
-//
-
 var max_verts = 100000;
 var objects = [];
 var lights =[];
 var program = null;
-var division = 4;
 
-
-
-
-function init(){
-  canvas = document.querySelector("#glCanvas");
-  //Initialize the GL context
-  gl = canvas.getContext("webgl");
-  if (gl === null) {
-    alert("Unable to initialize WebGL. Your browser or machine may not support it.");
-    return;
-  }
-  // Set clear color to black, fully opaque
-  gl.clearColor(0.8, 0.8, 0.8, 1.0);
-
-  program = initShaders(gl, "vertex-shader", "fragment-shader");
-  gl.useProgram(program);
-  gl.enable(gl.CULL_FACE)
-  gl.enable(gl.DEPTH_TEST)
-
-}
+var division = 2;
 
 var fpsOutput;
 
@@ -45,48 +21,36 @@ var ambientProduct =  mult(lightAmbient, materialAmbient);
 var diffuseProduct = mult(lightDiffuse, materialDiffuse);
 var specularProduct = mult(lightSpecular, materialSpecular);
 
+
+class Light{
+  colorValue = vec3(0,0,0);
+  intensity = 1.0;
+}
+
+class PointLight extends Light{
+  position = vec4(0,0,0,1.0)
+  constructor() {
+    super();
+  }
+}
+
+function init(){
+  canvas = document.querySelector("#glCanvas");
+  gl = canvas.getContext("webgl");
+  if (gl === null) {
+    alert("Unable to initialize WebGL. Your browser or machine may not support it.");
+    return;
+  }
+  program = initShaders(gl, "vertex-shader", "fragment-shader");
+  gl.useProgram(program);
+  gl.clearColor(0.8, 0.8, 0.8, 1.0);
+  gl.enable(gl.CULL_FACE)
+  gl.enable(gl.DEPTH_TEST)
+
+}
+
+
 function setupControls(){
-  document.getElementById("button_nearest_min").onclick = function() {
-    gl.texParameteri( gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER,
-        gl.NEAREST );
-  };
-  document.getElementById("button_linear_min").onclick = function() {
-    gl.texParameteri( gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER,
-        gl.LINEAR );
-  };
-  document.getElementById("button_nearest_mag").onclick = function() {
-    gl.texParameteri( gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER,
-        gl.NEAREST );
-  };
-  document.getElementById("button_linear_mag").onclick = function() {
-    gl.texParameteri( gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER,
-        gl.LINEAR );
-  };
-  document.getElementById("button_repeat").onclick = function() {
-    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.REPEAT);
-    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.REPEAT);
-  };
-  document.getElementById("button_clamp").onclick = function() {
-    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
-    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
-  };
-  document.getElementById("button_mm_linearLinear_min").onclick = function() {
-    gl.texParameteri( gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER,
-        gl.LINEAR_MIPMAP_LINEAR );
-  };
-  document.getElementById("button_mm_linearNear_min").onclick = function() {
-    gl.texParameteri( gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER,
-        gl.LINEAR_MIPMAP_NEAREST );
-  };
-  document.getElementById("button_mm_nearestLinear_min").onclick = function() {
-    gl.texParameteri( gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER,
-        gl.NEAREST_MIPMAP_LINEAR );
-  };
-  document.getElementById("button_mm_nearestNear_min").onclick = function() {
-    gl.texParameteri( gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER,
-        gl.NEAREST_MIPMAP_NEAREST );
-  };
-  ;
   fpsOutput = document.getElementById("fpsOutput")
   let rotateCamera = document.getElementById("rotate_Camera")
   rotateCamera.addEventListener('input', () =>{
@@ -94,27 +58,6 @@ function setupControls(){
   });
 }
 
-
-
-function main() {
-  init()
-
-  camera = new Camera()
-  //camera.pMatrix = ortho(-1, 1, -1, 1, camera.near, camera.far);
-  //camera.update_projection_matrix()
-  //camera.fovy = 90;
-  gl.clearColor(0, 0.5843, 0.9294, 1.0);
-
-  setupControls();
-
-  objects.push(new Sphere(vec4(0,0,0,0)))
-  objects[0].transformMatrix = mult(scalem(0.5,0.5,0.5) ,objects[0].transformMatrix)
-  objects.push(new backFace(vec4(0,0,0,0)))
-
-  create_cube_map();
-
-  render()
-}
 
 function render(){
   gl.clear( gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
@@ -126,14 +69,37 @@ function render(){
     vec3(camera.mvMatrix[1][0], camera.mvMatrix[1][1], camera.mvMatrix[1][2]),
     vec3(camera.mvMatrix[2][0], camera.mvMatrix[2][1], camera.mvMatrix[2][2])
   ];
-  gl.uniformMatrix4fv( gl.getUniformLocation(program,"modelViewMatrix"), false, flatten(camera.mvMatrix));
-  gl.uniformMatrix3fv(gl.getUniformLocation( program, "normalMatrix" ), false, flatten(normalMatrix) );
 
-  objects[1].draw(camera)
-  objects[0].draw(camera)
+  for (let i = 0; i < objects.length; i++) {
+    var obj = objects[i];
+    camera.update_projection_matrix()
+    gl.uniformMatrix4fv( gl.getUniformLocation(program,"modelViewMatrix"), false, flatten(camera.mvMatrix));
+    gl.uniformMatrix3fv(gl.getUniformLocation(program, "normalMatrix" ), false, flatten(normalMatrix));
 
-
+    obj.draw(camera);
+  }
   requestAnimFrame(render);
+}
+
+
+
+function main() {
+  init()
+
+
+  objects.push( new Sphere(vec4(0, -2, 0, 0) ) );
+  objects.push( new backFace(vec4(0, 0, 0, 0)) );
+  objects[0].transformMatrix = mult(scalem(3,3,3), objects[0].transformMatrix)
+  objects[0].transformMatrix = mult(translate(0,3,0), objects[0].transformMatrix)
+  create_cube_map(false)
+  create_cube_map( false)
+
+  camera = new Camera();
+
+  gl.clearColor(0, 0.5843, 0.9294, 1.0);
+
+  setupControls();
+  render();
 }
 
 window.onload = main;
