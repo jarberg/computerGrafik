@@ -12,7 +12,9 @@
   <component name="ChangeListManager">
     <list default="true" id="5e3948d6-358c-4c60-8135-650537d75e3c" name="Default Changelist" comment="finished woorksheet 7 part1&#10;&#10;added utillity functions to">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet06/part01/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Worksheet06/part01/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet07/part03/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Worksheet07/part03/main.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet07/part03/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Worksheet07/part03/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/computergraphics/utils/Camera.js" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/utils/Camera.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/computergraphics/utils/geomitry.js" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/utils/geomitry.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -43,18 +45,18 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/computergraphics/Worksheet07" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/computergraphics/Worksheet07/part03" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Michael\Desktop\DtuWebsite\computergraphics\Images" />
+      <recent name="C:\Users\Michael\Desktop\DtuWebsite\computergraphics\Worksheet07" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Michael\Desktop\DtuWebsite\computergraphics\Worksheet07" />
       <recent name="C:\Users\Michael\Desktop\DtuWebsite\computergraphics\utils" />
       <recent name="C:\Users\Michael\Desktop\DtuWebsite\computergraphics" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\Michael\Desktop\DtuWebsite\computergraphics\Images" />
-      <recent name="C:\Users\Michael\Desktop\DtuWebsite\computergraphics\Worksheet07" />
     </key>
   </component>
   <component name="RunManager" selected="JavaScript Debug.main.html (5)">
@@ -163,7 +165,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/computergraphics/utils/geomitry.js</url>
-          <line>117</line>
+          <line>121</line>
           <option name="timeStamp" value="4" />
         </line-breakpoint>
       </breakpoints>

@@ -64,17 +64,13 @@ function render(){
 
   camera.update(takeTime())
 
-  var normalMatrix = [
-    vec3(camera.mvMatrix[0][0], camera.mvMatrix[0][1], camera.mvMatrix[0][2]),
-    vec3(camera.mvMatrix[1][0], camera.mvMatrix[1][1], camera.mvMatrix[1][2]),
-    vec3(camera.mvMatrix[2][0], camera.mvMatrix[2][1], camera.mvMatrix[2][2])
-  ];
 
+  gl.uniformMatrix4fv( gl.getUniformLocation(program,"modelViewMatrix"), false, flatten(camera.mvMatrix));
+  gl.uniformMatrix3fv(gl.getUniformLocation(program, "normalMatrix" ), false, flatten(normalMatrix));
+  camera.update_projection_matrix()
   for (let i = 0; i < objects.length; i++) {
     var obj = objects[i];
-    camera.update_projection_matrix()
-    gl.uniformMatrix4fv( gl.getUniformLocation(program,"modelViewMatrix"), false, flatten(camera.mvMatrix));
-    gl.uniformMatrix3fv(gl.getUniformLocation(program, "normalMatrix" ), false, flatten(normalMatrix));
+
 
     obj.draw(camera);
   }

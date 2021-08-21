@@ -106,6 +106,10 @@ class Sphere{
         gl.vertexAttribPointer(vTexCoord, 2, gl.FLOAT, false, 0, 0);
         gl.enableVertexAttribArray(vTexCoord);
 
+
+
+        gl.uniformMatrix4fv(gl.getUniformLocation(program,"normalMatrix"), false, flatten(camera.normalMatrix));
+
         gl.uniformMatrix4fv(gl.getUniformLocation(program,"objTransform"), false, flatten(this.transformMatrix));
         gl.uniformMatrix4fv( gl.getUniformLocation(program,"mTex"), false, flatten(mat4()));
         gl.uniformMatrix4fv( gl.getUniformLocation(program,"eye"), false, flatten(camera.eye));
@@ -333,7 +337,7 @@ class backFace{
             inverseviewMatrix,
             inverse4(camera.pMatrix)
         );
-
+        gl.uniform1i(gl.getUniformLocation(program,"isreflective"), 0)
         gl.uniformMatrix4fv( gl.getUniformLocation(program,"mTex"), false, flatten(textureMatrix));
         gl.drawArrays(gl.TRIANGLES, 0, this.vertexes.length);
     }

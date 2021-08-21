@@ -21,11 +21,13 @@ class Camera{
         this.up = vec3(0.0, 1.0, 0.0);
         this.rotate =false;
         this.projectionLoc = gl.getUniformLocation(program,"projection")
+
         this.update_projection_matrix()
     }
     update_projection_matrix(){
 
         gl.uniformMatrix4fv(this.projectionLoc, false, flatten(this.pMatrix));
+
     }
 
     update(frametime){
@@ -49,6 +51,11 @@ class Camera{
             this.radius * Math.sin(vAngleRadians) * Math.sin(hAngleRadians)
         ];
         this.mvMatrix = lookAt(this.eye, this.at , this.up);
+        this.normalMatrix = [
+            vec3(this.mvMatrix[0][0], this.mvMatrix[0][1], this.mvMatrix[0][2]),
+            vec3(this.mvMatrix[1][0], this.mvMatrix[1][1], this.mvMatrix[1][2]),
+            vec3(this.mvMatrix[2][0], this.mvMatrix[2][1], this.mvMatrix[2][2])
+        ];
     }
 
 }
