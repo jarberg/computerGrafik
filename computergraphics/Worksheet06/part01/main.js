@@ -131,7 +131,7 @@ function configureTexture(image, size) {
 
   gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.REPEAT);
   gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.REPEAT);
-
+  gl.uniform1i(gl.getUniformLocation(program, "texture"), 0);
 }
 
 function set_Texture_repeat(){

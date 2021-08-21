@@ -123,9 +123,9 @@ class Rectangle{
     normals = [];
     texCoordsArray = [];
     vertices = [
-        vec4( -4, -1,  -31, 1.0 ),
-        vec4( 4,  -1,  -31, 1.0 ),
         vec4( 4,  -1,  10, 1.0 ),
+        vec4( 4,  -1,  -31, 1.0 ),
+        vec4( -4, -1,  -31, 1.0 ),
         vec4( -4, -1,  10, 1.0 ),
     ];
     transformMatrix = mat4()
@@ -136,11 +136,7 @@ class Rectangle{
 
     constructor(_center) {
         this.center = _center
-        this.transformMatrix = mult(scalem(1,1,1), this.transformMatrix)
-        this.transformMatrix = mult(rotateX(0), this.transformMatrix)
-        this.transformMatrix = mult(rotateY(0), this.transformMatrix)
-        this.transformMatrix = mult(rotateZ(0), this.transformMatrix)
-        this.transformMatrix = mult(translate(0,0,0), this.transformMatrix)
+        this.transformMatrix = mat4()
         this.transformMatrix = mult(translate(_center[0],_center[1],_center[2]), this.transformMatrix)
 
 
@@ -205,16 +201,11 @@ class Rectangle{
         gl.vertexAttribPointer(vColor, 4, gl.FLOAT, false, 0, 0);
         gl.enableVertexAttribArray(vColor);
 
-        this.tBuffer = gl.createBuffer();
         gl.bindBuffer(gl.ARRAY_BUFFER, this.tBuffer);
         gl.bufferData(gl.ARRAY_BUFFER, flatten(this.texCoordsArray), gl.STATIC_DRAW);
         var vTexCoord = gl.getAttribLocation(program, "vTexCoord");
-
         gl.vertexAttribPointer(vTexCoord, 2, gl.FLOAT, false, 0, 0);
         gl.enableVertexAttribArray(vTexCoord);
-
-        gl.bindBuffer(gl.ARRAY_BUFFER, this.tBuffer);
-        gl.bufferData(gl.ARRAY_BUFFER, flatten(this.texCoordsArray), gl.STATIC_DRAW)
 
         gl.uniformMatrix4fv(gl.getUniformLocation(program,"objTransform"), false, flatten(this.transformMatrix));
 
