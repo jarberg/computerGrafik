@@ -22,7 +22,7 @@ class Sphere{
         var vc = vec4(-0.816497, -0.471405, 0.333333, 1);
         var vd = vec4(0.816497, -0.471405, 0.333333, 1);
         this.tetrahedron(va,vb,vc,vd,4)
-        this.initBuffers(gl,program)
+        this.initBuffers()
     }
 
     triangle(a, b, c){
@@ -61,7 +61,7 @@ class Sphere{
     }
 
 
-    initBuffers(gl, program){
+    initBuffers(){
         this.vBuffer = gl.createBuffer();
         this.cBuffer = gl.createBuffer();
         this.nBuffer = gl.createBuffer();
@@ -183,7 +183,7 @@ class Cube{
         this.transformMatrix = mult(translate(_center[0],_center[1],_center[2]), this.transformMatrix)
 
         this.make()
-        this.initBuffers(gl,program)
+        this.initBuffers()
     }
     quad(a, b, c, d) {
         var indices = [ a,b,c, a, c, d ];
@@ -206,7 +206,7 @@ class Cube{
         }
     }
 
-    initBuffers(gl, program){
+    initBuffers(){
         this.vBuffer = gl.createBuffer();
         this.cBuffer = gl.createBuffer();
         gl.bindBuffer(gl.ARRAY_BUFFER, this.vBuffer);
@@ -428,7 +428,7 @@ class backFace{
     }
 
     initBuffers(){
-        gl.useProgram(program)
+
         this.vBuffer = gl.createBuffer();
         this.cBuffer = gl.createBuffer();
         this.nBuffer = gl.createBuffer();

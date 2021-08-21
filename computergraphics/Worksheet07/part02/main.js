@@ -141,8 +141,8 @@ function render(){
   gl.uniformMatrix4fv( gl.getUniformLocation(program,"modelViewMatrix"), false, flatten(camera.mvMatrix));
   gl.uniformMatrix3fv(gl.getUniformLocation( program, "normalMatrix" ), false, flatten(normalMatrix) );
 
-  objects[0].draw()
-  objects[1].draw()
+  objects[0].draw(camera)
+  objects[1].draw(camera)
 
 
   requestAnimFrame(render);
