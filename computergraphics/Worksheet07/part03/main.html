@@ -18,46 +18,61 @@
 
 
         uniform vec3 eye;
+        uniform int isreflective;
+
         uniform mat3 normalMatrix;
 
-        varying vec3 R, N, eye;
+        varying vec3 R, N;
         varying vec4 v_Color;
+
         void main()
         {
-
+            vec4 normal = vNormal;
+            vec2 coords = vTexCoord;
             vec3 pos = -(modelViewMatrix * a_Position).xyz;
+            v_Color = a_Color;
 
 
-            vec3 NN = (modelViewMatrix*vNormal).xyz;
+            N = (modelViewMatrix*vNormal).xyz;
 
-            R = reflect(pos, NN);
+
+            if (isreflective==1){
+                vec3 modelpos = -( normalMatrix * a_Position.xyz);
+                vec3 incident = modelpos + eye;
+                R = reflect(incident, normalize(modelpos));
+            }
+            else{
+                vec3 iw=(mTex* a_Position).xyz;
+                R = iw;
+            }
 
             gl_Position = projection * modelViewMatrix *objTransform* a_Position;
-            v_Color = a_Color;
 
         }
     </script>
+
     <script id="fragment-shader" type="x-shader/x-fragment">
     precision mediump float;
 
     uniform samplerCube texture;
 
+    varying vec4 v_Color;
     varying vec3 R;
 
     void main(){
+
         gl_FragColor = textureCube( texture, R);
+
     }
     </script>
-
     <script type="text/javascript"  src="../../commonJS/webgl-utils.js"></script>
     <script type="text/javascript"  src="../../commonJS/initShaders.js"></script>
-    <script type="text/javascript"  src="../../commonJS/MV.js"></script>
+     <script type="text/javascript"  src="../../commonJS/MV.js"></script>
     <script type="text/javascript"  src="../../utils/Camera.js"></script>
     <script type="text/javascript"  src="../../utils/geomitry.js"></script>
     <script type="text/javascript"  src="../../utils/general.js"></script>
     <script type="text/javascript"  src="../../utils/textureUtils.js"></script>
     <script type="text/javascript"  src="main.js"></script>
-
 </head>
 <!-- Add your site or application content here -->
 <body>
@@ -74,16 +89,35 @@
             </tbody></table></td>
         <td>
             <canvas id="glCanvas" width="400" height="400"></canvas>
-            <p align="center" id="fpsOutput" class="fps-text">FPS: 60</p>
         </td>
+
         <!-- Right toolbox -->
         <td><table class="toolbox">
             <tr class="toolbox-row"><td>
+                <b>texture</b><br><br>
+                <p>minification</p>
+                <input id="button_nearest_min" type="button" value="Nearest" ><br>
+                <input id="button_linear_min" type="button" value="Linear" ><br>
+                <input id="button_mm_linearNear_min" type="button" value="mipmap linear nearest" ><br>
+                <input id="button_mm_linearLinear_min" type="button" value="mipmap linear linear" ><br>
+                <input id="button_mm_nearestLinear_min" type="button" value="mipmap nearest linear" ><br>
+                <input id="button_mm_nearestNear_min" type="button" value="mipmap nearest near" ><br>
+
+                <p>magnification</p>
+                <input id="button_nearest_mag" type="button" value="Nearest" ><br>
+                <input id="button_linear_mag" type="button" value="Linear" ><br>
+
+                <p>Wrap Mode</p>
+                <input id="button_repeat" type="button" value="Repeat" ><br>
+                <input id="button_clamp" type="button" value="Clamp" ><br>
+            </td></tr>
             </tbody></table>
         </td>
     </tr>
     </td>
     </tbody></table>
+    <p align="center" id="fpsOutput" class="fps-text">FPS: 60</p>
+
 </body>
 </html>
 

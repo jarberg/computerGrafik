@@ -162,11 +162,11 @@ function configureTexture(image, size) {
 function main() {
   init()
 
-  objects.push(new Sphere(vec4(0,0,0,0)))
+  objects.push( new Sphere(vec4(0, -2, 0, 0), gl, initShaders(gl, "vertex-shader", "fragment-shader")) );
   //objects[0].transformMatrix = mult(scalem(5,5,5), objects[0].transformMatrix)
   camera = new Camera()
   camera.pMatrix = ortho(-1, 1, -1, 1, camera.near, camera.far);
-  camera.update_projection_matrix()
+  camera.update_projection_matrix(objects[0].shader)
   camera.fovy = 90;
 
   gl.clearColor(0, 0.5843, 0.9294, 1.0);

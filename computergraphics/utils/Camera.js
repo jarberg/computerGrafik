@@ -5,7 +5,7 @@ class Camera{
         this.radius = 8.0;
         this.theta  = 0.0;
         this.phi    = 30.0;
-        this.fovy = 90.0;  // Field-of-view in Y direction angle (in degrees)
+        this.fovy = 90.0;     // Field-of-view in Y direction angle (in degrees)
         this.aspect =1;       // Viewport aspect ratio
 
         this.pMatrix = perspective( this.fovy,
@@ -13,18 +13,15 @@ class Camera{
             this.near,
             this.far);
 
-
         this.mvMatrix;
         this.eye;
 
         this.at = vec3(0.0, 0.0, 0.0);
         this.up = vec3(0.0, 1.0, 0.0);
         this.rotate =false;
-        var projectionLoc = gl.getUniformLocation(program,"projection")
-        gl.uniformMatrix4fv(projectionLoc, false, flatten(this.pMatrix));
     }
-    update_projection_matrix(){
-        var projectionLoc = gl.getUniformLocation(program,"projection")
+    update_projection_matrix(shader){
+        var projectionLoc = gl.getUniformLocation(shader,"projection")
         gl.uniformMatrix4fv(projectionLoc, false, flatten(this.pMatrix));
     }
 
@@ -50,5 +47,6 @@ class Camera{
         ];
         this.mvMatrix = lookAt(this.eye, this.at , this.up);
     }
-
 }
+
+

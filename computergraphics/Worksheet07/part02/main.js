@@ -2,6 +2,7 @@ var max_verts = 100000;
 var objects = [];
 var lights =[];
 var program = null;
+
 var division = 2;
 
 var fpsOutput;
@@ -21,19 +22,26 @@ var diffuseProduct = mult(lightDiffuse, materialDiffuse);
 var specularProduct = mult(lightSpecular, materialSpecular);
 
 
+class Light{
+  colorValue = vec3(0,0,0);
+  intensity = 1.0;
+}
+
+class PointLight extends Light{
+  position = vec4(0,0,0,1.0)
+  constructor() {
+    super();
+  }
+}
+
 function init(){
   canvas = document.querySelector("#glCanvas");
   gl = canvas.getContext("webgl");
-
   if (gl === null) {
     alert("Unable to initialize WebGL. Your browser or machine may not support it.");
     return;
   }
-
   gl.clearColor(0.8, 0.8, 0.8, 1.0);
-
-  program = initShaders(gl, "vertex-shader", "fragment-shader");
-  gl.useProgram(program);
   gl.enable(gl.CULL_FACE)
   gl.enable(gl.DEPTH_TEST)
 }
@@ -53,48 +61,41 @@ function render(){
 
   camera.update(takeTime())
 
-  gl.uniform4fv( gl.getUniformLocation(program,
-      "ambientProduct"),flatten(ambientProduct) );
-  gl.uniform4fv( gl.getUniformLocation(program,
-      "diffuseProduct"),flatten(diffuseProduct) );
-  gl.uniform4fv( gl.getUniformLocation(program,
-      "specularProduct"),flatten(specularProduct) );
-  gl.uniform4fv( gl.getUniformLocation(program,
-      "lightPosition"),flatten(lightPosition) );
-  gl.uniform1f( gl.getUniformLocation(program,
-      "shininess"),materialShininess );
-
   var normalMatrix = [
     vec3(camera.mvMatrix[0][0], camera.mvMatrix[0][1], camera.mvMatrix[0][2]),
     vec3(camera.mvMatrix[1][0], camera.mvMatrix[1][1], camera.mvMatrix[1][2]),
     vec3(camera.mvMatrix[2][0], camera.mvMatrix[2][1], camera.mvMatrix[2][2])
   ];
 
-  gl.uniformMatrix4fv( gl.getUniformLocation(program,"modelViewMatrix"), false, flatten(camera.mvMatrix));
-  gl.uniformMatrix3fv(gl.getUniformLocation( program, "normalMatrix" ), false, flatten(normalMatrix));
+  for (let i = 0; i < objects.length; i++) {
+    var obj = objects[i];
+    gl.useProgram(obj.shader)
+    camera.update_projection_matrix(obj.shader)
+    gl.uniformMatrix4fv( gl.getUniformLocation(obj.shader,"modelViewMatrix"), false, flatten(camera.mvMatrix));
+    gl.uniformMatrix3fv(gl.getUniformLocation( obj.shader, "normalMatrix" ), false, flatten(normalMatrix));
 
-  objects.forEach(function(obj) {
     obj.draw(camera);
-  });
-
+  }
   requestAnimFrame(render);
 }
+
 
 
 function main() {
   init()
 
   objects.push( new Sphere(vec4(0, -2, 0, 0), gl, initShaders(gl, "vertex-shader", "fragment-shader")) );
-  camera = new Camera();
+  objects.push( new backFace(vec4(0, 0, 0, 0), gl, initShaders(gl, "vertex-shader", "fragment-shader")) );
+  objects[0].transformMatrix = mult(scalem(3,3,3), objects[0].transformMatrix)
+  objects[0].transformMatrix = mult(translate(0,3,0), objects[0].transformMatrix)
+  create_cube_map(objects[0].shader,false)
+  create_cube_map(objects[1].shader, false)
 
-  camera.fovy = 90;
+  camera = new Camera();
 
   gl.clearColor(0, 0.5843, 0.9294, 1.0);
 
   setupControls();
-
-  create_cube_map(objects[0].shader);
-
   render();
 }
 

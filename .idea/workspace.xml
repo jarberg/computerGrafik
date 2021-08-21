@@ -10,14 +10,22 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5e3948d6-358c-4c60-8135-650537d75e3c" name="Default Changelist" comment="initial commit">
-      <change afterPath="$PROJECT_DIR$/computergraphics/Worksheet07/part01/main.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/computergraphics/Worksheet07/part01/main.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/computergraphics/utils/general.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/computergraphics/utils/textureUtils.js" afterDir="false" />
+    <list default="true" id="5e3948d6-358c-4c60-8135-650537d75e3c" name="Default Changelist" comment="finished woorksheet 7 part1&#10;&#10;added utillity functions to">
+      <change afterPath="$PROJECT_DIR$/computergraphics/Worksheet07/part02/main.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/computergraphics/Worksheet07/part02/main.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/computergraphics/Worksheet07/part02/shaders/vertex-shader" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/computergraphics/Worksheet07/part03/main.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/computergraphics/Worksheet07/part03/main.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/computergraphics/Worksheet07/part03/shaders/vertex-shader" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet04/part01/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Worksheet04/part01/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet03/part02/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Worksheet03/part02/main.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet06/part03/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Worksheet06/part03/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet07/part01/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Worksheet07/part01/main.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet07/part01/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Worksheet07/part01/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/computergraphics/utils/Camera.js" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/utils/Camera.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/computergraphics/utils/general.js" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/utils/general.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/computergraphics/utils/geomitry.js" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/utils/geomitry.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/computergraphics/utils/textureUtils.js" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/utils/textureUtils.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,27 +54,40 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Michael\Desktop\DtuWebsite\computergraphics\Worksheet07" />
+      <recent name="C:\Users\Michael\Desktop\DtuWebsite\computergraphics\Worksheet07\part02" />
+      <recent name="C:\Users\Michael\Desktop\DtuWebsite\computergraphics\utils" />
+      <recent name="C:\Users\Michael\Desktop\DtuWebsite\computergraphics" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Michael\Desktop\DtuWebsite\computergraphics\Images" />
       <recent name="C:\Users\Michael\Desktop\DtuWebsite\computergraphics\Worksheet07" />
     </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\Michael\Desktop\DtuWebsite\computergraphics\Worksheet07" />
-      <recent name="C:\Users\Michael\Desktop\DtuWebsite\computergraphics\utils" />
-      <recent name="C:\Users\Michael\Desktop\DtuWebsite\computergraphics" />
-    </key>
   </component>
   <component name="RunManager" selected="JavaScript Debug.main.html">
-    <configuration name="index.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/DtuWebsite/computergraphics/index.html" useBuiltInWebServerPort="true">
+    <configuration name="main.html (1)" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/DtuWebsite/computergraphics/Worksheet06/part01/main.html" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
-    <configuration name="main.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/DtuWebsite/computergraphics/Worksheet07/part01/main.html" useBuiltInWebServerPort="true">
+    <configuration name="main.html (2)" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/DtuWebsite/computergraphics/Worksheet06/part03/main.html" useBuiltInWebServerPort="true">
+      <method v="2" />
+    </configuration>
+    <configuration name="main.html (3)" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/DtuWebsite/computergraphics/Worksheet04/part04/main.html" useBuiltInWebServerPort="true">
+      <method v="2" />
+    </configuration>
+    <configuration name="main.html (4)" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/DtuWebsite/computergraphics/Worksheet05/part02/main.html" useBuiltInWebServerPort="true">
+      <method v="2" />
+    </configuration>
+    <configuration name="main.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/DtuWebsite/computergraphics/Worksheet06/part02/main.html" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="JavaScript Debug.main.html" />
-        <item itemvalue="JavaScript Debug.index.html" />
+        <item itemvalue="JavaScript Debug.main.html (1)" />
+        <item itemvalue="JavaScript Debug.main.html (4)" />
+        <item itemvalue="JavaScript Debug.main.html (2)" />
+        <item itemvalue="JavaScript Debug.main.html (3)" />
       </list>
     </recent_temporary>
   </component>
@@ -80,7 +101,7 @@
       <updated>1629095993799</updated>
       <workItem from="1629095994873" duration="508000" />
       <workItem from="1629096552139" duration="8902000" />
-      <workItem from="1629108204271" duration="1407000" />
+      <workItem from="1629108204271" duration="41119000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <created>1629096644242</created>
@@ -89,7 +110,14 @@
       <option name="project" value="LOCAL" />
       <updated>1629096644242</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="finished woorksheet 7 part1&#10;&#10;added utillity functions to">
+      <created>1629109801963</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1629109801963</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -109,24 +137,48 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="initial commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="initial commit" />
+    <MESSAGE value="finished woorksheet 7 part1&#10;&#10;added utillity functions to" />
+    <option name="LAST_COMMIT_MESSAGE" value="finished woorksheet 7 part1&#10;&#10;added utillity functions to" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="416" y="143" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1629096962040">
+    <state x="416" y="143" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1629117447413">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="416" y="143" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1280.680@0.0.1280.680" timestamp="1629096962040" />
-    <state x="410" y="61" key="RollbackChangesDialog" timestamp="1629097010284">
+    <state x="416" y="143" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1280.680@0.0.1280.680" timestamp="1629117447413" />
+    <state x="371" y="88" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1629110907784">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="410" y="61" key="RollbackChangesDialog/0.0.1280.680@0.0.1280.680" timestamp="1629097010284" />
+    <state x="371" y="88" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1280.680@0.0.1280.680" timestamp="1629110907784" />
+    <state x="410" y="61" key="RollbackChangesDialog" timestamp="1629109720586">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="410" y="61" key="RollbackChangesDialog/0.0.1280.680@0.0.1280.680" timestamp="1629109720586" />
     <state x="233" y="74" key="Vcs.Push.Dialog.v2" timestamp="1629097064446">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="233" y="74" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1629097064446" />
+    <state x="0" y="0" width="587" height="680" key="find.popup" timestamp="1629132573606">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="0" y="0" width="587" height="680" key="find.popup/0.0.1280.680@0.0.1280.680" timestamp="1629132573606" />
     <state x="433" y="242" key="git4idea.remote.GitConfigureRemotesDialog" timestamp="1629096820225">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="433" y="242" key="git4idea.remote.GitConfigureRemotesDialog/0.0.1280.680@0.0.1280.680" timestamp="1629096820225" />
+    <state x="303" y="1" width="672" height="678" key="search.everywhere.popup" timestamp="1629265661286">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="303" y="1" width="672" height="678" key="search.everywhere.popup/0.0.1280.680@0.0.1280.680" timestamp="1629265661286" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/computergraphics/utils/geomitry.js</url>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
