@@ -123,11 +123,18 @@ class Rectangle{
     normals = [];
     texCoordsArray = [];
     vertices = [
+        vec4( -4, -1,  10, 1.0 ),
         vec4( 4,  -1,  10, 1.0 ),
         vec4( 4,  -1,  -31, 1.0 ),
         vec4( -4, -1,  -31, 1.0 ),
-        vec4( -4, -1,  10, 1.0 ),
     ];
+    texCoord = [
+        vec2(-1.5, 0),
+        vec2(2.5, 0),
+        vec2(2.5, 10),
+        vec2(-1.5, 10)
+    ];
+
     transformMatrix = mat4()
     vBuffer = null;
     cBuffer = null;
@@ -149,27 +156,27 @@ class Rectangle{
 
         this.vertexes.push(this.vertices[a]);
         this.vertexColors.push(this.vertexColors[a]);
-        this.texCoordsArray.push(this.texCoordsArray[0]);
+        this.texCoordsArray.push(this.texCoord[0]);
 
         this.vertexes.push(this.vertices[b]);
         this.vertexColors.push(this.vertexColors[a]);
-        this.texCoordsArray.push(this.texCoordsArray[1]);
+        this.texCoordsArray.push(this.texCoord[1]);
 
         this.vertexes.push(this.vertices[c]);
         this.vertexColors.push(this.vertexColors[a]);
-        this.texCoordsArray.push(this.texCoordsArray[2]);
+        this.texCoordsArray.push(this.texCoord[2]);
 
         this.vertexes.push(this.vertices[a]);
         this.vertexColors.push(this.vertexColors[a]);
-        this.texCoordsArray.push(this.texCoordsArray[0]);
+        this.texCoordsArray.push(this.texCoord[0]);
 
         this.vertexes.push(this.vertices[c]);
         this.vertexColors.push(this.vertexColors[a]);
-        this.texCoordsArray.push(this.texCoordsArray[2]);
+        this.texCoordsArray.push(this.texCoord[2]);
 
         this.vertexes.push(this.vertices[d]);
         this.vertexColors.push(this.vertexColors[a]);
-        this.texCoordsArray.push(this.texCoordsArray[3]);
+        this.texCoordsArray.push(this.texCoord[3]);
     }
 
     initBuffers(){
@@ -213,6 +220,7 @@ class Rectangle{
     }
 
 }
+
 class backFace{
     center;
     vertexes = [];
