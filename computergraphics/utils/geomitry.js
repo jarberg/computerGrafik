@@ -26,7 +26,7 @@ class Sphere{
         var vb = vec4(0.0, 0.942809, 0.333333, 1);
         var vc = vec4(-0.816497, -0.471405, 0.333333, 1);
         var vd = vec4(0.816497, -0.471405, 0.333333, 1);
-        this.tetrahedron(va,vb,vc,vd,division)
+        this.tetrahedron(va,vb,vc,vd,4)
         this.initBuffers(gl,program)
     }
 
@@ -73,54 +73,56 @@ class Sphere{
         this.tBuffer = gl.createBuffer();
 
         gl.bindBuffer(gl.ARRAY_BUFFER, this.vBuffer);
-        gl.bufferData(gl.ARRAY_BUFFER,max_verts*sizeof['vec4'], gl.STATIC_DRAW);
+
+        gl.bindBuffer(gl.ARRAY_BUFFER, this.cBuffer);
+
+        gl.bindBuffer(gl.ARRAY_BUFFER, this.nBuffer);
+
+        gl.bindBuffer(gl.ARRAY_BUFFER, this.tBuffer);
+
+
+        gl.bindBuffer(gl.ARRAY_BUFFER, this.vBuffer);
+        gl.bufferData(gl.ARRAY_BUFFER, flatten(this.vertexes), gl.STATIC_DRAW);
+
         this.vPosition = gl.getAttribLocation(program, "a_Position");
         gl.vertexAttribPointer(this.vPosition, 4, gl.FLOAT, false, 0, 0);
         gl.enableVertexAttribArray(this.vPosition);
 
         gl.bindBuffer(gl.ARRAY_BUFFER, this.nBuffer);
-        gl.bufferData(gl.ARRAY_BUFFER,max_verts*sizeof['vec4'], gl.STATIC_DRAW);
+        gl.bufferData(gl.ARRAY_BUFFER, flatten(this.normals), gl.STATIC_DRAW);
         this.vNormal = gl.getAttribLocation(program, "vNormal");
         gl.vertexAttribPointer(this.vNormal, 4, gl.FLOAT, false, 0, 0);
         gl.enableVertexAttribArray(this.vNormal);
 
         gl.bindBuffer(gl.ARRAY_BUFFER, this.cBuffer);
-        gl.bufferData(gl.ARRAY_BUFFER,max_verts*sizeof['vec4'], gl.STATIC_DRAW);
+        gl.bufferData(gl.ARRAY_BUFFER, flatten(this.vertexColors), gl.STATIC_DRAW);
         this.vColor = gl.getAttribLocation(program, "a_Color");
         gl.vertexAttribPointer(this.vColor, 4, gl.FLOAT, false, 0, 0);
         gl.enableVertexAttribArray(this.vColor);
 
         this.tBuffer = gl.createBuffer();
         gl.bindBuffer(gl.ARRAY_BUFFER, this.tBuffer);
-        gl.bufferData(gl.ARRAY_BUFFER,max_verts*sizeof['vec2'], gl.STATIC_DRAW);
-        var vTexCoord = gl.getAttribLocation(program, "vTexCoord");
+        gl.bufferData(gl.ARRAY_BUFFER, flatten(this.texCoordsArray), gl.STATIC_DRAW);
 
-        gl.vertexAttribPointer(vTexCoord, 2, gl.FLOAT, false, 0, 0);
-        gl.enableVertexAttribArray
+        this.vTexCoord = gl.getAttribLocation(program, "vTexCoord");
+        gl.vertexAttribPointer(this.vTexCoord, 2, gl.FLOAT, false, 0, 0);
+        gl.enableVertexAttribArray(this.vTexCoord)
+
         gl.bindBuffer(gl.ARRAY_BUFFER, this.tBuffer);
         gl.bufferData(gl.ARRAY_BUFFER, flatten(this.texCoordsArray), gl.STATIC_DRAW)
     }
 
     draw(){
-        this.vertexColors = [];
-        this.vertexes = [];
-        this.normals = [];
-        this.texCoordsArray = [];
-
-        var va = vec4(0.0, 0.0, -1.0, 1);
-        var vb = vec4(0.0, 0.942809, 0.333333, 1);
-        var vc = vec4(-0.816497, -0.471405, 0.333333, 1);
-        var vd = vec4(0.816497, -0.471405, 0.333333, 1);
-        this.tetrahedron(va,vb,vc,vd,division)
 
         gl.bindBuffer(gl.ARRAY_BUFFER, this.vBuffer);
-        gl.bufferData(gl.ARRAY_BUFFER, flatten(this.vertexes), gl.STATIC_DRAW);
+        gl.enableVertexAttribArray(this.vPosition);
         gl.bindBuffer(gl.ARRAY_BUFFER, this.cBuffer);
-        gl.bufferData(gl.ARRAY_BUFFER, flatten(this.vertexColors), gl.STATIC_DRAW);
+        gl.enableVertexAttribArray(this.vColor);
         gl.bindBuffer(gl.ARRAY_BUFFER, this.nBuffer);
-        gl.bufferData(gl.ARRAY_BUFFER, flatten(this.normals), gl.STATIC_DRAW);
+        gl.enableVertexAttribArray(this.vNormal);
         gl.bindBuffer(gl.ARRAY_BUFFER, this.tBuffer);
-        gl.bufferData(gl.ARRAY_BUFFER, flatten(this.texCoordsArray), gl.STATIC_DRAW);
+        gl.enableVertexAttribArray(this.vTexCoord)
+
 
         var centerLoc = gl.getUniformLocation(program,"objTransform")
         gl.uniformMatrix4fv(centerLoc, false, flatten(this.transformMatrix));
@@ -319,42 +321,47 @@ class Rectangle{
         this.cBuffer = gl.createBuffer();
         this.nBuffer = gl.createBuffer();
         this.tBuffer = gl.createBuffer();
-        this.tBuffer = gl.createBuffer();
-
-        gl.bindBuffer(gl.ARRAY_BUFFER, this.vBuffer);
-        gl.bufferData(gl.ARRAY_BUFFER,max_verts*sizeof['vec4'], gl.STATIC_DRAW);
-        var vPosition = gl.getAttribLocation(program, "a_Position");
-        gl.vertexAttribPointer(vPosition, 4, gl.FLOAT, false, 0, 0);
-        gl.enableVertexAttribArray(vPosition);
-
-        gl.bindBuffer(gl.ARRAY_BUFFER, this.cBuffer);
-        gl.bufferData(gl.ARRAY_BUFFER,max_verts*sizeof['vec4'], gl.STATIC_DRAW);
-        var vColor = gl.getAttribLocation(program, "a_Color");
-        gl.vertexAttribPointer(vColor, 4, gl.FLOAT, false, 0, 0);
-        gl.enableVertexAttribArray(vColor);
-
-        this.tBuffer = gl.createBuffer();
-        gl.bindBuffer( gl.ARRAY_BUFFER, this.tBuffer);
-        var vTexCoord = gl.getAttribLocation( program, "vTexCoord");
-        gl.vertexAttribPointer(vTexCoord, 2, gl.FLOAT, false, 0, 0);
-        gl.enableVertexAttribArray(vTexCoord);
 
 
         gl.bindBuffer(gl.ARRAY_BUFFER, this.vBuffer);
         gl.bufferData(gl.ARRAY_BUFFER, flatten(this.pointsArray), gl.STATIC_DRAW);
+        this.vPosition = gl.getAttribLocation(program, "a_Position");
+        gl.vertexAttribPointer(this.vPosition, 4, gl.FLOAT, false, 0, 0);
+        gl.enableVertexAttribArray(this.vPosition);
+
         gl.bindBuffer(gl.ARRAY_BUFFER, this.cBuffer);
         gl.bufferData(gl.ARRAY_BUFFER, flatten(this.colorsArray), gl.STATIC_DRAW);
+        this.vColor = gl.getAttribLocation(program, "a_Color");
+        gl.vertexAttribPointer(this.vColor, 4, gl.FLOAT, false, 0, 0);
+        gl.enableVertexAttribArray(this.vColor);
+
         gl.bindBuffer(gl.ARRAY_BUFFER, this.nBuffer);
         gl.bufferData(gl.ARRAY_BUFFER, flatten(this.normalsArray), gl.STATIC_DRAW);
-        gl.bindBuffer(gl.ARRAY_BUFFER, this.tBuffer);
+        this.vNormal = gl.getAttribLocation(program, "a_Color");
+        gl.vertexAttribPointer(this.vNormal, 4, gl.FLOAT, false, 0, 0);
+        gl.enableVertexAttribArray(this.vNormal)
+
+        gl.bindBuffer( gl.ARRAY_BUFFER, this.tBuffer);
         gl.bufferData(gl.ARRAY_BUFFER, flatten(this.texCoordsArray), gl.STATIC_DRAW)
+        this.vTexCoord = gl.getAttribLocation( program, "vTexCoord");
+        gl.vertexAttribPointer(this.vTexCoord, 2, gl.FLOAT, false, 0, 0);
+        gl.enableVertexAttribArray(this.vTexCoord);
+
     }
 
     draw(){
+        gl.bindBuffer(gl.ARRAY_BUFFER, this.vBuffer);
+        gl.enableVertexAttribArray(this.vPosition);
+        gl.bindBuffer(gl.ARRAY_BUFFER, this.cBuffer);
+        gl.enableVertexAttribArray(this.vColor);
+        gl.bindBuffer(gl.ARRAY_BUFFER, this.nBuffer);
+        gl.enableVertexAttribArray(this.vNormal);
+        gl.bindBuffer(gl.ARRAY_BUFFER, this.tBuffer);
+        gl.enableVertexAttribArray(this.vTexCoord);
 
         var centerLoc = gl.getUniformLocation(program,"objTransform")
         gl.uniformMatrix4fv(centerLoc, false, flatten(this.transformMatrix));
-        gl.uniform1i(gl.getUniformLocation(program, "texMap"), 0);
+        gl.uniform1i(gl.getUniformLocation(program, "texture"), 0);
         gl.drawArrays(gl.TRIANGLES, 0, this.pointsArray.length);
     }
 
