@@ -107,9 +107,9 @@ function main() {
 
   setupControls();
 
-  objects.push(new Sphere(vec4(0,0,0,0)))
+  objects.push(new Sphere2(vec4(0,0,0,0)))
   objects[0].transformMatrix = mult(scalem(0.5,0.5,0.5) ,objects[0].transformMatrix)
-  objects.push(new backFace(vec4(0,0,0,0)))
+  objects.push(new backFace2(vec4(0,0,0,0)))
 
   create_cube_map();
 
