@@ -82,5 +82,5 @@ function create_cube_map(invert=false){
         }
 
     gl.activeTexture( gl.TEXTURE0 );
-    gl.uniform1i(gl.getUniformLocation(program, "texMap"),0);
+    gl.uniform1i(gl.getUniformLocation(program, "texture"),0);
 }

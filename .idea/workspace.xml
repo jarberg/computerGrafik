@@ -10,9 +10,8 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5e3948d6-358c-4c60-8135-650537d75e3c" name="Default Changelist" comment="fixed bug where different geo would overridde previous renders with their own data">
-      <change afterPath="$PROJECT_DIR$/computergraphics/Worksheet07/part02/main.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/computergraphics/Worksheet07/part02/main.js" afterDir="false" />
+    <list default="true" id="5e3948d6-358c-4c60-8135-650537d75e3c" name="Default Changelist" comment="finished woorksheet 7 part1&#10;&#10;added utillity functions to">
+      <change beforePath="$PROJECT_DIR$/computergraphics/utils/geomitry.js" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/utils/geomitry.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,14 +45,14 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\Michael\Desktop\DtuWebsite\computergraphics\Images" />
-      <recent name="C:\Users\Michael\Desktop\DtuWebsite\computergraphics\Worksheet07" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Michael\Desktop\DtuWebsite\computergraphics\Worksheet07" />
       <recent name="C:\Users\Michael\Desktop\DtuWebsite\computergraphics\utils" />
       <recent name="C:\Users\Michael\Desktop\DtuWebsite\computergraphics" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Michael\Desktop\DtuWebsite\computergraphics\Images" />
+      <recent name="C:\Users\Michael\Desktop\DtuWebsite\computergraphics\Worksheet07" />
     </key>
   </component>
   <component name="RunManager" selected="JavaScript Debug.main.html (4)">
