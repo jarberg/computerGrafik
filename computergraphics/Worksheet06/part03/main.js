@@ -183,23 +183,7 @@ function main() {
   };
   image.src = 'earth.jpg';
 
-  var texSize = 64;
-  var numRows = 8;
-  var numCols = 8;
 
-// Create a checkerboard pattern using floats
-  var myTexels = new Uint8Array(4*texSize*texSize);
-  for(var i = 0; i < texSize; ++i)
-    for(var j = 0; j < texSize; ++j)
-    {
-      var patchx = Math.floor(i/(texSize/numRows));
-      var patchy = Math.floor(j/(texSize/numCols));
-      var c = (patchx%2 !== patchy%2 ? 255 : 0);
-      var idx = 4*(i*texSize + j);
-      myTexels[idx] = myTexels[idx + 1] = myTexels[idx + 2] = c;
-      myTexels[idx + 3] = 255;
-    }
-  //configureTexture(myTexels, texSize)
   render()
 }
 
