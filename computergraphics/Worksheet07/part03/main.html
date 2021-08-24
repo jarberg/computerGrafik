@@ -27,17 +27,12 @@
 
         void main()
         {
-            vec4 normal = vNormal;
-            vec2 coords = vTexCoord;
-            vec3 pos = -(modelViewMatrix * a_Position).xyz;
-            v_Color = a_Color;
+            gl_Position = a_Color+vNormal+vec4(vTexCoord,vTexCoord);
 
-
-            N = (modelViewMatrix*vNormal).xyz;
-
+            N = (vNormal).xyz;
 
             if (isreflective==1){
-                vec3 modelpos = -( a_Position).xyz;
+                vec3 modelpos = vNormal.xyz;
                 vec3 incident = modelpos - eye;
                 R = reflect(incident, normalize(modelpos));
             }
@@ -45,7 +40,6 @@
                 vec3 iw=(mTex* a_Position).xyz;
                 R = iw;
             }
-
             gl_Position = projection * modelViewMatrix *objTransform* a_Position;
 
         }
@@ -63,7 +57,6 @@
     void main(){
         vec4 col = v_Color;
         gl_FragColor = textureCube( texture, R);
-
     }
     </script>
     <script type="text/javascript"  src="../../commonJS/webgl-utils.js"></script>

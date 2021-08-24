@@ -83,12 +83,11 @@ function main() {
   init()
 
 
-  objects.push( new Sphere(vec4(0, -2, 0, 0) ) );
-  objects.push( new backFace(vec4(0, 0, 0, 0)) );
+  objects.push( new Sphere(vec4(0, -2, 0) ) );
+  objects.push( new backFace(vec4(0, 0, 0)) );
   objects[0].transformMatrix = mult(scalem(3,3,3), objects[0].transformMatrix)
   objects[0].transformMatrix = mult(translate(0,3,0), objects[0].transformMatrix)
   create_cube_map(false)
-  create_cube_map( false)
 
   camera = new Camera();
 
