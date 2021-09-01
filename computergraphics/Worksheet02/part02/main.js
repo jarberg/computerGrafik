@@ -52,18 +52,14 @@ function main() {
 
   var vBuffer = gl.createBuffer();
   gl.bindBuffer(gl.ARRAY_BUFFER, vBuffer);
-  gl.bufferData(gl.ARRAY_BUFFER, max_verts*sizeof['vec2'], gl.STATIC_DRAW);
+  gl.bufferData(gl.ARRAY_BUFFER, max_verts*(sizeof['vec2']+sizeof['vec3']), gl.STATIC_DRAW);
 
   var vPosition = gl.getAttribLocation(program, "a_Position");
-  gl.vertexAttribPointer(vPosition, 2, gl.FLOAT, false, 0, 0);
+  gl.vertexAttribPointer(vPosition, 2, gl.FLOAT, false, sizeof['vec2']+sizeof['vec3'], 0);
   gl.enableVertexAttribArray(vPosition);
 
-  var cBuffer = gl.createBuffer();
-  gl.bindBuffer(gl.ARRAY_BUFFER, cBuffer);
-  gl.bufferData(gl.ARRAY_BUFFER, max_verts*sizeof['vec3'], gl.STATIC_DRAW);
-
   var vColor = gl.getAttribLocation(program, "a_Color");
-  gl.vertexAttribPointer(vColor, 3, gl.FLOAT, false, 0, 0);
+  gl.vertexAttribPointer(vColor, 3, gl.FLOAT, false, sizeof['vec2']+sizeof['vec3'], sizeof['vec2']);
   gl.enableVertexAttribArray(vColor);
 
   //clear button event
@@ -74,9 +70,15 @@ function main() {
     gl.deleteBuffer(vBuffer)
     vBuffer = gl.createBuffer();
     gl.bindBuffer(gl.ARRAY_BUFFER, vBuffer);
-    gl.bufferData(gl.ARRAY_BUFFER, max_verts*sizeof['vec2'], gl.STATIC_DRAW);
-    gl.vertexAttribPointer(vPosition, 2, gl.FLOAT, false, 0, 0);
+    gl.bufferData(gl.ARRAY_BUFFER, max_verts*(sizeof['vec2']+sizeof['vec3']), gl.STATIC_DRAW);
+
+    var vPosition = gl.getAttribLocation(program, "a_Position");
+    gl.vertexAttribPointer(vPosition, 2, gl.FLOAT, false, sizeof['vec2']+sizeof['vec3'], 0);
     gl.enableVertexAttribArray(vPosition);
+    var vColor = gl.getAttribLocation(program, "a_Color");
+    gl.vertexAttribPointer(vColor, 3, gl.FLOAT, false, sizeof['vec2']+sizeof['vec3'], sizeof['vec2']);
+    gl.enableVertexAttribArray(vColor);
+
     index =0;
     numPoints=0;
   });
@@ -90,13 +92,9 @@ function main() {
     var t = vec2(-1 + 2.0*((ev.clientX-bBox.left)/canvas.width),
         -1 + 2*(canvas.height-ev.clientY+bBox.top)/canvas.height);
 
-    console.log(t[0],t[1])
-    gl.bufferSubData(gl.ARRAY_BUFFER, sizeof['vec2']*index, flatten(t));
+    var tt = vec4(colors[colorMenu.selectedIndex]);
 
-    gl.bindBuffer(gl.ARRAY_BUFFER, cBuffer);
-    var t = vec4(colors[colorMenu.selectedIndex]);
-
-    gl.bufferSubData(gl.ARRAY_BUFFER, sizeof['vec3']*(index), flatten(t));
+    gl.bufferSubData(gl.ARRAY_BUFFER, (sizeof['vec2']+sizeof['vec3'])*index, flatten([t, tt]));
 
     numPoints = Math.max(numPoints, ++index);
     index %= max_verts;
