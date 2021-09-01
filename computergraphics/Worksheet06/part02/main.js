@@ -210,7 +210,7 @@ function render(){
   gl.uniformMatrix3fv(gl.getUniformLocation( program, "normalMatrix" ), false, flatten(normalMatrix) );
 
   objects.forEach(function(obj) {
-    obj.draw(camera);
+    obj.draw(camera, false);
   });
 
   requestAnimFrame(render);

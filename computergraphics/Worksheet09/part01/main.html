@@ -5,8 +5,6 @@
     <title>Worksheet07</title>
 
     <script id = "vertex-shader" type="x-shader/x-vertex">
-
-
         attribute vec4 a_Position;
         attribute vec4 a_Color;
         attribute vec4 vNormal;
@@ -17,7 +15,6 @@
         uniform mat4 modelViewMatrix;
         uniform mat4 projection;
         uniform mat4 objTransform;
-
 
         uniform vec3 eye;
         uniform mediump int isreflective;
@@ -38,13 +35,14 @@
             + normal*v.z;
         }
 
-        void main(){
+        void main()
+        {
             gl_Position = a_Color+vNormal+vec4(vTexCoord,vTexCoord);
-
+            v_Color = a_Color;
             gl_PointSize = 10.0;
 
             fTexCoord = vTexCoord;
-            gl_Position = projection * modelViewMatrix *objTransform* a_Position;
+            gl_Position = projection * modelViewMatrix * objTransform* a_Position;
 
         }
     </script>
@@ -52,6 +50,8 @@
     <script id="fragment-shader" type="x-shader/x-fragment">
     precision mediump float;
 
+    uniform int u_usev_col;
+    uniform int u_shadow;
     varying vec4 v_Color;
     varying  vec2 fTexCoord;
 
@@ -59,12 +59,23 @@
 
     void main()
     {
-        gl_FragColor = texture2D( diffuseTexture, fTexCoord );
+        if(u_shadow == 1){
+            gl_FragColor = vec4(0.0,0.0,0.0,1.0);
+        }
+        else{
+            if(u_usev_col == 1){
+                gl_FragColor = v_Color;
+            }
+            else{
+                gl_FragColor = texture2D( diffuseTexture, fTexCoord );
+            }
+        }
     }
     </script>
     <script type="text/javascript"  src="../../commonJS/webgl-utils.js"></script>
     <script type="text/javascript"  src="../../commonJS/initShaders.js"></script>
-     <script type="text/javascript"  src="../../commonJS/MV.js"></script>
+    <script type="text/javascript"  src="../../commonJS/MV.js"></script>
+    <script type="text/javascript"  src="../../commonJS/OBJParser.js"></script>
     <script type="text/javascript"  src="../../utils/Camera.js"></script>
     <script type="text/javascript"  src="../../utils/geomitry.js"></script>
     <script type="text/javascript"  src="../../utils/general.js"></script>

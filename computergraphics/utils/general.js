@@ -25,3 +25,33 @@ function hexToRgb(hex) {
     } : null;
 }
 
+function waitForMTL(obj, callback){
+    if( !obj.isMTLComplete()){
+        setTimeout(() => {
+            waitForMTL(obj, callback);
+        }, 100);
+    }else{
+        callback(obj);
+    }
+}
+function loadObjFile(fileName, scale, reverse, onLoadCallback){
+    var request = new XMLHttpRequest();
+
+    request.onreadystatechange = function() {
+        if( request.readyState !== 4 ) return;
+
+        if( request.status === 404 )
+            throw "Couldn't find obj file '" + fileName + "' (HTTP status 404)";
+
+        // @ts-ignore
+        var objDoc = new OBJDoc(fileName); // Create a OBJDoc object
+        var loadSuccess = objDoc.parse(request.responseText, scale, reverse);
+
+        if (!loadSuccess)
+            throw "Parsing object from '" + fileName + " failed";
+
+        waitForMTL(objDoc, onLoadCallback);
+    }
+    request.open('GET', fileName, true); // Create a request to get file
+    request.send(); // Send the request
+}

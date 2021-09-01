@@ -70,11 +70,10 @@ function main() {
   objects.push( new Sphere(vec4(0, -1, 0, 0) ) );
   objects[0].transformMatrix = mult(scalem(3,3,3), objects[0].transformMatrix)
   objects[0].transformMatrix = mult(translate(0,3,0), objects[0].transformMatrix)
-
+  objects[0].divisions = 6
   objects.push( new backFace(vec4(0, 0, 0, 0)) );
 
   create_cube_map(false, 0)
-
   create_image_texture("normalmap.png", configureNormalTexture, 1)
 
 

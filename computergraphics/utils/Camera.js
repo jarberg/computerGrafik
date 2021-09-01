@@ -3,6 +3,7 @@ class Camera{
         this.near = 0.1;
         this.far = 500.0;
         this.radius = 8.0;
+        this.translate = vec3(0,0,0)
         this.theta  = 0.0;
         this.phi    = 0.0;
         this.fovy = 90.0;  // Field-of-view in Y direction angle (in degrees)
@@ -59,9 +60,9 @@ class Camera{
         let hAngleRadians = ((this.phi+90) / 180) * Math.PI;
 
         this.eye = [
-            -this.radius * Math.sin(vAngleRadians) * Math.cos(hAngleRadians),
-            this.radius * Math.cos(vAngleRadians),
-            this.radius * Math.sin(vAngleRadians) * Math.sin(hAngleRadians)
+            this.translate[0]+-this.radius * Math.sin(vAngleRadians) * Math.cos(hAngleRadians),
+            this.translate[1]+this.radius * Math.cos(vAngleRadians),
+            this.translate[2]+this.radius * Math.sin(vAngleRadians) * Math.sin(hAngleRadians)
         ];
         this.mvMatrix = lookAt(this.eye, this.at , this.up);
         this.normalMatrix = [

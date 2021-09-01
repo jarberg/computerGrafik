@@ -98,46 +98,42 @@ function render(){
   timer = takeTime()
   camera.update(timer)
 
+  gl.uniform1i(gl.getUniformLocation(program, "diffuseTexture"), 0);
+  ground.draw()
 
-  for (let i = 0; i < objects.length; i++) {
+
+  for (let i = 1; i < objects.length; i++) {
     var obj = objects[i];
-    if(i>0){
-      gl.uniform1i(gl.getUniformLocation(program, "diffuseTexture"), 1);
-    }
-    else{
-      gl.uniform1i(gl.getUniformLocation(program, "diffuseTexture"), 0);
-    }
-    if(obj.position === ground.position){
-      gl.uniform1i(gl.getUniformLocation(program, "diffuseTexture"), 0);
-      obj.draw()
-      continue;
-    }
 
     if ( !(obj instanceof PointLight)){
       let lightPosition = light.position;
 
       let modelLight = mat4();
-      let d = -(lightPosition[1]-ground.position[1])+0.01;
+      let d = -(lightPosition[1]-ground.position[1])-0.01;
       modelLight[3][1] = 1/d;
       modelLight[3][3] = 0;
 
       let translation = translate(-lightPosition[0], -lightPosition[1], -lightPosition[2]);
-
       let translationBack = translate(lightPosition[0], lightPosition[1], lightPosition[2]);
-
       let shadow = mult(translationBack, mult(modelLight, mult(translation, obj.transformMatrix)));
+
+      gl.depthFunc(gl.GREATER);
       // Send color and matrix for shadow
       gl.uniformMatrix4fv( gl.getUniformLocation(program,"objTransform"), false,
           flatten(shadow));
+      gl.uniform1i(gl.getUniformLocation(program,"u_shadow"),1)
       obj.draw(camera, true);
 
     }
-
+  }
+  for (let i = 1; i < objects.length; i++) {
+    var obj = objects[i];
+    gl.uniform1i(gl.getUniformLocation(program, "diffuseTexture"), 1);
+    gl.depthFunc(gl.LESS);
+    gl.uniform1i(gl.getUniformLocation(program,"u_shadow"),0)
     gl.uniformMatrix4fv( gl.getUniformLocation(program,"modelViewMatrix"), false, flatten(camera.mvMatrix));
     gl.uniformMatrix3fv(gl.getUniformLocation(program, "normalMatrix" ), false, camera.normalMatrix);
     obj.draw(camera);
-
-
   }
   requestAnimFrame(render);
 }
@@ -146,7 +142,6 @@ var ground;
 
 function main() {
   init()
-
 
   create_image_texture("xamp23.png", configureImageTexture, 0)
 
@@ -157,13 +152,12 @@ function main() {
     vec4(-2,0,-1,1),
     vec4(2,0,-1,1),
   ]
-
   objects[0].texCoord = [
     vec2(0, 0),
     vec2(0, 1),
     vec2(1, 1),
     vec2(1, 0)
-  ];
+  ]
 
   objects[0].clear()
   objects[0].quad(0,1,2,3)
@@ -183,7 +177,7 @@ function main() {
     vec2(0, 1),
     vec2(1, 1),
     vec2(1, 0)
-  ];
+  ]
 
   objects[1].clear()
   objects[1].quad(0,1,2,3)
@@ -200,11 +194,10 @@ function main() {
     vec2(0, 1),
     vec2(1, 1),
     vec2(1, 0)
-  ];
+  ]
 
   objects[2].clear()
   objects[2].quad(0,1,2,3)
-
 
   camera = new Camera()
   camera.radius = 12
@@ -213,14 +206,14 @@ function main() {
   camera.at= vec3(-1,0,-1)
   camera.set_fovy(45)
 
-  objects.push(new PointLight())
+  objects.push( new PointLight() )
 
   light = objects[3]
   light.translate = vec3(0, 2, -2)
 
-  gl.clearColor(0, 0.5843, 0.9294, 1.0);
+  gl.clearColor(0, 0.5843, 0.9294, 1.0)
 
-  setupControls();
+  setupControls()
 
   ground = objects[0];
   timer = takeTime()
