@@ -448,6 +448,7 @@ class Mesh{
     normals =[];
     faces = [];
     indices =[];
+    translate = vec4(0,0,0,1)
     transformMatrix = mat4()
     vPosition;
     vColor;
@@ -458,17 +459,17 @@ class Mesh{
     use_vcol = true;
 
     constructor( _center, drawInfo) {
-        this.center = _center
-        this.transformMatrix = mult(translate(_center[0],_center[1],_center[2]), this.transformMatrix)
+        this.translate = _center
+        this.transformMatrix = mult(mat4(), translate(_center[0],_center[1],_center[2]))
 
         this.vertexes = drawInfo.vertices;
         this.normals = drawInfo.normals;
         this.vertexColors = drawInfo.colors;
         this.indices = drawInfo.indices;
-        this.initBuffers(gl,program)
+        this.initBuffers()
     }
 
-    initBuffers(gl, program){
+    initBuffers(){
         this.vBuffer = gl.createBuffer();
         this.cBuffer = gl.createBuffer();
         this.nBuffer = gl.createBuffer();

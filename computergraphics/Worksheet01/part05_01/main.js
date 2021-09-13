@@ -60,8 +60,7 @@ function main() {
   var force =0.1;
   render()
 
-  function render()
-  {
+  function render(){
 
     if(bounce >= 0.2 || bounce <= -0.7){
       if(bounce>=0.2){

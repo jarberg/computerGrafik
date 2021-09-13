@@ -61,8 +61,8 @@ class Camera{
 
         this.eye = [
             this.translate[0]+-this.radius * Math.sin(vAngleRadians) * Math.cos(hAngleRadians),
-            this.translate[1]+this.radius * Math.cos(vAngleRadians),
-            this.translate[2]+this.radius * Math.sin(vAngleRadians) * Math.sin(hAngleRadians)
+            this.translate[1]+-this.radius * Math.cos(vAngleRadians),
+            this.translate[2]+-this.radius * Math.sin(vAngleRadians) * Math.sin(hAngleRadians)
         ];
         this.mvMatrix = lookAt(this.eye, this.at , this.up);
         this.normalMatrix = [
