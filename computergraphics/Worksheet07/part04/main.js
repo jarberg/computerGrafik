@@ -9,17 +9,6 @@ var fpsOutput;
 
 
 
-class Light{
-  colorValue = vec3(0,0,0);
-  intensity = 1.0;
-}
-
-class PointLight extends Light{
-  position = vec4(0,0,0,1.0)
-  constructor() {
-    super();
-  }
-}
 
 function init(){
   canvas = document.querySelector("#glCanvas");

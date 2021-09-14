@@ -11,16 +11,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5e3948d6-358c-4c60-8135-650537d75e3c" name="Default Changelist" comment="finished worksheet08&#10;started on worksheet09">
-      <change afterPath="$PROJECT_DIR$/computergraphics/Worksheet07/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/computergraphics/Worksheet08/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/computergraphics/Worksheet09/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/computergraphics/Worksheet09/part01/render/fragmentShader.glsl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/computergraphics/Worksheet09/part01/render/vertexShader.glsl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/computergraphics/utils/material.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet01/part05_01/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Worksheet01/part05_01/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet02/part04_01.rar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet07/part02/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Worksheet07/part02/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet07/part04/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Worksheet07/part04/main.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet09/part01/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Worksheet09/part01/main.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet09/part01/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Worksheet09/part01/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computergraphics/utils/Camera.js" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/utils/Camera.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computergraphics/utils/general.js" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/utils/general.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet09/part01/render/shader1.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/utils/lights.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/computergraphics/utils/geomitry.js" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/utils/geomitry.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -56,6 +55,13 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Michael\Desktop\DtuWebsite\computergraphics\Worksheet09\part01\render" />
+      <recent name="C:\Users\Michael\Desktop\DtuWebsite\computergraphics\Worksheet09\part01" />
+      <recent name="C:\Users\Michael\Desktop\DtuWebsite\computergraphics\models\teacup" />
+      <recent name="C:\Users\Michael\Desktop\DtuWebsite\computergraphics" />
+      <recent name="C:\Users\Michael\Desktop\DtuWebsite\computergraphics\Images" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Michael\Desktop\DtuWebsite\computergraphics\Worksheet09" />
       <recent name="C:\Users\Michael\Desktop\DtuWebsite\computergraphics\Worksheet08" />
@@ -63,36 +69,30 @@
       <recent name="C:\Users\Michael\Desktop\DtuWebsite\computergraphics\Worksheet08\part02" />
       <recent name="C:\Users\Michael\Desktop\DtuWebsite\computergraphics" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\Michael\Desktop\DtuWebsite\computergraphics\models\teacup" />
-      <recent name="C:\Users\Michael\Desktop\DtuWebsite\computergraphics" />
-      <recent name="C:\Users\Michael\Desktop\DtuWebsite\computergraphics\Images" />
-      <recent name="C:\Users\Michael\Desktop\DtuWebsite\computergraphics\Worksheet07" />
-    </key>
   </component>
-  <component name="RunManager" selected="JavaScript Debug.main.html (2)">
-    <configuration name="main.html (1)" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/DtuWebsite/computergraphics/Worksheet08/part02/main.html" useBuiltInWebServerPort="true">
+  <component name="RunManager" selected="JavaScript Debug.main.html (5)">
+    <configuration name="main.html (1)" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/DtuWebsite/computergraphics/Worksheet07/part01/main.html" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
-    <configuration name="main.html (2)" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/DtuWebsite/computergraphics/Worksheet09/part01/main.html" useBuiltInWebServerPort="true">
+    <configuration name="main.html (2)" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/DtuWebsite/computergraphics/Worksheet07/part03/main.html" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
-    <configuration name="main.html (4)" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/DtuWebsite/computergraphics/Worksheet08/part04/main.html" useBuiltInWebServerPort="true">
+    <configuration name="main.html (3)" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/DtuWebsite/computergraphics/Worksheet07/part04/main.html" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
-    <configuration name="main.html (5)" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/DtuWebsite/computergraphics/Worksheet01/part05_01/main.html" useBuiltInWebServerPort="true">
+    <configuration name="main.html (5)" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/DtuWebsite/computergraphics/Worksheet07/part02/main.html" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
-    <configuration name="main.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/DtuWebsite/computergraphics/Worksheet02/part02/main.html" useBuiltInWebServerPort="true">
+    <configuration name="main.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/DtuWebsite/computergraphics/Worksheet08/part02/main.html" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JavaScript Debug.main.html (2)" />
         <item itemvalue="JavaScript Debug.main.html (5)" />
-        <item itemvalue="JavaScript Debug.main.html (4)" />
         <item itemvalue="JavaScript Debug.main.html (1)" />
         <item itemvalue="JavaScript Debug.main.html" />
+        <item itemvalue="JavaScript Debug.main.html (3)" />
+        <item itemvalue="JavaScript Debug.main.html (2)" />
       </list>
     </recent_temporary>
   </component>
@@ -108,7 +108,7 @@
       <workItem from="1629096552139" duration="8902000" />
       <workItem from="1629108204271" duration="1407000" />
       <workItem from="1630431838776" duration="15357000" />
-      <workItem from="1631512248166" duration="2329000" />
+      <workItem from="1631512248166" duration="5445000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <created>1629096644242</created>
@@ -152,7 +152,14 @@
       <option name="project" value="LOCAL" />
       <updated>1630479956956</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="finished worksheet08&#10;started on worksheet09">
+      <created>1631515744441</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1631515744441</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -184,78 +191,78 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="96" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.680@0.0.1280.680" timestamp="1629619396960" />
-    <state x="416" y="143" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1629096962040">
+    <state x="416" y="143" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1631515729357">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="416" y="143" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1280.680@0.0.1280.680" timestamp="1629096962040" />
+    <state x="416" y="143" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1280.680@0.0.1280.680" timestamp="1631515729357" />
     <state x="93" y="93" width="1095" height="495" key="DiffContextDialog" timestamp="1629539961753">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="93" y="93" width="1095" height="495" key="DiffContextDialog/0.0.1280.680@0.0.1280.680" timestamp="1629539961753" />
-    <state width="629" height="87" key="GridCell.Tab.0.bottom" timestamp="1631515410053">
+    <state width="761" height="214" key="GridCell.Tab.0.bottom" timestamp="1631600281939">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="629" height="87" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1631515410053" />
-    <state width="629" height="87" key="GridCell.Tab.0.center" timestamp="1631515410053">
+    <state width="761" height="214" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1631600281939" />
+    <state width="761" height="214" key="GridCell.Tab.0.center" timestamp="1631600281938">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="629" height="87" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1631515410053" />
-    <state width="629" height="87" key="GridCell.Tab.0.left" timestamp="1631515410053">
+    <state width="761" height="214" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1631600281938" />
+    <state width="761" height="214" key="GridCell.Tab.0.left" timestamp="1631600281938">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="629" height="87" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1631515410053" />
-    <state width="629" height="87" key="GridCell.Tab.0.right" timestamp="1631515410053">
+    <state width="761" height="214" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1631600281938" />
+    <state width="761" height="214" key="GridCell.Tab.0.right" timestamp="1631600281938">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="629" height="87" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1631515410053" />
-    <state width="629" height="182" key="GridCell.Tab.1.bottom" timestamp="1631515415000">
+    <state width="761" height="214" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1631600281938" />
+    <state width="761" height="214" key="GridCell.Tab.1.bottom" timestamp="1631600284334">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="629" height="182" key="GridCell.Tab.1.bottom/0.0.1280.680@0.0.1280.680" timestamp="1631515415000" />
-    <state width="629" height="182" key="GridCell.Tab.1.center" timestamp="1631515415000">
+    <state width="761" height="214" key="GridCell.Tab.1.bottom/0.0.1280.680@0.0.1280.680" timestamp="1631600284334" />
+    <state width="761" height="214" key="GridCell.Tab.1.center" timestamp="1631600284334">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="629" height="182" key="GridCell.Tab.1.center/0.0.1280.680@0.0.1280.680" timestamp="1631515415000" />
-    <state width="629" height="182" key="GridCell.Tab.1.left" timestamp="1631515414999">
+    <state width="761" height="214" key="GridCell.Tab.1.center/0.0.1280.680@0.0.1280.680" timestamp="1631600284334" />
+    <state width="761" height="214" key="GridCell.Tab.1.left" timestamp="1631600284334">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="629" height="182" key="GridCell.Tab.1.left/0.0.1280.680@0.0.1280.680" timestamp="1631515414999" />
-    <state width="629" height="182" key="GridCell.Tab.1.right" timestamp="1631515415000">
+    <state width="761" height="214" key="GridCell.Tab.1.left/0.0.1280.680@0.0.1280.680" timestamp="1631600284334" />
+    <state width="761" height="214" key="GridCell.Tab.1.right" timestamp="1631600284334">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="629" height="182" key="GridCell.Tab.1.right/0.0.1280.680@0.0.1280.680" timestamp="1631515415000" />
-    <state width="1259" height="87" key="GridCell.Tab.2.bottom" timestamp="1629957113596">
+    <state width="761" height="214" key="GridCell.Tab.1.right/0.0.1280.680@0.0.1280.680" timestamp="1631600284334" />
+    <state width="761" height="214" key="GridCell.Tab.2.bottom" timestamp="1631600281940">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1259" height="87" key="GridCell.Tab.2.bottom/0.0.1280.680@0.0.1280.680" timestamp="1629957113596" />
-    <state width="1259" height="87" key="GridCell.Tab.2.center" timestamp="1629957113596">
+    <state width="761" height="214" key="GridCell.Tab.2.bottom/0.0.1280.680@0.0.1280.680" timestamp="1631600281940" />
+    <state width="761" height="214" key="GridCell.Tab.2.center" timestamp="1631600281940">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1259" height="87" key="GridCell.Tab.2.center/0.0.1280.680@0.0.1280.680" timestamp="1629957113596" />
-    <state width="1259" height="87" key="GridCell.Tab.2.left" timestamp="1629957113595">
+    <state width="761" height="214" key="GridCell.Tab.2.center/0.0.1280.680@0.0.1280.680" timestamp="1631600281940" />
+    <state width="761" height="214" key="GridCell.Tab.2.left" timestamp="1631600281940">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1259" height="87" key="GridCell.Tab.2.left/0.0.1280.680@0.0.1280.680" timestamp="1629957113595" />
-    <state width="1259" height="87" key="GridCell.Tab.2.right" timestamp="1629957113596">
+    <state width="761" height="214" key="GridCell.Tab.2.left/0.0.1280.680@0.0.1280.680" timestamp="1631600281940" />
+    <state width="761" height="214" key="GridCell.Tab.2.right" timestamp="1631600281940">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1259" height="87" key="GridCell.Tab.2.right/0.0.1280.680@0.0.1280.680" timestamp="1629957113596" />
-    <state width="1259" height="87" key="GridCell.Tab.3.bottom" timestamp="1629957113597">
+    <state width="761" height="214" key="GridCell.Tab.2.right/0.0.1280.680@0.0.1280.680" timestamp="1631600281940" />
+    <state width="761" height="214" key="GridCell.Tab.3.bottom" timestamp="1631600283419">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1259" height="87" key="GridCell.Tab.3.bottom/0.0.1280.680@0.0.1280.680" timestamp="1629957113597" />
-    <state width="1259" height="87" key="GridCell.Tab.3.center" timestamp="1629957113596">
+    <state width="761" height="214" key="GridCell.Tab.3.bottom/0.0.1280.680@0.0.1280.680" timestamp="1631600283419" />
+    <state width="761" height="214" key="GridCell.Tab.3.center" timestamp="1631600283419">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1259" height="87" key="GridCell.Tab.3.center/0.0.1280.680@0.0.1280.680" timestamp="1629957113596" />
-    <state width="1259" height="87" key="GridCell.Tab.3.left" timestamp="1629957113596">
+    <state width="761" height="214" key="GridCell.Tab.3.center/0.0.1280.680@0.0.1280.680" timestamp="1631600283419" />
+    <state width="761" height="214" key="GridCell.Tab.3.left" timestamp="1631600283419">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1259" height="87" key="GridCell.Tab.3.left/0.0.1280.680@0.0.1280.680" timestamp="1629957113596" />
-    <state width="1259" height="87" key="GridCell.Tab.3.right" timestamp="1629957113596">
+    <state width="761" height="214" key="GridCell.Tab.3.left/0.0.1280.680@0.0.1280.680" timestamp="1631600283419" />
+    <state width="761" height="214" key="GridCell.Tab.3.right" timestamp="1631600283419">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1259" height="87" key="GridCell.Tab.3.right/0.0.1280.680@0.0.1280.680" timestamp="1629957113596" />
+    <state width="761" height="214" key="GridCell.Tab.3.right/0.0.1280.680@0.0.1280.680" timestamp="1631600283419" />
     <state x="410" y="61" key="RollbackChangesDialog" timestamp="1630478665682">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -289,13 +296,8 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/computergraphics/utils/geomitry.js</url>
-          <line>19</line>
-          <option name="timeStamp" value="8" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/computergraphics/Worksheet09/part01/main.js</url>
-          <line>114</line>
+          <line>60</line>
           <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="9" />
         </line-breakpoint>
@@ -304,6 +306,12 @@
           <line>302</line>
           <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="10" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/computergraphics/utils/geomitry.js</url>
+          <line>351</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="11" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

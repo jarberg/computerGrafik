@@ -44,7 +44,7 @@ function init(){
   program = initShaders(gl, "vertex-shader", "fragment-shader");
   gl.useProgram(program);
   gl.clearColor(0.8, 0.8, 0.8, 1.0);
-  gl.enable(gl.CULL_FACE)
+  //gl.enable(gl.CULL_FACE)
   gl.enable(gl.DEPTH_TEST)
 
 }
@@ -86,12 +86,14 @@ function render(){
 function main() {
   init()
 
+  //sphere =  new Sphere(vec4(0, 0, 0, 0) )
+  //objects.push(sphere);
+  //sphere.transformMatrix = mult(scalem(3,3,3), objects[0].transformMatrix)
+  //sphere.transformMatrix = mult(translate(0,3,0), objects[0].transformMatrix)
 
-  objects.push( new Sphere(vec4(0, 0, 0, 0) ) );
-  objects.push( new backFace(vec4(0, 0, 0, 0)) );
-  objects[0].transformMatrix = mult(scalem(3,3,3), objects[0].transformMatrix)
-  objects[0].transformMatrix = mult(translate(0,3,0), objects[0].transformMatrix)
-  create_cube_map(false)
+  back = new backFace()
+  objects.push( back );
+
   create_cube_map( false)
 
   camera = new Camera();

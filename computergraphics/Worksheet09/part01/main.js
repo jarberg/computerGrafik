@@ -2,67 +2,13 @@ var max_verts = 100000;
 var objects = [];
 var lights =[];
 var program = null;
-var division = 2;
 var fpsOutput;
 var timer = null;
+var ground;
+var currentTime = 1;
+var model=null;
 
 
-class Light{
-  colorValue = vec3(0,0,0);
-  intensity = 1.0;
-}
-
-class PointLight extends Light{
-  position = vec4(0,0,0,1.0)
-  translate = vec4(0,0,0,1.0)
-  rotate = true;
-  radius = 2
-  theta  = 10.0;
-  phi    = 0.0;
-  at = vec3(0.0, 0.0, 0.0);
-  up = vec3(0.0, 1.0, 0.0);
-  constructor() {
-    super();
-    let vAngleRadians = ((-this.theta+90) / 180) * Math.PI;
-    let hAngleRadians = ((this.phi+90) / 180) * Math.PI;
-
-    this.position  = [
-      this.radius * Math.sin(vAngleRadians) * Math.cos(hAngleRadians),
-      this.radius * Math.cos(vAngleRadians),
-      this.radius * Math.sin(vAngleRadians) * Math.sin(hAngleRadians)
-    ];
-    this.pointrender = new Dot(vec4(-1,0,-1,0));
-  }
-
-  draw(camera){
-    this.orbit()
-    this.pointrender.transformMatrix = translate(this.position)
-    this.pointrender.draw(camera);
-
-  }
-
-  orbit(){
-    if (this.rotate) {
-      this.phi=(this.phi+50*timer)%360;
-    }
-    if( this.theta < 90 || this.theta > 270 ) {
-      this.up = [0, 1, 0];
-
-    }else if(this.theta === 90 ) {
-      this.up = mult(rotateY(-this.phi), [0, 0, -1, 0]).splice(0,3);
-    }else {
-      this.up = [0, -1, 0];
-    }
-    let vAngleRadians = -((this.theta-90) / 180) * Math.PI;
-    let hAngleRadians = ((this.phi-90) / 180) * Math.PI;
-
-    this.position  = [
-      this.translate[0]+this.radius * Math.sin(vAngleRadians) * Math.cos(hAngleRadians),
-      this.translate[1]+this.radius * Math.cos(vAngleRadians),
-      this.translate[2]+this.radius * Math.sin(vAngleRadians) * Math.sin(hAngleRadians)
-    ];
-  }
-}
 
 function init(){
   canvas = document.querySelector("#glCanvas");
@@ -71,7 +17,7 @@ function init(){
     alert("Unable to initialize WebGL. Your browser or machine may not support it.");
     return;
   }
-  program = initShaders(gl, "vertex-shader", "fragment-shader");
+  program = initShaders(gl, "render/vertexShader.glsl", "render/fragmentShader.glsl");
   gl.useProgram(program);
   gl.clearColor(0.8, 0.8, 0.8, 1.0);
   gl.enable(gl.CULL_FACE)
@@ -125,7 +71,6 @@ function render(){
     gl.uniform1i(gl.getUniformLocation(program,"u_shadow"),1)
     obj.draw(camera, true);
 
-
   }
   gl.disable(gl.BLEND);
   for (let i = 1; i < objects.length; i++) {
@@ -140,9 +85,7 @@ function render(){
   requestAnimFrame(render);
 }
 
-var ground;
-var currentTime = 1;
-var model=null;
+
 
 function main() {
   init()
@@ -182,35 +125,15 @@ function main() {
     objects.push(model);
   });
 
-  light =  new PointLight()
+  light =  new OrbitPointLight()
   light.translate = vec3(0, 2, -2)
 
   gl.clearColor(0, 0.5843, 0.9294, 1.0)
 
   setupControls()
 
-
   timer = takeTime()
   render();
 }
-
-function sinus_jump(object){
-  if(object != null){
-    angle = 2*Math.PI*currentTime/90
-    sinAngle = Math.sin(angle)
-    object.translate[1] += sinAngle
-
-    transform = mult(translate(object.translate[0],object.translate[1],object.translate[2]), mat4())
-    object.transformMatrix  = mult(scalem(0.2,0.2, 0.2),transform)
-    if (object.translate[1] >= 1){
-      currentTime-=1
-    }
-    else if (object.translate[1] <= 0){
-      currentTime+=1
-    }
-  }
-}
-
-
 
 window.onload = main;

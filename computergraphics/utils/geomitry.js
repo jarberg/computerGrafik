@@ -1,3 +1,11 @@
+class transform{
+
+}
+
+class model extends transform{
+
+}
+
 class Sphere{
     center;
     vertexes = [];
@@ -338,13 +346,9 @@ class backFace{
     tBuffer = null;
 
 
-    constructor(_center) {
-        this.center = _center
-        this.transformMatrix = mat4()
-        this.transformMatrix = mult(this.transformMatrix, translate(this.center))
+    constructor() {
 
         this.quad( 0, 1, 2, 3 );
-
         this.initBuffers()
     }
 
@@ -389,12 +393,26 @@ class backFace{
 
         gl.bindBuffer(gl.ARRAY_BUFFER, this.vBuffer);
         gl.bufferData(gl.ARRAY_BUFFER, flatten(this.vertexes), gl.STATIC_DRAW)
+        this.vPosition = gl.getAttribLocation(program, "a_Position");
+        gl.vertexAttribPointer(this.vPosition, 4, gl.FLOAT, false, 0, 0);
+        gl.enableVertexAttribArray(this.vPosition);
+
         gl.bindBuffer(gl.ARRAY_BUFFER, this.cBuffer);
         gl.bufferData(gl.ARRAY_BUFFER, flatten(this.vertexColors), gl.STATIC_DRAW);
+        this.vColor = gl.getAttribLocation(program, "a_Color");
+        gl.enableVertexAttribArray(this.vColor);
+
+
         gl.bindBuffer(gl.ARRAY_BUFFER, this.nBuffer);
         gl.bufferData(gl.ARRAY_BUFFER, flatten(this.normals), gl.STATIC_DRAW);
+        this.vNormal = gl.getAttribLocation(program, "vNormal");
+        gl.vertexAttribPointer(this.vNormal, 4, gl.FLOAT, false, 0, 0);
+        gl.enableVertexAttribArray(this.vNormal);
+
         gl.bindBuffer(gl.ARRAY_BUFFER, this.tBuffer);
         gl.bufferData(gl.ARRAY_BUFFER, flatten(this.texCoordsArray), gl.STATIC_DRAW);
+        this.vTexCoord = gl.getAttribLocation(program, "vTexCoord");
+        gl.enableVertexAttribArray(this.vTexCoord);
 
     }
 
@@ -433,6 +451,7 @@ class backFace{
             inverseviewMatrix,
             inverse4(camera.pMatrix)
         );
+
         gl.uniform1i(gl.getUniformLocation(program,"isreflective"), 0)
         gl.uniformMatrix4fv( gl.getUniformLocation(program,"mTex"), false, flatten(textureMatrix));
         gl.drawArrays(gl.TRIANGLES, 0, this.vertexes.length);
