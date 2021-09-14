@@ -86,10 +86,10 @@ function render(){
 function main() {
   init()
 
-  //sphere =  new Sphere(vec4(0, 0, 0, 0) )
-  //objects.push(sphere);
-  //sphere.transformMatrix = mult(scalem(3,3,3), objects[0].transformMatrix)
-  //sphere.transformMatrix = mult(translate(0,3,0), objects[0].transformMatrix)
+  sphere =  new Sphere(vec4(0, -1, 0, 0) )
+  objects.push(sphere);
+  sphere.transformMatrix = mult(scalem(3,3,3), objects[0].transformMatrix)
+  sphere.transformMatrix = mult(translate(0,3,0), objects[0].transformMatrix)
 
   back = new backFace()
   objects.push( back );

@@ -442,6 +442,7 @@ class backFace{
 
         gl.uniformMatrix4fv(gl.getUniformLocation(program,"projection"), false, flatten(mat4()));
         gl.uniformMatrix4fv(gl.getUniformLocation(program,"modelViewMatrix"), false, flatten(mat4()));
+        gl.uniformMatrix4fv(gl.getUniformLocation(program,"objTransform"), false, flatten(mat4()));
 
 
         let inverseviewMatrix = camera.mvMatrix;
