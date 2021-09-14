@@ -148,13 +148,13 @@ function main() {
 
   create_image_texture("xamp23.png", configureImageTexture, 0)
 
-  ground = new Rectangle(vec4(-1,0,3,0))
+  ground = new Rectangle(vec4(-1,-1,3,0))
 
   ground.vertices = [
-    vec4(2,-1,-5,1),
-    vec4(-2,-1,-5,1),
-    vec4(-2,-1,-1,1),
-    vec4(2,-1,-1,1),
+    vec4(2,0,-5,1),
+    vec4(-2,0,-5,1),
+    vec4(-2,0,-1,1),
+    vec4(2,0,-1,1),
   ]
   ground.texCoord = [
     vec2(0, 0),

@@ -10,46 +10,10 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5e3948d6-358c-4c60-8135-650537d75e3c" name="Default Changelist" comment="finished worksheet08&#10;started on worksheet09">
-      <change afterPath="$PROJECT_DIR$/computergraphics/Worksheet07/part01/render/fragmentShader.glsl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/computergraphics/Worksheet07/part01/render/vertexShader.glsl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/computergraphics/Worksheet07/part02/render/fragmentShader.glsl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/computergraphics/Worksheet07/part02/render/vertexShader.glsl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/computergraphics/Worksheet07/part03/render/fragmentShader.glsl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/computergraphics/Worksheet07/part03/render/vertexShader.glsl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/computergraphics/Worksheet07/part04/render/fragmentShader.glsl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/computergraphics/Worksheet07/part04/render/vertexShader.glsl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/computergraphics/utils/materials.js" afterDir="false" />
+    <list default="true" id="5e3948d6-358c-4c60-8135-650537d75e3c" name="Default Changelist" comment="added materials as shader managers. refactored all dependent code">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet04/part03/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Worksheet04/part03/main.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet04/part04/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Worksheet04/part04/main.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet04/part05/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Worksheet04/part05/main.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet05/part01/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Worksheet05/part01/main.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet05/part02/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Worksheet05/part02/main.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet05/part02/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Worksheet05/part02/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet06/part01/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Worksheet06/part01/main.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet06/part01/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Worksheet06/part01/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet06/part02/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Worksheet06/part02/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet06/part03/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Worksheet06/part03/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet07/part01/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Worksheet07/part01/main.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet07/part01/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Worksheet07/part01/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet07/part02/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Worksheet07/part02/main.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet07/part02/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Worksheet07/part02/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet07/part03/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Worksheet07/part03/main.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet07/part03/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Worksheet07/part03/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet07/part04/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Worksheet07/part04/main.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet07/part04/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Worksheet07/part04/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet08/part01/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Worksheet08/part01/main.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet08/part02/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Worksheet08/part02/main.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet08/part03/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Worksheet08/part03/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet08/part04/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Worksheet08/part04/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet09/part01/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Worksheet09/part01/main.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet09/part01/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Worksheet09/part01/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computergraphics/commonJS/OBJParser.js" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/commonJS/OBJParser.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computergraphics/utils/Camera.js" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/utils/Camera.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computergraphics/utils/geomitry.js" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/utils/geomitry.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computergraphics/utils/material.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/computergraphics/utils/textureUtils.js" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/utils/textureUtils.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -99,29 +63,29 @@
       <recent name="C:\Users\Michael\Desktop\DtuWebsite\computergraphics\Worksheet09" />
     </key>
   </component>
-  <component name="RunManager" selected="JavaScript Debug.main.html (2)">
+  <component name="RunManager" selected="JavaScript Debug.main.html (4)">
+    <configuration name="main.html (1)" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/DtuWebsite/computergraphics/Worksheet08/part01/main.html" useBuiltInWebServerPort="true">
+      <method v="2" />
+    </configuration>
     <configuration name="main.html (2)" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/DtuWebsite/computergraphics/Worksheet07/part04/main.html" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
-    <configuration name="main.html (3)" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/DtuWebsite/computergraphics/Worksheet07/part01/main.html" useBuiltInWebServerPort="true">
+    <configuration name="main.html (3)" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/DtuWebsite/computergraphics/Worksheet08/part03/main.html" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
-    <configuration name="main.html (4)" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/DtuWebsite/computergraphics/Worksheet07/part03/main.html" useBuiltInWebServerPort="true">
+    <configuration name="main.html (4)" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/DtuWebsite/computergraphics/Worksheet08/part04/main.html" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
     <configuration name="main.html (5)" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/DtuWebsite/computergraphics/Worksheet08/part02/main.html" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
-    <configuration name="main.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/DtuWebsite/computergraphics/Worksheet07/part02/main.html" useBuiltInWebServerPort="true">
-      <method v="2" />
-    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JavaScript Debug.main.html (2)" />
-        <item itemvalue="JavaScript Debug.main.html" />
         <item itemvalue="JavaScript Debug.main.html (4)" />
         <item itemvalue="JavaScript Debug.main.html (3)" />
         <item itemvalue="JavaScript Debug.main.html (5)" />
+        <item itemvalue="JavaScript Debug.main.html (1)" />
+        <item itemvalue="JavaScript Debug.main.html (2)" />
       </list>
     </recent_temporary>
   </component>
@@ -188,7 +152,14 @@
       <option name="project" value="LOCAL" />
       <updated>1631515744441</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="added materials as shader managers. refactored all dependent code">
+      <created>1631649097635</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1631649097635</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -217,7 +188,8 @@
     <MESSAGE value="reworked old code&#10;worksheet 02 part 2 now uses single buffer for color and position" />
     <MESSAGE value="finished worksheet08&#10;started on worksheet09" />
     <MESSAGE value="fixed broken backface in worksheet 7" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed broken backface in worksheet 7" />
+    <MESSAGE value="added materials as shader managers. refactored all dependent code" />
+    <option name="LAST_COMMIT_MESSAGE" value="added materials as shader managers. refactored all dependent code" />
   </component>
   <component name="WindowStateProjectService">
     <state x="96" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1629619396960">

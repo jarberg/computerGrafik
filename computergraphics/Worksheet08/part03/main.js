@@ -203,6 +203,7 @@ function main() {
   camera.radius = 12
   camera.phi = 45
   camera.theta = 45
+  camera.translate = vec4(0,10,0,1)
   camera.at= vec3(-1,0,-1)
   camera.set_fovy(45)
 
