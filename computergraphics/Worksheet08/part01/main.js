@@ -97,7 +97,7 @@ function render(){
   timer = takeTime()
   camera.update(timer)
 
-  camera.update_projection_matrix()
+  camera.update_projection_matrix(program)
 
 
   for (let i = 0; i < objects.length; i++) {
@@ -123,7 +123,7 @@ function main() {
 
   create_image_texture("xamp23.png", configureImageTexture, 0)
 
-  objects.push(new Rectangle(vec4(-1,0,1,0)))
+  objects.push(new Rectangle(vec4(-1,0,3,0)))
   objects[0].vertices = [
     vec4(2,-1,-5,1),
     vec4(-2,-1,-5,1),
@@ -143,7 +143,7 @@ function main() {
   var mytexels  = generateredTextureArray(1)
   configureTexture(mytexels, 1, 1)
 
-  objects.push(new Rectangle(vec4(-1,0,1,0)))
+  objects.push(new Rectangle(vec4(-1,0,2,0)))
   objects[1].vertices = [
     vec4(0.75,-0.5,-1.75,1),
     vec4(0.25,-0.5,-1.75,1),
@@ -160,7 +160,7 @@ function main() {
   objects[1].clear()
   objects[1].quad(0,1,2,3)
 
-  objects.push(new Rectangle(vec4(-1,0,1,0)))
+  objects.push(new Rectangle(vec4(-1,0,2,0)))
   objects[2].vertices = [
     vec4(1,0,-3,1),
     vec4(1,-1,-3,1),
@@ -182,7 +182,8 @@ function main() {
   camera.radius = 7
   camera.phi = 45
   camera.theta = 45
-  camera.at= vec3(-1,0,-1)
+  camera.translate = vec4(0,10,0,1)
+  camera.at= vec3(0,0,0)
   camera.set_fovy(45)
 
   gl.clearColor(0, 0.5843, 0.9294, 1.0);

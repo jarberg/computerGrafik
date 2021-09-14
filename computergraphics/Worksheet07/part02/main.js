@@ -41,7 +41,7 @@ function init(){
     alert("Unable to initialize WebGL. Your browser or machine may not support it.");
     return;
   }
-  program = initShaders(gl, "vertex-shader", "fragment-shader");
+  program = initShaders(gl, "render/vertexShader.glsl", "render/fragmentShader.glsl");
   gl.useProgram(program);
   gl.clearColor(0.8, 0.8, 0.8, 1.0);
   //gl.enable(gl.CULL_FACE)
@@ -63,6 +63,7 @@ function render(){
   gl.clear( gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
 
   camera.update(takeTime())
+  camera.update_projection_matrix(program)
 
   var normalMatrix = [
     vec3(camera.mvMatrix[0][0], camera.mvMatrix[0][1], camera.mvMatrix[0][2]),
@@ -72,7 +73,6 @@ function render(){
 
   for (let i = 0; i < objects.length; i++) {
     var obj = objects[i];
-    camera.update_projection_matrix()
     gl.uniformMatrix4fv( gl.getUniformLocation(program,"modelViewMatrix"), false, flatten(camera.mvMatrix));
     gl.uniformMatrix3fv(gl.getUniformLocation(program, "normalMatrix" ), false, flatten(normalMatrix));
 
@@ -87,6 +87,7 @@ function main() {
   init()
 
   sphere =  new Sphere(vec4(0, -1, 0, 0) )
+  sphere.material.shader=program
   objects.push(sphere);
   sphere.transformMatrix = mult(scalem(3,3,3), objects[0].transformMatrix)
   sphere.transformMatrix = mult(translate(0,3,0), objects[0].transformMatrix)
@@ -94,7 +95,9 @@ function main() {
   back = new backFace()
   objects.push( back );
 
-  create_cube_map( false)
+  create_cube_map(program,false)
+  create_cube_map(sphere.material.shader,false)
+
 
   camera = new Camera();
 

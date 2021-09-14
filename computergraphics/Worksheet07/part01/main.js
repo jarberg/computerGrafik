@@ -7,8 +7,8 @@ var objects = [];
 var lights =[];
 var program = null;
 var division = 4;
-
-
+var defaultshader;
+var gl;
 
 
 function init(){
@@ -19,12 +19,12 @@ function init(){
     alert("Unable to initialize WebGL. Your browser or machine may not support it.");
     return;
   }
-  // Set clear color to black, fully opaque
-  gl.clearColor(0.8, 0.8, 0.8, 1.0);
 
-  program = initShaders(gl, "vertex-shader", "fragment-shader");
-  gl.useProgram(program);
-  gl.enable(gl.CULL_FACE)
+  defaultshader = initShaders(gl, "render/vertexShader.glsl", "render/fragmentShader.glsl");
+
+  gl.useProgram(defaultshader.shader)
+  gl.clearColor(0.8, 0.8, 0.8, 1.0);
+  //gl.enable(gl.CULL_FACE)
   gl.enable(gl.DEPTH_TEST)
 
 }
@@ -100,16 +100,16 @@ function main() {
   init()
 
   objects.push(new Sphere(vec4(0,0,0,0)))
+
   camera = new Camera()
   camera.pMatrix = ortho(-1, 1, -1, 1, camera.near, camera.far);
-  camera.update_projection_matrix()
   camera.fovy = 90;
 
   gl.clearColor(0, 0.5843, 0.9294, 1.0);
 
   setupControls();
 
-  create_cube_map();
+  create_cube_map(objects[0].material.shader);
 
   render()
 }
@@ -126,10 +126,14 @@ function render(){
     vec3(camera.mvMatrix[1][0], camera.mvMatrix[1][1], camera.mvMatrix[1][2]),
     vec3(camera.mvMatrix[2][0], camera.mvMatrix[2][1], camera.mvMatrix[2][2])
   ];
-  gl.uniformMatrix4fv( gl.getUniformLocation(program,"modelViewMatrix"), false, flatten(camera.mvMatrix));
-  gl.uniformMatrix3fv(gl.getUniformLocation( program, "normalMatrix" ), false, flatten(normalMatrix) );
 
   objects.forEach(function(obj) {
+    shader = obj.material.shader
+    camera.update_projection_matrix(shader)
+
+    gl.uniformMatrix4fv( gl.getUniformLocation(shader,"modelViewMatrix"), false, flatten(camera.mvMatrix));
+    gl.uniformMatrix3fv( gl.getUniformLocation( shader, "normalMatrix" ), false, flatten(normalMatrix) );
+
     obj.draw(camera);
   });
 

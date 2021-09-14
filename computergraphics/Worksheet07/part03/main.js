@@ -41,7 +41,7 @@ function init(){
     alert("Unable to initialize WebGL. Your browser or machine may not support it.");
     return;
   }
-  program = initShaders(gl, "vertex-shader", "fragment-shader");
+  program = initShaders(gl, "render/vertexShader.glsl", "render/fragmentShader.glsl");
   gl.useProgram(program);
   gl.clearColor(0.8, 0.8, 0.8, 1.0);
   gl.enable(gl.CULL_FACE)
@@ -67,11 +67,9 @@ function render(){
 
   gl.uniformMatrix4fv( gl.getUniformLocation(program,"modelViewMatrix"), false, flatten(camera.mvMatrix));
   gl.uniformMatrix3fv(gl.getUniformLocation(program, "normalMatrix" ), false, flatten(normalMatrix));
-  camera.update_projection_matrix()
+  camera.update_projection_matrix(program)
   for (let i = 0; i < objects.length; i++) {
     var obj = objects[i];
-
-
     obj.draw(camera);
   }
   requestAnimFrame(render);
@@ -87,7 +85,8 @@ function main() {
   objects.push( new backFace(vec4(0, 0, 0)) );
   objects[0].transformMatrix = mult(scalem(3,3,3), objects[0].transformMatrix)
   objects[0].transformMatrix = mult(translate(0,3,0), objects[0].transformMatrix)
-  create_cube_map(false)
+  objects[0].material.shader=program
+  create_cube_map(program ,false)
 
   camera = new Camera();
 

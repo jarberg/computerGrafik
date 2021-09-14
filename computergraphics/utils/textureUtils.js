@@ -87,7 +87,7 @@ function create_image_texture(imageName, callback, index){
     image.src = location.origin+fetchImageResourceFolder()+"/Images/"+imageName;
 }
 
-function create_cube_map(invert=false, index=0){
+function create_cube_map(shader, invert=false, index=0){
     var cubemapArray = [
         location.origin+fetchImageResourceFolder()+'/Images/cubeMap/cloudyhills_posx.jpg',  // POSITIVE_X
         location.origin+fetchImageResourceFolder()+'/Images/cubeMap/cloudyhills_negx.jpg',  // NEGATIVE_X
@@ -112,5 +112,5 @@ function create_cube_map(invert=false, index=0){
     }
     gl.texParameteri(gl.TEXTURE_CUBE_MAP, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
     gl.texParameteri(gl.TEXTURE_CUBE_MAP, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
-    gl.uniform1i(gl.getUniformLocation(program, "textureCubeMap"), index);
+    gl.uniform1i(gl.getUniformLocation(shader, "textureCubeMap"), index);
 }

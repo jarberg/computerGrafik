@@ -21,9 +21,7 @@ class Camera{
         this.at = vec3(0.0, 0.0, 0.0);
         this.up = vec3(0.0, 1.0, 0.0);
         this.rotate =false;
-        this.projectionLoc = gl.getUniformLocation(program,"projection")
 
-        this.update_projection_matrix()
     }
 
     set_fovy(angle){
@@ -38,8 +36,8 @@ class Camera{
 
     }
 
-    update_projection_matrix(){
-
+    update_projection_matrix(program){
+        this.projectionLoc = gl.getUniformLocation(program,"projection")
         gl.uniformMatrix4fv(this.projectionLoc, false, flatten(this.pMatrix));
 
     }

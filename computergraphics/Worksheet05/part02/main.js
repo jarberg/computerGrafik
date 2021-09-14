@@ -233,7 +233,7 @@ function main() {
   setupControls();
 
   camera1 = new Camera()
-  model = null;
+  customModel = null;
   loadObjFile("../../models/charlie/charlie.obj", 1, false, (obj) => {
     console.log(obj.getDrawingInfo());
     model = obj;

@@ -97,7 +97,7 @@ function render(){
   gl.clear( gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
   timer = takeTime()
   camera.update(timer)
-
+  camera.update_projection_matrix(program)
   gl.uniform1i(gl.getUniformLocation(program, "diffuseTexture"), 0);
   ground.draw()
 
@@ -109,7 +109,7 @@ function render(){
       let lightPosition = light.position;
 
       let modelLight = mat4();
-      let d = -(lightPosition[1]-ground.position[1])-0.01;
+      let d = -(lightPosition[1]-ground.translate[1])-0.01;
       modelLight[3][1] = 1/d;
       modelLight[3][3] = 0;
 

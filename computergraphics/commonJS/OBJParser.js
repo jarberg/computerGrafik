@@ -41,7 +41,7 @@ OBJDoc.prototype.parse = function (fileString, scale, reverse) {
     switch (command) {
       case '#':
         continue;  // Skip comments
-      case 'mtllib':     // Read Material chunk
+      case 'mtllib':     // Read Materials chunk
         var path = this.parseMtllib(sp, this.fileName);
         var mtl = new MTLDoc();   // Create MTL instance
         this.mtls.push(mtl);
@@ -78,7 +78,7 @@ OBJDoc.prototype.parse = function (fileString, scale, reverse) {
         var normal = this.parseNormal(sp);
         this.normals.push(normal);
         continue; // Go to the next line
-      case 'usemtl': // Read Material name
+      case 'usemtl': // Read Materials name
         currentMaterialName = this.parseUsemtl(sp);
         continue; // Go to the next line
       case 'f': // Read face
@@ -208,7 +208,7 @@ function onReadMTLFile(fileString, mtl) {
 
   // Parse line by line
   var line;      // A string in the line to be parsed
-  var name = ""; // Material name
+  var name = ""; // Materials name
   var sp = new StringParser();  // Create StringParser
   while ((line = lines[index++]) != null) {
     sp.init(line);                  // init StringParser
@@ -218,7 +218,7 @@ function onReadMTLFile(fileString, mtl) {
     switch (command) {
       case '#':
         continue;    // Skip comments
-      case 'newmtl': // Read Material chunk
+      case 'newmtl': // Read Materials chunk
         name = mtl.parseNewmtl(sp);    // Get name
         continue; // Go to the next line
       case 'Kd':   // Read normal
@@ -330,7 +330,7 @@ MTLDoc.prototype.parseRGB = function (sp, name) {
 }
 
 //------------------------------------------------------------------------------
-// Material Object
+// Materials Object
 //------------------------------------------------------------------------------
 var Material = function (name, r, g, b, a) {
   this.name = name;

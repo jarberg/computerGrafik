@@ -211,6 +211,7 @@ function render(){
   gl.uniformMatrix4fv( gl.getUniformLocation(program,"modelViewMatrix"), false, flatten(camera.mvMatrix));
   gl.uniformMatrix3fv(gl.getUniformLocation( program, "normalMatrix" ), false, flatten(normalMatrix) );
 
+  camera.update_projection_matrix(program)
   objects.forEach(function(obj) {
     obj.draw(camera);
   });
