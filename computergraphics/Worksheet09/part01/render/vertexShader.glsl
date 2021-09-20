@@ -4,18 +4,12 @@ attribute vec4 vNormal;
 attribute vec2 vTexCoord;
 
 uniform mat4 mTex;
-
 uniform mat4 modelViewMatrix;
 uniform mat4 projection;
 uniform mat4 objTransform;
-
+uniform mat3 normalMatrix;
 uniform vec3 eye;
 uniform mediump int isreflective;
-
-uniform mat3 normalMatrix;
-
-
-
 
 varying vec2 coords;
 varying vec2 fTexCoord;
