@@ -86,29 +86,33 @@ class IndiceModel extends transform{
 
     initDataToBuffers(){
 
-        this.vPosition = gl.getAttribLocation(this.shader, "a_Position");
-        this.vColor = gl.getAttribLocation(this.shader, "a_Color");
-        this.a_normal = gl.getAttribLocation(this.shader, "vNormal");
-        this.dirtyShader = false
 
         gl.bindBuffer(gl.ARRAY_BUFFER, this.vBuffer);
         gl.vertexAttribPointer(this.vPosition, 3, gl.FLOAT, false, 0, 0);
+        this.vPosition = gl.getAttribLocation(this.shader, "a_Position");
         gl.enableVertexAttribArray(this.vPosition);
         gl.bufferData(gl.ARRAY_BUFFER, flatten(this.vertexes), gl.STATIC_DRAW)
 
         gl.bindBuffer(gl.ARRAY_BUFFER, this.cBuffer);
         gl.vertexAttribPointer(this.vColor, 4, gl.FLOAT, false, 0, 0);
+        this.vColor = gl.getAttribLocation(this.shader, "a_Color");
         gl.enableVertexAttribArray(this.vColor);
         gl.bufferData(gl.ARRAY_BUFFER, flatten(this.vertexColors), gl.STATIC_DRAW)
 
         gl.bindBuffer(gl.ARRAY_BUFFER, this.nBuffer);
         gl.vertexAttribPointer(this.a_normal, 3, gl.FLOAT, false, 0, 0);
+
+        this.a_normal = gl.getAttribLocation(this.shader, "vNormal");
         gl.enableVertexAttribArray(this.a_normal);
         gl.bufferData(gl.ARRAY_BUFFER, flatten(this.normals), gl.STATIC_DRAW)
 
 
         gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, this.iBuffer);
         gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, new Uint16Array(this.indices), gl.STATIC_DRAW);
+
+
+        this.dirtyShader = false
+
     }
 }
 
@@ -178,9 +182,6 @@ class Sphere extends model{
 }
 
 class Dot extends model{
-    vPosition;
-    vColor;
-
 
     constructor(_center) {
         super(_center);
@@ -190,6 +191,8 @@ class Dot extends model{
     }
 
     draw(camera){
+        gl.useProgram(this.shader)
+        if(this.dirtyShader) this.initDataToBuffers()
 
         gl.bindBuffer(gl.ARRAY_BUFFER, this.vBuffer);
         gl.vertexAttribPointer(this.vPosition, 4, gl.FLOAT, false, 0, 0);
@@ -208,12 +211,12 @@ class Dot extends model{
         gl.enableVertexAttribArray(this.vTexCoord);
 
 
-        gl.uniformMatrix4fv(gl.getUniformLocation(program,"normalMatrix"), false, flatten(camera.normalMatrix));
-        gl.uniformMatrix4fv(gl.getUniformLocation(program,"objTransform"), false, flatten(this.transformMatrix));
-        gl.uniformMatrix4fv( gl.getUniformLocation(program,"mTex"), false, flatten(mat4()));
-        gl.uniform3fv( gl.getUniformLocation(program,"eye"), flatten(camera.eye));
+        gl.uniformMatrix4fv(gl.getUniformLocation(this.shader,"normalMatrix"), false, flatten(camera.normalMatrix));
+        gl.uniformMatrix4fv(gl.getUniformLocation(this.shader,"objTransform"), false, flatten(this.local_transformMatrix));
+        gl.uniformMatrix4fv( gl.getUniformLocation(this.shader,"mTex"), false, flatten(mat4()));
+        gl.uniform3fv( gl.getUniformLocation(this.shader,"eye"), flatten(camera.eye));
 
-        gl.uniform1i(gl.getUniformLocation(program,"isreflective"), 1)
+        gl.uniform1i(gl.getUniformLocation(this.shader,"isreflective"), 0)
 
         gl.drawArrays(gl.POINTS, 0, this.vertexes.length);
     }
@@ -416,7 +419,6 @@ class Mesh extends IndiceModel{
 
     draw(camera, shadow){
         gl.useProgram(this.shader)
-
         if(this.dirtyShader) this.initDataToBuffers()
 
         gl.bindBuffer(gl.ARRAY_BUFFER, this.vBuffer);
@@ -435,13 +437,10 @@ class Mesh extends IndiceModel{
         if (!shadow){
             gl.uniformMatrix4fv(gl.getUniformLocation(this.shader,"objTransform"), false, flatten(this.local_transformMatrix));
             if (this.use_vcol){
-                var centerLoc = gl.getUniformLocation(this.shader,"u_usev_col")
-                gl.uniform1i(centerLoc, 1);
+                gl.uniform1i(gl.getUniformLocation(this.shader,"u_usev_col"), 1);
             }
         }
-
         gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, this.iBuffer);
-        gl.uniform1i(gl.getUniformLocation(this.shader,"u_usev_col"), 1);
         gl.drawElements(gl.TRIANGLES, this.indices.length, gl.UNSIGNED_SHORT, 0);
     }
 

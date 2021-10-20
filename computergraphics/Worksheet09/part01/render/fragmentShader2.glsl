@@ -18,7 +18,7 @@ void main()
             gl_FragColor = v_Color;
         }
         else{
-            gl_FragColor = texture2D( diffuseTexture, fTexCoord );
+            gl_FragColor = vec4(1.0,1.0,1.0,1.0);
         }
     }
 }

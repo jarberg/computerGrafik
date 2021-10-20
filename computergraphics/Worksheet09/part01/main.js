@@ -7,12 +7,12 @@ var timer = null;
 var ground;
 var currentTime = 1;
 var animatedModel = null;
-var currentShader = null;
+var lightPoint = null;
 
 
 function init(){
   canvas = document.querySelector("#glCanvas");
-  gl = WebGLUtils.setupWebGL(canvas, { alpha: false });
+  gl = WebGLUtils.setupWebGL(canvas, );
   if (gl === null) {
     alert("Unable to initialize WebGL. Your browser or machine may not support it.");
     return;
@@ -25,7 +25,6 @@ function init(){
 
 }
 
-
 function setupControls(){
   fpsOutput = document.getElementById("fpsOutput")
   let rotateCamera = document.getElementById("rotate_Camera")
@@ -35,32 +34,40 @@ function setupControls(){
 }
 
 
-var uiSphere;
-var uicamera;
-
-
 function render(){
   gl.clear( gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
-  timer = takeTime()
 
+  gl.disable(gl.BLEND);
+  gl.depthFunc(gl.LESS);
+
+  timer = takeTime()
   camera.update(timer)
-  gl.useProgram(program)
-  gl.uniform1i(gl.getUniformLocation(program, "diffuseTexture"), 0);
-  ground.draw()
-  gl.uniform1i(gl.getUniformLocation(program, "lightPosition"), 0);
-  light.draw(camera)
-  //sinus_jump(animatedModel);
+
+  light.orbit(timer)
+  gl.useProgram(lightPoint.shader)
+  gl.uniformMatrix4fv( gl.getUniformLocation(lightPoint.shader,"modelViewMatrix"), false, flatten(camera.mvMatrix));
+  gl.uniformMatrix3fv(gl.getUniformLocation(lightPoint.shader, "normalMatrix" ), false, camera.normalMatrix);
+
+  lightPoint.move(light.get_position())
+  lightPoint.draw(camera);
+
+  gl.useProgram(ground.shader)
+  gl.uniform1i(gl.getUniformLocation(ground.shader, "diffuseTexture"), 0);
+  gl.uniformMatrix4fv( gl.getUniformLocation(ground.shader,"modelViewMatrix"), false, flatten(camera.mvMatrix));
+  gl.uniformMatrix3fv(gl.getUniformLocation(ground.shader, "normalMatrix" ), false, camera.normalMatrix);
+
+  ground.draw(camera)
 
   gl.depthFunc(gl.GREATER);
   gl.enable(gl.BLEND);
   gl.blendFunc(gl.ONE_MINUS_SRC_COLOR, gl.DST_COLOR);
-
-  for (let i = 1; i < objects.length; i++) {
+  for (let i = 0; i < objects.length; i++) {
     var obj = objects[i];
-    var shader = obj.shader;
+    var shader = obj.shader
     gl.useProgram(shader)
-    let lightPosition = light.position;
+    camera.update(timer)
 
+    let lightPosition = light.get_position();
 
     let modelLight = mat4();
     let d = -(lightPosition[1]-ground.position[1])-0.01;
@@ -72,28 +79,25 @@ function render(){
     let shadow = mult(translationBack, mult(modelLight, mult(translation, obj.local_transformMatrix)));
 
     // Send color and matrix for shadow
-    gl.uniformMatrix4fv( gl.getUniformLocation(gl.getParameter(gl.CURRENT_PROGRAM),"objTransform"), false,
+    gl.uniformMatrix4fv( gl.getUniformLocation(shader,"objTransform"), false,
         flatten(shadow));
-    gl.uniform1i(gl.getUniformLocation(gl.getParameter(gl.CURRENT_PROGRAM),"u_shadow"),1)
+    gl.uniform1i(gl.getUniformLocation(shader,"u_shadow"),1)
     obj.draw(camera, true);
   }
-
   gl.disable(gl.BLEND);
   gl.depthFunc(gl.LESS);
-  for (let i = 1; i < objects.length; i++) {
+
+  for (let i = 0; i < objects.length; i++) {
     var obj = objects[i];
     var shader = obj.shader;
     gl.useProgram(shader)
+
     gl.uniform1i(gl.getUniformLocation(shader, "diffuseTexture"), 1);
     gl.uniform1i(gl.getUniformLocation(shader,"u_shadow"),0)
     gl.uniformMatrix4fv( gl.getUniformLocation(shader,"modelViewMatrix"), false, flatten(camera.mvMatrix));
     gl.uniformMatrix3fv(gl.getUniformLocation(shader, "normalMatrix" ), false, camera.normalMatrix);
     obj.draw(camera, false);
   }
-
-  //uicamera.update(timer)
-  //uiSphere.draw(uicamera)
-
   requestAnimFrame(render);
 }
 
@@ -101,15 +105,17 @@ function render(){
 
 function main() {
   init()
+  camera = new OrbitCamera()
+  camera.move(vec3(0,0,0))
+  camera.radius = 12
+  camera.phi = 10.0
+  camera.theta = -45
+  camera.set_fovy(45)
+
   create_image_texture("xamp23.png", configureImageTexture, 0)
+  configureTexture(generateredTextureArray(1), 1, 1)
 
-  //uiSphere = new Sphere();
-  //uiSphere.move(vec3(-2,0,-3))
-  //uicamera = new UICamera();
-
-  ground = new Rectangle(vec3(0,0,0));
-  ground.move(vec3(-3,0,0))
-  objects.push(ground)
+  ground = new Rectangle(vec3(0,0,0))
   ground.vertices = [
     vec4(2,0,-5,1),
     vec4(-2,0,-5,1),
@@ -121,34 +127,26 @@ function main() {
     vec2(0, 1),
     vec2(1, 1),
     vec2(1, 0)
-  ]
-
+  ];
   ground.clear()
   ground.quad(0,1,2,3)
+  ground.move(vec3(0,0,3))
 
-  camera = new OrbitCamera()
-  camera.move(vec3(-3,0,-3))
-  camera.radius = 12
-  camera.phi = 0
-  camera.theta = -45
-  camera.set_fovy(45)
+  light = new OrbitPointLight(vec3(0,2,0))
+  lightPoint = new Dot(vec3(0,2,0));
+
 
   loadObjFile("../../models/teacup/teapot.obj", 1, false, (obj) => {
     console.log(obj.getDrawingInfo());
-    animatedModel = new Mesh([-3,0,-3],obj.getDrawingInfo());
-    objects.push(animatedModel);
+    animatedModel = new Mesh([0,0,0],obj.getDrawingInfo());
     animatedModel.setScale(vec3(0.2, 0.2, 0.2))
     animatedModel.setShader(initShaders(gl, "render/vertexShader2.glsl", "render/fragmentShader2.glsl"));
+    objects.push(animatedModel);
   });
-
-
-  light =  new OrbitPointLight()
-  light.translate = vec3(-3, 2, -3)
 
   gl.clearColor(0, 0.5843, 0.9294, 1.0)
 
   setupControls()
-
   timer = takeTime()
   render();
 }

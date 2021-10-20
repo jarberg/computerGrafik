@@ -17,7 +17,7 @@ class Light{
 
 class PointLight extends Light{
   position = vec4(0,0,0,1.0)
-  translate = vec4(0,0,0,1.0)
+  orbit_offset = vec4(0,0,0,1.0)
   rotate = true;
   radius = 2
   theta  = 10.0;
@@ -60,9 +60,9 @@ class PointLight extends Light{
     let hAngleRadians = ((this.phi-90) / 180) * Math.PI;
 
     this.position  = [
-      this.translate[0]+this.radius * Math.sin(vAngleRadians) * Math.cos(hAngleRadians),
-      this.translate[1]+this.radius * Math.cos(vAngleRadians),
-      this.translate[2]+this.radius * Math.sin(vAngleRadians) * Math.sin(hAngleRadians)
+      this.orbit_offset[0]+this.radius * Math.sin(vAngleRadians) * Math.cos(hAngleRadians),
+      this.orbit_offset[1]+this.radius * Math.cos(vAngleRadians),
+      this.orbit_offset[2]+this.radius * Math.sin(vAngleRadians) * Math.sin(hAngleRadians)
     ];
   }
 }

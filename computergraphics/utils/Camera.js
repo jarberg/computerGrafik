@@ -92,6 +92,13 @@ class OrbitCamera extends Camera{
 
     constructor() {
         super();
+        this.mvMatrix = lookAt(this.eye, this.at , this.up);
+        this.normalMatrix = [
+            vec3(this.mvMatrix[0][0], this.mvMatrix[0][1], this.mvMatrix[0][2]),
+            vec3(this.mvMatrix[1][0], this.mvMatrix[1][1], this.mvMatrix[1][2]),
+            vec3(this.mvMatrix[2][0], this.mvMatrix[2][1], this.mvMatrix[2][2])
+        ];
+        this.update_projection_matrix()
     }
 
     update(frametime){

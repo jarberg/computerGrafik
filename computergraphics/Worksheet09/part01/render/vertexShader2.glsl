@@ -14,9 +14,6 @@ uniform mediump int isreflective;
 
 uniform mat3 normalMatrix;
 
-
-
-
 varying vec2 coords;
 varying vec2 fTexCoord;
 varying vec3 R, N;
@@ -34,7 +31,7 @@ vec3 rotate_to_normal(vec3 normal, vec3 v) {
 void main()
 {
     gl_Position = a_Color+vNormal+vec4(vTexCoord,vTexCoord);
-    v_Color = vec4(0,0,0,1);
+    v_Color = vec4(0.5,0.5,0.5,1);
     gl_PointSize = 10.0;
 
     fTexCoord = vTexCoord;
