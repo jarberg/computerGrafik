@@ -16,9 +16,10 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5e3948d6-358c-4c60-8135-650537d75e3c" name="Default Changelist" comment="made quad mesh model type follow the model class model &#10;&#10;reworked old worksheets that had dependencies on this class">
+    <list default="true" id="5e3948d6-358c-4c60-8135-650537d75e3c" name="Default Changelist" comment="ground was offset in workshet 09 part 01">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet09/part01/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Worksheet09/part01/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/computergraphics/utils/Camera.js" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/utils/Camera.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -192,7 +193,14 @@
       <option name="project" value="LOCAL" />
       <updated>1634723834799</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="ground was offset in workshet 09 part 01">
+      <created>1634724088687</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1634724088687</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -233,7 +241,8 @@
     <MESSAGE value="reworked old model setup.&#10;now support both non indice and indice models&#10;&#10;moved buffer init to model classes" />
     <MESSAGE value="added animation class to git" />
     <MESSAGE value="made quad mesh model type follow the model class model &#10;&#10;reworked old worksheets that had dependencies on this class" />
-    <option name="LAST_COMMIT_MESSAGE" value="made quad mesh model type follow the model class model &#10;&#10;reworked old worksheets that had dependencies on this class" />
+    <MESSAGE value="ground was offset in workshet 09 part 01" />
+    <option name="LAST_COMMIT_MESSAGE" value="ground was offset in workshet 09 part 01" />
   </component>
   <component name="WindowStateProjectService">
     <state x="96" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1629619396960">
@@ -350,7 +359,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/computergraphics/Worksheet09/part01/main.js</url>
-          <line>61</line>
+          <line>67</line>
           <option name="timeStamp" value="9" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">

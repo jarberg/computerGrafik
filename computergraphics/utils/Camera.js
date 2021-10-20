@@ -53,6 +53,42 @@ class Camera extends transform{
 }
 
 
+class UICamera extends transform{
+
+    constructor() {
+        super(vec3(0,0,0));
+        this.eye = vec3(0,0,0);
+        this.at = vec3(0.0, 0.0, 0.0);
+        this.up = vec3(0.0, 1.0, 0.0);
+
+        this.projectionLoc = gl.getUniformLocation(program,"projection")
+        this.pMatrix = ortho( -3,
+            3,
+            -3,
+            3,
+            0.1,
+            30);
+        this.mvMatrix = mat4()
+        this.normalMatrix = [
+            vec3(this.mvMatrix[0][0], this.mvMatrix[0][1], this.mvMatrix[0][2]),
+            vec3(this.mvMatrix[1][0], this.mvMatrix[1][1], this.mvMatrix[1][2]),
+            vec3(this.mvMatrix[2][0], this.mvMatrix[2][1], this.mvMatrix[2][2])
+        ];
+    }
+    update_projection_matrix(){
+        gl.uniformMatrix4fv(this.projectionLoc, false, flatten(this.pMatrix));
+    }
+    update(frametime) {
+        this.update_projection_matrix()
+        this.mvMatrix = mat4()
+        this.normalMatrix = [
+            vec3(this.mvMatrix[0][0], this.mvMatrix[0][1], this.mvMatrix[0][2]),
+            vec3(this.mvMatrix[1][0], this.mvMatrix[1][1], this.mvMatrix[1][2]),
+            vec3(this.mvMatrix[2][0], this.mvMatrix[2][1], this.mvMatrix[2][2])
+        ];
+   }
+}
+
 class OrbitCamera extends Camera{
 
     rotate =false;
@@ -69,6 +105,7 @@ class OrbitCamera extends Camera{
             vec3(this.mvMatrix[1][0], this.mvMatrix[1][1], this.mvMatrix[1][2]),
             vec3(this.mvMatrix[2][0], this.mvMatrix[2][1], this.mvMatrix[2][2])
         ];
+        this.update_projection_matrix()
     }
 
 

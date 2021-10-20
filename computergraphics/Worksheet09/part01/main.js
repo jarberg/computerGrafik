@@ -35,10 +35,16 @@ function setupControls(){
 }
 
 
+var uiSphere;
+var uicamera;
+
 
 function render(){
   gl.clear( gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
   timer = takeTime()
+
+
+
   camera.update(timer)
 
   gl.uniform1i(gl.getUniformLocation(program, "diffuseTexture"), 0);
@@ -83,6 +89,10 @@ function render(){
     gl.uniformMatrix3fv(gl.getUniformLocation(program, "normalMatrix" ), false, camera.normalMatrix);
     obj.draw(camera, false);
   }
+
+  //uicamera.update(timer)
+  //uiSphere.draw(uicamera)
+
   requestAnimFrame(render);
 }
 
@@ -90,8 +100,12 @@ function render(){
 
 function main() {
   init()
-
   create_image_texture("xamp23.png", configureImageTexture, 0)
+
+  //uiSphere = new Sphere();
+  //uiSphere.move(vec3(-2,0,-3))
+  //uicamera = new UICamera();
+
   ground = new Rectangle(vec3(0,0,0));
   ground.move(vec3(-3,0,0))
   objects.push(ground)
@@ -113,7 +127,7 @@ function main() {
 
   camera = new OrbitCamera()
   camera.move(vec3(-3,0,-3))
-  camera.radius = 8
+  camera.radius = 12
   camera.phi = 0
   camera.theta = -45
   camera.set_fovy(45)
