@@ -16,13 +16,9 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5e3948d6-358c-4c60-8135-650537d75e3c" name="Default Changelist" comment="added animation class to git">
+    <list default="true" id="5e3948d6-358c-4c60-8135-650537d75e3c" name="Default Changelist" comment="made quad mesh model type follow the model class model &#10;&#10;reworked old worksheets that had dependencies on this class">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet08/part01/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Worksheet08/part01/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet08/part02/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Worksheet08/part02/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet08/part03/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Worksheet08/part03/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computergraphics/utils/general.js" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/utils/general.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computergraphics/utils/geomitry.js" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/utils/geomitry.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet09/part01/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Worksheet09/part01/main.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,11 +68,11 @@
       <recent name="C:\Users\Michael\Desktop\DtuWebsite\computergraphics" />
     </key>
   </component>
-  <component name="RunManager" selected="JavaScript Debug.main.html (5)">
-    <configuration name="main.html (1)" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/DtuWebsite/computergraphics/Worksheet08/part02/main.html" useBuiltInWebServerPort="true">
+  <component name="RunManager" selected="JavaScript Debug.main.html (3)">
+    <configuration name="main.html (2)" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/DtuWebsite/computergraphics/Worksheet08/part04/main.html" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
-    <configuration name="main.html (2)" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/DtuWebsite/computergraphics/Worksheet08/part04/main.html" useBuiltInWebServerPort="true">
+    <configuration name="main.html (3)" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/DtuWebsite/computergraphics/Worksheet09/part01/main.html" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
     <configuration name="main.html (4)" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/DtuWebsite/computergraphics/Worksheet08/part03/main.html" useBuiltInWebServerPort="true">
@@ -90,11 +86,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JavaScript Debug.main.html (3)" />
         <item itemvalue="JavaScript Debug.main.html (5)" />
         <item itemvalue="JavaScript Debug.main.html" />
         <item itemvalue="JavaScript Debug.main.html (2)" />
         <item itemvalue="JavaScript Debug.main.html (4)" />
-        <item itemvalue="JavaScript Debug.main.html (1)" />
       </list>
     </recent_temporary>
   </component>
@@ -189,7 +185,14 @@
       <option name="project" value="LOCAL" />
       <updated>1634722308630</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="made quad mesh model type follow the model class model &#10;&#10;reworked old worksheets that had dependencies on this class">
+      <created>1634723834799</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1634723834799</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -229,7 +232,8 @@
     <MESSAGE value="reworked camera to extends basic transform class&#10;added orbit camera to extend normal Camera&#10;reworked old worksheets to fit with this new implementation" />
     <MESSAGE value="reworked old model setup.&#10;now support both non indice and indice models&#10;&#10;moved buffer init to model classes" />
     <MESSAGE value="added animation class to git" />
-    <option name="LAST_COMMIT_MESSAGE" value="added animation class to git" />
+    <MESSAGE value="made quad mesh model type follow the model class model &#10;&#10;reworked old worksheets that had dependencies on this class" />
+    <option name="LAST_COMMIT_MESSAGE" value="made quad mesh model type follow the model class model &#10;&#10;reworked old worksheets that had dependencies on this class" />
   </component>
   <component name="WindowStateProjectService">
     <state x="96" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1629619396960">

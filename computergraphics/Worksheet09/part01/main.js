@@ -92,7 +92,8 @@ function main() {
   init()
 
   create_image_texture("xamp23.png", configureImageTexture, 0)
-  ground = new Rectangle(vec4(-2,-1,0,1));
+  ground = new Rectangle(vec3(0,0,0));
+  ground.move(vec3(-3,0,0))
   objects.push(ground)
   ground.vertices = [
     vec4(2,0,-5,1),
@@ -119,7 +120,7 @@ function main() {
 
   loadObjFile("../../models/teacup/teapot.obj", 1, false, (obj) => {
     console.log(obj.getDrawingInfo());
-    animatedModel = new Mesh([-3,-1,-3],obj.getDrawingInfo());
+    animatedModel = new Mesh([-3,0,-3],obj.getDrawingInfo());
     objects.push(animatedModel);
     animatedModel.setScale(vec3(0.2, 0.2, 0.2))
   });
