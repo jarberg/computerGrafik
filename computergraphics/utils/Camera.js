@@ -20,7 +20,6 @@ class Camera extends transform{
         this.eye = vec3(0,0,0);
         this.at = vec3(0.0, 0.0, 0.0);
         this.up = vec3(0.0, 1.0, 0.0);
-        this.projectionLoc = gl.getUniformLocation(program,"projection")
 
         this.update_projection_matrix()
     }
@@ -37,7 +36,7 @@ class Camera extends transform{
     }
 
     update_projection_matrix(){
-        gl.uniformMatrix4fv(this.projectionLoc, false, flatten(this.pMatrix));
+        gl.uniformMatrix4fv(gl.getUniformLocation(gl.getParameter(gl.CURRENT_PROGRAM),"projection"), false, flatten(this.pMatrix));
     }
 
     update(frametime){
@@ -60,8 +59,6 @@ class UICamera extends transform{
         this.eye = vec3(0,0,0);
         this.at = vec3(0.0, 0.0, 0.0);
         this.up = vec3(0.0, 1.0, 0.0);
-
-        this.projectionLoc = gl.getUniformLocation(program,"projection")
         this.pMatrix = ortho( -3,
             3,
             -3,
@@ -76,7 +73,7 @@ class UICamera extends transform{
         ];
     }
     update_projection_matrix(){
-        gl.uniformMatrix4fv(this.projectionLoc, false, flatten(this.pMatrix));
+        gl.uniformMatrix4fv(gl.getUniformLocation(gl.getParameter(gl.CURRENT_PROGRAM),"projection"), false, flatten(this.pMatrix));
     }
     update(frametime) {
         this.update_projection_matrix()

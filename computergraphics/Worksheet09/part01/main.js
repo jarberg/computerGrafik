@@ -7,7 +7,7 @@ var timer = null;
 var ground;
 var currentTime = 1;
 var animatedModel = null;
-
+var currentShader = null;
 
 
 function init(){
@@ -43,20 +43,22 @@ function render(){
   gl.clear( gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
   timer = takeTime()
 
-
-
   camera.update(timer)
-
+  gl.useProgram(program)
   gl.uniform1i(gl.getUniformLocation(program, "diffuseTexture"), 0);
   ground.draw()
   gl.uniform1i(gl.getUniformLocation(program, "lightPosition"), 0);
-  light.draw(camera
-  )
+  light.draw(camera)
   //sinus_jump(animatedModel);
+
+  gl.depthFunc(gl.GREATER);
+  gl.enable(gl.BLEND);
+  gl.blendFunc(gl.ONE_MINUS_SRC_COLOR, gl.DST_COLOR);
 
   for (let i = 1; i < objects.length; i++) {
     var obj = objects[i];
-
+    var shader = obj.shader;
+    gl.useProgram(shader)
     let lightPosition = light.position;
 
 
@@ -69,24 +71,23 @@ function render(){
     let translationBack = translate(lightPosition[0], lightPosition[1], lightPosition[2]);
     let shadow = mult(translationBack, mult(modelLight, mult(translation, obj.local_transformMatrix)));
 
-    gl.depthFunc(gl.GREATER);
-    gl.enable(gl.BLEND);
-    gl.blendFunc(gl.ONE_MINUS_SRC_COLOR, gl.DST_COLOR);
     // Send color and matrix for shadow
-    gl.uniformMatrix4fv( gl.getUniformLocation(program,"objTransform"), false,
+    gl.uniformMatrix4fv( gl.getUniformLocation(gl.getParameter(gl.CURRENT_PROGRAM),"objTransform"), false,
         flatten(shadow));
-    gl.uniform1i(gl.getUniformLocation(program,"u_shadow"),1)
+    gl.uniform1i(gl.getUniformLocation(gl.getParameter(gl.CURRENT_PROGRAM),"u_shadow"),1)
     obj.draw(camera, true);
-
   }
+
   gl.disable(gl.BLEND);
+  gl.depthFunc(gl.LESS);
   for (let i = 1; i < objects.length; i++) {
     var obj = objects[i];
-    gl.uniform1i(gl.getUniformLocation(program, "diffuseTexture"), 1);
-    gl.depthFunc(gl.LESS);
-    gl.uniform1i(gl.getUniformLocation(program,"u_shadow"),0)
-    gl.uniformMatrix4fv( gl.getUniformLocation(program,"modelViewMatrix"), false, flatten(camera.mvMatrix));
-    gl.uniformMatrix3fv(gl.getUniformLocation(program, "normalMatrix" ), false, camera.normalMatrix);
+    var shader = obj.shader;
+    gl.useProgram(shader)
+    gl.uniform1i(gl.getUniformLocation(shader, "diffuseTexture"), 1);
+    gl.uniform1i(gl.getUniformLocation(shader,"u_shadow"),0)
+    gl.uniformMatrix4fv( gl.getUniformLocation(shader,"modelViewMatrix"), false, flatten(camera.mvMatrix));
+    gl.uniformMatrix3fv(gl.getUniformLocation(shader, "normalMatrix" ), false, camera.normalMatrix);
     obj.draw(camera, false);
   }
 
@@ -137,6 +138,7 @@ function main() {
     animatedModel = new Mesh([-3,0,-3],obj.getDrawingInfo());
     objects.push(animatedModel);
     animatedModel.setScale(vec3(0.2, 0.2, 0.2))
+    animatedModel.setShader(initShaders(gl, "render/vertexShader2.glsl", "render/fragmentShader2.glsl"));
   });
 
 
