@@ -6,7 +6,7 @@ var fpsOutput;
 var timer = null;
 var ground;
 var currentTime = 1;
-var model=null;
+
 
 
 
@@ -46,12 +46,13 @@ function render(){
   gl.uniform1i(gl.getUniformLocation(program, "lightPosition"), 0);
   light.draw(camera
   )
-  sinus_jump(model);
+  //sinus_jump(model);
 
   for (let i = 1; i < objects.length; i++) {
     var obj = objects[i];
 
     let lightPosition = light.position;
+
 
     let modelLight = mat4();
     let d = -(lightPosition[1]-ground.position[1])-0.01;
@@ -119,10 +120,10 @@ function main() {
 
   loadObjFile("../../models/teacup/teapot.obj", 1, false, (obj) => {
     console.log(obj.getDrawingInfo());
-    model = new Mesh([-4,-5,-4,1],obj.getDrawingInfo());
+    newmodel = new Mesh([-4,-5,-4,1],obj.getDrawingInfo());
 
-    model.transformMatrix = mult(scalem(1,1,1), model.transformMatrix )
-    objects.push(model);
+    newmodel.transformMatrix = mult(scalem(1,1,1), newmodel.transformMatrix )
+    objects.push(newmodel);
   });
 
   light =  new OrbitPointLight()

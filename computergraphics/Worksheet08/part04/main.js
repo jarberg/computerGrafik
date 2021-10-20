@@ -160,7 +160,7 @@ function main() {
     vec2(0, 1),
     vec2(1, 1),
     vec2(1, 0)
-  ]
+  ];
 
   objects[0].clear()
   objects[0].quad(0,1,2,3)
@@ -180,7 +180,7 @@ function main() {
     vec2(0, 1),
     vec2(1, 1),
     vec2(1, 0)
-  ]
+  ];
 
   objects[1].clear()
   objects[1].quad(0,1,2,3)
@@ -197,16 +197,17 @@ function main() {
     vec2(0, 1),
     vec2(1, 1),
     vec2(1, 0)
-  ]
+  ];
 
   objects[2].clear()
   objects[2].quad(0,1,2,3)
 
+
   camera = new Camera()
-  camera.radius = 5
-  camera.phi = 45
-  camera.theta = 45
-  camera.at= vec3(-1,0,-1)
+  camera.translate=vec4(-2,0,-2,0)
+  camera.radius = 10
+  camera.phi = 90
+  camera.theta = -45
   camera.set_fovy(45)
 
   objects.push( new PointLight() )

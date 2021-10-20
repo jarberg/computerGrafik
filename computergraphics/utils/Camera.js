@@ -58,7 +58,7 @@ class Camera{
         }
         let vAngleRadians = ((-this.theta+90) / 180) * Math.PI;
         let hAngleRadians = ((this.phi+90) / 180) * Math.PI;
-
+        this.at = vec3(this.translate)
         this.eye = [
             this.translate[0]+-this.radius * Math.sin(vAngleRadians) * Math.cos(hAngleRadians),
             this.translate[1]+-this.radius * Math.cos(vAngleRadians),

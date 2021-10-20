@@ -150,6 +150,7 @@ function main() {
 
   create_image_texture("xamp23.png", configureImageTexture, 0)
 
+
   objects.push(new Rectangle(vec4(-1,-1,1,0)))
   objects[0].vertices = [
     vec4(2,0,-5,1),
@@ -157,7 +158,6 @@ function main() {
     vec4(-2,0,-1,1),
     vec4(2,0,-1,1),
   ]
-
   objects[0].texCoord = [
     vec2(0, 0),
     vec2(0, 1),
@@ -207,10 +207,10 @@ function main() {
 
 
   camera = new Camera()
-  camera.radius = 12
-  camera.phi = 45
-  camera.theta = 45
-  camera.at= vec3(-1,0,-1)
+  camera.translate=vec4(-2,0,-2,0)
+  camera.radius = 10
+  camera.phi = 90
+  camera.theta = -45
   camera.set_fovy(45)
 
   objects.push(new PointLight())

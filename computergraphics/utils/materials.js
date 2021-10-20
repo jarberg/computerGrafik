@@ -1,4 +1,4 @@
-class Material{
+class Materials{
     diffuse = vec3(0,0,0)
     transparency = 1.0
     shader
@@ -8,7 +8,7 @@ class Material{
 
 }
 
-class StandardMaterial extends Material{
+class StandardMaterial extends Materials{
 
     constructor(){
         super(initShaders(gl, "render/vertexShader.glsl", "render/fragmentShader.glsl"))
