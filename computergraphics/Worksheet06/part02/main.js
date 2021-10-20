@@ -150,7 +150,7 @@ function main() {
   init()
 
   objects.push(new Rectangle(vec4(0,0,0,0)))
-  camera = new Camera()
+  camera = new OrbitCamera()
 
   camera.fovy = 90;
   objects[0].vertices = [

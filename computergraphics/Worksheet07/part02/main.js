@@ -96,7 +96,7 @@ function main() {
 
   create_cube_map( false)
 
-  camera = new Camera();
+  camera = new OrbitCamera();
 
   gl.clearColor(0, 0.5843, 0.9294, 1.0);
 

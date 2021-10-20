@@ -1,6 +1,3 @@
-class transform{
-
-}
 
 class model extends transform{
 
@@ -23,7 +20,6 @@ class Sphere{
 
 
     constructor(_center) {
-
         this.center = _center
         this.transformMatrix = translate(_center[0],_center[1],_center[2])
         var va = vec4(0.0, 0.0, -1.0, 1);
@@ -461,15 +457,14 @@ class backFace{
 }
 
 
-class Mesh{
-    center;
+class Mesh extends model{
+
     vertexes = [  ];
     vertexColors = [];
     normals =[];
     faces = [];
     indices =[];
-    translate = vec4(0,0,0,1)
-    transformMatrix = mat4()
+
     vPosition;
     vColor;
     vBuffer;
@@ -479,9 +474,8 @@ class Mesh{
     use_vcol = true;
 
     constructor( _center, drawInfo) {
+        super(_center);
         this.translate = _center
-        this.transformMatrix = mult(mat4(), translate(_center[0],_center[1],_center[2]))
-
         this.vertexes = drawInfo.vertices;
         this.normals = drawInfo.normals;
         this.vertexColors = drawInfo.colors;
@@ -535,7 +529,7 @@ class Mesh{
 
 
         if (!shadow){
-            gl.uniformMatrix4fv(gl.getUniformLocation(program,"objTransform"), false, flatten(this.transformMatrix));
+            gl.uniformMatrix4fv(gl.getUniformLocation(program,"objTransform"), false, flatten(this.local_transformMatrix));
             if (this.use_vcol){
                 var centerLoc = gl.getUniformLocation(program,"u_usev_col")
                 gl.uniform1i(centerLoc, 1);

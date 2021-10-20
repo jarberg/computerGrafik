@@ -89,7 +89,7 @@ function main() {
   objects[0].transformMatrix = mult(translate(0,3,0), objects[0].transformMatrix)
   create_cube_map(false)
 
-  camera = new Camera();
+  camera = new OrbitCamera();
 
   gl.clearColor(0, 0.5843, 0.9294, 1.0);
 

@@ -178,8 +178,8 @@ function main() {
   objects[2].quad(0,1,2,3)
 
 
-  camera = new Camera()
-  camera.translate=vec4(-2,0,-2,0)
+  camera = new OrbitCamera()
+  camera.move(vec3(-2,0,-2))
   camera.radius = 10
   camera.phi = 90
   camera.theta = -45

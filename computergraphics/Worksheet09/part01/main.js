@@ -6,7 +6,7 @@ var fpsOutput;
 var timer = null;
 var ground;
 var currentTime = 1;
-
+var animatedModel = null;
 
 
 
@@ -46,7 +46,7 @@ function render(){
   gl.uniform1i(gl.getUniformLocation(program, "lightPosition"), 0);
   light.draw(camera
   )
-  //sinus_jump(model);
+  //sinus_jump(animatedModel);
 
   for (let i = 1; i < objects.length; i++) {
     var obj = objects[i];
@@ -61,7 +61,7 @@ function render(){
 
     let translation = translate(-lightPosition[0], -lightPosition[1], -lightPosition[2]);
     let translationBack = translate(lightPosition[0], lightPosition[1], lightPosition[2]);
-    let shadow = mult(translationBack, mult(modelLight, mult(translation, obj.transformMatrix)));
+    let shadow = mult(translationBack, mult(modelLight, mult(translation, obj.local_transformMatrix)));
 
     gl.depthFunc(gl.GREATER);
     gl.enable(gl.BLEND);
@@ -92,7 +92,7 @@ function main() {
   init()
 
   create_image_texture("xamp23.png", configureImageTexture, 0)
-  ground = new Rectangle(vec4(-2,-1,1,1));
+  ground = new Rectangle(vec4(-2,-1,0,1));
   objects.push(ground)
   ground.vertices = [
     vec4(2,0,-5,1),
@@ -110,24 +110,21 @@ function main() {
   ground.clear()
   ground.quad(0,1,2,3)
 
-  camera = new Camera()
-  camera.translate = vec3(0,3,0)
-  camera.radius = 4
-  camera.phi = 45
-  camera.theta = 45
-  camera.at= vec3(-1,0,-1)
+  camera = new OrbitCamera()
+  camera.move(vec3(-3,0,-3))
+  camera.radius = 8
+  camera.phi = 0
+  camera.theta = -45
   camera.set_fovy(45)
 
   loadObjFile("../../models/teacup/teapot.obj", 1, false, (obj) => {
     console.log(obj.getDrawingInfo());
-    newmodel = new Mesh([-4,-5,-4,1],obj.getDrawingInfo());
-
-    newmodel.transformMatrix = mult(scalem(1,1,1), newmodel.transformMatrix )
-    objects.push(newmodel);
+    animatedModel = new Mesh([-3,-1,-3],obj.getDrawingInfo());
+    objects.push(animatedModel);
   });
 
   light =  new OrbitPointLight()
-  light.translate = vec3(0, 2, -2)
+  light.translate = vec3(-3, 2, -3)
 
   gl.clearColor(0, 0.5843, 0.9294, 1.0)
 

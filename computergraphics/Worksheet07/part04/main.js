@@ -66,7 +66,7 @@ function main() {
   create_image_texture("normalmap.png", configureNormalTexture, 1)
 
 
-  camera = new Camera();
+  camera = new OrbitCamera();
 
   gl.clearColor(0, 0.5843, 0.9294, 1.0);
 

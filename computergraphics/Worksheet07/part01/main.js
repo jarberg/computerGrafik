@@ -100,7 +100,7 @@ function main() {
   init()
 
   objects.push(new Sphere(vec4(0,0,0,0)))
-  camera = new Camera()
+  camera = new OrbitCamera()
   camera.pMatrix = ortho(-1, 1, -1, 1, camera.near, camera.far);
   camera.update_projection_matrix()
   camera.fovy = 90;
