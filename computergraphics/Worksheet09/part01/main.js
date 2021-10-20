@@ -121,7 +121,9 @@ function main() {
     console.log(obj.getDrawingInfo());
     animatedModel = new Mesh([-3,-1,-3],obj.getDrawingInfo());
     objects.push(animatedModel);
+    animatedModel.setScale(vec3(0.2, 0.2, 0.2))
   });
+
 
   light =  new OrbitPointLight()
   light.translate = vec3(-3, 2, -3)

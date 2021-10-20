@@ -16,27 +16,13 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5e3948d6-358c-4c60-8135-650537d75e3c" name="Default Changelist" comment="finished worksheet08&#10;started on worksheet09">
+    <list default="true" id="5e3948d6-358c-4c60-8135-650537d75e3c" name="Default Changelist" comment="reworked camera to extends basic transform class&#10;added orbit camera to extend normal Camera&#10;reworked old worksheets to fit with this new implementation">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet07/part01/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Worksheet07/part01/main.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet07/part01/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Worksheet07/part01/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet07/part02/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Worksheet07/part02/main.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet07/part02/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Worksheet07/part02/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet07/part03/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Worksheet07/part03/main.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet07/part03/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Worksheet07/part03/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet07/part04/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Worksheet07/part04/main.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet07/part04/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Worksheet07/part04/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet08/part01/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Worksheet08/part01/main.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet08/part01/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Worksheet08/part01/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet08/part02/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Worksheet08/part02/main.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet08/part02/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Worksheet08/part02/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet08/part03/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Worksheet08/part03/main.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet08/part03/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Worksheet08/part03/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet08/part04/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Worksheet08/part04/main.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet08/part04/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Worksheet08/part04/main.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet09/part01/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Worksheet09/part01/main.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet09/part01/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Worksheet09/part01/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computergraphics/utils/Camera.js" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/utils/Camera.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/computergraphics/utils/general.js" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/utils/general.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/computergraphics/utils/geomitry.js" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/utils/geomitry.js" afterDir="false" />
     </list>
@@ -88,29 +74,29 @@
       <recent name="C:\Users\Michael\Desktop\DtuWebsite\computergraphics" />
     </key>
   </component>
-  <component name="RunManager" selected="JavaScript Debug.main.html (4)">
+  <component name="RunManager" selected="JavaScript Debug.main.html (5)">
     <configuration name="main.html (1)" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/DtuWebsite/computergraphics/Worksheet06/part01/main.html" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
-    <configuration name="main.html (2)" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/DtuWebsite/computergraphics/Worksheet06/part03/main.html" useBuiltInWebServerPort="true">
+    <configuration name="main.html (2)" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/DtuWebsite/computergraphics/Worksheet09/part01/main.html" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
-    <configuration name="main.html (4)" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/DtuWebsite/computergraphics/Worksheet04/part01/main.html" useBuiltInWebServerPort="true">
+    <configuration name="main.html (3)" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/DtuWebsite/computergraphics/Worksheet05/part02/main.html" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
-    <configuration name="main.html (5)" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/DtuWebsite/computergraphics/Worksheet06/part02/main.html" useBuiltInWebServerPort="true">
+    <configuration name="main.html (4)" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/DtuWebsite/computergraphics/Worksheet05/part01/main.html" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
-    <configuration name="main.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/DtuWebsite/computergraphics/Worksheet05/part01/main.html" useBuiltInWebServerPort="true">
+    <configuration name="main.html (5)" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/DtuWebsite/computergraphics/Worksheet07/part01/main.html" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JavaScript Debug.main.html (4)" />
-        <item itemvalue="JavaScript Debug.main.html" />
-        <item itemvalue="JavaScript Debug.main.html (2)" />
         <item itemvalue="JavaScript Debug.main.html (5)" />
         <item itemvalue="JavaScript Debug.main.html (1)" />
+        <item itemvalue="JavaScript Debug.main.html (2)" />
+        <item itemvalue="JavaScript Debug.main.html (3)" />
+        <item itemvalue="JavaScript Debug.main.html (4)" />
       </list>
     </recent_temporary>
   </component>
@@ -184,7 +170,14 @@
       <option name="project" value="LOCAL" />
       <updated>1634715062151</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="reworked camera to extends basic transform class&#10;added orbit camera to extend normal Camera&#10;reworked old worksheets to fit with this new implementation">
+      <created>1634718179971</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1634718179971</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -221,7 +214,8 @@
     <MESSAGE value="reworked old code.&#10;made entire worksheet 7 actualy work" />
     <MESSAGE value="reworked old code&#10;worksheet 02 part 2 now uses single buffer for color and position" />
     <MESSAGE value="finished worksheet08&#10;started on worksheet09" />
-    <option name="LAST_COMMIT_MESSAGE" value="finished worksheet08&#10;started on worksheet09" />
+    <MESSAGE value="reworked camera to extends basic transform class&#10;added orbit camera to extend normal Camera&#10;reworked old worksheets to fit with this new implementation" />
+    <option name="LAST_COMMIT_MESSAGE" value="reworked camera to extends basic transform class&#10;added orbit camera to extend normal Camera&#10;reworked old worksheets to fit with this new implementation" />
   </component>
   <component name="WindowStateProjectService">
     <state x="96" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1629619396960">
@@ -232,6 +226,10 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="416" y="143" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1280.680@0.0.1280.680" timestamp="1631515729357" />
+    <state x="410" y="57" key="#com.intellij.ide.util.MemberChooser" timestamp="1634721478701">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="410" y="57" key="#com.intellij.ide.util.MemberChooser/0.0.1280.680@0.0.1280.680" timestamp="1634721478701" />
     <state x="93" y="93" width="1095" height="495" key="DiffContextDialog" timestamp="1629539961753">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -344,7 +342,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/computergraphics/utils/geomitry.js</url>
-          <line>347</line>
+          <line>340</line>
           <option name="timeStamp" value="11" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
@@ -352,6 +350,12 @@
           <line>37</line>
           <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="12" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/computergraphics/utils/geomitry.js</url>
+          <line>97</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="13" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

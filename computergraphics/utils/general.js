@@ -82,20 +82,29 @@ class transform{
     rotation = vec3(0,0,0)
     scale = vec3(1,1,1)
     local_transformMatrix = mat4()
+    rotation_order = "XYZ"
 
     constructor(center) {
         this.position = center
-        this.rotation[1] = 45
         this.update_transform()
-        this.setScale(vec3(0.2, 0.2, 0.2))
     }
+
     update_transform(){
         var tempMat = mult(mat4(), scalem(this.scale))
-        tempMat = mult( rotateZ(this.rotation[2]), tempMat)
-        tempMat = mult( rotateY(this.rotation[1]), tempMat)
-        tempMat = mult( rotateX(this.rotation[0]), tempMat )
+        tempMat = this.checkRotationOrder(tempMat)
         tempMat = mult(translate(this.position), tempMat)
         this.local_transformMatrix = tempMat
+    }
+
+    orderXYZ(tempMat){
+        tempMat = mult( rotateZ(this.rotation[2]), tempMat)
+        tempMat = mult( rotateY(this.rotation[1]), tempMat)
+        tempMat = mult( rotateX(this.rotation[0]), tempMat)
+        return tempMat
+    }
+
+    checkRotationOrder(tempMat) {
+        if (this.rotation_order === "XYZ") return this.orderXYZ(tempMat);
     }
 
     move(vec){

@@ -99,11 +99,10 @@ function setupControls(){
 function main() {
   init()
 
-  objects.push(new Sphere(vec4(0,0,0,0)))
+  objects.push(new Sphere(vec3(0,0,0)))
   camera = new OrbitCamera()
-  camera.pMatrix = ortho(-1, 1, -1, 1, camera.near, camera.far);
-  camera.update_projection_matrix()
-  camera.fovy = 90;
+  camera.fovy = 45;
+  camera.radius = 2
 
   gl.clearColor(0, 0.5843, 0.9294, 1.0);
 
