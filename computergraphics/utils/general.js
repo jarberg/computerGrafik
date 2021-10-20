@@ -84,7 +84,7 @@ class transform{
     local_transformMatrix = mat4()
     rotation_order = "XYZ"
 
-    constructor(center) {
+    constructor(center=vec3(0,0,0)) {
         this.position = center
         this.update_transform()
     }

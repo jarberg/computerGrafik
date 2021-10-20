@@ -16,13 +16,11 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5e3948d6-358c-4c60-8135-650537d75e3c" name="Default Changelist" comment="reworked camera to extends basic transform class&#10;added orbit camera to extend normal Camera&#10;reworked old worksheets to fit with this new implementation">
+    <list default="true" id="5e3948d6-358c-4c60-8135-650537d75e3c" name="Default Changelist" comment="added animation class to git">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet07/part01/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Worksheet07/part01/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet07/part02/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Worksheet07/part02/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet07/part03/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Worksheet07/part03/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet09/part01/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Worksheet09/part01/main.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet09/part01/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Worksheet09/part01/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet08/part01/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Worksheet08/part01/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet08/part02/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Worksheet08/part02/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet08/part03/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Worksheet08/part03/main.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/computergraphics/utils/general.js" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/utils/general.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/computergraphics/utils/geomitry.js" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/utils/geomitry.js" afterDir="false" />
     </list>
@@ -75,28 +73,28 @@
     </key>
   </component>
   <component name="RunManager" selected="JavaScript Debug.main.html (5)">
-    <configuration name="main.html (1)" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/DtuWebsite/computergraphics/Worksheet06/part01/main.html" useBuiltInWebServerPort="true">
+    <configuration name="main.html (1)" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/DtuWebsite/computergraphics/Worksheet08/part02/main.html" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
-    <configuration name="main.html (2)" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/DtuWebsite/computergraphics/Worksheet09/part01/main.html" useBuiltInWebServerPort="true">
+    <configuration name="main.html (2)" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/DtuWebsite/computergraphics/Worksheet08/part04/main.html" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
-    <configuration name="main.html (3)" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/DtuWebsite/computergraphics/Worksheet05/part02/main.html" useBuiltInWebServerPort="true">
+    <configuration name="main.html (4)" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/DtuWebsite/computergraphics/Worksheet08/part03/main.html" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
-    <configuration name="main.html (4)" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/DtuWebsite/computergraphics/Worksheet05/part01/main.html" useBuiltInWebServerPort="true">
+    <configuration name="main.html (5)" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/DtuWebsite/computergraphics/Worksheet06/part01/main.html" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
-    <configuration name="main.html (5)" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/DtuWebsite/computergraphics/Worksheet07/part01/main.html" useBuiltInWebServerPort="true">
+    <configuration name="main.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/DtuWebsite/computergraphics/Worksheet07/part02/main.html" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="JavaScript Debug.main.html (5)" />
-        <item itemvalue="JavaScript Debug.main.html (1)" />
+        <item itemvalue="JavaScript Debug.main.html" />
         <item itemvalue="JavaScript Debug.main.html (2)" />
-        <item itemvalue="JavaScript Debug.main.html (3)" />
         <item itemvalue="JavaScript Debug.main.html (4)" />
+        <item itemvalue="JavaScript Debug.main.html (1)" />
       </list>
     </recent_temporary>
   </component>
@@ -177,7 +175,21 @@
       <option name="project" value="LOCAL" />
       <updated>1634718179971</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="reworked old model setup.&#10;now support both non indice and indice models&#10;&#10;moved buffer init to model classes">
+      <created>1634722275856</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1634722275856</updated>
+    </task>
+    <task id="LOCAL-00011" summary="added animation class to git">
+      <created>1634722308630</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1634722308630</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -215,7 +227,9 @@
     <MESSAGE value="reworked old code&#10;worksheet 02 part 2 now uses single buffer for color and position" />
     <MESSAGE value="finished worksheet08&#10;started on worksheet09" />
     <MESSAGE value="reworked camera to extends basic transform class&#10;added orbit camera to extend normal Camera&#10;reworked old worksheets to fit with this new implementation" />
-    <option name="LAST_COMMIT_MESSAGE" value="reworked camera to extends basic transform class&#10;added orbit camera to extend normal Camera&#10;reworked old worksheets to fit with this new implementation" />
+    <MESSAGE value="reworked old model setup.&#10;now support both non indice and indice models&#10;&#10;moved buffer init to model classes" />
+    <MESSAGE value="added animation class to git" />
+    <option name="LAST_COMMIT_MESSAGE" value="added animation class to git" />
   </component>
   <component name="WindowStateProjectService">
     <state x="96" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1629619396960">
@@ -322,10 +336,10 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="297" y="151" width="672" height="677" key="run.anything.popup/0.0.1280.680@0.0.1280.680" timestamp="1631515395719" />
-    <state x="303" y="1" width="672" height="678" key="search.everywhere.popup" timestamp="1630484018203">
+    <state x="303" y="1" width="672" height="678" key="search.everywhere.popup" timestamp="1634722638343">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="303" y="1" width="672" height="678" key="search.everywhere.popup/0.0.1280.680@0.0.1280.680" timestamp="1630484018203" />
+    <state x="303" y="1" width="672" height="678" key="search.everywhere.popup/0.0.1280.680@0.0.1280.680" timestamp="1634722638343" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -342,7 +356,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/computergraphics/utils/geomitry.js</url>
-          <line>340</line>
+          <line>312</line>
           <option name="timeStamp" value="11" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
@@ -353,7 +367,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/computergraphics/utils/geomitry.js</url>
-          <line>97</line>
+          <line>102</line>
           <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="13" />
         </line-breakpoint>

@@ -125,7 +125,7 @@ function render(){
 
       let translationBack = translate(lightPosition[0], lightPosition[1], lightPosition[2]);
 
-      let shadow = mult(translationBack, mult(modelLight, mult(translation, obj.transformMatrix)));
+      let shadow = mult(translationBack, mult(modelLight, mult(translation, obj.local_transformMatrix)));
       // Send color and matrix for shadow
       gl.uniformMatrix4fv( gl.getUniformLocation(program,"objTransform"), false,
           flatten(shadow));
@@ -151,7 +151,7 @@ function main() {
   create_image_texture("xamp23.png", configureImageTexture, 0)
 
 
-  objects.push(new Rectangle(vec4(-1,-1,1,0)))
+  objects.push(new Rectangle(vec3(-1,-1,1)))
   objects[0].vertices = [
     vec4(2,0,-5,1),
     vec4(-2,0,-5,1),
@@ -171,13 +171,14 @@ function main() {
   var mytexels  = generateredTextureArray(1)
   configureTexture(mytexels, 1, 1)
 
-  objects.push(new Rectangle(vec4(-1,0,1,0)))
+  objects.push(new Rectangle(vec4(-1,0,1)))
   objects[1].vertices = [
     vec4(0.75,-0.5,-1.75,1),
     vec4(0.25,-0.5,-1.75,1),
     vec4(0.25,-0.5,-1.25,1),
     vec4(0.75,-0.5,-1.25,1),
   ]
+  objects[1].move(vec3(0,1,0))
   objects[1].texCoord = [
     vec2(0, 0),
     vec2(0, 1),
@@ -188,7 +189,8 @@ function main() {
   objects[1].clear()
   objects[1].quad(0,1,2,3)
 
-  objects.push(new Rectangle(vec4(-1,0,1,0)))
+  objects.push(new Rectangle(vec4(-1,0,1)))
+  objects[2].move(vec3(0,1,0))
   objects[2].vertices = [
     vec4(1,0,-3,1),
     vec4(1,-1,-3,1),
@@ -207,7 +209,7 @@ function main() {
 
 
   camera = new OrbitCamera()
-  camera.move(vec3(-2,0,-2))
+  camera.move(vec3(1,0,-3.5))
   camera.radius = 10
   camera.phi = 90
   camera.theta = -45
