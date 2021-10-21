@@ -16,22 +16,18 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5e3948d6-358c-4c60-8135-650537d75e3c" name="Default Changelist" comment="added simple smooth shadign and inverse squared point light on shader&#10;&#10;fixed error with sphere  in some worksheets that broke">
-      <change afterPath="$PROJECT_DIR$/computergraphics/Worksheet09/part01/render/shaders/fragment_shadow.glsl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/computergraphics/Worksheet09/part01/render/shaders/vertex_shadow.glsl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/computergraphics/Worksheet09/part01/render/shadowFrameBuffer.js" afterDir="false" />
+    <list default="true" id="5e3948d6-358c-4c60-8135-650537d75e3c" name="Default Changelist" comment="found bug in worlsheet 09 where ground used old quad function">
+      <change afterPath="$PROJECT_DIR$/computergraphics/Worksheet09/part01/render/shadowRenderer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet08/part01/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Worksheet08/part01/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet08/part02/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Worksheet08/part02/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet08/part03/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Worksheet08/part03/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet08/part04/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Worksheet08/part04/main.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet08/part04/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Worksheet08/part04/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet09/part01/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Worksheet09/part01/main.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet09/part01/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Worksheet09/part01/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet09/part01/render/fragmentShader.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Worksheet09/part01/render/shaders/fragmentShader.glsl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet09/part01/render/fragmentShader2.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Worksheet09/part01/render/shaders/fragmentShader2.glsl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet09/part01/render/modelRenderer.js" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Worksheet09/part01/render/shaders/modelRenderer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet09/part01/render/vertexShader.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Worksheet09/part01/render/shaders/vertexShader.glsl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet09/part01/render/vertexShader2.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Worksheet09/part01/render/shaders/vertexShader2.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet09/part01/render/shaders/fragmentShader.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Worksheet09/part01/render/shaders/fragmentShader.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet09/part01/render/shaders/fragmentShader2.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Worksheet09/part01/render/shaders/fragmentShader2.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet09/part01/render/shaders/fragment_shadow.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Worksheet09/part01/render/shaders/fragment_shadow.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet09/part01/render/shaders/vertexShader.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Worksheet09/part01/render/shaders/vertexShader.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet09/part01/render/shaders/vertexShader2.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Worksheet09/part01/render/shaders/vertexShader2.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet09/part01/render/shaders/vertex_shadow.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Worksheet09/part01/render/shaders/vertex_shadow.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet09/part01/render/shadowFrameBuffer.js" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Worksheet09/part01/render/shadowFrameBuffer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/computergraphics/utils/geomitry.js" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/utils/geomitry.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -242,7 +238,21 @@
       <option name="project" value="LOCAL" />
       <updated>1634812388359</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="reworked variable locators to make code easyer to read&#10;&#10;started on shadow buffers">
+      <created>1634817368490</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1634817368490</updated>
+    </task>
+    <task id="LOCAL-00019" summary="found bug in worlsheet 09 where ground used old quad function">
+      <created>1634817451045</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1634817451045</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -288,7 +298,9 @@
     <MESSAGE value="safety commit" />
     <MESSAGE value="added abillity to switch shaders" />
     <MESSAGE value="added simple smooth shadign and inverse squared point light on shader&#10;&#10;fixed error with sphere  in some worksheets that broke" />
-    <option name="LAST_COMMIT_MESSAGE" value="added simple smooth shadign and inverse squared point light on shader&#10;&#10;fixed error with sphere  in some worksheets that broke" />
+    <MESSAGE value="reworked variable locators to make code easyer to read&#10;&#10;started on shadow buffers" />
+    <MESSAGE value="found bug in worlsheet 09 where ground used old quad function" />
+    <option name="LAST_COMMIT_MESSAGE" value="found bug in worlsheet 09 where ground used old quad function" />
   </component>
   <component name="WindowStateProjectService">
     <state x="96" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1629619396960">
@@ -383,22 +395,26 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="93" y="93" width="1095" height="495" key="ShowDiffWithBranchDialog/0.0.1280.680@0.0.1280.680" timestamp="1629539961754" />
-    <state x="233" y="74" key="Vcs.Push.Dialog.v2" timestamp="1629835862913">
+    <state x="233" y="74" key="Vcs.Push.Dialog.v2" timestamp="1634817459039">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="233" y="74" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1629835862913" />
-    <state x="347" y="73" width="587" height="534" key="find.popup" timestamp="1629833615506">
+    <state x="233" y="74" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1634817459039" />
+    <state x="347" y="73" width="587" height="534" key="find.popup" timestamp="1634822374614">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="347" y="73" width="587" height="534" key="find.popup/0.0.1280.680@0.0.1280.680" timestamp="1629833615506" />
+    <state x="347" y="73" width="587" height="534" key="find.popup/0.0.1280.680@0.0.1280.680" timestamp="1634822374614" />
     <state x="433" y="242" key="git4idea.remote.GitConfigureRemotesDialog" timestamp="1629096820225">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="433" y="242" key="git4idea.remote.GitConfigureRemotesDialog/0.0.1280.680@0.0.1280.680" timestamp="1629096820225" />
-    <state x="297" y="151" width="672" height="677" key="run.anything.popup" timestamp="1631515395719">
+    <state width="600" height="428" key="javadoc.popup" timestamp="1634823074102">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="297" y="151" width="672" height="677" key="run.anything.popup/0.0.1280.680@0.0.1280.680" timestamp="1631515395719" />
+    <state width="600" height="428" key="javadoc.popup/0.0.1280.680@0.0.1280.680" timestamp="1634823074102" />
+    <state x="297" y="151" width="672" height="677" key="run.anything.popup" timestamp="1634823750066">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="297" y="151" width="672" height="677" key="run.anything.popup/0.0.1280.680@0.0.1280.680" timestamp="1634823750066" />
     <state x="303" y="1" width="672" height="678" key="search.everywhere.popup" timestamp="1634816038111">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -414,7 +430,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/computergraphics/utils/geomitry.js</url>
-          <line>282</line>
+          <line>280</line>
           <option name="timeStamp" value="11" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
@@ -422,18 +438,6 @@
           <line>37</line>
           <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="12" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/computergraphics/utils/geomitry.js</url>
-          <line>130</line>
-          <properties lambdaOrdinal="-1" />
-          <option name="timeStamp" value="13" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/computergraphics/utils/geomitry.js</url>
-          <line>219</line>
-          <properties lambdaOrdinal="-1" />
-          <option name="timeStamp" value="15" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

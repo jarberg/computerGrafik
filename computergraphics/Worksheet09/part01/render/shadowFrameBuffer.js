@@ -1,7 +1,4 @@
 class ShadowMapBuffer {
-
-    gl;
-
     framebuffer;
     renderbuffer;
     texture;
@@ -14,13 +11,10 @@ class ShadowMapBuffer {
 
     bound= false;
 
-    constructor(gl, width, height) {
-        this.gl = gl;
+    constructor(width, height) {
         this.width = width;
         this.height = height;
 
-        // Check that size is power of 2 (required fo r texture).
-        // This detail caused be A LOT of headaches
         if( Math.log2(this.width) % 1 !== 0 )
             throw "ShadwMap: Width must be a power of 2";
         if( Math.log2(this.height) % 1 !== 0 )
@@ -37,11 +31,13 @@ class ShadowMapBuffer {
         gl.framebufferRenderbuffer(gl.FRAMEBUFFER, gl.DEPTH_ATTACHMENT, gl.RENDERBUFFER, this.renderbuffer);
 
         // Build target texture
-        Util.Texture.createFromData(gl, null, width, height)
-
+        this.texture = gl.createTexture();
+        gl.bindTexture(gl.TEXTURE_2D, this.texture);
+        gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, 512, 512,
+            0, gl.RGBA, gl.UNSIGNED_BYTE, null);
 
         // I know the texture build is synchronous, so I know I can build use it here already
-        gl.framebufferTexture2D(gl.FRAMEBUFFER, gl.COLOR_ATTACHMENT0, gl.TEXTURE_2D, this.texture.getGLTexture(), 0);
+        gl.framebufferTexture2D(gl.FRAMEBUFFER, gl.COLOR_ATTACHMENT0, gl.TEXTURE_2D, this.texture, 0);
 
         var status = gl.checkFramebufferStatus(gl.FRAMEBUFFER);
         if (status !== gl.FRAMEBUFFER_COMPLETE) {
@@ -54,16 +50,16 @@ class ShadowMapBuffer {
     }
 
 
-    bind(textureSlot: number) {
+    bind(textureSlot) {
         if( this.bound ) return;
         this.bindTexture(textureSlot);
-        this.gl.bindFramebuffer(this.gl.FRAMEBUFFER, this.framebuffer);
-        this.gl.bindRenderbuffer(this.gl.RENDERBUFFER, this.renderbuffer);
+        gl.bindFramebuffer(gl.FRAMEBUFFER, this.framebuffer);
+        gl.bindRenderbuffer(gl.RENDERBUFFER, this.renderbuffer);
 
-        var currentViewport = this.gl.getParameter(this.gl.VIEWPORT);
+        var currentViewport = gl.getParameter(gl.VIEWPORT);
         this.unbindWidth = currentViewport[2];
         this.unbindHeight = currentViewport[3];
-        this.gl.viewport(0, 0, this.width, this.height);
+        gl.viewport(0, 0, this.width, this.height);
         this.bound = true;
     }
 
@@ -74,27 +70,24 @@ class ShadowMapBuffer {
     unbind(){
 
         if( !this.bound ) return;
-        this.gl.bindFramebuffer(this.gl.FRAMEBUFFER, null);
-        this.gl.bindRenderbuffer(this.gl.RENDERBUFFER, null);
-        this.gl.viewport(0, 0, this.unbindWidth, this.unbindHeight);
+        gl.bindFramebuffer(gl.FRAMEBUFFER, null);
+        gl.bindRenderbuffer(gl.RENDERBUFFER, null);
+        gl.viewport(0, 0, this.unbindWidth, this.unbindHeight);
         this.bound = false;
     }
 
-    bindTexture(textureSlot: number) {
-        this.texture.bind(textureSlot);
-        // this.gl.activeTexture(this.gl.TEXTURE0+textureSlot);
-        // this.gl.bindTexture(this.gl.TEXTURE_2D, this.texture);
+    bindTexture(textureSlot) {
+        gl.activeTexture(gl.TEXTURE0+textureSlot);
+        gl.bindTexture(gl.TEXTURE_2D, this.texture);
     }
 
 
-    getWidth() : number {
+    getWidth() {
         return this.width;
     }
 
-    getHeight() : number {
+    getHeight() {
         return this.height;
     }
-
-}
 
 }

@@ -8,7 +8,9 @@ var ground;
 
 var animatedModel = null;
 var lightPoint = null;
-
+var shadows;
+var shadowShader;
+var shadowRender;
 
 function init(){
   canvas = document.querySelector("#glCanvas");
@@ -22,7 +24,7 @@ function init(){
   gl.clearColor(0.8, 0.8, 0.8, 1.0);
   gl.enable(gl.CULL_FACE)
   gl.enable(gl.DEPTH_TEST)
-
+  shadowShader = initShaders(gl, "render/shaders/vertex_shadow.glsl", "render/shaders/fragment_shadow.glsl");
 }
 
 function setupControls(){
@@ -44,16 +46,25 @@ function setupControls(){
 var jump = false;
 
 
+
 function render(){
   gl.clear( gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
-
-  gl.disable(gl.BLEND);
-  gl.depthFunc(gl.LESS);
-
   timer = takeTime()
   camera.update(timer)
-
   light.orbit(timer)
+
+  lightpos = light.get_position()
+  var lighteye = lightpos;
+  var lightat = vec3(0.1, 0.1, 0.1)
+  var lightup = vec3(0.0, 1.0, 0.0)
+  lightPersp = lookAt(lighteye,lightat , lightup)
+
+
+  lightpos = light.get_position()
+
+  shadowRender.render(objects.concat([ground]), lightPersp, 1)
+
+
   gl.useProgram(lightPoint.shader)
   gl.uniformMatrix4fv( gl.getUniformLocation(lightPoint.shader,"modelViewMatrix"), false, flatten(camera.mvMatrix));
   gl.uniformMatrix3fv(gl.getUniformLocation(lightPoint.shader, "normalMatrix" ), false, camera.normalMatrix);
@@ -61,10 +72,16 @@ function render(){
   lightPoint.move(light.get_position())
   lightPoint.draw(camera);
 
+
   gl.useProgram(ground.shader)
+  shadows.bindTexture(1)
   gl.uniform1i(gl.getUniformLocation(ground.shader, "diffuseTexture"), 0);
   gl.uniformMatrix4fv( gl.getUniformLocation(ground.shader,"modelViewMatrix"), false, flatten(camera.mvMatrix));
   gl.uniformMatrix3fv(gl.getUniformLocation(ground.shader, "normalMatrix" ), false, flatten(camera.normalMatrix));
+
+  gl.uniform1i(gl.getUniformLocation(ground.shader, "u_ShadowMap"), 1);
+  gl.uniformMatrix4fv( gl.getUniformLocation(ground.shader,"u_MvpMatrixFromLight"), false, flatten(lightPersp));
+
 
   ground.draw(camera)
 
@@ -93,7 +110,6 @@ function render(){
     let translationBack = translate(lightPosition[0], lightPosition[1], lightPosition[2]);
     let shadow = mult(translationBack, mult(modelLight, mult(translation, obj.local_transformMatrix)));
 
-    // Send color and matrix for shadow
     gl.uniformMatrix4fv( gl.getUniformLocation(shader,"objTransform"), false,
         flatten(shadow));
     gl.uniform1i(gl.getUniformLocation(shader,"u_shadow"),1)
@@ -107,9 +123,12 @@ function render(){
     var shader = obj.shader;
     gl.useProgram(shader)
     lightpos = light.get_position()
+    gl.uniformMatrix4fv( gl.getUniformLocation(shader,"modelViewMatrix"), false, flatten(camera.mvMatrix));
     gl.uniform4fv( gl.getUniformLocation(shader,"lightPosition"),  flatten(vec4(lightpos[0],lightpos[1],lightpos[2], 1.0)));
+
     gl.uniform1i(gl.getUniformLocation(shader, "diffuseTexture"), 1);
     gl.uniform1i(gl.getUniformLocation(shader,"u_shadow"),0)
+
     obj.draw(camera, false);
   }
   requestAnimFrame(render);
@@ -117,6 +136,7 @@ function render(){
 
 function main() {
   init()
+
   camera = new OrbitCamera()
   camera.move(vec3(0,1,0))
   camera.radius = 6
@@ -125,6 +145,7 @@ function main() {
   camera.set_fovy(45)
 
   create_image_texture("xamp23.png", configureImageTexture, 0)
+
   configureTexture(generateredTextureArray(1), 1, 1)
 
   ground = new Rectangle(vec3(0,0,0))
@@ -144,16 +165,17 @@ function main() {
   quad(0,1,2,3,ground)
   ground.move(vec3(0,0,3))
 
-  light = new OrbitPointLight(vec3(0,2,0))
+  shadows = new ShadowMapBuffer(512, 512)
+  shadowRender = new ShadowRenderer(shadowShader, shadows)
+
+  light = new OrbitPointLight(vec3(0.0,3.0,0.0))
   lightPoint = new Dot(vec3(0,0,0));
 
-
   loadObjFile("../../models/teacup/teapot.obj", 1, false, (obj) => {
-    console.log(obj.getDrawingInfo());
+
     animatedModel = new Mesh([0,0,0],obj.getDrawingInfo());
     animatedModel.setScale(vec3(0.25, 0.25, 0.25))
     animatedModel.setShader(initShaders(gl, "render/shaders/vertexShader2.glsl", "render/shaders/fragmentShader2.glsl"));
-
     objects.push(animatedModel);
   });
 

@@ -30,7 +30,7 @@ void main()
             float I = 2.0/(length(p)*length(p));
 
             float Kd = max( dot(N, L), 0.0 );
-            gl_FragColor = vec4(0.2,0.2,0.2,1)+v_Color*Kd*I;
+            gl_FragColor = vec4(0.2,0.2,0.2,1)+v_Color*Kd*I*visibility;
         }
     }
 

@@ -179,9 +179,7 @@ class Sphere extends model{
             }
         }
 
-        gl.uniformMatrix3fv(gl.getUniformLocation(this.shader,"normalMatrix"), false, flatten(camera.normalMatrix));
-        gl.uniformMatrix4fv( gl.getUniformLocation(this.shader,"modelViewMatrix"), false, flatten(camera.mvMatrix));
-        gl.uniformMatrix4fv( gl.getUniformLocation(this.shader,"mTex"), false, flatten(mat4()));
+         gl.uniformMatrix4fv( gl.getUniformLocation(this.shader,"mTex"), false, flatten(mat4()));
         gl.uniform3fv( gl.getUniformLocation(this.shader,"eye"), flatten(camera.eye));
 
         gl.uniform1i(gl.getUniformLocation(this.shader,"isreflective"), 1)
@@ -323,18 +321,11 @@ class Mesh extends IndiceModel{
         gl.useProgram(this.shader)
         if(this.dirtyShader) this.initDataToBuffers()
 
-        gl.bindBuffer(gl.ARRAY_BUFFER, this.vBuffer);
-        gl.vertexAttribPointer(this.vPosition, 3, gl.FLOAT, false, 0, 0);
-        gl.enableVertexAttribArray(this.vPosition);
+        this.initAttributeVariable(this.vPosition, this.vBuffer, 3, gl.FLOAT)
 
-        gl.bindBuffer(gl.ARRAY_BUFFER, this.cBuffer);
-        gl.vertexAttribPointer(this.vColor, 4, gl.FLOAT, false, 0, 0);
-        gl.enableVertexAttribArray(this.vColor);
+        this.initAttributeVariable(this.vColor, this.cBuffer, 4, gl.FLOAT)
 
-        gl.bindBuffer(gl.ARRAY_BUFFER, this.nBuffer);
-        gl.vertexAttribPointer(this.a_normal, 3, gl.FLOAT, false, 0, 0);
-        gl.enableVertexAttribArray(this.a_normal);
-
+        this.initAttributeVariable(this.a_normal, this.nBuffer, 3, gl.FLOAT)
 
         if (!shadow){
             gl.uniformMatrix4fv(gl.getUniformLocation(this.shader,"objTransform"), false, flatten(this.local_transformMatrix));
@@ -343,8 +334,6 @@ class Mesh extends IndiceModel{
             }
         }
         gl.uniformMatrix3fv(gl.getUniformLocation(this.shader, "normalMatrix" ), false, flatten(camera.normalMatrix));
-        gl.uniformMatrix4fv( gl.getUniformLocation(this.shader,"modelViewMatrix"), false, flatten(camera.mvMatrix));
-
         gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, this.iBuffer);
         gl.drawElements(gl.TRIANGLES, this.indices.length, gl.UNSIGNED_SHORT, 0);
     }
