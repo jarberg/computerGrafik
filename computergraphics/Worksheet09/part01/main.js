@@ -141,7 +141,7 @@ function main() {
     vec2(1, 0)
   ];
   ground.clear()
-  ground.quad(0,1,2,3)
+  quad(0,1,2,3,ground)
   ground.move(vec3(0,0,3))
 
   light = new OrbitPointLight(vec3(0,2,0))
