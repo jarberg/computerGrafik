@@ -5,7 +5,7 @@ var program = null;
 var fpsOutput;
 var timer = null;
 var ground;
-var currentTime = 1;
+
 var animatedModel = null;
 var lightPoint = null;
 
@@ -31,7 +31,17 @@ function setupControls(){
   rotateCamera.addEventListener('input', () =>{
     camera.rotate = rotateCamera.checked
   });
+  let rotateLight = document.getElementById("rotate_light")
+  rotateLight.addEventListener('input', () =>{
+    light.rotate = rotateLight.checked
+  });
+  let jumpteapot = document.getElementById("jump_pot")
+  jumpteapot.addEventListener('input', () =>{
+    jump = jumpteapot.checked
+  });
 }
+
+var jump = false;
 
 
 function render(){
@@ -54,13 +64,18 @@ function render(){
   gl.useProgram(ground.shader)
   gl.uniform1i(gl.getUniformLocation(ground.shader, "diffuseTexture"), 0);
   gl.uniformMatrix4fv( gl.getUniformLocation(ground.shader,"modelViewMatrix"), false, flatten(camera.mvMatrix));
-  gl.uniformMatrix3fv(gl.getUniformLocation(ground.shader, "normalMatrix" ), false, camera.normalMatrix);
+  gl.uniformMatrix3fv(gl.getUniformLocation(ground.shader, "normalMatrix" ), false, flatten(camera.normalMatrix));
 
   ground.draw(camera)
 
   gl.depthFunc(gl.GREATER);
   gl.enable(gl.BLEND);
   gl.blendFunc(gl.ONE_MINUS_SRC_COLOR, gl.DST_COLOR);
+
+  if(jump){
+    sinus_jump(animatedModel)
+  }
+
   for (let i = 0; i < objects.length; i++) {
     var obj = objects[i];
     var shader = obj.shader
@@ -91,25 +106,22 @@ function render(){
     var obj = objects[i];
     var shader = obj.shader;
     gl.useProgram(shader)
-
+    lightpos = light.get_position()
+    gl.uniform4fv( gl.getUniformLocation(shader,"lightPosition"),  flatten(vec4(lightpos[0],lightpos[1],lightpos[2], 1.0)));
     gl.uniform1i(gl.getUniformLocation(shader, "diffuseTexture"), 1);
     gl.uniform1i(gl.getUniformLocation(shader,"u_shadow"),0)
-    gl.uniformMatrix4fv( gl.getUniformLocation(shader,"modelViewMatrix"), false, flatten(camera.mvMatrix));
-    gl.uniformMatrix3fv(gl.getUniformLocation(shader, "normalMatrix" ), false, camera.normalMatrix);
     obj.draw(camera, false);
   }
   requestAnimFrame(render);
 }
 
-
-
 function main() {
   init()
   camera = new OrbitCamera()
-  camera.move(vec3(0,0,0))
-  camera.radius = 12
+  camera.move(vec3(0,1,0))
+  camera.radius = 6
   camera.phi = 10.0
-  camera.theta = -45
+  camera.theta = -10
   camera.set_fovy(45)
 
   create_image_texture("xamp23.png", configureImageTexture, 0)
@@ -133,14 +145,15 @@ function main() {
   ground.move(vec3(0,0,3))
 
   light = new OrbitPointLight(vec3(0,2,0))
-  lightPoint = new Dot(vec3(0,2,0));
+  lightPoint = new Dot(vec3(0,0,0));
 
 
   loadObjFile("../../models/teacup/teapot.obj", 1, false, (obj) => {
     console.log(obj.getDrawingInfo());
     animatedModel = new Mesh([0,0,0],obj.getDrawingInfo());
-    animatedModel.setScale(vec3(0.2, 0.2, 0.2))
+    animatedModel.setScale(vec3(0.25, 0.25, 0.25))
     animatedModel.setShader(initShaders(gl, "render/vertexShader2.glsl", "render/fragmentShader2.glsl"));
+
     objects.push(animatedModel);
   });
 

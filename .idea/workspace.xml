@@ -16,15 +16,24 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5e3948d6-358c-4c60-8135-650537d75e3c" name="Default Changelist" comment="safety commit">
+    <list default="true" id="5e3948d6-358c-4c60-8135-650537d75e3c" name="Default Changelist" comment="added abillity to switch shaders">
+      <change afterPath="$PROJECT_DIR$/computergraphics/Worksheet06/part03/render/fragment_shader.glsl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/computergraphics/Worksheet06/part03/render/vertex_shader.glsl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/computergraphics/Worksheet09/part01/render/modelRenderer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet08/part04/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Worksheet08/part04/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet06/part03/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Worksheet06/part03/main.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet06/part03/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Worksheet06/part03/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet07/part04/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Worksheet07/part04/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet09/part01/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Worksheet09/part01/main.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet09/part01/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Worksheet09/part01/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet09/part01/render/fragmentShader.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Worksheet09/part01/render/fragmentShader.glsl" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet09/part01/render/fragmentShader2.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Worksheet09/part01/render/fragmentShader2.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet09/part01/render/vertexShader.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Worksheet09/part01/render/vertexShader.glsl" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet09/part01/render/vertexShader2.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Worksheet09/part01/render/vertexShader2.glsl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computergraphics/utils/Camera.js" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/utils/Camera.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/computergraphics/utils/animation.js" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/utils/animation.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/computergraphics/utils/geomitry.js" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/utils/geomitry.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/computergraphics/utils/lights.js" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/utils/lights.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/computergraphics/utils/textureUtils.js" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/utils/textureUtils.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,6 +44,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JavaScript File" />
+        <option value="GLSL Shader" />
       </list>
     </option>
   </component>
@@ -68,35 +78,35 @@
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Michael\Desktop\DtuWebsite\computergraphics\Worksheet09\part01\render" />
+      <recent name="C:\Users\Michael\Desktop\DtuWebsite\computergraphics\Worksheet06\part03" />
+      <recent name="C:\Users\Michael\Desktop\DtuWebsite\computergraphics\Worksheet06\part03\render" />
       <recent name="C:\Users\Michael\Desktop\DtuWebsite\computergraphics\Worksheet09" />
       <recent name="C:\Users\Michael\Desktop\DtuWebsite\computergraphics\Worksheet08" />
-      <recent name="C:\Users\Michael\Desktop\DtuWebsite\computergraphics\Worksheet07" />
-      <recent name="C:\Users\Michael\Desktop\DtuWebsite\computergraphics\Worksheet08\part02" />
     </key>
   </component>
-  <component name="RunManager" selected="JavaScript Debug.main.html (1)">
-    <configuration name="main.html (1)" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/DtuWebsite/computergraphics/Worksheet09/part01/main.html" useBuiltInWebServerPort="true">
+  <component name="RunManager" selected="JavaScript Debug.main.html (3)">
+    <configuration name="main2.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/DtuWebsite/computergraphics/Worksheet06/part03/main2.html" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
-    <configuration name="main.html (2)" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/DtuWebsite/computergraphics/Worksheet07/part01/main.html" useBuiltInWebServerPort="true">
+    <configuration name="main.html (2)" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/DtuWebsite/computergraphics/Worksheet04/part04/main.html" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
-    <configuration name="main.html (3)" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/DtuWebsite/computergraphics/Worksheet05/part02/main.html" useBuiltInWebServerPort="true">
+    <configuration name="main.html (3)" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/DtuWebsite/computergraphics/Worksheet09/part01/main.html" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
-    <configuration name="main.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/DtuWebsite/computergraphics/Worksheet07/part03/main.html" useBuiltInWebServerPort="true">
+    <configuration name="main.html (4)" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/DtuWebsite/computergraphics/Worksheet06/part03/main.html" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
-    <configuration name="main.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/computergraphics/Worksheet05/part02/main.js" working-dir="$PROJECT_DIR$/computergraphics/Worksheet05/part02">
+    <configuration name="main.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/DtuWebsite/computergraphics/Worksheet06/part01/main.html" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JavaScript Debug.main.html (1)" />
         <item itemvalue="JavaScript Debug.main.html (3)" />
-        <item itemvalue="Node.js.main.js" />
-        <item itemvalue="JavaScript Debug.main.html" />
+        <item itemvalue="JavaScript Debug.main.html (4)" />
         <item itemvalue="JavaScript Debug.main.html (2)" />
+        <item itemvalue="JavaScript Debug.main.html" />
+        <item itemvalue="JavaScript Debug.main2.html" />
       </list>
     </recent_temporary>
   </component>
@@ -219,7 +229,14 @@
       <option name="project" value="LOCAL" />
       <updated>1634731010198</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="added abillity to switch shaders">
+      <created>1634750691601</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1634750691602</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -263,7 +280,8 @@
     <MESSAGE value="ground was offset in workshet 09 part 01" />
     <MESSAGE value="added start of 3d hud elements" />
     <MESSAGE value="safety commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="safety commit" />
+    <MESSAGE value="added abillity to switch shaders" />
+    <option name="LAST_COMMIT_MESSAGE" value="added abillity to switch shaders" />
   </component>
   <component name="WindowStateProjectService">
     <state x="96" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1629619396960">
@@ -282,6 +300,10 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="93" y="93" width="1095" height="495" key="DiffContextDialog/0.0.1280.680@0.0.1280.680" timestamp="1629539961753" />
+    <state x="421" y="96" key="FileChooserDialogImpl" timestamp="1634759145919">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="421" y="96" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1634759145919" />
     <state width="761" height="214" key="GridCell.Tab.0.bottom" timestamp="1631600281939">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -346,10 +368,10 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state width="761" height="214" key="GridCell.Tab.3.right/0.0.1280.680@0.0.1280.680" timestamp="1631600283419" />
-    <state x="410" y="61" key="RollbackChangesDialog" timestamp="1634715048631">
+    <state x="410" y="61" key="RollbackChangesDialog" timestamp="1634797283996">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="410" y="61" key="RollbackChangesDialog/0.0.1280.680@0.0.1280.680" timestamp="1634715048631" />
+    <state x="410" y="61" key="RollbackChangesDialog/0.0.1280.680@0.0.1280.680" timestamp="1634797283996" />
     <state x="93" y="93" width="1095" height="495" key="ShowDiffWithBranchDialog" timestamp="1629539961754">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -385,7 +407,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/computergraphics/utils/geomitry.js</url>
-          <line>331</line>
+          <line>343</line>
           <option name="timeStamp" value="11" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
@@ -396,13 +418,13 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/computergraphics/utils/geomitry.js</url>
-          <line>118</line>
+          <line>122</line>
           <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="13" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/computergraphics/utils/geomitry.js</url>
-          <line>225</line>
+          <line>237</line>
           <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="15" />
         </line-breakpoint>

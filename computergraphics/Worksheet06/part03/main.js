@@ -36,7 +36,7 @@ function init(){
   // Set clear color to black, fully opaque
   gl.clearColor(0.8, 0.8, 0.8, 1.0);
 
-  program = initShaders(gl, "vertex-shader", "fragment-shader");
+  program = initShaders(gl, "render/vertex_shader.glsl", "render/fragment_shader.glsl");
   gl.useProgram(program);
   gl.enable(gl.CULL_FACE)
   gl.enable(gl.DEPTH_TEST)
@@ -109,7 +109,7 @@ function setupControls(){
     gl.texParameteri( gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER,
         gl.NEAREST_MIPMAP_NEAREST );
   };
-;
+
   fpsOutput = document.getElementById("fpsOutput")
   let rotateCamera = document.getElementById("rotate_Camera")
   rotateCamera.addEventListener('input', () =>{
@@ -162,19 +162,9 @@ function configureTexture(image, size) {
 function main() {
   init()
 
-  objects.push(new Sphere(vec4(0,0,0,0)))
-  //objects[0].transformMatrix = mult(scalem(5,5,5), objects[0].transformMatrix)
-  camera = new OrbitCamera()
-  camera.pMatrix = ortho(-1, 1, -1, 1, camera.near, camera.far);
-  camera.update_projection_matrix()
-  camera.fovy = 90;
-
   gl.clearColor(0, 0.5843, 0.9294, 1.0);
 
   setupControls()
-
-
-  //http://localhost:63342/computerGrafik/Worksheet06/part03/earth.jpg
 
   var image = document.createElement('img');
   image.crossorigin = 'anonymous';
@@ -183,6 +173,11 @@ function main() {
   };
   image.src = 'earth.jpg';
 
+  sphere = new Sphere(vec3(0,0,0))
+  objects.push(sphere)
+
+  camera = new OrbitCamera()
+  camera.radius = 2
 
   render()
 }
@@ -208,11 +203,9 @@ function render(){
     vec3(camera.mvMatrix[1][0], camera.mvMatrix[1][1], camera.mvMatrix[1][2]),
     vec3(camera.mvMatrix[2][0], camera.mvMatrix[2][1], camera.mvMatrix[2][2])
   ];
-  gl.uniformMatrix4fv( gl.getUniformLocation(program,"modelViewMatrix"), false, flatten(camera.mvMatrix));
-  gl.uniformMatrix3fv(gl.getUniformLocation( program, "normalMatrix" ), false, flatten(normalMatrix) );
 
   objects.forEach(function(obj) {
-    obj.draw(camera);
+    obj.draw(camera, false);
   });
 
   requestAnimFrame(render);
