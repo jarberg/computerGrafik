@@ -17,7 +17,7 @@ function init(){
     alert("Unable to initialize WebGL. Your browser or machine may not support it.");
     return;
   }
-  program = initShaders(gl, "render/vertexShader.glsl", "render/fragmentShader.glsl");
+  program = initShaders(gl, "render/shaders/vertexShader.glsl", "render/shaders/fragmentShader.glsl");
   gl.useProgram(program);
   gl.clearColor(0.8, 0.8, 0.8, 1.0);
   gl.enable(gl.CULL_FACE)
@@ -152,7 +152,7 @@ function main() {
     console.log(obj.getDrawingInfo());
     animatedModel = new Mesh([0,0,0],obj.getDrawingInfo());
     animatedModel.setScale(vec3(0.25, 0.25, 0.25))
-    animatedModel.setShader(initShaders(gl, "render/vertexShader2.glsl", "render/fragmentShader2.glsl"));
+    animatedModel.setShader(initShaders(gl, "render/shaders/vertexShader2.glsl", "render/shaders/fragmentShader2.glsl"));
 
     objects.push(animatedModel);
   });

@@ -42,20 +42,29 @@ class model extends transform{
         this.vTexCoord = gl.getAttribLocation(this.shader, "vTexCoord");
         this.dirtyShader = false;
 
-        gl.bindBuffer(gl.ARRAY_BUFFER, this.vBuffer);
+        this.initAttributeVariable(this.vPosition, this. vBuffer, 4, gl.FLOAT)
         gl.bufferData(gl.ARRAY_BUFFER, flatten(this.vertexes), gl.STATIC_DRAW);
-        gl.vertexAttribPointer(this.vPosition, 4, gl.FLOAT, false, 0, 0);
-        gl.enableVertexAttribArray(this.vPosition);
 
-        gl.bindBuffer(gl.ARRAY_BUFFER, this.nBuffer);
+        this.initAttributeVariable(this.vColor, this. cBuffer, 4, gl.FLOAT)
         gl.bufferData(gl.ARRAY_BUFFER, flatten(this.vertexColors), gl.STATIC_DRAW);
-        gl.vertexAttribPointer(this.vNormal, 4, gl.FLOAT, false, 0, 0);
-        gl.enableVertexAttribArray(this.vNormal);
 
-        gl.bindBuffer(gl.ARRAY_BUFFER, this.cBuffer);
+        this.initAttributeVariable(this.vNormal, this. nBuffer, 4, gl.FLOAT)
         gl.bufferData(gl.ARRAY_BUFFER, flatten(this.normals), gl.STATIC_DRAW);
-        gl.bindBuffer(gl.ARRAY_BUFFER, this.tBuffer);
+
+        this.initAttributeVariable(this.vTexCoord, this. tBuffer, 2, gl.FLOAT)
         gl.bufferData(gl.ARRAY_BUFFER, flatten(this.texCoordsArray), gl.STATIC_DRAW);
+    }
+
+    initAttributeVariable(a_attribute, buffer, size, type) {
+        gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
+        gl.vertexAttribPointer(a_attribute, size, type, false, 0, 0);
+        gl.enableVertexAttribArray(a_attribute);
+    }
+    draw(){
+        this.initAttributeVariable(this.vPosition, this.vBuffer, 4, gl.FLOAT)
+        this.initAttributeVariable(this.vColor, this.cBuffer, 4, gl.FLOAT)
+        this.initAttributeVariable(this.vNormal, this.nBuffer, 4, gl.FLOAT)
+        this.initAttributeVariable(this.vTexCoord, this.tBuffer, 2, gl.FLOAT)
     }
 }
 
@@ -91,25 +100,19 @@ class IndiceModel extends transform{
     }
 
     initDataToBuffers(){
-        gl.bindBuffer(gl.ARRAY_BUFFER, this.vBuffer);
-        gl.vertexAttribPointer(this.vPosition, 3, gl.FLOAT, false, 0, 0);
+
         this.vPosition = gl.getAttribLocation(this.shader, "a_Position");
-        gl.enableVertexAttribArray(this.vPosition);
+        this.vColor = gl.getAttribLocation(this.shader, "a_Color");
+        this.a_normal = gl.getAttribLocation(this.shader, "vNormal");
+
+        this.initAttributeVariable(this.vPosition, this.vBuffer, 4, gl.FLOAT)
         gl.bufferData(gl.ARRAY_BUFFER, flatten(this.vertexes), gl.STATIC_DRAW)
 
-        gl.bindBuffer(gl.ARRAY_BUFFER, this.cBuffer);
-        gl.vertexAttribPointer(this.vColor, 4, gl.FLOAT, false, 0, 0);
-        this.vColor = gl.getAttribLocation(this.shader, "a_Color");
-        gl.enableVertexAttribArray(this.vColor);
+        this.initAttributeVariable(this.vColor, this.cBuffer, 4, gl.FLOAT)
         gl.bufferData(gl.ARRAY_BUFFER, flatten(this.vertexColors), gl.STATIC_DRAW)
 
-        gl.bindBuffer(gl.ARRAY_BUFFER, this.nBuffer);
-        gl.vertexAttribPointer(this.a_normal, 3, gl.FLOAT, false, 0, 0);
-
-        this.a_normal = gl.getAttribLocation(this.shader, "vNormal");
-        gl.enableVertexAttribArray(this.a_normal);
+        this.initAttributeVariable(this.a_normal , this.nBuffer, 4, gl.FLOAT)
         gl.bufferData(gl.ARRAY_BUFFER, flatten(this.normals), gl.STATIC_DRAW)
-
 
         gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, this.iBuffer);
         gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, new Uint16Array(this.indices), gl.STATIC_DRAW);
@@ -117,6 +120,11 @@ class IndiceModel extends transform{
 
         this.dirtyShader = false
 
+    }
+    initAttributeVariable(a_attribute, buffer, size, type) {
+        gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
+        gl.vertexAttribPointer(a_attribute, size, type, false, 0, 0);
+        gl.enableVertexAttribArray(a_attribute);
     }
 }
 
@@ -149,30 +157,20 @@ class Sphere extends model{
         gl.useProgram(this.shader)
         if(this.dirtyShader) this.initDataToBuffers()
 
-        this.vPosition = gl.getAttribLocation(this.shader, "a_Position");
-        this.vNormal = gl.getAttribLocation(this.shader, "vNormal");
-        this.vColor = gl.getAttribLocation(this.shader, "a_Color");
-        this.vTexCoord = gl.getAttribLocation(this.shader, "vTexCoord");
+        super.draw()
 
         gl.bindBuffer(gl.ARRAY_BUFFER, this.vBuffer);
         gl.bufferData(gl.ARRAY_BUFFER, flatten(this.vertexes), gl.STATIC_DRAW);
-        gl.vertexAttribPointer(this.vPosition, 4, gl.FLOAT, false, 0, 0);
-        gl.enableVertexAttribArray(this.vPosition);
 
         gl.bindBuffer(gl.ARRAY_BUFFER, this.nBuffer);
         gl.bufferData(gl.ARRAY_BUFFER, flatten(this.vertexColors), gl.STATIC_DRAW);
-        gl.vertexAttribPointer(this.vNormal, 4, gl.FLOAT, false, 0, 0);
-        gl.enableVertexAttribArray(this.vNormal);
 
         gl.bindBuffer(gl.ARRAY_BUFFER, this.cBuffer);
         gl.bufferData(gl.ARRAY_BUFFER, flatten(this.normals), gl.STATIC_DRAW);
-        gl.vertexAttribPointer(this.vColor, 4, gl.FLOAT, false, 0, 0);
-        gl.enableVertexAttribArray(this.vColor);
 
         gl.bindBuffer(gl.ARRAY_BUFFER, this.tBuffer);
         gl.bufferData(gl.ARRAY_BUFFER, flatten(this.texCoordsArray), gl.STATIC_DRAW);
-        gl.vertexAttribPointer(this.vTexCoord, 2, gl.FLOAT, false, 0, 0);
-        gl.enableVertexAttribArray(this.vTexCoord);
+
 
         if (!shadow){
             gl.uniformMatrix4fv(gl.getUniformLocation(this.shader,"objTransform"), false, flatten(this.local_transformMatrix));
@@ -205,23 +203,7 @@ class Dot extends model{
     draw(camera){
         gl.useProgram(this.shader)
         if(this.dirtyShader) this.initDataToBuffers()
-
-        gl.bindBuffer(gl.ARRAY_BUFFER, this.vBuffer);
-        gl.vertexAttribPointer(this.vPosition, 4, gl.FLOAT, false, 0, 0);
-        gl.enableVertexAttribArray(this.vPosition);
-
-        gl.bindBuffer(gl.ARRAY_BUFFER, this.nBuffer);
-        gl.vertexAttribPointer(this.vNormal, 4, gl.FLOAT, false, 0, 0);
-        gl.enableVertexAttribArray(this.vNormal);
-
-        gl.bindBuffer(gl.ARRAY_BUFFER, this.cBuffer);
-        gl.vertexAttribPointer(this.vColor, 4, gl.FLOAT, false, 0, 0);
-        gl.enableVertexAttribArray(this.vColor);
-
-        gl.bindBuffer(gl.ARRAY_BUFFER, this.tBuffer);
-        gl.vertexAttribPointer(this.vTexCoord, 2, gl.FLOAT, false, 0, 0);
-        gl.enableVertexAttribArray(this.vTexCoord);
-
+        else super.draw()
 
         gl.uniformMatrix3fv(gl.getUniformLocation(this.shader,"normalMatrix"), false, flatten(camera.normalMatrix));
         gl.uniformMatrix4fv(gl.getUniformLocation(this.shader,"objTransform"), false, flatten(this.local_transformMatrix));
@@ -253,7 +235,7 @@ class Rectangle extends model{
 
     constructor(_center) {
         super();
-        this.quad( 0, 1, 2, 3 );
+        quad( 0, 1, 2, 3, this);
 
         this.initDataToBuffers()
     }
@@ -263,58 +245,14 @@ class Rectangle extends model{
         this.texCoordsArray=[];
     }
 
-    quad(a, b, c, d) {
 
-        this.vertexes.push(this.vertices[a]);
-        this.vertexColors.push(this.vertexColors[a]);
-        this.texCoordsArray.push(this.texCoord[0]);
-
-        this.vertexes.push(this.vertices[b]);
-        this.vertexColors.push(this.vertexColors[a]);
-        this.texCoordsArray.push(this.texCoord[1]);
-
-        this.vertexes.push(this.vertices[c]);
-        this.vertexColors.push(this.vertexColors[a]);
-        this.texCoordsArray.push(this.texCoord[2]);
-
-        this.vertexes.push(this.vertices[a]);
-        this.vertexColors.push(this.vertexColors[a]);
-        this.texCoordsArray.push(this.texCoord[0]);
-
-        this.vertexes.push(this.vertices[c]);
-        this.vertexColors.push(this.vertexColors[a]);
-        this.texCoordsArray.push(this.texCoord[2]);
-
-        this.vertexes.push(this.vertices[d]);
-        this.vertexColors.push(this.vertexColors[a]);
-        this.texCoordsArray.push(this.texCoord[3]);
-    }
 
     draw(camera, shadow = false){
 
         gl.useProgram(this.shader)
 
         if(this.dirtyShader) this.initDataToBuffers()
-
-        gl.bindBuffer(gl.ARRAY_BUFFER, this.vBuffer)
-        gl.bufferData(gl.ARRAY_BUFFER, flatten(this.vertexes), gl.STATIC_DRAW)
-        gl.vertexAttribPointer(this.vPosition, 4, gl.FLOAT, false, 0, 0)
-        gl.enableVertexAttribArray(this.vPosition)
-
-        gl.bindBuffer(gl.ARRAY_BUFFER, this.nBuffer)
-        gl.bufferData(gl.ARRAY_BUFFER, flatten(this.normals), gl.STATIC_DRAW)
-        gl.vertexAttribPointer(this.vNormal, 4, gl.FLOAT, false, 0, 0)
-        gl.enableVertexAttribArray(this.vNormal)
-
-        gl.bindBuffer(gl.ARRAY_BUFFER, this.cBuffer)
-        gl.bufferData(gl.ARRAY_BUFFER, flatten(this.vertexColors), gl.STATIC_DRAW)
-        gl.vertexAttribPointer(this.vColor, 4, gl.FLOAT, false, 0, 0)
-        gl.enableVertexAttribArray(this.vColor)
-
-        gl.bindBuffer(gl.ARRAY_BUFFER, this.tBuffer)
-        gl.bufferData(gl.ARRAY_BUFFER, flatten(this.texCoordsArray), gl.STATIC_DRAW)
-        gl.vertexAttribPointer(this.vTexCoord, 2, gl.FLOAT, false, 0, 0)
-        gl.enableVertexAttribArray(this.vTexCoord)
+        else super.draw()
 
         if (!shadow){
             gl.uniformMatrix4fv(gl.getUniformLocation(this.shader,"objTransform"), false, flatten(this.local_transformMatrix));
@@ -326,80 +264,32 @@ class Rectangle extends model{
 }
 
 class backFace extends model{
-    center;
-    vertexes = [];
-    vertexColors = [];
-    normals = [];
-    texCoordsArray = [];
     vertices = [
         vec4(1, 1, 0.999),
         vec4(-1, 1, 0.999),
         vec4(-1, -1, 0.999),
         vec4(1, -1, 0.999)
     ];
+    texCoord = [
+        vec2(-1.5, 0),
+        vec2(2.5, 0),
+        vec2(2.5, 10),
+        vec2(-1.5, 10)
+    ];
 
     constructor() {
         super();
-        this.quad( 0, 1, 2, 3 );
+        quad( 0, 1, 2, 3, this);
         this.initDataToBuffers()
     }
 
-    quad(a, b, c, d) {
-
-        this.vertexes.push(this.vertices[a]);
-        this.vertexColors.push(vec4(0.5,0.5,0.8,1));
-        this.normals.push(this.vertices[a])
-        this.texCoordsArray.push(this.texCoordsArray[0]);
-
-        this.vertexes.push(this.vertices[b]);
-        this.vertexColors.push(vec4(0.5,0.5,0.5,1));
-        this.normals.push(this.vertices[a])
-        this.texCoordsArray.push(this.texCoordsArray[1]);
-
-        this.vertexes.push(this.vertices[c]);
-        this.vertexColors.push(vec4(0.5,0.8,0.5,1));
-        this.normals.push(this.vertices[a])
-        this.texCoordsArray.push(this.texCoordsArray[2]);
-
-        this.vertexes.push(this.vertices[a]);
-        this.vertexColors.push(vec4(0.5,0.5,0.8,1));
-        this.normals.push(this.vertices[a])
-        this.texCoordsArray.push(this.texCoordsArray[0]);
-
-        this.vertexes.push(this.vertices[c]);
-        this.vertexColors.push(vec4(0.5,0.8,0.5,1));
-        this.normals.push(this.vertices[a])
-        this.texCoordsArray.push(this.texCoordsArray[2]);
-
-        this.vertexes.push(this.vertices[d]);
-        this.vertexColors.push(vec4(0.8,0.5,0.5,1));
-        this.normals.push(this.vertices[a])
-        this.texCoordsArray.push(this.texCoordsArray[3]);
-    }
 
 
     draw(camera, shadow = false){
-        gl.bindBuffer(gl.ARRAY_BUFFER, this.vBuffer);
-        gl.vertexAttribPointer(this.vPosition, 4, gl.FLOAT, false, 0, 0);
-        gl.enableVertexAttribArray(this.vPosition);
-
-        gl.bindBuffer(gl.ARRAY_BUFFER, this.cBuffer);
-        gl.vertexAttribPointer(this.vColor, 4, gl.FLOAT, false, 0, 0);
-        gl.enableVertexAttribArray(this.vColor);
-
-        gl.bindBuffer(gl.ARRAY_BUFFER, this.nBuffer);
-        gl.vertexAttribPointer(this.vNormal, 4, gl.FLOAT, false, 0, 0);
-        gl.enableVertexAttribArray(this.vNormal);
-
-        gl.bindBuffer(gl.ARRAY_BUFFER, this.tBuffer);
-        gl.vertexAttribPointer(this.vTexCoord, 2, gl.FLOAT, false, 0, 0);
-        gl.enableVertexAttribArray(this.vTexCoord);
-
-
+        super.draw()
         gl.uniformMatrix4fv(gl.getUniformLocation(program,"projection"), false, flatten(mat4()));
         gl.uniformMatrix4fv(gl.getUniformLocation(program,"modelViewMatrix"), false, flatten(mat4()));
         gl.uniformMatrix4fv(gl.getUniformLocation(program,"objTransform"), false, flatten(mat4()));
-
 
         let inverseviewMatrix = camera.mvMatrix;
         inverseviewMatrix = inverse4(inverseviewMatrix)
@@ -503,3 +393,31 @@ function tetrahedron(a, b, c, d, obj) {
     divideTriangle(a, c, d, n, obj);
 }
 
+function quad(a, b, c, d, obj) {
+
+    obj.vertexes.push(obj.vertices[a]);
+    obj.vertexColors.push(obj.vertexColors[a]);
+    obj.texCoordsArray.push(obj.texCoord[0]);
+
+    obj.vertexes.push(obj.vertices[b]);
+    obj.vertexColors.push(obj.vertexColors[a]);
+    obj.texCoordsArray.push(obj.texCoord[1]);
+
+    obj.vertexes.push(obj.vertices[c]);
+    obj.vertexColors.push(obj.vertexColors[a]);
+    obj.texCoordsArray.push(obj.texCoord[2]);
+
+    obj.vertexes.push(obj.vertices[a]);
+    obj.vertexColors.push(obj.vertexColors[a]);
+    obj.texCoordsArray.push(obj.texCoord[0]);
+
+    obj.vertexes.push(obj.vertices[c]);
+    obj.vertexColors.push(obj.vertexColors[a]);
+    obj.texCoordsArray.push(obj.texCoord[2]);
+
+    obj.vertexes.push(obj.vertices[d]);
+    obj.vertexColors.push(obj.vertexColors[a]);
+    obj.texCoordsArray.push(obj.texCoord[3]);
+
+    obj.initDataToBuffers()
+}

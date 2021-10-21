@@ -19,10 +19,14 @@ varying vec2 fTexCoord;
 varying vec3 N, L;
 varying vec4 v_Color, p;
 
-
+uniform mat4 u_MvpMatrixFromLight;
+varying vec4 v_PositionFromLight;
 
 void main()
 {
+
+    v_PositionFromLight = u_MvpMatrixFromLight * a_Position;
+
     gl_Position = a_Color+vNormal+vec4(vTexCoord,vTexCoord);
 
     vec3 light = (lightPosition).xyz;

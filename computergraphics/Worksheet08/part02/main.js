@@ -166,7 +166,7 @@ function main() {
   ];
 
   objects[0].clear()
-  objects[0].quad(0,1,2,3)
+  quad(0,1,2,3,objects[0])
 
   var mytexels  = generateredTextureArray(1)
   configureTexture(mytexels, 1, 1)
@@ -187,7 +187,7 @@ function main() {
   ];
 
   objects[1].clear()
-  objects[1].quad(0,1,2,3)
+  quad(0,1,2,3,objects[1])
 
   objects.push(new Rectangle(vec4(-1,0,1)))
   objects[2].move(vec3(0,1,0))
@@ -205,8 +205,7 @@ function main() {
   ];
 
   objects[2].clear()
-  objects[2].quad(0,1,2,3)
-
+  quad(0,1,2,3,objects[2])
 
   camera = new OrbitCamera()
   camera.move(vec3(1,0,-3.5))

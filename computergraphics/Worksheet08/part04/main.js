@@ -6,66 +6,10 @@ var program = null;
 var division = 2;
 
 var fpsOutput;
-
+var lightPoint;
 var timer = null;
 
 
-class Light{
-  colorValue = vec3(0,0,0);
-  intensity = 1.0;
-}
-
-class PointLight extends Light{
-  position = vec4(0,0,0,1.0)
-  orbit_offset = vec4(0,0,0,1.0)
-  rotate = true;
-  radius = 2
-  theta  = 10.0;
-  phi    = 0.0;
-  at = vec3(0.0, 0.0, 0.0);
-  up = vec3(0.0, 1.0, 0.0);
-  constructor() {
-    super();
-    let vAngleRadians = ((-this.theta+90) / 180) * Math.PI;
-    let hAngleRadians = ((this.phi+90) / 180) * Math.PI;
-
-    this.position  = [
-      this.radius * Math.sin(vAngleRadians) * Math.cos(hAngleRadians),
-      this.radius * Math.cos(vAngleRadians),
-      this.radius * Math.sin(vAngleRadians) * Math.sin(hAngleRadians)
-    ];
-    this.pointrender = new Dot(vec4(-1,0,-1,0));
-  }
-
-  draw(camera){
-    this.orbit()
-    this.pointrender.transformMatrix = translate(this.position)
-    this.pointrender.draw(camera);
-
-  }
-
-  orbit(){
-    if (this.rotate) {
-      this.phi=(this.phi+50*timer)%360;
-    }
-    if( this.theta < 90 || this.theta > 270 ) {
-      this.up = [0, 1, 0];
-
-    }else if(this.theta === 90 ) {
-      this.up = mult(rotateY(-this.phi), [0, 0, -1, 0]).splice(0,3);
-    }else {
-      this.up = [0, -1, 0];
-    }
-    let vAngleRadians = -((this.theta-90) / 180) * Math.PI;
-    let hAngleRadians = ((this.phi-90) / 180) * Math.PI;
-
-    this.position  = [
-      this.orbit_offset[0]+this.radius * Math.sin(vAngleRadians) * Math.cos(hAngleRadians),
-      this.orbit_offset[1]+this.radius * Math.cos(vAngleRadians),
-      this.orbit_offset[2]+this.radius * Math.sin(vAngleRadians) * Math.sin(hAngleRadians)
-    ];
-  }
-}
 
 function init(){
   canvas = document.querySelector("#glCanvas");
@@ -101,12 +45,14 @@ function render(){
   gl.uniform1i(gl.getUniformLocation(program, "diffuseTexture"), 0);
   ground.draw()
 
+  light.orbit(timer)
+  lightPoint.move(light.get_position())
 
   for (let i = 1; i < objects.length; i++) {
     var obj = objects[i];
 
     if ( !(obj instanceof PointLight)){
-      let lightPosition = light.position;
+      let lightPosition = light.get_position();
 
       let modelLight = mat4();
       let d = -(lightPosition[1]-ground.position[1])-0.01;
@@ -162,7 +108,7 @@ function main() {
   ];
 
   objects[0].clear()
-  objects[0].quad(0,1,2,3)
+  quad(0,1,2,3,objects[0])
 
   var mytexels  = generateredTextureArray(1)
   configureTexture(mytexels, 1, 1)
@@ -183,7 +129,7 @@ function main() {
   ];
 
   objects[1].clear()
-  objects[1].quad(0,1,2,3)
+  quad(0,1,2,3,objects[1])
 
   objects.push(new Rectangle(vec4(-1,0,1)))
   objects[2].move(vec3(0,1,0))
@@ -201,7 +147,7 @@ function main() {
   ];
 
   objects[2].clear()
-  objects[2].quad(0,1,2,3)
+  quad(0,1,2,3,objects[2])
 
 
   camera = new OrbitCamera()
@@ -211,10 +157,14 @@ function main() {
   camera.theta = -45
   camera.set_fovy(45)
 
-  objects.push( new PointLight() )
 
-  light = objects[3]
-  light.translate = vec3(0, 2, -2)
+  light = new OrbitPointLight()
+  light.move(vec3(-1, 2, -3))
+  light.radius = 3
+  lightPoint = new Dot(vec3(0,0,0));
+  objects.push(lightPoint)
+
+  light.rotate = true;
 
   gl.clearColor(0, 0.5843, 0.9294, 1.0)
 
