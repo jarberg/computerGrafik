@@ -144,7 +144,7 @@ function main() {
   init()
 
   objects.push(new Rectangle(vec4(0,0,0,0)))
-  camera = new Camera()
+  camera = new OrbitCamera()
 
   gl.clearColor(0, 0.5843, 0.9294, 1.0);
 

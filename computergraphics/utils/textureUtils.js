@@ -29,6 +29,7 @@ function generateredTextureArray(texSize){
 
 function configureImageTexture(image, index=0) {
     texture = gl.createTexture();
+    gl.useProgram(program)
     gl.activeTexture( gl.TEXTURE0+index);
     gl.bindTexture( gl.TEXTURE_2D, texture );
     gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, false);

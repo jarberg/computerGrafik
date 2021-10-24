@@ -4,9 +4,9 @@ var lights =[];
 var program = null;
 
 var division = 2;
-var ground;
+
 var fpsOutput;
-var gl;
+
 var timer = null;
 
 
@@ -98,24 +98,26 @@ function render(){
   timer = takeTime()
   camera.update(timer)
 
-  camera.update_projection_matrix(program)
 
   for (let i = 0; i < objects.length; i++) {
     var obj = objects[i];
-    if(obj === ground){
+    if(i>0){
+      gl.uniform1i(gl.getUniformLocation(program, "diffuseTexture"), 1);
+    }
+    else{
+      gl.uniform1i(gl.getUniformLocation(program, "diffuseTexture"), 0);
+    }
+    if(obj.position === ground.position){
       gl.uniform1i(gl.getUniformLocation(program, "diffuseTexture"), 0);
       obj.draw()
       continue;
-    }
-    else{
-      gl.uniform1i(gl.getUniformLocation(program, "diffuseTexture"), 1);
     }
 
     if ( !(obj instanceof PointLight)){
       let lightPosition = light.position;
 
       let modelLight = mat4();
-      let d = -(lightPosition[1]-ground.translate[1])+0.01;
+      let d = -(lightPosition[1]-ground.position[1])+0.01;
       modelLight[3][1] = 1/d;
       modelLight[3][3] = 0;
 
@@ -123,7 +125,7 @@ function render(){
 
       let translationBack = translate(lightPosition[0], lightPosition[1], lightPosition[2]);
 
-      let shadow = mult(translationBack, mult(modelLight, mult(translation, obj.transformMatrix)));
+      let shadow = mult(translationBack, mult(modelLight, mult(translation, obj.local_transformMatrix)));
       // Send color and matrix for shadow
       gl.uniformMatrix4fv( gl.getUniformLocation(program,"objTransform"), false,
           flatten(shadow));
@@ -140,7 +142,7 @@ function render(){
   requestAnimFrame(render);
 }
 
-
+var ground;
 
 function main() {
   init()
@@ -148,78 +150,74 @@ function main() {
 
   create_image_texture("xamp23.png", configureImageTexture, 0)
 
-  ground = new Rectangle(vec4(-1,-1,3,0))
 
-  ground.vertices = [
+  objects.push(new Rectangle(vec3(-1,-1,1)))
+  objects[0].vertices = [
     vec4(2,0,-5,1),
     vec4(-2,0,-5,1),
     vec4(-2,0,-1,1),
     vec4(2,0,-1,1),
   ]
-  ground.texCoord = [
+  objects[0].texCoord = [
     vec2(0, 0),
     vec2(0, 1),
     vec2(1, 1),
     vec2(1, 0)
   ];
 
-  ground.clear()
-  ground.quad(0,1,2,3)
+  objects[0].clear()
+  quad(0,1,2,3,objects[0])
 
   var mytexels  = generateredTextureArray(1)
   configureTexture(mytexels, 1, 1)
-  rec1=new Rectangle(vec4(-1,0,2,0))
 
-  rec1.vertices = [
+  objects.push(new Rectangle(vec4(-1,0,1)))
+  objects[1].vertices = [
     vec4(0.75,-0.5,-1.75,1),
     vec4(0.25,-0.5,-1.75,1),
     vec4(0.25,-0.5,-1.25,1),
     vec4(0.75,-0.5,-1.25,1),
   ]
-  rec1.texCoord = [
+  objects[1].move(vec3(0,1,0))
+  objects[1].texCoord = [
     vec2(0, 0),
     vec2(0, 1),
     vec2(1, 1),
     vec2(1, 0)
   ];
 
-  rec1.clear()
-  rec1.quad(0,1,2,3)
+  objects[1].clear()
+  quad(0,1,2,3,objects[1])
 
-
-  rec2 = new Rectangle(vec4(-1,0,2,0))
-  rec2.vertices = [
+  objects.push(new Rectangle(vec4(-1,0,1)))
+  objects[2].move(vec3(0,1,0))
+  objects[2].vertices = [
     vec4(1,0,-3,1),
     vec4(1,-1,-3,1),
     vec4(1,-1,-2.5,1),
     vec4(1,0,-2.5,1),
   ]
-  rec2.texCoord = [
+  objects[2].texCoord = [
     vec2(0, 0),
     vec2(0, 1),
     vec2(1, 1),
     vec2(1, 0)
   ];
 
-  rec2.clear()
-  rec2.quad(0,1,2,3)
+  objects[2].clear()
+  quad(0,1,2,3,objects[2])
 
-  camera = new Camera()
-  camera.radius = 5
-  camera.phi = 45
-  camera.theta = 0
-  camera.translate = vec4(0,5,0,1)
-  camera.at= vec3(0,0,0)
+  camera = new OrbitCamera()
+  camera.move(vec3(1,0,-3.5))
+  camera.radius = 10
+  camera.phi = 90
+  camera.theta = -45
   camera.set_fovy(45)
 
+  objects.push(new PointLight())
 
-  light = new PointLight()
+  light = objects[3]
   light.translate = vec3(0, 2, -2)
-
-  objects.push(ground)
-  objects.push(rec1)
-  objects.push(rec2)
-  objects.push(light)
 
   gl.clearColor(0, 0.5843, 0.9294, 1.0);
 

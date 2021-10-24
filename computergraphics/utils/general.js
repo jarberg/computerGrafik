@@ -34,6 +34,7 @@ function waitForMTL(obj, callback){
         callback(obj);
     }
 }
+
 function loadObjFile(fileName, scale, reverse, onLoadCallback){
     var request = new XMLHttpRequest();
 
@@ -73,4 +74,47 @@ function initFramebufferObject(gl, width, height, slot)
     gl.bindFramebuffer(gl.FRAMEBUFFER, null); gl.bindRenderbuffer(gl.RENDERBUFFER, null);
     framebuffer.width = width; framebuffer.height = height;
     return framebuffer;
+}
+
+
+class transform{
+    position = vec3(0,0,0)
+    rotation = vec3(0,0,0)
+    scale = vec3(1,1,1)
+    local_transformMatrix = mat4()
+    rotation_order = "XYZ"
+
+    constructor(center=vec3(0,0,0)) {
+        this.position = center
+        this.update_transform()
+    }
+
+    update_transform(){
+        var tempMat = mult(mat4(), scalem(this.scale))
+        tempMat = this.checkRotationOrder(tempMat)
+        tempMat = mult(translate(this.position), tempMat)
+        this.local_transformMatrix = tempMat
+    }
+
+    orderXYZ(tempMat){
+        tempMat = mult( rotateZ(this.rotation[2]), tempMat)
+        tempMat = mult( rotateY(this.rotation[1]), tempMat)
+        tempMat = mult( rotateX(this.rotation[0]), tempMat)
+        return tempMat
+    }
+
+    checkRotationOrder(tempMat) {
+        if (this.rotation_order === "XYZ") return this.orderXYZ(tempMat);
+    }
+
+    move(vec){
+        this.position=vec
+        this.update_transform()
+    }
+
+    setScale(scale){
+        this.scale = scale
+        this.update_transform()
+    }
+
 }

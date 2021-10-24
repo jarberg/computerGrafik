@@ -41,7 +41,7 @@ function init(){
     alert("Unable to initialize WebGL. Your browser or machine may not support it.");
     return;
   }
-  program = initShaders(gl, "render/vertexShader.glsl", "render/fragmentShader.glsl");
+  program = initShaders(gl, "vertex-shader", "fragment-shader");
   gl.useProgram(program);
   gl.clearColor(0.8, 0.8, 0.8, 1.0);
   gl.enable(gl.CULL_FACE)
@@ -67,9 +67,11 @@ function render(){
 
   gl.uniformMatrix4fv( gl.getUniformLocation(program,"modelViewMatrix"), false, flatten(camera.mvMatrix));
   gl.uniformMatrix3fv(gl.getUniformLocation(program, "normalMatrix" ), false, flatten(normalMatrix));
-  camera.update_projection_matrix(program)
+  camera.update_projection_matrix()
   for (let i = 0; i < objects.length; i++) {
     var obj = objects[i];
+
+
     obj.draw(camera);
   }
   requestAnimFrame(render);
@@ -80,15 +82,14 @@ function render(){
 function main() {
   init()
 
-
-  objects.push( new Sphere(vec4(0, -1, 0) ) );
+  sphere = new Sphere(vec3(0, 0, 0))
+  sphere.setScale(vec3(3,3,3))
+  objects.push( sphere );
   objects.push( new backFace(vec4(0, 0, 0)) );
-  objects[0].transformMatrix = mult(scalem(3,3,3), objects[0].transformMatrix)
-  objects[0].transformMatrix = mult(translate(0,3,0), objects[0].transformMatrix)
-  objects[0].material.shader=program
-  create_cube_map(program ,false)
 
-  camera = new Camera();
+  create_cube_map(false)
+
+  camera = new OrbitCamera();
 
   gl.clearColor(0, 0.5843, 0.9294, 1.0);
 

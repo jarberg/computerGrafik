@@ -7,14 +7,45 @@
         <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
       </path>
     </expand>
-    <select />
+    <select>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="BRANCH:master" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5e3948d6-358c-4c60-8135-650537d75e3c" name="Default Changelist" comment="fixed bug in worksheet 07 where plane y werent set in translate but in vertex positions">
+    <list default="true" id="5e3948d6-358c-4c60-8135-650537d75e3c" name="Default Changelist" comment="added shadow framme buffer and shadow render&#10;&#10;concepts work but it seems to be having some issues still">
+      <change afterPath="$PROJECT_DIR$/computergraphics/Worksheet09/part02/render/shaders/fragmentShader.glsl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/computergraphics/Worksheet09/part02/render/shaders/fragmentShader2.glsl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/computergraphics/Worksheet09/part02/render/shaders/fragment_shadow.glsl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/computergraphics/Worksheet09/part02/render/shaders/vertexShader.glsl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/computergraphics/Worksheet09/part02/render/shaders/vertex_shadow.glsl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/computergraphics/Worksheet10/part01/main.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/computergraphics/Worksheet10/part01/main.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/computergraphics/Worksheet10/part01/render/shaders/fragmentShader.glsl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/computergraphics/Worksheet10/part01/render/shaders/fragmentShader2.glsl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/computergraphics/Worksheet10/part01/render/shaders/fragment_shadow.glsl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/computergraphics/Worksheet10/part01/render/shaders/modelRenderer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/computergraphics/Worksheet10/part01/render/shaders/vertexShader.glsl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/computergraphics/Worksheet10/part01/render/shaders/vertex_shadow.glsl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/computergraphics/Worksheet10/part01/render/shadowFrameBuffer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/computergraphics/Worksheet10/part01/render/shadowRenderer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet09/part01/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Worksheet09/part01/main.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet09/part01/render/vertexShader.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Worksheet09/part01/render/vertexShader.glsl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computergraphics/utils/general.js" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/utils/general.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet09/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Worksheet09/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet09/part01/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Worksheet09/part02/main.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet09/part01/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Worksheet09/part02/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet09/part01/render/shaders/fragmentShader.glsl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet09/part01/render/shaders/fragmentShader2.glsl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet09/part01/render/shaders/fragment_shadow.glsl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet09/part01/render/shaders/modelRenderer.js" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Worksheet09/part02/render/shaders/modelRenderer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet09/part01/render/shaders/vertexShader.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Worksheet10/part01/render/shaders/vertexShader2.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet09/part01/render/shaders/vertexShader2.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Worksheet09/part02/render/shaders/vertexShader2.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet09/part01/render/shaders/vertex_shadow.glsl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet09/part01/render/shadowFrameBuffer.js" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Worksheet09/part02/render/shadowFrameBuffer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet09/part01/render/shadowRenderer.js" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Worksheet09/part02/render/shadowRenderer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/computergraphics/utils/Camera.js" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/utils/Camera.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/computergraphics/utils/geomitry.js" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/utils/geomitry.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -25,6 +56,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="GLSL Shader" />
         <option value="JavaScript File" />
       </list>
     </option>
@@ -32,7 +64,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="1f309370b656a86e67063a24f9b61fe9ea69cfba" />
+        <entry key="$PROJECT_DIR$" value="ae31b35bed221e4379a2f6e1345fdb872ea0b7f5" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -45,48 +77,48 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/computergraphics/Worksheet07/part04" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/computergraphics/Worksheet10/part01" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Michael\Desktop\DtuWebsite\computergraphics\Worksheet10\part01" />
+      <recent name="C:\Users\Michael\Desktop\DtuWebsite\computergraphics\Worksheet09" />
+      <recent name="C:\Users\Michael\Desktop\DtuWebsite\computergraphics\commonJS" />
       <recent name="C:\Users\Michael\Desktop\DtuWebsite\computergraphics\Worksheet09\part01\render" />
+      <recent name="C:\Users\Michael\Desktop\DtuWebsite\computergraphics\Worksheet06\part03" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Michael\Desktop\DtuWebsite\computergraphics\Worksheet10\part01" />
+      <recent name="C:\Users\Michael\Desktop\DtuWebsite\computergraphics\Worksheet09\part01\render" />
+      <recent name="C:\Users\Michael\Desktop\DtuWebsite\computergraphics\Worksheet09\part01\shaders" />
       <recent name="C:\Users\Michael\Desktop\DtuWebsite\computergraphics\Worksheet09\part01" />
       <recent name="C:\Users\Michael\Desktop\DtuWebsite\computergraphics\models\teacup" />
-      <recent name="C:\Users\Michael\Desktop\DtuWebsite\computergraphics" />
-      <recent name="C:\Users\Michael\Desktop\DtuWebsite\computergraphics\Images" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\Michael\Desktop\DtuWebsite\computergraphics\Worksheet07\part04" />
-      <recent name="C:\Users\Michael\Desktop\DtuWebsite\computergraphics\Worksheet07\part03" />
-      <recent name="C:\Users\Michael\Desktop\DtuWebsite\computergraphics\Worksheet07\part02" />
-      <recent name="C:\Users\Michael\Desktop\DtuWebsite\computergraphics\Worksheet07\part01" />
-      <recent name="C:\Users\Michael\Desktop\DtuWebsite\computergraphics\Worksheet09" />
     </key>
   </component>
-  <component name="RunManager" selected="JavaScript Debug.main.html">
-    <configuration name="main.html (2)" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/DtuWebsite/computergraphics/Worksheet07/part04/main.html" useBuiltInWebServerPort="true">
+  <component name="RunManager" selected="JavaScript Debug.main.html (5)">
+    <configuration name="main.html (2)" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/DtuWebsite/computergraphics/Worksheet09/part02/main.html" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
     <configuration name="main.html (3)" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/DtuWebsite/computergraphics/Worksheet08/part03/main.html" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
-    <configuration name="main.html (4)" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/DtuWebsite/computergraphics/Worksheet08/part04/main.html" useBuiltInWebServerPort="true">
+    <configuration name="main.html (4)" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/DtuWebsite/computergraphics/Worksheet09/part01/main.html" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
-    <configuration name="main.html (5)" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/DtuWebsite/computergraphics/Worksheet08/part02/main.html" useBuiltInWebServerPort="true">
+    <configuration name="main.html (5)" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/DtuWebsite/computergraphics/Worksheet10/part01/main.html" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
-    <configuration name="main.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/DtuWebsite/computergraphics/Worksheet09/part01/main.html" useBuiltInWebServerPort="true">
+    <configuration name="main.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/DtuWebsite/computergraphics/Worksheet08/part04/main.html" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JavaScript Debug.main.html" />
         <item itemvalue="JavaScript Debug.main.html (5)" />
         <item itemvalue="JavaScript Debug.main.html (2)" />
         <item itemvalue="JavaScript Debug.main.html (4)" />
+        <item itemvalue="JavaScript Debug.main.html" />
         <item itemvalue="JavaScript Debug.main.html (3)" />
       </list>
     </recent_temporary>
@@ -104,8 +136,7 @@
       <workItem from="1629108204271" duration="1407000" />
       <workItem from="1630431838776" duration="15357000" />
       <workItem from="1631512248166" duration="5445000" />
-      <workItem from="1631779151230" duration="760000" />
-      <workItem from="1632115937727" duration="2161000" />
+      <workItem from="1634887933352" duration="26761000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <created>1629096644242</created>
@@ -156,35 +187,121 @@
       <option name="project" value="LOCAL" />
       <updated>1631515744441</updated>
     </task>
-    <task id="LOCAL-00008" summary="added materials as shader managers. refactored all dependent code">
-      <created>1631649097635</created>
+    <task id="LOCAL-00008" summary="finished worksheet08&#10;started on worksheet09">
+      <created>1634715062151</created>
       <option name="number" value="00008" />
       <option name="presentableId" value="LOCAL-00008" />
       <option name="project" value="LOCAL" />
-      <updated>1631649097635</updated>
+      <updated>1634715062151</updated>
     </task>
-    <task id="LOCAL-00009" summary="fixed bug in worksheet 07 where plane y werent set in translate but in vertex positions">
-      <created>1631649373313</created>
+    <task id="LOCAL-00009" summary="reworked camera to extends basic transform class&#10;added orbit camera to extend normal Camera&#10;reworked old worksheets to fit with this new implementation">
+      <created>1634718179971</created>
       <option name="number" value="00009" />
       <option name="presentableId" value="LOCAL-00009" />
       <option name="project" value="LOCAL" />
-      <updated>1631649373313</updated>
+      <updated>1634718179971</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="reworked old model setup.&#10;now support both non indice and indice models&#10;&#10;moved buffer init to model classes">
+      <created>1634722275856</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1634722275856</updated>
+    </task>
+    <task id="LOCAL-00011" summary="added animation class to git">
+      <created>1634722308630</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1634722308630</updated>
+    </task>
+    <task id="LOCAL-00012" summary="made quad mesh model type follow the model class model &#10;&#10;reworked old worksheets that had dependencies on this class">
+      <created>1634723834799</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1634723834799</updated>
+    </task>
+    <task id="LOCAL-00013" summary="ground was offset in workshet 09 part 01">
+      <created>1634724088687</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1634724088687</updated>
+    </task>
+    <task id="LOCAL-00014" summary="added start of 3d hud elements">
+      <created>1634728952986</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1634728952986</updated>
+    </task>
+    <task id="LOCAL-00015" summary="safety commit">
+      <created>1634731010198</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1634731010198</updated>
+    </task>
+    <task id="LOCAL-00016" summary="added abillity to switch shaders">
+      <created>1634750691601</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1634750691602</updated>
+    </task>
+    <task id="LOCAL-00017" summary="added simple smooth shadign and inverse squared point light on shader&#10;&#10;fixed error with sphere  in some worksheets that broke">
+      <created>1634812388358</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1634812388359</updated>
+    </task>
+    <task id="LOCAL-00018" summary="reworked variable locators to make code easyer to read&#10;&#10;started on shadow buffers">
+      <created>1634817368490</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1634817368490</updated>
+    </task>
+    <task id="LOCAL-00019" summary="found bug in worlsheet 09 where ground used old quad function">
+      <created>1634817451045</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1634817451045</updated>
+    </task>
+    <task id="LOCAL-00020" summary="added shadow framme buffer and shadow render&#10;&#10;concepts work but it seems to be having some issues still">
+      <created>1634830490923</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1634830490923</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
-  </component>
-  <component name="UnknownFeatures">
-    <option featureType="com.intellij.fileTypeFactory" implementationName="*.glsl" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="master" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
@@ -198,10 +315,19 @@
     <MESSAGE value="reworked old code.&#10;made entire worksheet 7 actualy work" />
     <MESSAGE value="reworked old code&#10;worksheet 02 part 2 now uses single buffer for color and position" />
     <MESSAGE value="finished worksheet08&#10;started on worksheet09" />
-    <MESSAGE value="fixed broken backface in worksheet 7" />
-    <MESSAGE value="added materials as shader managers. refactored all dependent code" />
-    <MESSAGE value="fixed bug in worksheet 07 where plane y werent set in translate but in vertex positions" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed bug in worksheet 07 where plane y werent set in translate but in vertex positions" />
+    <MESSAGE value="reworked camera to extends basic transform class&#10;added orbit camera to extend normal Camera&#10;reworked old worksheets to fit with this new implementation" />
+    <MESSAGE value="reworked old model setup.&#10;now support both non indice and indice models&#10;&#10;moved buffer init to model classes" />
+    <MESSAGE value="added animation class to git" />
+    <MESSAGE value="made quad mesh model type follow the model class model &#10;&#10;reworked old worksheets that had dependencies on this class" />
+    <MESSAGE value="ground was offset in workshet 09 part 01" />
+    <MESSAGE value="added start of 3d hud elements" />
+    <MESSAGE value="safety commit" />
+    <MESSAGE value="added abillity to switch shaders" />
+    <MESSAGE value="added simple smooth shadign and inverse squared point light on shader&#10;&#10;fixed error with sphere  in some worksheets that broke" />
+    <MESSAGE value="reworked variable locators to make code easyer to read&#10;&#10;started on shadow buffers" />
+    <MESSAGE value="found bug in worlsheet 09 where ground used old quad function" />
+    <MESSAGE value="added shadow framme buffer and shadow render&#10;&#10;concepts work but it seems to be having some issues still" />
+    <option name="LAST_COMMIT_MESSAGE" value="added shadow framme buffer and shadow render&#10;&#10;concepts work but it seems to be having some issues still" />
   </component>
   <component name="WindowStateProjectService">
     <state x="96" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1629619396960">
@@ -212,111 +338,118 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="416" y="143" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1280.680@0.0.1280.680" timestamp="1631515729357" />
+    <state x="410" y="57" key="#com.intellij.ide.util.MemberChooser" timestamp="1634721478701">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="410" y="57" key="#com.intellij.ide.util.MemberChooser/0.0.1280.680@0.0.1280.680" timestamp="1634721478701" />
     <state x="93" y="93" width="1095" height="495" key="DiffContextDialog" timestamp="1629539961753">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="93" y="93" width="1095" height="495" key="DiffContextDialog/0.0.1280.680@0.0.1280.680" timestamp="1629539961753" />
-    <state width="760" height="322" key="GridCell.Tab.0.bottom" timestamp="1631688663847">
+    <state x="421" y="96" key="FileChooserDialogImpl" timestamp="1634759145919">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="760" height="322" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1631688663847" />
-    <state width="760" height="322" key="GridCell.Tab.0.center" timestamp="1631688663847">
+    <state x="421" y="96" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1634759145919" />
+    <state width="761" height="214" key="GridCell.Tab.0.bottom" timestamp="1631600281939">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="760" height="322" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1631688663847" />
-    <state width="760" height="322" key="GridCell.Tab.0.left" timestamp="1631688663844">
+    <state width="761" height="214" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1631600281939" />
+    <state width="761" height="214" key="GridCell.Tab.0.center" timestamp="1631600281938">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="760" height="322" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1631688663844" />
-    <state width="760" height="322" key="GridCell.Tab.0.right" timestamp="1631688663847">
+    <state width="761" height="214" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1631600281938" />
+    <state width="761" height="214" key="GridCell.Tab.0.left" timestamp="1631600281938">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="760" height="322" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1631688663847" />
-    <state width="760" height="322" key="GridCell.Tab.1.bottom" timestamp="1631688663849">
+    <state width="761" height="214" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1631600281938" />
+    <state width="761" height="214" key="GridCell.Tab.0.right" timestamp="1631600281938">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="760" height="322" key="GridCell.Tab.1.bottom/0.0.1280.680@0.0.1280.680" timestamp="1631688663849" />
-    <state width="760" height="322" key="GridCell.Tab.1.center" timestamp="1631688663849">
+    <state width="761" height="214" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1631600281938" />
+    <state width="761" height="214" key="GridCell.Tab.1.bottom" timestamp="1631600284334">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="760" height="322" key="GridCell.Tab.1.center/0.0.1280.680@0.0.1280.680" timestamp="1631688663849" />
-    <state width="760" height="322" key="GridCell.Tab.1.left" timestamp="1631688663849">
+    <state width="761" height="214" key="GridCell.Tab.1.bottom/0.0.1280.680@0.0.1280.680" timestamp="1631600284334" />
+    <state width="761" height="214" key="GridCell.Tab.1.center" timestamp="1631600284334">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="760" height="322" key="GridCell.Tab.1.left/0.0.1280.680@0.0.1280.680" timestamp="1631688663849" />
-    <state width="760" height="322" key="GridCell.Tab.1.right" timestamp="1631688663849">
+    <state width="761" height="214" key="GridCell.Tab.1.center/0.0.1280.680@0.0.1280.680" timestamp="1631600284334" />
+    <state width="761" height="214" key="GridCell.Tab.1.left" timestamp="1631600284334">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="760" height="322" key="GridCell.Tab.1.right/0.0.1280.680@0.0.1280.680" timestamp="1631688663849" />
-    <state width="760" height="322" key="GridCell.Tab.2.bottom" timestamp="1631688663850">
+    <state width="761" height="214" key="GridCell.Tab.1.left/0.0.1280.680@0.0.1280.680" timestamp="1631600284334" />
+    <state width="761" height="214" key="GridCell.Tab.1.right" timestamp="1631600284334">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="760" height="322" key="GridCell.Tab.2.bottom/0.0.1280.680@0.0.1280.680" timestamp="1631688663850" />
-    <state width="760" height="322" key="GridCell.Tab.2.center" timestamp="1631688663850">
+    <state width="761" height="214" key="GridCell.Tab.1.right/0.0.1280.680@0.0.1280.680" timestamp="1631600284334" />
+    <state width="761" height="214" key="GridCell.Tab.2.bottom" timestamp="1631600281940">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="760" height="322" key="GridCell.Tab.2.center/0.0.1280.680@0.0.1280.680" timestamp="1631688663850" />
-    <state width="760" height="322" key="GridCell.Tab.2.left" timestamp="1631688663850">
+    <state width="761" height="214" key="GridCell.Tab.2.bottom/0.0.1280.680@0.0.1280.680" timestamp="1631600281940" />
+    <state width="761" height="214" key="GridCell.Tab.2.center" timestamp="1631600281940">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="760" height="322" key="GridCell.Tab.2.left/0.0.1280.680@0.0.1280.680" timestamp="1631688663850" />
-    <state width="760" height="322" key="GridCell.Tab.2.right" timestamp="1631688663850">
+    <state width="761" height="214" key="GridCell.Tab.2.center/0.0.1280.680@0.0.1280.680" timestamp="1631600281940" />
+    <state width="761" height="214" key="GridCell.Tab.2.left" timestamp="1631600281940">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="760" height="322" key="GridCell.Tab.2.right/0.0.1280.680@0.0.1280.680" timestamp="1631688663850" />
-    <state width="760" height="322" key="GridCell.Tab.3.bottom" timestamp="1631688663851">
+    <state width="761" height="214" key="GridCell.Tab.2.left/0.0.1280.680@0.0.1280.680" timestamp="1631600281940" />
+    <state width="761" height="214" key="GridCell.Tab.2.right" timestamp="1631600281940">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="760" height="322" key="GridCell.Tab.3.bottom/0.0.1280.680@0.0.1280.680" timestamp="1631688663851" />
-    <state width="760" height="322" key="GridCell.Tab.3.center" timestamp="1631688663851">
+    <state width="761" height="214" key="GridCell.Tab.2.right/0.0.1280.680@0.0.1280.680" timestamp="1631600281940" />
+    <state width="761" height="214" key="GridCell.Tab.3.bottom" timestamp="1631600283419">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="760" height="322" key="GridCell.Tab.3.center/0.0.1280.680@0.0.1280.680" timestamp="1631688663851" />
-    <state width="760" height="322" key="GridCell.Tab.3.left" timestamp="1631688663850">
+    <state width="761" height="214" key="GridCell.Tab.3.bottom/0.0.1280.680@0.0.1280.680" timestamp="1631600283419" />
+    <state width="761" height="214" key="GridCell.Tab.3.center" timestamp="1631600283419">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="760" height="322" key="GridCell.Tab.3.left/0.0.1280.680@0.0.1280.680" timestamp="1631688663850" />
-    <state width="760" height="322" key="GridCell.Tab.3.right" timestamp="1631688663851">
+    <state width="761" height="214" key="GridCell.Tab.3.center/0.0.1280.680@0.0.1280.680" timestamp="1631600283419" />
+    <state width="761" height="214" key="GridCell.Tab.3.left" timestamp="1631600283419">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="760" height="322" key="GridCell.Tab.3.right/0.0.1280.680@0.0.1280.680" timestamp="1631688663851" />
-    <state x="410" y="61" key="RollbackChangesDialog" timestamp="1630478665682">
+    <state width="761" height="214" key="GridCell.Tab.3.left/0.0.1280.680@0.0.1280.680" timestamp="1631600283419" />
+    <state width="761" height="214" key="GridCell.Tab.3.right" timestamp="1631600283419">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="410" y="61" key="RollbackChangesDialog/0.0.1280.680@0.0.1280.680" timestamp="1630478665682" />
+    <state width="761" height="214" key="GridCell.Tab.3.right/0.0.1280.680@0.0.1280.680" timestamp="1631600283419" />
+    <state x="410" y="61" key="RollbackChangesDialog" timestamp="1634797283996">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="410" y="61" key="RollbackChangesDialog/0.0.1280.680@0.0.1280.680" timestamp="1634797283996" />
     <state x="93" y="93" width="1095" height="495" key="ShowDiffWithBranchDialog" timestamp="1629539961754">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="93" y="93" width="1095" height="495" key="ShowDiffWithBranchDialog/0.0.1280.680@0.0.1280.680" timestamp="1629539961754" />
-    <state x="233" y="74" key="Vcs.Push.Dialog.v2" timestamp="1631649385770">
+    <state x="233" y="74" key="Vcs.Push.Dialog.v2" timestamp="1634817459039">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="233" y="74" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1631649385770" />
-    <state x="347" y="73" width="587" height="534" key="find.popup" timestamp="1631646051945">
+    <state x="233" y="74" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1634817459039" />
+    <state x="347" y="73" width="587" height="534" key="find.popup" timestamp="1634822374614">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="347" y="73" width="587" height="534" key="find.popup/0.0.1280.680@0.0.1280.680" timestamp="1631646051945" />
+    <state x="347" y="73" width="587" height="534" key="find.popup/0.0.1280.680@0.0.1280.680" timestamp="1634822374614" />
     <state x="433" y="242" key="git4idea.remote.GitConfigureRemotesDialog" timestamp="1629096820225">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="433" y="242" key="git4idea.remote.GitConfigureRemotesDialog/0.0.1280.680@0.0.1280.680" timestamp="1629096820225" />
-    <state x="297" y="151" width="672" height="677" key="run.anything.popup" timestamp="1631515395719">
+    <state width="600" height="428" key="javadoc.popup" timestamp="1634823074102">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="297" y="151" width="672" height="677" key="run.anything.popup/0.0.1280.680@0.0.1280.680" timestamp="1631515395719" />
-    <state x="303" y="1" width="672" height="678" key="search.everywhere.popup" timestamp="1630484018203">
+    <state width="600" height="428" key="javadoc.popup/0.0.1280.680@0.0.1280.680" timestamp="1634823074102" />
+    <state x="297" y="151" width="672" height="677" key="run.anything.popup" timestamp="1634893758613">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="303" y="1" width="672" height="678" key="search.everywhere.popup/0.0.1280.680@0.0.1280.680" timestamp="1630484018203" />
+    <state x="297" y="151" width="672" height="677" key="run.anything.popup/0.0.1280.680@0.0.1280.680" timestamp="1634893758613" />
+    <state x="303" y="1" width="672" height="678" key="search.everywhere.popup" timestamp="1634830599134">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="303" y="1" width="672" height="678" key="search.everywhere.popup/0.0.1280.680@0.0.1280.680" timestamp="1634830599134" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/computergraphics/Worksheet09/part01/main.js</url>
-          <line>60</line>
-          <option name="timeStamp" value="9" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/computergraphics/commonJS/MV.js</url>
           <line>302</line>
@@ -324,8 +457,13 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/computergraphics/utils/geomitry.js</url>
-          <line>306</line>
+          <line>279</line>
           <option name="timeStamp" value="11" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/computergraphics/utils/general.js</url>
+          <line>37</line>
+          <option name="timeStamp" value="12" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

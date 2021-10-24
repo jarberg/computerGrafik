@@ -97,7 +97,7 @@ function render(){
   gl.clear( gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
   timer = takeTime()
   camera.update(timer)
-  camera.update_projection_matrix(program)
+
   gl.uniform1i(gl.getUniformLocation(program, "diffuseTexture"), 0);
   ground.draw()
 
@@ -109,13 +109,13 @@ function render(){
       let lightPosition = light.position;
 
       let modelLight = mat4();
-      let d = -(lightPosition[1]-ground.translate[1])-0.01;
+      let d = -(lightPosition[1]-ground.position[1])-0.01;
       modelLight[3][1] = 1/d;
       modelLight[3][3] = 0;
 
       let translation = translate(-lightPosition[0], -lightPosition[1], -lightPosition[2]);
       let translationBack = translate(lightPosition[0], lightPosition[1], lightPosition[2]);
-      let shadow = mult(translationBack, mult(modelLight, mult(translation, obj.transformMatrix)));
+      let shadow = mult(translationBack, mult(modelLight, mult(translation, obj.local_transformMatrix)));
 
       gl.depthFunc(gl.GREATER);
       // Send color and matrix for shadow
@@ -145,7 +145,7 @@ function main() {
 
   create_image_texture("xamp23.png", configureImageTexture, 0)
 
-  objects.push(new Rectangle(vec4(-1,-1,1,0)))
+  objects.push(new Rectangle(vec3(-1,-1,1)))
   objects[0].vertices = [
     vec4(2,0,-5,1),
     vec4(-2,0,-5,1),
@@ -157,32 +157,34 @@ function main() {
     vec2(0, 1),
     vec2(1, 1),
     vec2(1, 0)
-  ]
+  ];
 
   objects[0].clear()
-  objects[0].quad(0,1,2,3)
+  quad(0,1,2,3,objects[0])
 
   var mytexels  = generateredTextureArray(1)
   configureTexture(mytexels, 1, 1)
 
-  objects.push(new Rectangle(vec4(-1,0,1,0)))
+  objects.push(new Rectangle(vec4(-1,0,1)))
   objects[1].vertices = [
     vec4(0.75,-0.5,-1.75,1),
     vec4(0.25,-0.5,-1.75,1),
     vec4(0.25,-0.5,-1.25,1),
     vec4(0.75,-0.5,-1.25,1),
   ]
+  objects[1].move(vec3(0,1,0))
   objects[1].texCoord = [
     vec2(0, 0),
     vec2(0, 1),
     vec2(1, 1),
     vec2(1, 0)
-  ]
+  ];
 
   objects[1].clear()
-  objects[1].quad(0,1,2,3)
+  quad(0,1,2,3,objects[1])
 
-  objects.push(new Rectangle(vec4(-1,0,1,0)))
+  objects.push(new Rectangle(vec4(-1,0,1)))
+  objects[2].move(vec3(0,1,0))
   objects[2].vertices = [
     vec4(1,0,-3,1),
     vec4(1,-1,-3,1),
@@ -194,17 +196,17 @@ function main() {
     vec2(0, 1),
     vec2(1, 1),
     vec2(1, 0)
-  ]
+  ];
 
   objects[2].clear()
-  objects[2].quad(0,1,2,3)
+  quad(0,1,2,3,objects[2])
 
-  camera = new Camera()
-  camera.radius = 12
-  camera.phi = 45
-  camera.theta = 45
-  camera.translate = vec4(0,10,0,1)
-  camera.at= vec3(-1,0,-1)
+
+  camera = new OrbitCamera()
+  camera.move(vec3(1,0,-3.5))
+  camera.radius = 10
+  camera.phi = 90
+  camera.theta = -45
   camera.set_fovy(45)
 
   objects.push( new PointLight() )
