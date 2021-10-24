@@ -25,7 +25,7 @@ varying vec4 v_PositionFromLight;
 void main()
 {
 
-    v_PositionFromLight = projection*u_MvpMatrixFromLight*objTransform* a_Position;
+    v_PositionFromLight = u_MvpMatrixFromLight*objTransform* a_Position;
 
     gl_Position = a_Color+vNormal+vec4(vTexCoord,vTexCoord);
 

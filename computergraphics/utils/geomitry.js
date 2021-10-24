@@ -237,13 +237,12 @@ class Rectangle extends model{
 
         this.initDataToBuffers()
     }
+
     clear(){
         this.vertexes=[];
         this.vertexColors=[];
         this.texCoordsArray=[];
     }
-
-
 
     draw(camera, shadow = false){
 
@@ -322,9 +321,7 @@ class Mesh extends IndiceModel{
         if(this.dirtyShader) this.initDataToBuffers()
 
         this.initAttributeVariable(this.vPosition, this.vBuffer, 3, gl.FLOAT)
-
         this.initAttributeVariable(this.vColor, this.cBuffer, 4, gl.FLOAT)
-
         this.initAttributeVariable(this.a_normal, this.nBuffer, 3, gl.FLOAT)
 
         if (!shadow){
@@ -333,7 +330,6 @@ class Mesh extends IndiceModel{
                 gl.uniform1i(gl.getUniformLocation(this.shader,"u_usev_col"), 1);
             }
         }
-        gl.uniformMatrix3fv(gl.getUniformLocation(this.shader, "normalMatrix" ), false, flatten(camera.normalMatrix));
         gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, this.iBuffer);
         gl.drawElements(gl.TRIANGLES, this.indices.length, gl.UNSIGNED_SHORT, 0);
     }

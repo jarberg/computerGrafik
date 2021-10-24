@@ -11,6 +11,7 @@ var lightPoint = null;
 var shadows;
 var shadowShader;
 var shadowRender;
+var shadowObjects;
 
 function init(){
   canvas = document.querySelector("#glCanvas");
@@ -55,34 +56,22 @@ function render(){
 
   lightpos = light.get_position()
   var lighteye = lightpos;
-  var lightat = vec3(0.1, 0.1, 0.1)
+  var lightat = add( camera.at, vec3(0.1,0.1,0.1))
   var lightup = vec3(0.0, 1.0, 0.0)
   lightPersp = lookAt(lighteye,lightat , lightup)
 
-
   lightpos = light.get_position()
 
-  shadowRender.render(objects.concat([ground]), lightPersp, 1)
-
-
-  gl.useProgram(lightPoint.shader)
-  gl.uniformMatrix4fv( gl.getUniformLocation(lightPoint.shader,"modelViewMatrix"), false, flatten(camera.mvMatrix));
-  gl.uniformMatrix3fv(gl.getUniformLocation(lightPoint.shader, "normalMatrix" ), false, camera.normalMatrix);
+  shadowRender.render(shadowObjects, lightPersp, 1)
 
   lightPoint.move(light.get_position())
-  lightPoint.draw(camera);
-
 
   gl.useProgram(ground.shader)
   shadows.bindTexture(1)
   gl.uniform1i(gl.getUniformLocation(ground.shader, "diffuseTexture"), 0);
   gl.uniformMatrix4fv( gl.getUniformLocation(ground.shader,"modelViewMatrix"), false, flatten(camera.mvMatrix));
-  gl.uniformMatrix3fv(gl.getUniformLocation(ground.shader, "normalMatrix" ), false, flatten(camera.normalMatrix));
-
   gl.uniform1i(gl.getUniformLocation(ground.shader, "u_ShadowMap"), 1);
-  gl.uniformMatrix4fv( gl.getUniformLocation(ground.shader,"u_MvpMatrixFromLight"), false, flatten(lightPersp));
-
-
+  gl.uniformMatrix4fv( gl.getUniformLocation(ground.shader,"u_MvpMatrixFromLight"), false, flatten(mult(shadowRender.lightpMatrix,lightPersp)));
   ground.draw(camera)
 
   gl.depthFunc(gl.GREATER);
@@ -93,28 +82,7 @@ function render(){
     sinus_jump(animatedModel)
   }
 
-  for (let i = 0; i < objects.length; i++) {
-    var obj = objects[i];
-    var shader = obj.shader
-    gl.useProgram(shader)
-    camera.update(timer)
 
-    let lightPosition = light.get_position();
-
-    let modelLight = mat4();
-    let d = -(lightPosition[1]-ground.position[1])-0.01;
-    modelLight[3][1] = 1/d;
-    modelLight[3][3] = 0;
-
-    let translation = translate(-lightPosition[0], -lightPosition[1], -lightPosition[2]);
-    let translationBack = translate(lightPosition[0], lightPosition[1], lightPosition[2]);
-    let shadow = mult(translationBack, mult(modelLight, mult(translation, obj.local_transformMatrix)));
-
-    gl.uniformMatrix4fv( gl.getUniformLocation(shader,"objTransform"), false,
-        flatten(shadow));
-    gl.uniform1i(gl.getUniformLocation(shader,"u_shadow"),1)
-    obj.draw(camera, true);
-  }
   gl.disable(gl.BLEND);
   gl.depthFunc(gl.LESS);
 
@@ -122,12 +90,18 @@ function render(){
     var obj = objects[i];
     var shader = obj.shader;
     gl.useProgram(shader)
+    shadows.bindTexture(1)
     lightpos = light.get_position()
+    gl.uniformMatrix4fv( gl.getUniformLocation(shader,"objTransform"), false,
+        flatten(obj.local_transformMatrix));
+    gl.uniformMatrix4fv(gl.getUniformLocation(shader,"projection"), false, flatten(camera.pMatrix));
     gl.uniformMatrix4fv( gl.getUniformLocation(shader,"modelViewMatrix"), false, flatten(camera.mvMatrix));
-    gl.uniform4fv( gl.getUniformLocation(shader,"lightPosition"),  flatten(vec4(lightpos[0],lightpos[1],lightpos[2], 1.0)));
+    gl.uniformMatrix4fv( gl.getUniformLocation(shader,"u_MvpMatrixFromLight"), false, flatten(mult(shadowRender.lightpMatrix,lightPersp)));
 
+    gl.uniform4fv( gl.getUniformLocation(shader,"lightPosition"),  flatten(vec4(lightpos[0],lightpos[1],lightpos[2], 1.0)));
     gl.uniform1i(gl.getUniformLocation(shader, "diffuseTexture"), 1);
     gl.uniform1i(gl.getUniformLocation(shader,"u_shadow"),0)
+    gl.uniform1i(gl.getUniformLocation(shader, "u_ShadowMap"), 1);
 
     obj.draw(camera, false);
   }
@@ -167,7 +141,7 @@ function main() {
 
   shadows = new ShadowMapBuffer(512, 512)
   shadowRender = new ShadowRenderer(shadowShader, shadows)
-
+  shadowObjects = [];
   light = new OrbitPointLight(vec3(0.0,3.0,0.0))
   lightPoint = new Dot(vec3(0,0,0));
 
@@ -177,10 +151,14 @@ function main() {
     animatedModel.setScale(vec3(0.25, 0.25, 0.25))
     animatedModel.setShader(initShaders(gl, "render/shaders/vertexShader2.glsl", "render/shaders/fragmentShader2.glsl"));
     objects.push(animatedModel);
+    shadowObjects.push(animatedModel)
   });
 
-  gl.clearColor(0, 0.5843, 0.9294, 1.0)
+  objects.push(lightPoint)
+  shadowObjects.push(ground)
 
+
+  gl.clearColor(0, 0.5843, 0.9294, 1.0)
   setupControls()
   timer = takeTime()
   render();

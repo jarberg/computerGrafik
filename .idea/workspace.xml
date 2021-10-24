@@ -16,18 +16,36 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5e3948d6-358c-4c60-8135-650537d75e3c" name="Default Changelist" comment="found bug in worlsheet 09 where ground used old quad function">
-      <change afterPath="$PROJECT_DIR$/computergraphics/Worksheet09/part01/render/shadowRenderer.js" afterDir="false" />
+    <list default="true" id="5e3948d6-358c-4c60-8135-650537d75e3c" name="Default Changelist" comment="added shadow framme buffer and shadow render&#10;&#10;concepts work but it seems to be having some issues still">
+      <change afterPath="$PROJECT_DIR$/computergraphics/Worksheet09/part02/render/shaders/fragmentShader.glsl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/computergraphics/Worksheet09/part02/render/shaders/fragmentShader2.glsl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/computergraphics/Worksheet09/part02/render/shaders/fragment_shadow.glsl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/computergraphics/Worksheet09/part02/render/shaders/vertexShader.glsl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/computergraphics/Worksheet09/part02/render/shaders/vertex_shadow.glsl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/computergraphics/Worksheet10/part01/main.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/computergraphics/Worksheet10/part01/main.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/computergraphics/Worksheet10/part01/render/shaders/fragmentShader.glsl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/computergraphics/Worksheet10/part01/render/shaders/fragmentShader2.glsl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/computergraphics/Worksheet10/part01/render/shaders/fragment_shadow.glsl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/computergraphics/Worksheet10/part01/render/shaders/modelRenderer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/computergraphics/Worksheet10/part01/render/shaders/vertexShader.glsl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/computergraphics/Worksheet10/part01/render/shaders/vertex_shadow.glsl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/computergraphics/Worksheet10/part01/render/shadowFrameBuffer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/computergraphics/Worksheet10/part01/render/shadowRenderer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet09/part01/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Worksheet09/part01/main.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet09/part01/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Worksheet09/part01/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet09/part01/render/shaders/fragmentShader.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Worksheet09/part01/render/shaders/fragmentShader.glsl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet09/part01/render/shaders/fragmentShader2.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Worksheet09/part01/render/shaders/fragmentShader2.glsl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet09/part01/render/shaders/fragment_shadow.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Worksheet09/part01/render/shaders/fragment_shadow.glsl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet09/part01/render/shaders/vertexShader.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Worksheet09/part01/render/shaders/vertexShader.glsl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet09/part01/render/shaders/vertexShader2.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Worksheet09/part01/render/shaders/vertexShader2.glsl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet09/part01/render/shaders/vertex_shadow.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Worksheet09/part01/render/shaders/vertex_shadow.glsl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet09/part01/render/shadowFrameBuffer.js" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Worksheet09/part01/render/shadowFrameBuffer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet09/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Worksheet09/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet09/part01/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Worksheet09/part02/main.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet09/part01/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Worksheet09/part02/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet09/part01/render/shaders/fragmentShader.glsl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet09/part01/render/shaders/fragmentShader2.glsl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet09/part01/render/shaders/fragment_shadow.glsl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet09/part01/render/shaders/modelRenderer.js" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Worksheet09/part02/render/shaders/modelRenderer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet09/part01/render/shaders/vertexShader.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Worksheet10/part01/render/shaders/vertexShader2.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet09/part01/render/shaders/vertexShader2.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Worksheet09/part02/render/shaders/vertexShader2.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet09/part01/render/shaders/vertex_shadow.glsl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet09/part01/render/shadowFrameBuffer.js" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Worksheet09/part02/render/shadowFrameBuffer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet09/part01/render/shadowRenderer.js" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Worksheet09/part02/render/shadowRenderer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/computergraphics/utils/Camera.js" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/utils/Camera.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/computergraphics/utils/geomitry.js" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/utils/geomitry.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -59,28 +77,28 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/computergraphics/Worksheet09/part01/render" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/computergraphics/Worksheet10/part01" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Michael\Desktop\DtuWebsite\computergraphics\Worksheet10\part01" />
+      <recent name="C:\Users\Michael\Desktop\DtuWebsite\computergraphics\Worksheet09" />
+      <recent name="C:\Users\Michael\Desktop\DtuWebsite\computergraphics\commonJS" />
+      <recent name="C:\Users\Michael\Desktop\DtuWebsite\computergraphics\Worksheet09\part01\render" />
+      <recent name="C:\Users\Michael\Desktop\DtuWebsite\computergraphics\Worksheet06\part03" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Michael\Desktop\DtuWebsite\computergraphics\Worksheet10\part01" />
       <recent name="C:\Users\Michael\Desktop\DtuWebsite\computergraphics\Worksheet09\part01\render" />
       <recent name="C:\Users\Michael\Desktop\DtuWebsite\computergraphics\Worksheet09\part01\shaders" />
       <recent name="C:\Users\Michael\Desktop\DtuWebsite\computergraphics\Worksheet09\part01" />
       <recent name="C:\Users\Michael\Desktop\DtuWebsite\computergraphics\models\teacup" />
-      <recent name="C:\Users\Michael\Desktop\DtuWebsite\computergraphics" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\Michael\Desktop\DtuWebsite\computergraphics\Worksheet09\part01\render" />
-      <recent name="C:\Users\Michael\Desktop\DtuWebsite\computergraphics\Worksheet06\part03" />
-      <recent name="C:\Users\Michael\Desktop\DtuWebsite\computergraphics\Worksheet06\part03\render" />
-      <recent name="C:\Users\Michael\Desktop\DtuWebsite\computergraphics\Worksheet09" />
-      <recent name="C:\Users\Michael\Desktop\DtuWebsite\computergraphics\Worksheet08" />
     </key>
   </component>
-  <component name="RunManager" selected="JavaScript Debug.main.html (4)">
-    <configuration name="main.html (1)" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/DtuWebsite/computergraphics/Worksheet07/part03/main.html" useBuiltInWebServerPort="true">
+  <component name="RunManager" selected="JavaScript Debug.main.html (5)">
+    <configuration name="main.html (2)" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/DtuWebsite/computergraphics/Worksheet09/part02/main.html" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
     <configuration name="main.html (3)" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/DtuWebsite/computergraphics/Worksheet08/part03/main.html" useBuiltInWebServerPort="true">
@@ -89,19 +107,19 @@
     <configuration name="main.html (4)" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/DtuWebsite/computergraphics/Worksheet09/part01/main.html" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
-    <configuration name="main.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/DtuWebsite/computergraphics/Worksheet08/part04/main.html" useBuiltInWebServerPort="true">
+    <configuration name="main.html (5)" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/DtuWebsite/computergraphics/Worksheet10/part01/main.html" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
-    <configuration name="main.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/computergraphics/Worksheet08/part03/main.js" working-dir="$PROJECT_DIR$/computergraphics/Worksheet08/part03">
+    <configuration name="main.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/DtuWebsite/computergraphics/Worksheet08/part04/main.html" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JavaScript Debug.main.html (5)" />
+        <item itemvalue="JavaScript Debug.main.html (2)" />
         <item itemvalue="JavaScript Debug.main.html (4)" />
         <item itemvalue="JavaScript Debug.main.html" />
-        <item itemvalue="JavaScript Debug.main.html (1)" />
         <item itemvalue="JavaScript Debug.main.html (3)" />
-        <item itemvalue="Node.js.main.js" />
       </list>
     </recent_temporary>
   </component>
@@ -118,6 +136,7 @@
       <workItem from="1629108204271" duration="1407000" />
       <workItem from="1630431838776" duration="15357000" />
       <workItem from="1631512248166" duration="5445000" />
+      <workItem from="1634887933352" duration="26761000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <created>1629096644242</created>
@@ -252,7 +271,14 @@
       <option name="project" value="LOCAL" />
       <updated>1634817451045</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="added shadow framme buffer and shadow render&#10;&#10;concepts work but it seems to be having some issues still">
+      <created>1634830490923</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1634830490923</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -300,7 +326,8 @@
     <MESSAGE value="added simple smooth shadign and inverse squared point light on shader&#10;&#10;fixed error with sphere  in some worksheets that broke" />
     <MESSAGE value="reworked variable locators to make code easyer to read&#10;&#10;started on shadow buffers" />
     <MESSAGE value="found bug in worlsheet 09 where ground used old quad function" />
-    <option name="LAST_COMMIT_MESSAGE" value="found bug in worlsheet 09 where ground used old quad function" />
+    <MESSAGE value="added shadow framme buffer and shadow render&#10;&#10;concepts work but it seems to be having some issues still" />
+    <option name="LAST_COMMIT_MESSAGE" value="added shadow framme buffer and shadow render&#10;&#10;concepts work but it seems to be having some issues still" />
   </component>
   <component name="WindowStateProjectService">
     <state x="96" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1629619396960">
@@ -411,14 +438,14 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state width="600" height="428" key="javadoc.popup/0.0.1280.680@0.0.1280.680" timestamp="1634823074102" />
-    <state x="297" y="151" width="672" height="677" key="run.anything.popup" timestamp="1634823750066">
+    <state x="297" y="151" width="672" height="677" key="run.anything.popup" timestamp="1634893758613">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="297" y="151" width="672" height="677" key="run.anything.popup/0.0.1280.680@0.0.1280.680" timestamp="1634823750066" />
-    <state x="303" y="1" width="672" height="678" key="search.everywhere.popup" timestamp="1634816038111">
+    <state x="297" y="151" width="672" height="677" key="run.anything.popup/0.0.1280.680@0.0.1280.680" timestamp="1634893758613" />
+    <state x="303" y="1" width="672" height="678" key="search.everywhere.popup" timestamp="1634830599134">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="303" y="1" width="672" height="678" key="search.everywhere.popup/0.0.1280.680@0.0.1280.680" timestamp="1634816038111" />
+    <state x="303" y="1" width="672" height="678" key="search.everywhere.popup/0.0.1280.680@0.0.1280.680" timestamp="1634830599134" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -430,13 +457,12 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/computergraphics/utils/geomitry.js</url>
-          <line>280</line>
+          <line>279</line>
           <option name="timeStamp" value="11" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/computergraphics/utils/general.js</url>
           <line>37</line>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="12" />
         </line-breakpoint>
       </breakpoints>
