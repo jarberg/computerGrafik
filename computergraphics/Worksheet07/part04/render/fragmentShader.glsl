@@ -10,6 +10,7 @@ varying vec3 N;
 varying vec2 coords;
 
 void main(){
-    gl_FragColor = textureCube(textureCubeMap, R);
+
+    //gl_FragColor = textureCube(textureCubeMap, R);
 
 }

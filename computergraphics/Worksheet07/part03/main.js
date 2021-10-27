@@ -87,7 +87,7 @@ function main() {
   objects.push( sphere );
   objects.push( new backFace(vec4(0, 0, 0)) );
 
-  create_cube_map(false)
+  create_cube_map(program,false)
 
   camera = new OrbitCamera();
 

@@ -16,7 +16,6 @@ class ShadowRenderer{
         gl.clearColor(1.0, 1.0, 1.0, 1.0);
         gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
         gl.disable(gl.BLEND);
-
         gl.useProgram(shadowShader)
         gl.uniformMatrix4fv( gl.getUniformLocation(shadowShader,"modelViewMatrix"), false, flatten(lightPersp));
         gl.uniformMatrix4fv(gl.getUniformLocation(shadowShader,"projection"), false, flatten(this.lightpMatrix));

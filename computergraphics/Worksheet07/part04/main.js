@@ -17,7 +17,7 @@ function init(){
     alert("Unable to initialize WebGL. Your browser or machine may not support it.");
     return;
   }
-  program = initShaders(gl, "vertex-shader", "fragment-shader");
+  program = initShaders(gl, "render/vertexShader.glsl", "render/fragmentShader.glsl");
   gl.useProgram(program);
   gl.clearColor(0.8, 0.8, 0.8, 1.0);
   gl.enable(gl.CULL_FACE)
@@ -62,7 +62,7 @@ function main() {
   objects[0].divisions = 6
   objects.push( new backFace(vec3(0, 0, 0)) );
 
-  create_cube_map(false, 0)
+  create_cube_map(program,false, 0)
   create_image_texture("normalmap.png", configureNormalTexture, 1)
 
   camera = new OrbitCamera();

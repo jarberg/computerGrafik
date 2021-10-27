@@ -93,7 +93,7 @@ function main() {
   back = new backFace()
   objects.push( back );
 
-  create_cube_map( false)
+  create_cube_map(program, false)
 
   camera = new OrbitCamera();
 

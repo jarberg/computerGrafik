@@ -179,7 +179,7 @@ class Sphere extends model{
             }
         }
 
-         gl.uniformMatrix4fv( gl.getUniformLocation(this.shader,"mTex"), false, flatten(mat4()));
+        gl.uniformMatrix4fv( gl.getUniformLocation(this.shader,"mTex"), false, flatten(mat4()));
         gl.uniform3fv( gl.getUniformLocation(this.shader,"eye"), flatten(camera.eye));
 
         gl.uniform1i(gl.getUniformLocation(this.shader,"isreflective"), 1)
