@@ -116,9 +116,7 @@ function main() {
 function render(){
   gl.clear( gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
 
-
   camera.update(takeTime())
-
 
   var normalMatrix = [
     vec3(camera.mvMatrix[0][0], camera.mvMatrix[0][1], camera.mvMatrix[0][2]),

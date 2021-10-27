@@ -88,6 +88,11 @@ function main() {
   //clear button event
   clearButton.addEventListener("click", function(event) {
     var bgcolor = colors[clearMenu.selectedIndex];
+    index =0
+    numPoints =0
+    triangles = []
+    points =[]
+    circles =[]
     gl.clearColor(bgcolor[0], bgcolor[1], bgcolor[2], bgcolor[3]);
     gl.clear(gl.COLOR_BUFFER_BIT);
   });
