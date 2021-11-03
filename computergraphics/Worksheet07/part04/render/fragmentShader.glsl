@@ -23,12 +23,11 @@ void main(){
     gl_FragColor = textureCube(textureCubeMap, R);
     if (isreflective==1){
         vec3 modelpos = P;
-        vec3 incident = modelpos - eye;
+        vec3 incident = modelpos-eye;
         vec3 surfaceNormal = normalize(N.xyz);
-        float u = 1.0 - atan(surfaceNormal.z, surfaceNormal.x)/(2.0 * PI);
+        float u = 1.0 - atan(surfaceNormal.z, surfaceNormal.x)/(2.0*PI);
         float v = acos(surfaceNormal.y)/(PI);
         vec3 mappedNormal = rotate_to_normal(surfaceNormal, texture2D(normalTexture, vec2(u, v)).xyz*2.0 - vec3(1,1,1));
-
         vec3 rR = reflect(incident, normalize(mappedNormal));
         gl_FragColor = textureCube(textureCubeMap, rR);
     }
