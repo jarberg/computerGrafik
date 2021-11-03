@@ -16,13 +16,14 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5e3948d6-358c-4c60-8135-650537d75e3c" name="Default Changelist" comment="fixed boken worksheet 07 enviromentmaps">
-      <change afterPath="$PROJECT_DIR$/computergraphics/Worksheet10/index.html" afterDir="false" />
+    <list default="true" id="5e3948d6-358c-4c60-8135-650537d75e3c" name="Default Changelist" comment="fixed bug where reset canvas didnt delete all old geos">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet02/part02/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Worksheet02/part02/main.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet07/part01/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Worksheet07/part01/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet09/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Worksheet09/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computergraphics/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet07/part01/render/fragmentShader.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Worksheet07/part01/render/fragmentShader.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet07/part01/render/vertexShader.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Worksheet07/part01/render/vertexShader.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet07/part04/render/fragmentShader.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Worksheet07/part04/render/fragmentShader.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet07/part04/render/vertexShader.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Worksheet07/part04/render/vertexShader.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/computergraphics/utils/textureUtils.js" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/utils/textureUtils.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,18 +54,11 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/computergraphics/Worksheet10" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/computergraphics/Worksheet07/part01" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\Michael\Desktop\DtuWebsite\computergraphics\Worksheet10" />
-      <recent name="C:\Users\Michael\Desktop\DtuWebsite\computergraphics\Worksheet10\part01" />
-      <recent name="C:\Users\Michael\Desktop\DtuWebsite\computergraphics\Worksheet09" />
-      <recent name="C:\Users\Michael\Desktop\DtuWebsite\computergraphics\commonJS" />
-      <recent name="C:\Users\Michael\Desktop\DtuWebsite\computergraphics\Worksheet09\part01\render" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Michael\Desktop\DtuWebsite\computergraphics\Worksheet07\part04\render" />
       <recent name="C:\Users\Michael\Desktop\DtuWebsite\computergraphics\Worksheet07\part04" />
@@ -72,30 +66,37 @@
       <recent name="C:\Users\Michael\Desktop\DtuWebsite\computergraphics\Worksheet09\part01\render" />
       <recent name="C:\Users\Michael\Desktop\DtuWebsite\computergraphics\Worksheet09\part01\shaders" />
     </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Michael\Desktop\DtuWebsite\computergraphics\Worksheet07\part01" />
+      <recent name="C:\Users\Michael\Desktop\DtuWebsite\computergraphics\Worksheet10" />
+      <recent name="C:\Users\Michael\Desktop\DtuWebsite\computergraphics\Worksheet10\part01" />
+      <recent name="C:\Users\Michael\Desktop\DtuWebsite\computergraphics\Worksheet09" />
+      <recent name="C:\Users\Michael\Desktop\DtuWebsite\computergraphics\commonJS" />
+    </key>
   </component>
   <component name="RunManager" selected="JavaScript Debug.main.html (3)">
-    <configuration name="main.html (2)" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/DtuWebsite/computergraphics/Worksheet02/part02/main.html" useBuiltInWebServerPort="true">
+    <configuration name="main.html (1)" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/DtuWebsite/computergraphics/Worksheet08/part01/main.html" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
-    <configuration name="main.html (3)" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/DtuWebsite/computergraphics/Worksheet02/part01/main.html" useBuiltInWebServerPort="true">
+    <configuration name="main.html (2)" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/DtuWebsite/computergraphics/Worksheet05/part01/main.html" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
-    <configuration name="main.html (4)" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/DtuWebsite/computergraphics/Worksheet08/part04/main.html" useBuiltInWebServerPort="true">
+    <configuration name="main.html (3)" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/DtuWebsite/computergraphics/Worksheet05/part02/main.html" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
-    <configuration name="main.html (5)" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/DtuWebsite/computergraphics/Worksheet02/part03/main.html" useBuiltInWebServerPort="true">
+    <configuration name="main.html (5)" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/DtuWebsite/computergraphics/Worksheet07/part03/main.html" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
-    <configuration name="main.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/DtuWebsite/computergraphics/Worksheet02/part04/main.html" useBuiltInWebServerPort="true">
+    <configuration name="main.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/DtuWebsite/computergraphics/Worksheet07/part04/main.html" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="JavaScript Debug.main.html (3)" />
         <item itemvalue="JavaScript Debug.main.html" />
-        <item itemvalue="JavaScript Debug.main.html (5)" />
         <item itemvalue="JavaScript Debug.main.html (2)" />
-        <item itemvalue="JavaScript Debug.main.html (4)" />
+        <item itemvalue="JavaScript Debug.main.html (1)" />
+        <item itemvalue="JavaScript Debug.main.html (5)" />
       </list>
     </recent_temporary>
   </component>
@@ -113,7 +114,9 @@
       <workItem from="1630431838776" duration="15357000" />
       <workItem from="1631512248166" duration="5445000" />
       <workItem from="1634887933352" duration="26761000" />
-      <workItem from="1635332122021" duration="1369000" />
+      <workItem from="1635332122021" duration="1616000" />
+      <workItem from="1635343262671" duration="418000" />
+      <workItem from="1635929765305" duration="1408000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <created>1629096644242</created>
@@ -262,11 +265,28 @@
       <option name="project" value="LOCAL" />
       <updated>1635332999092</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="fixed bug where reset canvas didnt delete all old geos">
+      <created>1635333709232</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1635333709232</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ORDER">
+      <list>
+        <option value="0" />
+        <option value="2" />
+        <option value="3" />
+        <option value="1" />
+      </list>
+    </option>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -312,7 +332,8 @@
     <MESSAGE value="found bug in worlsheet 09 where ground used old quad function" />
     <MESSAGE value="added shadow framme buffer and shadow render&#10;&#10;concepts work but it seems to be having some issues still" />
     <MESSAGE value="fixed boken worksheet 07 enviromentmaps" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed boken worksheet 07 enviromentmaps" />
+    <MESSAGE value="fixed bug where reset canvas didnt delete all old geos" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed bug where reset canvas didnt delete all old geos" />
   </component>
   <component name="WindowStateProjectService">
     <state x="96" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1629619396960">
@@ -411,6 +432,10 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="233" y="74" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1635333025100" />
+    <state x="93" y="93" width="1095" height="495" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1635931314480">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="93" y="93" width="1095" height="495" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1280.680@0.0.1280.680" timestamp="1635931314480" />
     <state x="347" y="73" width="587" height="534" key="find.popup" timestamp="1634822374614">
       <screen x="0" y="0" width="1280" height="680" />
     </state>

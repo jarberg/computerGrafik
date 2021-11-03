@@ -22,7 +22,7 @@ function init(){
   // Set clear color to black, fully opaque
   gl.clearColor(0.8, 0.8, 0.8, 1.0);
 
-  program = initShaders(gl, "vertex-shader", "fragment-shader");
+  program = initShaders(gl, "render/vertexShader.glsl", "render/fragmentShader.glsl");
   gl.useProgram(program);
   gl.enable(gl.CULL_FACE)
   gl.enable(gl.DEPTH_TEST)
@@ -108,7 +108,7 @@ function main() {
 
   setupControls();
 
-  create_cube_map();
+  create_cube_map(program);
 
   render()
 }

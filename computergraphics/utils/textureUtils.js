@@ -113,5 +113,6 @@ function create_cube_map(shader, invert=false, index=0){
     }
     gl.texParameteri(gl.TEXTURE_CUBE_MAP, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
     gl.texParameteri(gl.TEXTURE_CUBE_MAP, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
-    gl.uniform1i(gl.getUniformLocation(shader, "textureCubeMap"), index);
+    var loc = gl.getUniformLocation(shader, "texture")
+    gl.uniform1i(loc, index);
 }
