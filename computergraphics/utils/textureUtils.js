@@ -85,7 +85,8 @@ function create_image_texture(imageName, callback, index){
     image.onload = function () {
         callback(image, index)
     };
-    image.src = location.origin+fetchImageResourceFolder()+"/Images/"+imageName;
+    //image.src = location.origin+fetchImageResourceFolder()+"/Images/"+imageName;
+    image.src = "../../Images/"+imageName;
 }
 
 function create_cube_map(shader, invert=false, index=0){

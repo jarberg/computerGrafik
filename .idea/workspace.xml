@@ -17,25 +17,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5e3948d6-358c-4c60-8135-650537d75e3c" name="Default Changelist" comment="fixed missing css">
-      <change afterPath="$PROJECT_DIR$/computergraphics/Worksheet10/part02/main.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/computergraphics/Worksheet10/part02/main.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/computergraphics/Worksheet10/part02/render/shaders/fragmentShader.glsl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/computergraphics/Worksheet10/part02/render/shaders/fragmentShader2.glsl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/computergraphics/Worksheet10/part02/render/shaders/fragment_shadow.glsl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/computergraphics/Worksheet10/part02/render/shaders/modelRenderer.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/computergraphics/Worksheet10/part02/render/shaders/vertexShader.glsl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/computergraphics/Worksheet10/part02/render/shaders/vertexShader2.glsl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/computergraphics/Worksheet10/part02/render/shaders/vertex_shadow.glsl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/computergraphics/Worksheet10/part02/render/shadowFrameBuffer.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/computergraphics/Worksheet10/part02/render/shadowRenderer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet08/part01/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Worksheet08/part01/main.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet08/part02/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Worksheet08/part02/main.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet08/part03/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Worksheet08/part03/main.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet08/part04/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Worksheet08/part04/main.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computergraphics/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet10/part01/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Worksheet10/part01/main.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet10/part02/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Worksheet10/part02/main.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet10/part02/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Worksheet10/part02/main.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/computergraphics/utils/Camera.js" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/utils/Camera.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/computergraphics/utils/textureUtils.js" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/utils/textureUtils.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,11 +73,11 @@
       <recent name="C:\Users\Michael\Desktop\DtuWebsite\computergraphics\Worksheet07\part01" />
     </key>
   </component>
-  <component name="RunManager" selected="JavaScript Debug.main.html">
+  <component name="RunManager" selected="JavaScript Debug.main.html (1)">
     <configuration name="index.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/DtuWebsite/computergraphics/Worksheet10/index.html" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
-    <configuration name="main.html (2)" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/DtuWebsite/computergraphics/Worksheet08/part01/main.html" useBuiltInWebServerPort="true">
+    <configuration name="main.html (1)" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/computerGrafik/computergraphics/Worksheet10/part02/main.html" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
     <configuration name="main.html (3)" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/DtuWebsite/computergraphics/Worksheet08/part04/main.html" useBuiltInWebServerPort="true">
@@ -104,11 +91,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JavaScript Debug.main.html (1)" />
         <item itemvalue="JavaScript Debug.main.html" />
         <item itemvalue="JavaScript Debug.index.html" />
         <item itemvalue="JavaScript Debug.main.html (4)" />
         <item itemvalue="JavaScript Debug.main.html (3)" />
-        <item itemvalue="JavaScript Debug.main.html (2)" />
       </list>
     </recent_temporary>
   </component>
@@ -129,6 +116,7 @@
       <workItem from="1635332122021" duration="1616000" />
       <workItem from="1635343262671" duration="418000" />
       <workItem from="1635929765305" duration="4175000" />
+      <workItem from="1635937604861" duration="4172000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <created>1629096644242</created>

@@ -13,7 +13,7 @@
     <script type="text/javascript"  src="render/shadowFrameBuffer.js"></script>
     <script type="text/javascript"  src="../../utils/materials.js"></script>
     <script type="text/javascript"  src="../../utils/animation.js"></script>
-    <script type="text/javascript"  src="../../utils/quaternion.js"></script>
+    <script type="text/javascript"  src="../../commonJS/quaternion.js"></script>
     <script type="text/javascript"  src="../../utils/lights.js"></script>
     <script type="text/javascript"  src="../../commonJS/OBJParser.js"></script>
     <script type="text/javascript"  src="../../utils/Camera.js"></script>
@@ -54,17 +54,6 @@
     </td>
     </tbody></table>
     <p align="center" id="fpsOutput" class="fps-text">FPS: 60</p>
-    <p align="center" id="text" class="fps-text">Merged part 01, part 02, part03</p>
-    <p align="left" id="part03" class="fps-text">
-        <br>
-    Part 03<br>
-    <tab>projection vs mapping<br>
-     The largest difference that sets these 2 apart is that shadow mapping allows for selfshadowing and arbitrary shadow casting to any number of differently oriented surfaces.<br>
-        projection mapping, while easier to maintain as you simply add more objects to the rendering pipeline, is limited to shadows on the uniform ground plane<br>
-        which is hardly useful for more complex or realistic renderings.<br>
-        shadow mapping with all its benefits do require an alteration to the rendering pipeline as we need to render the same scene atleast 1 time per light source,<br>
-        requiring more shaders and more complex texture management besides the additional framebuffers and rendering buffers in memory
-    </p>
 
 </body>
 </html>

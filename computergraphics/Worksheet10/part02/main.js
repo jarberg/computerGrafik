@@ -92,20 +92,14 @@ function setupControls(){
       if( middleMousePressed ) {
       if(e.altKey){
         pos = subtract(camera.eye,camera.at)
-        pos[0]=camera.radius*
-        camera.move(add(camera.position, add(camera.eye, subtract(camera.eye,camera.at))))
+        camera.move(add(camera.position, vec3(e.movementX*0.25,e.movementY*0.25)))
       }
-      else{
-        camera.updateHorizontal(-e.movementX*-0.25);
-        camera.updateVertical(e.movementY*0.25);
-      }
-
+      camera.adjustRotation(-e.movementX, e.movementY)
 
     }
     }
     canvas.onwheel = (e) =>{
       camera.adjustDistance(e.deltaY);
-      console.log(e.deltaY)
       e.preventDefault();
     }
 
@@ -123,7 +117,7 @@ function render(){
 
   lightpos = light.get_position()
   var lighteye = lightpos;
-  var lightat = add( camera.at, vec3(0.1,0.1,0.1))
+  var lightat = add( camera.position, vec3(0.01,0.01,0.01))
   var lightup = vec3(0.0, 1.0, 0.0)
   lightPersp = lookAt(lighteye,lightat , lightup)
   lightpos = light.get_position()
@@ -176,7 +170,7 @@ function render(){
 function main() {
   init()
 
-  camera = new Camera()
+  camera = new QuaternionCamera()
   camera.move(vec3(0,1,0))
   camera.radius = 6
   camera.phi = 10.0
@@ -210,7 +204,6 @@ function main() {
   light = new OrbitPointLight(vec3(0,3,0))
   lightPoint = new Dot(vec3(0,0,0));
   loadObjFile("../../models/teacup/teapot.obj", 1, false, (obj) => {
-
     animatedModel = new Mesh([0,0,0],obj.getDrawingInfo());
     animatedModel.setScale(vec3(0.25, 0.25, 0.25))
     animatedModel.setShader(initShaders(gl, "render/shaders/vertexShader2.glsl", "render/shaders/fragmentShader2.glsl"));

@@ -193,19 +193,25 @@ class QuaternionCamera extends transform{
             this.near,
             this.far);
 
-        this.mvMatrix;
+        this.eye = vec3(1,1,1)
+        let normalizedEye = normalize(subtract(this.eye, this.position));
 
-        this.eye = vec3(0,0,0);
-        this.at = vec3(0.0, 0.0, 0.0);
-        this.up = vec3(0.0, 1.0, 0.0);
+        this.rotation = new Quaternion().make_rot_vec2vec([0,0,1], normalizedEye);
+        this.up = this.rotation.apply([0,1,0]);
 
+        this.mvMatrix = lookAt(this.eye, this.position, this.up)
+        this.normalMatrix = [
+            vec3(this.mvMatrix[0][0], this.mvMatrix[0][1], this.mvMatrix[0][2]),
+            vec3(this.mvMatrix[1][0], this.mvMatrix[1][1], this.mvMatrix[1][2]),
+            vec3(this.mvMatrix[2][0], this.mvMatrix[2][1], this.mvMatrix[2][2])
+        ];
         this.update_projection_matrix()
     }
 
     move(vec){
         super.move(vec)
-        this.updateEye()
     }
+
     set_fovy(angle){
         if (this.fovy !== angle){
             this.fovy = angle;
@@ -223,41 +229,51 @@ class QuaternionCamera extends transform{
 
     update(frametime){
 
-        this.mvMatrix = lookAt(this.eye, this.at , this.up);
+    }
+
+    update_cam(){
+        var up = this.rotation.apply(this.up);
+        var eye = this.rotation.apply([0, 0, this.radius]);
+        this.mvMatrix = lookAt(eye, this.position , up);
+        this.update_projection_matrix()
+
         this.normalMatrix = [
             vec3(this.mvMatrix[0][0], this.mvMatrix[0][1], this.mvMatrix[0][2]),
             vec3(this.mvMatrix[1][0], this.mvMatrix[1][1], this.mvMatrix[1][2]),
             vec3(this.mvMatrix[2][0], this.mvMatrix[2][1], this.mvMatrix[2][2])
         ];
-        this.update_projection_matrix()
-    }
-
-    updateHorizontal(input){
-        this.phi+=input;
-        this.updateEye()
-    }
-
-    updateVertical(input){
-        this.theta+=input;
-        this.updateEye()
     }
 
     adjustDistance(input){
-        this.radius += input*0.01
-        this.updateEye()
+        this.radius += input/100;
+        this.update_cam()
     }
 
-    updateEye(){
+    adjustRotation(xAdjustment, yAdjustment){
 
+        let rotationIncrement = new Quaternion().make_rot_vec2vec([0,0,1], this.projectToSphere(xAdjustment, yAdjustment));
+        this.rotation = this.rotation.multiply(rotationIncrement);
+        this.update_cam()
 
-        let vAngleRadians = ((-this.theta+90) / 180) * Math.PI;
-        let hAngleRadians = ((this.phi+90) / 180) * Math.PI;
-        this.at = vec3(this.position)
-        this.eye = [
-            this.position[0]+-this.radius * Math.sin(vAngleRadians) * Math.cos(hAngleRadians),
-            this.position[1]+-this.radius * Math.cos(vAngleRadians),
-            this.position[2]+-this.radius * Math.sin(vAngleRadians) * Math.sin(hAngleRadians)
-        ];
+    }
+
+    projectToSphere(screenX, screenY) {
+        let x = screenX / (canvas.height/2.0);
+        let y = screenY / (canvas.width/2.0);
+        // Project onto sphere
+        var r = 2;
+        var d = Math.sqrt(x * x + y * y);
+        var t = r * Math.sqrt(2);
+        var z = 0;
+        if (d < r) // Inside sphere
+            z = Math.sqrt(r * r - d * d);
+        else if (d < t)
+            z = 0;
+        else       // On hyperbola
+            z = t * t / d;
+
+        console.log(x,y,z)
+        return normalize([x, y, z]);
     }
 
 }
