@@ -189,6 +189,69 @@ class Sphere extends model{
 
 }
 
+
+class Sphere_box extends model{
+
+    divisions= 4;
+
+    constructor(_center) {
+        super(_center);
+        var va = vec4(0.0, 0.0, -1.0, 1);
+        var vb = vec4(0.0, 0.942809, 0.333333, 1);
+        var vc = vec4(-0.816497, -0.471405, 0.333333, 1);
+        var vd = vec4(0.816497, -0.471405, 0.333333, 1);
+        tetrahedron(va,vb,vc,vd, this)
+        this.initDataToBuffers()
+    }
+
+    draw(camera,shadow){
+        this.vertexColors = [];
+        this.vertexes = [];
+        this.normals = [];
+        this.texCoordsArray = [];
+
+        var va = vec4(0.0, 0.0, -1.0, 1);
+        var vb = vec4(0.0, 0.942809, 0.333333, 1);
+        var vc = vec4(-0.816497, -0.471405, 0.333333, 1);
+        var vd = vec4(0.816497, -0.471405, 0.333333, 1);
+        tetrahedron(va,vb,vc,vd,this)
+
+        gl.useProgram(this.shader)
+        if(this.dirtyShader) this.initDataToBuffers()
+
+        super.draw()
+
+        gl.bindBuffer(gl.ARRAY_BUFFER, this.vBuffer);
+        gl.bufferData(gl.ARRAY_BUFFER, flatten(this.vertexes), gl.STATIC_DRAW);
+
+        gl.bindBuffer(gl.ARRAY_BUFFER, this.nBuffer);
+        gl.bufferData(gl.ARRAY_BUFFER, flatten(this.vertexColors), gl.STATIC_DRAW);
+
+        gl.bindBuffer(gl.ARRAY_BUFFER, this.cBuffer);
+        gl.bufferData(gl.ARRAY_BUFFER, flatten(this.normals), gl.STATIC_DRAW);
+
+        gl.bindBuffer(gl.ARRAY_BUFFER, this.tBuffer);
+        gl.bufferData(gl.ARRAY_BUFFER, flatten(this.texCoordsArray), gl.STATIC_DRAW);
+
+
+        if (!shadow){
+            gl.uniformMatrix4fv(gl.getUniformLocation(this.shader,"objTransform"), false, flatten(this.local_transformMatrix));
+            if (this.use_vcol){
+                gl.uniform1i(gl.getUniformLocation(this.shader,"u_usev_col"), 1);
+            }
+        }
+
+        gl.uniformMatrix4fv( gl.getUniformLocation(this.shader,"mTex"), false, flatten(mat4()));
+        gl.uniform3fv( gl.getUniformLocation(this.shader,"eye"), flatten(camera.eye));
+
+        gl.uniform1i(gl.getUniformLocation(this.shader,"isreflective"), 1)
+
+        gl.drawArrays(gl.TRIANGLES, 0, this.vertexes.length);
+    }
+
+}
+
+
 class Dot extends model{
 
     constructor(_center) {

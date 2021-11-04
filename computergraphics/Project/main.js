@@ -39,7 +39,8 @@ class InteractionManager{
   }
 
   single_click_selection(coords){
-
+    let id = this.selectionRenderer.single_click_selection_draw(coords, camera, objects)
+    console.log(id)
   }
 
   selection_stop(){
@@ -51,13 +52,17 @@ class InteractionManager{
     this.selecting = bool
   }
 
+  save_selection(){
+
+  }
+
   update_mousePos(){
 
   }
 
 
-  Draw(){
-    this.selectionRenderer.draw()
+  Draw(camera, objects){
+    this.selectionRenderer.draw(camera, objects)
   }
 
 }
@@ -138,10 +143,12 @@ function setupControls(){
       else if (e.button === 2) {
         leftMousePressed = false;
         if(!interMan.selecting ){
-          console.log()
+          const rect = canvas.getBoundingClientRect();
+          mouseX = e.clientX - rect.left;
+          mouseY = e.clientY - rect.top;
           const pixelX = mouseX * gl.canvas.width / gl.canvas.clientWidth;
-          const pixelY = gl.canvas.height - mouseY * gl.canvas.height / gl.canvas.clientHeight - 1;
-          interman.single_click_selection(pixelX, pixelY)
+          const pixelY = gl.canvas.height -  mouseY * gl.canvas.height / gl.canvas.clientHeight - 1;
+          interMan.single_click_selection(vec2(pixelX, pixelY))
         }
       }
     }
@@ -186,11 +193,6 @@ function render(){
   camera.update(timer)
   light.orbit(timer)
 
-  if(interMan.selecting){
-    interMan.Draw()
-  }
-
-
 
   lightpos = light.get_position()
   var lighteye = lightpos;
@@ -213,7 +215,7 @@ function render(){
         flatten(obj.local_transformMatrix));
     gl.uniformMatrix4fv(gl.getUniformLocation(shader,"projection"), false, flatten(camera.pMatrix));
     gl.uniformMatrix4fv( gl.getUniformLocation(shader,"modelViewMatrix"), false, flatten(camera.mvMatrix));
-    gl.uniformMatrix4fv( gl.getUniformLocation(shader,"u_MvpMatrixFromLight"), false, flatten(mult(shadowRender.lightpMatrix,lightPersp)));
+    gl.uniformMatrix4fv( gl.getUniformLocation(shader,"u_MvpMatrixFromLight"), false, flatten(mult(shadowRender.lightpMatrix, lightPersp)));
 
     gl.uniform4fv( gl.getUniformLocation(shader,"lightPosition"),  flatten(vec4(lightpos[0],lightpos[1],lightpos[2], 1.0)));
     gl.uniform1i(gl.getUniformLocation(shader, "diffuseTexture"), 1);
@@ -222,6 +224,11 @@ function render(){
 
     obj.draw(camera, false);
   }
+
+  if(interMan.selecting){
+    interMan.Draw(camera, objects)
+  }
+
   requestAnimFrame(render);
 }
 
@@ -249,7 +256,7 @@ function main() {
   sphere1.move(vec3(-1,0,0))
   objects.push(sphere1)
 
-  sphere2 = new Sphere();
+  sphere2 = new Rectangle();
   sphere2.move(vec3(1,0,0))
   objects.push(sphere2)
 

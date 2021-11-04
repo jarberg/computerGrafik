@@ -70,5 +70,20 @@ class SelectionBuffer {
         gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.REPEAT);
     }
 
+    get_pixelData(start, end){
+        if(end==null){
+            const data = new Uint8Array(4);
+            gl.readPixels(
+                start[0],            // x
+                start[1],            // y
+                1,                 // width
+                1,                 // height
+                gl.RGBA,           // format
+                gl.UNSIGNED_BYTE,  // type
+                data);             // typed array to hold result
+            const id = data[0] + (data[1] << 8) + (data[2] << 16) + (data[3] << 24);
+            return id
+        }
+    }
 
 }

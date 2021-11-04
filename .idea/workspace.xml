@@ -5,9 +5,14 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5e3948d6-358c-4c60-8135-650537d75e3c" name="Default Changelist" comment="started project">
-      <change afterPath="$PROJECT_DIR$/computergraphics/Worksheet10/part01/main.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/computergraphics/Worksheet10/part01/main.js" afterDir="false" />
+    <list default="true" id="5e3948d6-358c-4c60-8135-650537d75e3c" name="Default Changelist" comment="readded worksheet10 part01">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/computergraphics/Project/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Project/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/computergraphics/Project/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Project/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/computergraphics/Project/render/selectionFrameBuffer.js" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Project/render/selectionFrameBuffer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/computergraphics/Project/render/selectionRenderer.js" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Project/render/selectionRenderer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/computergraphics/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/computergraphics/utils/geomitry.js" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/utils/geomitry.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,7 +45,7 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/computergraphics/Project/render/shaders" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/computergraphics/Project" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -53,21 +58,21 @@
       <recent name="C:\Users\Michael\Desktop\DtuWebsite\computergraphics\Worksheet07\part04\render" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\mjarb\WebstormProjects\computerGrafik\computergraphics\Project" />
       <recent name="C:\Users\mjarb\WebstormProjects\computerGrafik\computergraphics\Project\render\shaders" />
       <recent name="C:\Users\mjarb\WebstormProjects\computerGrafik\computergraphics\Project\render" />
       <recent name="C:\Users\mjarb\WebstormProjects\computerGrafik\Project\render\shaders\selectionShader" />
       <recent name="C:\Users\mjarb\WebstormProjects\computerGrafik\Project" />
-      <recent name="C:\Users\mjarb\WebstormProjects\computerGrafik\computergraphics\Worksheet10" />
     </key>
   </component>
-  <component name="RunManager" selected="JavaScript Debug.main.html (4)">
+  <component name="RunManager" selected="JavaScript Debug.index.html">
+    <configuration name="index.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/computerGrafik/computergraphics/Project/index.html" useBuiltInWebServerPort="true">
+      <method v="2" />
+    </configuration>
     <configuration name="main.html (1)" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/computerGrafik/computergraphics/Worksheet02/part02/main.html" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
     <configuration name="main.html (2)" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/computerGrafik/computergraphics/Worksheet10/part01/main.html" useBuiltInWebServerPort="true">
-      <method v="2" />
-    </configuration>
-    <configuration name="main.html (4)" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/computerGrafik/computergraphics/Project/main.html" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
     <configuration name="main.html (5)" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/computerGrafik/computergraphics/Worksheet08/part03/main.html" useBuiltInWebServerPort="true">
@@ -78,7 +83,7 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JavaScript Debug.main.html (4)" />
+        <item itemvalue="JavaScript Debug.index.html" />
         <item itemvalue="JavaScript Debug.main.html (2)" />
         <item itemvalue="JavaScript Debug.main.html (1)" />
         <item itemvalue="JavaScript Debug.main.html" />
@@ -104,7 +109,7 @@
       <workItem from="1635343262671" duration="418000" />
       <workItem from="1635929765305" duration="4175000" />
       <workItem from="1635937604861" duration="14753000" />
-      <workItem from="1636009260909" duration="8623000" />
+      <workItem from="1636009260909" duration="16552000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <created>1629096644242</created>
@@ -288,7 +293,14 @@
       <option name="project" value="LOCAL" />
       <updated>1636018107570</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="readded worksheet10 part01">
+      <created>1636018260908</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1636018260908</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -383,7 +395,8 @@
     <MESSAGE value="fixed missing css" />
     <MESSAGE value="finished worksheet part 02" />
     <MESSAGE value="started project" />
-    <option name="LAST_COMMIT_MESSAGE" value="started project" />
+    <MESSAGE value="readded worksheet10 part01" />
+    <option name="LAST_COMMIT_MESSAGE" value="readded worksheet10 part01" />
   </component>
   <component name="WindowStateProjectService">
     <state x="96" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1629619396960">
@@ -402,46 +415,55 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="371" y="88" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1280.680@0.0.1280.680" timestamp="1635931964648" />
-    <state x="93" y="93" width="1095" height="495" key="DiffContextDialog" timestamp="1629539961753">
-      <screen x="0" y="0" width="1280" height="680" />
+    <state x="805" y="176" width="1643" height="845" key="DiffContextDialog" timestamp="1636018685835">
+      <screen x="0" y="0" width="1920" height="1160" />
     </state>
     <state x="93" y="93" width="1095" height="495" key="DiffContextDialog/0.0.1280.680@0.0.1280.680" timestamp="1629539961753" />
+    <state x="805" y="176" width="1643" height="845" key="DiffContextDialog/0.0.1920.1160/-1920.121.1920.1040@0.0.1920.1160" timestamp="1636018685835" />
     <state x="421" y="96" key="FileChooserDialogImpl" timestamp="1634759145919">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="421" y="96" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1634759145919" />
-    <state width="761" height="214" key="GridCell.Tab.0.bottom" timestamp="1631600281939">
-      <screen x="0" y="0" width="1280" height="680" />
+    <state width="1899" height="396" key="GridCell.Tab.0.bottom" timestamp="1636026202985">
+      <screen x="0" y="0" width="1920" height="1160" />
     </state>
     <state width="761" height="214" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1631600281939" />
-    <state width="761" height="214" key="GridCell.Tab.0.center" timestamp="1631600281938">
-      <screen x="0" y="0" width="1280" height="680" />
+    <state width="1899" height="396" key="GridCell.Tab.0.bottom/0.0.1920.1160/-1920.121.1920.1040@0.0.1920.1160" timestamp="1636026202985" />
+    <state width="1899" height="396" key="GridCell.Tab.0.center" timestamp="1636026202985">
+      <screen x="0" y="0" width="1920" height="1160" />
     </state>
     <state width="761" height="214" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1631600281938" />
-    <state width="761" height="214" key="GridCell.Tab.0.left" timestamp="1631600281938">
-      <screen x="0" y="0" width="1280" height="680" />
+    <state width="1899" height="396" key="GridCell.Tab.0.center/0.0.1920.1160/-1920.121.1920.1040@0.0.1920.1160" timestamp="1636026202985" />
+    <state width="1899" height="396" key="GridCell.Tab.0.left" timestamp="1636026202985">
+      <screen x="0" y="0" width="1920" height="1160" />
     </state>
     <state width="761" height="214" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1631600281938" />
-    <state width="761" height="214" key="GridCell.Tab.0.right" timestamp="1631600281938">
-      <screen x="0" y="0" width="1280" height="680" />
+    <state width="1899" height="396" key="GridCell.Tab.0.left/0.0.1920.1160/-1920.121.1920.1040@0.0.1920.1160" timestamp="1636026202985" />
+    <state width="1899" height="396" key="GridCell.Tab.0.right" timestamp="1636026202985">
+      <screen x="0" y="0" width="1920" height="1160" />
     </state>
     <state width="761" height="214" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1631600281938" />
-    <state width="761" height="214" key="GridCell.Tab.1.bottom" timestamp="1631600284334">
-      <screen x="0" y="0" width="1280" height="680" />
+    <state width="1899" height="396" key="GridCell.Tab.0.right/0.0.1920.1160/-1920.121.1920.1040@0.0.1920.1160" timestamp="1636026202985" />
+    <state width="1899" height="396" key="GridCell.Tab.1.bottom" timestamp="1636026203803">
+      <screen x="0" y="0" width="1920" height="1160" />
     </state>
     <state width="761" height="214" key="GridCell.Tab.1.bottom/0.0.1280.680@0.0.1280.680" timestamp="1631600284334" />
-    <state width="761" height="214" key="GridCell.Tab.1.center" timestamp="1631600284334">
-      <screen x="0" y="0" width="1280" height="680" />
+    <state width="1899" height="396" key="GridCell.Tab.1.bottom/0.0.1920.1160/-1920.121.1920.1040@0.0.1920.1160" timestamp="1636026203803" />
+    <state width="1899" height="396" key="GridCell.Tab.1.center" timestamp="1636026203802">
+      <screen x="0" y="0" width="1920" height="1160" />
     </state>
     <state width="761" height="214" key="GridCell.Tab.1.center/0.0.1280.680@0.0.1280.680" timestamp="1631600284334" />
-    <state width="761" height="214" key="GridCell.Tab.1.left" timestamp="1631600284334">
-      <screen x="0" y="0" width="1280" height="680" />
+    <state width="1899" height="396" key="GridCell.Tab.1.center/0.0.1920.1160/-1920.121.1920.1040@0.0.1920.1160" timestamp="1636026203802" />
+    <state width="1899" height="396" key="GridCell.Tab.1.left" timestamp="1636026203802">
+      <screen x="0" y="0" width="1920" height="1160" />
     </state>
     <state width="761" height="214" key="GridCell.Tab.1.left/0.0.1280.680@0.0.1280.680" timestamp="1631600284334" />
-    <state width="761" height="214" key="GridCell.Tab.1.right" timestamp="1631600284334">
-      <screen x="0" y="0" width="1280" height="680" />
+    <state width="1899" height="396" key="GridCell.Tab.1.left/0.0.1920.1160/-1920.121.1920.1040@0.0.1920.1160" timestamp="1636026203802" />
+    <state width="1899" height="396" key="GridCell.Tab.1.right" timestamp="1636026203802">
+      <screen x="0" y="0" width="1920" height="1160" />
     </state>
     <state width="761" height="214" key="GridCell.Tab.1.right/0.0.1280.680@0.0.1280.680" timestamp="1631600284334" />
+    <state width="1899" height="396" key="GridCell.Tab.1.right/0.0.1920.1160/-1920.121.1920.1040@0.0.1920.1160" timestamp="1636026203802" />
     <state width="761" height="214" key="GridCell.Tab.2.bottom" timestamp="1631600281940">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
