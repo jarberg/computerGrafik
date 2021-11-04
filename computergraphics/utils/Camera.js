@@ -18,9 +18,8 @@ class Camera extends transform{
         this.mvMatrix;
 
         this.eye = vec3(0,0,0);
-        this.at = vec3(0.0, 0.0, 0.0);
         this.up = vec3(0.0, 1.0, 0.0);
-
+        this.at = vec3(this.position)
         this.update_projection_matrix()
     }
 
@@ -197,7 +196,7 @@ class QuaternionCamera extends transform{
         let normalizedEye = normalize(subtract(this.eye, this.position));
 
         this.rotation = new Quaternion().make_rot_vec2vec([0,0,1], normalizedEye);
-        this.up = this.rotation.apply([0,1,0]);
+        this.up = [0,1,0];
 
         this.mvMatrix = lookAt(this.eye, this.position, this.up)
         this.normalMatrix = [
@@ -233,7 +232,7 @@ class QuaternionCamera extends transform{
 
     update_cam(){
         var up = this.rotation.apply(this.up);
-        var eye = this.rotation.apply([0, 0, this.radius]);
+        var eye = this.rotation.apply([0,0, this.radius]);
         this.mvMatrix = lookAt(eye, this.position , up);
         this.update_projection_matrix()
 
@@ -250,9 +249,9 @@ class QuaternionCamera extends transform{
     }
 
     adjustRotation(xAdjustment, yAdjustment){
-
         let rotationIncrement = new Quaternion().make_rot_vec2vec([0,0,1], this.projectToSphere(xAdjustment, yAdjustment));
-        this.rotation = this.rotation.multiply(rotationIncrement);
+        this.rotation = this.rotation.multiply(rotationIncrement)
+        console.log(this.up)
         this.update_cam()
 
     }
@@ -261,7 +260,7 @@ class QuaternionCamera extends transform{
         let x = screenX / (canvas.height/2.0);
         let y = screenY / (canvas.width/2.0);
         // Project onto sphere
-        var r = 2;
+        var r = this.radius;
         var d = Math.sqrt(x * x + y * y);
         var t = r * Math.sqrt(2);
         var z = 0;
@@ -272,7 +271,6 @@ class QuaternionCamera extends transform{
         else       // On hyperbola
             z = t * t / d;
 
-        console.log(x,y,z)
         return normalize([x, y, z]);
     }
 
