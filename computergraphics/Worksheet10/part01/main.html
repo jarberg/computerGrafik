@@ -1,0 +1,59 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+    <title>Worksheet09</title>
+
+
+    <script type="text/javascript"  src="../../commonJS/webgl-utils.js"></script>
+    <script type="text/javascript"  src="../../commonJS/initShaders2.js"></script>
+    <script type="text/javascript"  src="../../commonJS/MV.js"></script>
+    <script type="text/javascript"  src="../../utils/general.js"></script>
+    <script type="text/javascript"  src="render/shadowRenderer.js"></script>
+    <script type="text/javascript"  src="render/shadowFrameBuffer.js"></script>
+    <script type="text/javascript"  src="../../utils/materials.js"></script>
+    <script type="text/javascript"  src="../../utils/animation.js"></script>
+    <script type="text/javascript"  src="../../utils/lights.js"></script>
+    <script type="text/javascript"  src="../../commonJS/OBJParser.js"></script>
+    <script type="text/javascript"  src="../../utils/Camera.js"></script>
+    <script type="text/javascript"  src="../../utils/geomitry.js"></script>
+    <script type="text/javascript"  src="../../utils/textureUtils.js"></script>
+
+    <script type="text/javascript"  src="main.js"></script>
+</head>
+<!-- Add your site or application content here -->
+<body>
+<table class="program-container" align="center">
+    <tbody><tr>
+        <!-- Left toolbox -->
+        <td><table class="toolbox">
+            <!-- Camera -->
+            <tbody><tr class="toolbox-row"><td>
+                <b>Camera</b><br>
+                <input type="checkbox" id="rotate_Camera" name="rotate"> Rotate<br><br>
+                <b>Light</b><br>
+                <input type="checkbox" id="rotate_light" name="rotate"> Rotate<br><br>
+                <b>teapot</b><br>
+                <input type="checkbox" id="jump_pot" name="rotate"> jump<br><br>
+
+            </td></tr>
+            </tbody></table></td>
+        <td>
+            <canvas id="glCanvas" width="400" height="400"></canvas>
+        </td>
+
+        <!-- Right toolbox -->
+        <td><table class="toolbox">
+            <tr class="toolbox-row"><td>
+
+            </td></tr>
+            </tbody></table>
+        </td>
+    </tr>
+    </td>
+    </tbody></table>
+<p align="center" id="fpsOutput" class="fps-text">FPS: 60</p>
+
+</body>
+</html>
+

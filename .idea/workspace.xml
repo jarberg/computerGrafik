@@ -1,54 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="BranchesTreeState">
-    <expand>
-      <path>
-        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-      </path>
-    </expand>
-    <select>
-      <path>
-        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="BRANCH:master" type="e8cecc67:BranchNodeDescriptor" />
-      </path>
-    </select>
+    <expand />
+    <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5e3948d6-358c-4c60-8135-650537d75e3c" name="Default Changelist" comment="finished worksheet part 02">
-      <change afterPath="$PROJECT_DIR$/computergraphics/Project/main.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/computergraphics/Project/main.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/computergraphics/Project/render/selectionFrameBuffer.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/computergraphics/Project/render/selectionRenderer.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/computergraphics/Project/render/shaders/fragmentShader.glsl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/computergraphics/Project/render/shaders/fragmentShader2.glsl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/computergraphics/Project/render/shaders/fragment_shadow.glsl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/computergraphics/Project/render/shaders/modelRenderer.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/computergraphics/Project/render/shaders/selectionIDShader/fragmentShader.glsl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/computergraphics/Project/render/shaders/selectionIDShader/vertexShader.glsl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/computergraphics/Project/render/shaders/selectionShader/fragmentShader.glsl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/computergraphics/Project/render/shaders/selectionShader/vertexShader.glsl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/computergraphics/Project/render/shaders/vertexShader.glsl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/computergraphics/Project/render/shaders/vertexShader2.glsl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/computergraphics/Project/render/shaders/vertex_shadow.glsl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/computergraphics/Project/render/shadowFrameBuffer.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/computergraphics/Project/render/shadowRenderer.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/computergraphics/Worksheet10/part03/render/shaders/fragmentShader.glsl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/computergraphics/Worksheet10/part03/render/shaders/fragmentShader2.glsl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/computergraphics/Worksheet10/part03/render/shaders/fragment_shadow.glsl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/computergraphics/Worksheet10/part03/render/shaders/modelRenderer.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/computergraphics/Worksheet10/part03/render/shaders/vertexShader.glsl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/computergraphics/Worksheet10/part03/render/shaders/vertexShader2.glsl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/computergraphics/Worksheet10/part03/render/shaders/vertex_shadow.glsl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/computergraphics/Worksheet10/part03/render/shadowFrameBuffer.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/computergraphics/Worksheet10/part03/render/shadowRenderer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet04/part05/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Worksheet04/part05/main.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet09/part02/render/shadowFrameBuffer.js" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Worksheet09/part02/render/shadowFrameBuffer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet10/part01/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Worksheet10/part03/main.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet10/part01/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Worksheet10/part03/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computergraphics/utils/Camera.js" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/utils/Camera.js" afterDir="false" />
+    <list default="true" id="5e3948d6-358c-4c60-8135-650537d75e3c" name="Default Changelist" comment="started project">
+      <change afterPath="$PROJECT_DIR$/computergraphics/Worksheet10/part01/main.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/computergraphics/Worksheet10/part01/main.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,6 +18,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="GLSL Shader" />
+        <option value="HTML File" />
         <option value="JavaScript File" />
       </list>
     </option>
@@ -77,6 +37,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/computergraphics/Project/render/shaders" />
@@ -85,11 +46,11 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\mjarb\WebstormProjects\computerGrafik\computergraphics\Worksheet10\part01" />
       <recent name="C:\Users\mjarb\WebstormProjects\computerGrafik\computergraphics" />
       <recent name="C:\Users\mjarb\WebstormProjects\computerGrafik\Project" />
       <recent name="C:\Users\Michael\Desktop\DtuWebsite\computergraphics" />
       <recent name="C:\Users\Michael\Desktop\DtuWebsite\computergraphics\Worksheet07\part04\render" />
-      <recent name="C:\Users\Michael\Desktop\DtuWebsite\computergraphics\Worksheet07\part04" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\mjarb\WebstormProjects\computerGrafik\computergraphics\Project\render\shaders" />
@@ -99,11 +60,11 @@
       <recent name="C:\Users\mjarb\WebstormProjects\computerGrafik\computergraphics\Worksheet10" />
     </key>
   </component>
-  <component name="RunManager" selected="JavaScript Debug.main.html (1)">
+  <component name="RunManager" selected="JavaScript Debug.main.html (4)">
     <configuration name="main.html (1)" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/computerGrafik/computergraphics/Worksheet02/part02/main.html" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
-    <configuration name="main.html (3)" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/computerGrafik/Project/main.html" useBuiltInWebServerPort="true">
+    <configuration name="main.html (2)" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/computerGrafik/computergraphics/Worksheet10/part01/main.html" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
     <configuration name="main.html (4)" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/computerGrafik/computergraphics/Project/main.html" useBuiltInWebServerPort="true">
@@ -117,11 +78,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JavaScript Debug.main.html (1)" />
         <item itemvalue="JavaScript Debug.main.html (4)" />
+        <item itemvalue="JavaScript Debug.main.html (2)" />
+        <item itemvalue="JavaScript Debug.main.html (1)" />
         <item itemvalue="JavaScript Debug.main.html" />
         <item itemvalue="JavaScript Debug.main.html (5)" />
-        <item itemvalue="JavaScript Debug.main.html (3)" />
       </list>
     </recent_temporary>
   </component>
@@ -143,7 +104,7 @@
       <workItem from="1635343262671" duration="418000" />
       <workItem from="1635929765305" duration="4175000" />
       <workItem from="1635937604861" duration="14753000" />
-      <workItem from="1636009260909" duration="8265000" />
+      <workItem from="1636009260909" duration="8623000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <created>1629096644242</created>
@@ -320,7 +281,14 @@
       <option name="project" value="LOCAL" />
       <updated>1635942037765</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="started project">
+      <created>1636018107570</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1636018107570</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -339,6 +307,31 @@
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
+        <entry key="1">
+          <value>
+            <State>
+              <option name="SHOW_ONLY_AFFECTED_CHANGES" value="true" />
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="HEAD" />
+                      </list>
+                    </value>
+                  </entry>
+                  <entry key="structure">
+                    <value>
+                      <list>
+                        <option value="dir:C:/Users/mjarb/WebstormProjects/computerGrafik/computergraphics/Worksheet10" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
         <entry key="MAIN">
           <value>
             <State>
@@ -356,6 +349,11 @@
             </State>
           </value>
         </entry>
+      </map>
+    </option>
+    <option name="OPEN_GENERIC_TABS">
+      <map>
+        <entry key="1" value="TOOL_WINDOW" />
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
@@ -384,7 +382,8 @@
     <MESSAGE value="fixed worksheet 7 where some parts didnt compile&#10;wixed worksheet 7 lasat part to use fragment pos rather than vertex pos in calculating uvs" />
     <MESSAGE value="fixed missing css" />
     <MESSAGE value="finished worksheet part 02" />
-    <option name="LAST_COMMIT_MESSAGE" value="finished worksheet part 02" />
+    <MESSAGE value="started project" />
+    <option name="LAST_COMMIT_MESSAGE" value="started project" />
   </component>
   <component name="WindowStateProjectService">
     <state x="96" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1629619396960">
