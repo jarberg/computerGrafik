@@ -50,6 +50,7 @@ class SelectionRenderer{
                 ((id+1 >>  8) & 0xFF) / 0xFF,
                 ((id+1 >> 16) & 0xFF) / 0xFF,
                 ((id+1 >> 24) & 0xFF) / 0xFF,)));
+
             gl.uniformMatrix4fv(gl.getUniformLocation(this.selection_ID_shader,"projection"), false, flatten(projection));
             gl.uniformMatrix4fv(gl.getUniformLocation(this.selection_ID_shader,"modelViewMatrix"), false, flatten(viewMatrix));
             gl.uniformMatrix4fv(gl.getUniformLocation(this.selection_ID_shader,"objTransform"), false, flatten(objtransform));

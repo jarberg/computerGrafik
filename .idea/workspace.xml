@@ -5,14 +5,10 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5e3948d6-358c-4c60-8135-650537d75e3c" name="Default Changelist" comment="readded worksheet10 part01">
+    <list default="true" id="5e3948d6-358c-4c60-8135-650537d75e3c" name="Default Changelist" comment="finished base implementation of selecting objects on screen">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computergraphics/Project/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Project/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/computergraphics/Project/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Project/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computergraphics/Project/render/selectionFrameBuffer.js" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Project/render/selectionFrameBuffer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/computergraphics/Project/render/selectionRenderer.js" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Project/render/selectionRenderer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computergraphics/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computergraphics/utils/geomitry.js" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/utils/geomitry.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -109,7 +105,7 @@
       <workItem from="1635343262671" duration="418000" />
       <workItem from="1635929765305" duration="4175000" />
       <workItem from="1635937604861" duration="14753000" />
-      <workItem from="1636009260909" duration="16552000" />
+      <workItem from="1636009260909" duration="18441000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <created>1629096644242</created>
@@ -300,7 +296,14 @@
       <option name="project" value="LOCAL" />
       <updated>1636018260908</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="finished base implementation of selecting objects on screen">
+      <created>1636026747238</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1636026747238</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -371,7 +374,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="initial commit" />
     <MESSAGE value="fixed bug where different geo would overridde previous renders with their own data" />
     <MESSAGE value="worksheet 07 part 3 and all before should work now" />
     <MESSAGE value="reworked old code.&#10;made entire worksheet 7 actualy work" />
@@ -396,7 +398,8 @@
     <MESSAGE value="finished worksheet part 02" />
     <MESSAGE value="started project" />
     <MESSAGE value="readded worksheet10 part01" />
-    <option name="LAST_COMMIT_MESSAGE" value="readded worksheet10 part01" />
+    <MESSAGE value="finished base implementation of selecting objects on screen" />
+    <option name="LAST_COMMIT_MESSAGE" value="finished base implementation of selecting objects on screen" />
   </component>
   <component name="WindowStateProjectService">
     <state x="96" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1629619396960">

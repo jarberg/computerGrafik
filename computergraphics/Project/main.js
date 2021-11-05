@@ -215,9 +215,9 @@ function render(){
         flatten(obj.local_transformMatrix));
     gl.uniformMatrix4fv(gl.getUniformLocation(shader,"projection"), false, flatten(camera.pMatrix));
     gl.uniformMatrix4fv( gl.getUniformLocation(shader,"modelViewMatrix"), false, flatten(camera.mvMatrix));
-    gl.uniformMatrix4fv( gl.getUniformLocation(shader,"u_MvpMatrixFromLight"), false, flatten(mult(shadowRender.lightpMatrix, lightPersp)));
+    gl.uniformMatrix4fv( gl.getUniformLocation(shader,"u_MvpMatrixFromLight"), false, flatten( mult( shadowRender.lightpMatrix, lightPersp )) );
 
-    gl.uniform4fv( gl.getUniformLocation(shader,"lightPosition"),  flatten(vec4(lightpos[0],lightpos[1],lightpos[2], 1.0)));
+    gl.uniform4fv( gl.getUniformLocation(shader,"lightPosition"),  flatten( vec4( lightpos[0], lightpos[1], lightpos[2], 1.0 ) ));
     gl.uniform1i(gl.getUniformLocation(shader, "diffuseTexture"), 1);
     gl.uniform1i(gl.getUniformLocation(shader,"u_shadow"),0)
     gl.uniform1i(gl.getUniformLocation(shader, "u_ShadowMap"), 1);
@@ -245,7 +245,7 @@ function main() {
 
   interMan = new InteractionManager();
 
-  shadows = new ShadowMapBuffer(2048, 2048)
+  shadows = new ShadowMapBuffer(1024, 1024)
   shadowRender = new ShadowRenderer(shadowShader, shadows)
   shadowObjects = [];
 
