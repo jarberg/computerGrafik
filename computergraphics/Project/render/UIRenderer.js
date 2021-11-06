@@ -92,27 +92,6 @@ class SelectionRenderer{
         }
     }
 
-    draw_selection(camera, selection){
-        gl.useProgram(this.selection_ID_shader)
-        let projection = camera.pMatrix;
-        let viewMatrix = camera.mvMatrix;
-        for (let id = 0; id < selection.length; id++) {
-            let objtransform = objects[id].local_transformMatrix
-            let objVertexArray = objects[id].vertexes
-
-            gl.uniform4fv(gl.getUniformLocation(this.selection_ID_shader,"u_id"), flatten(vec4(((id >>  0) & 0xFF) / 0xFF,
-                ((id >>  8) & 0xFF) / 0xFF,
-                ((id >> 16) & 0xFF) / 0xFF,
-                ((id >> 24) & 0xFF) / 0xFF,)));
-            gl.uniformMatrix4fv(gl.getUniformLocation(this.selection_ID_shader,"projection"), false, flatten(projection));
-            gl.uniformMatrix4fv(gl.getUniformLocation(this.selection_ID_shader,"modelViewMatrix"), false, flatten(viewMatrix));
-            gl.uniformMatrix4fv(gl.getUniformLocation(this.selection_ID_shader,"objTransform"), false, flatten(objtransform));
-
-            this.initDataToBuffers(this.selection_ID_shader, objects[id].vBuffer, objVertexArray)
-
-        }
-    }
-
     draw_selection_indicator(){
         gl.useProgram(this.selection_indicator_shader)
         this.initDataToBuffers_region()

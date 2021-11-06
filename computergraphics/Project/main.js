@@ -39,8 +39,12 @@ class InteractionManager{
   }
 
   single_click_selection(coords){
-    let id = this.selectionRenderer.single_click_selection_draw(coords, camera, objects)
+    this.selectionList = [];
+    let id = this.selectionRenderer.single_click_selection_draw(coords, camera, objects)-1
     console.log(id)
+    if(id >= 0){
+      this.selectionList = [objects[id]]
+    }
   }
 
   selection_stop(){
@@ -148,6 +152,7 @@ function setupControls(){
           mouseY = e.clientY - rect.top;
           const pixelX = mouseX * gl.canvas.width / gl.canvas.clientWidth;
           const pixelY = gl.canvas.height -  mouseY * gl.canvas.height / gl.canvas.clientHeight - 1;
+          console.log("gall")
           interMan.single_click_selection(vec2(pixelX, pixelY))
         }
       }
@@ -228,6 +233,11 @@ function render(){
   if(interMan.selecting){
     interMan.Draw(camera, objects)
   }
+  if(interMan.selectionList.length >= 0){
+    console.log(interMan.selectionList)
+    interMan.selectionRenderer.draw_selection(camera, interMan.selectionList)
+  }
+
 
   requestAnimFrame(render);
 }
