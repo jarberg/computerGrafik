@@ -54,7 +54,6 @@ class SelectionBuffer {
     }
 
     unbind(){
-
         if( !this.bound ) return;
         gl.bindFramebuffer(gl.FRAMEBUFFER, null);
         gl.bindRenderbuffer(gl.RENDERBUFFER, null);
@@ -71,6 +70,7 @@ class SelectionBuffer {
     }
 
     get_pixelData(start, end){
+        this.bind(10)
         if(end==null){
             const data = new Uint8Array(4);
             gl.readPixels(
@@ -84,6 +84,7 @@ class SelectionBuffer {
             const id = data[0] + (data[1] << 8) + (data[2] << 16) + (data[3] << 24);
             return id
         }
+        this.unbind()
     }
 
 }

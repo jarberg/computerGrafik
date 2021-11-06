@@ -1,26 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="BranchesTreeState">
-    <expand>
-      <path>
-        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-      </path>
-    </expand>
-    <select>
-      <path>
-        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="BRANCH:master" type="e8cecc67:BranchNodeDescriptor" />
-      </path>
-    </select>
+    <expand />
+    <select />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5e3948d6-358c-4c60-8135-650537d75e3c" name="Default Changelist" comment="started worksheet 10 part 02">
-      <change afterPath="$PROJECT_DIR$/computergraphics/Project/render/UIFrameBuffer.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/computergraphics/Project/render/UIRenderer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/computergraphics/Project/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Project/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/computergraphics/Project/render/UIRenderer.js" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Project/render/UIRenderer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/computergraphics/Project/render/selectionFrameBuffer.js" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Project/render/selectionFrameBuffer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/computergraphics/Project/render/selectionRenderer.js" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Project/render/selectionRenderer.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -74,7 +63,7 @@
       <recent name="C:\Users\Michael\Desktop\DtuWebsite\computergraphics\Worksheet07\part04\render" />
     </key>
   </component>
-  <component name="RunManager" selected="JavaScript Debug.index.html (1)">
+  <component name="RunManager" selected="JavaScript Debug.main.html (3)">
     <configuration name="index.html (1)" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/DtuWebsite/computergraphics/Project/index.html" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
@@ -87,16 +76,16 @@
     <configuration name="main.html (2)" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/computerGrafik/computergraphics/Worksheet10/part01/main.html" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
-    <configuration name="main.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/computerGrafik/computergraphics/Worksheet07/part03/main.html" useBuiltInWebServerPort="true">
+    <configuration name="main.html (3)" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/computerGrafik/computergraphics/Worksheet09/part02/main.html" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JavaScript Debug.main.html (3)" />
         <item itemvalue="JavaScript Debug.index.html (1)" />
         <item itemvalue="JavaScript Debug.index.html" />
         <item itemvalue="JavaScript Debug.main.html (2)" />
         <item itemvalue="JavaScript Debug.main.html (1)" />
-        <item itemvalue="JavaScript Debug.main.html" />
       </list>
     </recent_temporary>
   </component>
