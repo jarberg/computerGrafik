@@ -19,6 +19,7 @@ class SelectionBuffer {
         gl.bindFramebuffer(gl.FRAMEBUFFER, this.framebuffer);
 
         this.renderbuffer = gl.createRenderbuffer();
+        gl.clearColor(0, 0.5843, 0.9294, 1.0)
         gl.bindRenderbuffer(gl.RENDERBUFFER, this.renderbuffer);
         gl.renderbufferStorage(gl.RENDERBUFFER, gl.DEPTH_COMPONENT16, width, height);
         gl.framebufferRenderbuffer(gl.FRAMEBUFFER, gl.DEPTH_ATTACHMENT, gl.RENDERBUFFER, this.renderbuffer);
@@ -41,11 +42,14 @@ class SelectionBuffer {
         gl.bindRenderbuffer(gl.RENDERBUFFER, null);
     }
 
-    bind(textureSlot) {
+    bind() {
         if( this.bound ) return;
         gl.bindFramebuffer(gl.FRAMEBUFFER, this.framebuffer);
         gl.bindRenderbuffer(gl.RENDERBUFFER, this.renderbuffer);
-        this.bindTexture(textureSlot);
+        gl.depthMask(true);
+        gl.disable(gl.BLEND);
+        gl.depthFunc(gl.LESS )
+        gl.clearColor(0, 0.5843, 0.9294, 1.0)
         var currentViewport = gl.getParameter(gl.VIEWPORT);
         this.unbindWidth = currentViewport[2];
         this.unbindHeight = currentViewport[3];
@@ -70,7 +74,7 @@ class SelectionBuffer {
     }
 
     get_pixelData(start, end){
-        this.bind(10)
+        this.bind()
         if(end==null){
             const data = new Uint8Array(4);
             gl.readPixels(
@@ -81,8 +85,9 @@ class SelectionBuffer {
                 gl.RGBA,           // format
                 gl.UNSIGNED_BYTE,  // type
                 data);             // typed array to hold result
+            console.log(data)
             const id = data[0] + (data[1] << 8) + (data[2] << 16) + (data[3] << 24);
-            return id
+            return id-1
         }
         this.unbind()
     }

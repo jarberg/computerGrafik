@@ -41,8 +41,9 @@ class InteractionManager{
   single_click_selection(coords){
     this.selectionList = [];
     let id = this.selectionRenderer.selectionBuffer.get_pixelData(coords)
-    if(id >= 0){
-      this.selectionList = [objects[id]]
+    console.log(id)
+    if(id > -1){
+      this.set_selectionList([objects[id]])
     }
   }
 
@@ -56,6 +57,9 @@ class InteractionManager{
     this.selecting = bool
   }
 
+  set_selectionList(selection){
+    this.selectionList = selection
+  }
 
   Draw(camera, objects){
 
@@ -65,7 +69,7 @@ class InteractionManager{
       this.selectionRenderer.draw_selection_region_indicator()
     }
     if(this.selectionList.length > 0){
-      this.selectionRenderer.draw_selection(camera, this.selectionList)
+     this.selectionRenderer.draw_selection(camera, this.selectionList)
     }
 
   }
@@ -74,14 +78,15 @@ class InteractionManager{
 
 function init(){
   canvas = document.querySelector("#glCanvas");
-  gl = WebGLUtils.setupWebGL(canvas, );
+  gl = WebGLDebugUtils.makeDebugContext(canvas.getContext("webgl"));
+  //gl = WebGLUtils.setupWebGL(canvas, { alpha: false });
   if (gl === null) {
     alert("Unable to initialize WebGL. Your browser or machine may not support it.");
     return;
   }
   program = initShaders(gl, "render/shaders/vertexShader.glsl", "render/shaders/fragmentShader.glsl");
   gl.useProgram(program);
-  gl.clearColor(0.8, 0.8, 0.8, 1.0);
+  gl.clearColor(0, 0.5843, 0.9294, 1.0)
   gl.enable(gl.CULL_FACE)
   gl.enable(gl.DEPTH_TEST)
   shadowShader = initShaders(gl, "render/shaders/vertex_shadow.glsl", "render/shaders/fragment_shadow.glsl");
@@ -232,7 +237,7 @@ function render(){
   }
 
 
-
+  gl.enable(gl.BLEND);
   interMan.Draw(camera, objects)
 
 
@@ -268,8 +273,8 @@ function main() {
   sphere2.move(vec3(1,0,0))
   objects.push(sphere2)
 
-  shadowObjects.push(sphere1)
   shadowObjects.push(sphere2)
+  shadowObjects.push(sphere1)
 
   gl.clearColor(0, 0.5843, 0.9294, 1.0)
   setupControls()

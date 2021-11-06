@@ -60,6 +60,7 @@ class model extends transform{
         gl.vertexAttribPointer(a_attribute, size, type, false, 0, 0);
         gl.enableVertexAttribArray(a_attribute);
     }
+
     draw(){
         this.initAttributeVariable(this.vPosition, this.vBuffer, 4, gl.FLOAT)
         this.initAttributeVariable(this.vColor, this.cBuffer, 4, gl.FLOAT)

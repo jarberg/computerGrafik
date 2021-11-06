@@ -7,10 +7,13 @@
   <component name="ChangeListManager">
     <list default="true" id="5e3948d6-358c-4c60-8135-650537d75e3c" name="Default Changelist" comment="started worksheet 10 part 02">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/computergraphics/Project/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Project/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/computergraphics/Project/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Project/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computergraphics/Project/render/UIRenderer.js" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Project/render/UIRenderer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/computergraphics/Project/render/selectionFrameBuffer.js" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Project/render/selectionFrameBuffer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/computergraphics/Project/render/selectionRenderer.js" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Project/render/selectionRenderer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/computergraphics/Project/render/shaders/selectionShader/fragmentShader.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Project/render/shaders/selectionShader/fragmentShader.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/computergraphics/Project/render/shaders/selectionShader/vertexShader.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Project/render/shaders/selectionShader/vertexShader.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/computergraphics/utils/geomitry.js" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/utils/geomitry.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,6 +51,13 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\mjarb\WebstormProjects\computerGrafik\computergraphics" />
+      <recent name="C:\Users\mjarb\WebstormProjects\computerGrafik\computergraphics\Worksheet10\part01" />
+      <recent name="C:\Users\mjarb\WebstormProjects\computerGrafik\Project" />
+      <recent name="C:\Users\Michael\Desktop\DtuWebsite\computergraphics" />
+      <recent name="C:\Users\Michael\Desktop\DtuWebsite\computergraphics\Worksheet07\part04\render" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Michael\Desktop\DtuWebsite\computergraphics\Project\render" />
       <recent name="C:\Users\mjarb\WebstormProjects\computerGrafik\computergraphics\Project" />
@@ -55,15 +65,8 @@
       <recent name="C:\Users\mjarb\WebstormProjects\computerGrafik\computergraphics\Project\render" />
       <recent name="C:\Users\mjarb\WebstormProjects\computerGrafik\Project\render\shaders\selectionShader" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\mjarb\WebstormProjects\computerGrafik\computergraphics\Worksheet10\part01" />
-      <recent name="C:\Users\mjarb\WebstormProjects\computerGrafik\computergraphics" />
-      <recent name="C:\Users\mjarb\WebstormProjects\computerGrafik\Project" />
-      <recent name="C:\Users\Michael\Desktop\DtuWebsite\computergraphics" />
-      <recent name="C:\Users\Michael\Desktop\DtuWebsite\computergraphics\Worksheet07\part04\render" />
-    </key>
   </component>
-  <component name="RunManager" selected="JavaScript Debug.main.html (3)">
+  <component name="RunManager" selected="JavaScript Debug.index.html">
     <configuration name="index.html (1)" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/DtuWebsite/computergraphics/Project/index.html" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
@@ -81,9 +84,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JavaScript Debug.index.html" />
         <item itemvalue="JavaScript Debug.main.html (3)" />
         <item itemvalue="JavaScript Debug.index.html (1)" />
-        <item itemvalue="JavaScript Debug.index.html" />
         <item itemvalue="JavaScript Debug.main.html (2)" />
         <item itemvalue="JavaScript Debug.main.html (1)" />
       </list>
@@ -420,11 +423,11 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="371" y="88" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1280.680@0.0.1280.680" timestamp="1635931964648" />
-    <state x="805" y="176" width="1643" height="845" key="DiffContextDialog" timestamp="1636018685835">
+    <state x="7" y="157" width="1643" height="845" key="DiffContextDialog" timestamp="1636215007453">
       <screen x="0" y="0" width="1920" height="1160" />
     </state>
     <state x="93" y="93" width="1095" height="495" key="DiffContextDialog/0.0.1280.680@0.0.1280.680" timestamp="1629539961753" />
-    <state x="805" y="176" width="1643" height="845" key="DiffContextDialog/0.0.1920.1160/-1920.121.1920.1040@0.0.1920.1160" timestamp="1636018685835" />
+    <state x="7" y="157" width="1643" height="845" key="DiffContextDialog/0.0.1920.1160/-1920.121.1920.1040@0.0.1920.1160" timestamp="1636215007453" />
     <state x="421" y="96" key="FileChooserDialogImpl" timestamp="1634759145919">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -517,10 +520,15 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="93" y="93" width="1095" height="495" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1280.680@0.0.1280.680" timestamp="1635931619466" />
-    <state x="347" y="73" width="587" height="534" key="find.popup" timestamp="1634822374614">
-      <screen x="0" y="0" width="1280" height="680" />
+    <state x="521" y="125" width="881" height="911" key="find.popup" timestamp="1636219207516">
+      <screen x="0" y="0" width="1920" height="1160" />
     </state>
     <state x="347" y="73" width="587" height="534" key="find.popup/0.0.1280.680@0.0.1280.680" timestamp="1634822374614" />
+    <state x="521" y="125" width="881" height="911" key="find.popup/0.0.1920.1160/-1920.121.1920.1040@0.0.1920.1160" timestamp="1636219207516" />
+    <state x="740" y="293" key="git4idea.branch.GitSmartOperationDialog" timestamp="1636214312773">
+      <screen x="0" y="0" width="1920" height="1160" />
+    </state>
+    <state x="740" y="293" key="git4idea.branch.GitSmartOperationDialog/0.0.1920.1160/-1920.121.1920.1040@0.0.1920.1160" timestamp="1636214312773" />
     <state x="433" y="242" key="git4idea.remote.GitConfigureRemotesDialog" timestamp="1629096820225">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
