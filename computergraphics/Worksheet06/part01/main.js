@@ -69,32 +69,7 @@ function hexToRgb(hex) {
 }
 
 function setupControls(){
-  document.getElementById("subdivisions").oninput = function() {
-    division = this.value;
-    document.getElementById("subdivNum").textContent = division
-  };
-  document.getElementById("mat-slider-shine").oninput = function() {
-    materialShininess = this.value;
-  };
-  let matDiffuse = document.getElementById("mat-slider-diffuse");
-  matDiffuse.addEventListener('input', () =>{
-    let trueValue = hexToRgb(matDiffuse.value)
-    materialDiffuse = vec4(trueValue.r/255,trueValue.g/255,trueValue.b/255,1);
-    diffuseProduct = mult(lightDiffuse, materialDiffuse);
-  });
-  let matSpecular = document.getElementById("mat-slider-specular");
-  matSpecular.addEventListener('input', () =>{
-    let trueValue = hexToRgb(matSpecular.value)
-    materialSpecular = vec4(trueValue.r/255,trueValue.g/255,trueValue.b/255,1);
-    specularProduct = mult(lightSpecular, materialSpecular);
-  });
-  let matAmbient = document.getElementById("mat-slider-ambient");
-  matAmbient.addEventListener('input', () =>{
-    let trueValue = hexToRgb(matAmbient.value)
-    materialAmbient = vec4(trueValue.r/255,trueValue.g/255,trueValue.b/255,1);
-    ambientProduct = mult(lightAmbient, materialAmbient);
-  });
-  document.getElementById("mat-slider-shine")
+
   fpsOutput = document.getElementById("fpsOutput")
   let rotateCamera = document.getElementById("rotate_Camera")
   rotateCamera.addEventListener('input', () =>{

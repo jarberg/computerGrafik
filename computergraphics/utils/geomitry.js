@@ -1,5 +1,29 @@
+class baseModel extends transform{
+    vertexes = [];
+    vertexColors = [];
+    normals = [];
+    texCoordsArray = [];
+    shader=null;
 
-class model extends transform{
+    getShader(){
+        return this.shader
+    }
+
+    setShader(shader){
+        this.shader = shader
+        this.dirtyShader = true
+    }
+
+    get_vertexes(){
+        return this.vertexes
+    }
+
+    get_vBuffer(){
+        return this.vBuffer
+    }
+
+}
+class model extends baseModel{
     vertexes = [];
     vertexColors = [];
     normals = [];
@@ -39,10 +63,7 @@ class model extends transform{
         this.tBuffer = gl.createBuffer();
     }
 
-    setShader(shader){
-        this.shader = shader
-        this.dirtyShader = true
-    }
+
 
     initDataToBuffers(){
 
@@ -79,11 +100,8 @@ class model extends transform{
     }
 }
 
-class IndiceModel extends transform{
-    vertexes = [];
-    vertexColors = [];
-    normals = [];
-    texCoordsArray = [];
+class IndiceModel extends baseModel{
+
     indices =[];
 
     vBuffer;
@@ -105,10 +123,6 @@ class IndiceModel extends transform{
         this.iBuffer = gl.createBuffer();
     }
 
-    setShader(shader){
-        this.shader = shader
-        this.dirtyShader = true
-    }
 
     initDataToBuffers(){
 
@@ -132,6 +146,37 @@ class IndiceModel extends transform{
         this.dirtyShader = false
 
     }
+    initAttributeVariable(a_attribute, buffer, size, type) {
+        gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
+        gl.vertexAttribPointer(a_attribute, size, type, false, 0, 0);
+        gl.enableVertexAttribArray(a_attribute);
+    }
+}
+
+class instance extends baseModel{
+
+    constructor(originalModel, position){
+        super(position);
+        this.original = originalModel
+        this.vBuffer = originalModel.vBuffer
+    }
+
+    getShader(){
+        return this.original.getShader()
+    }
+
+    get_vertexes(){
+        return this.original.vertexes
+    }
+    get_vBuffer(){
+        return this.original.get_vBuffer()
+    }
+
+    draw(camera){
+        this.initAttributeVariable(this.original.vPosition, this.original.vBuffer, 4, gl.FLOAT)
+        gl.drawArrays(gl.TRIANGLES, 0, this.original.vertexes.length);
+    }
+
     initAttributeVariable(a_attribute, buffer, size, type) {
         gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
         gl.vertexAttribPointer(a_attribute, size, type, false, 0, 0);
@@ -248,65 +293,40 @@ function Sphereify_vertex(div_count) {
     return returnArray
 }
 
-function Sphereify_face(div_count) {
-    var k = div_count+1 ;
-    var facelist = []
-    for (let face = 0; face < 2; ++face)
-    {
-        for (let j = 0; j < div_count; ++j)
+function Sphereify_face(horizontalLines, verticalLines) {
+    var radius = 2
+    vertices = [horizontalLines * verticalLines];
+    var index = 0;
+    for (let m = 0; m < horizontalLines; m++) {
+        for (let n = 0; n < verticalLines - 1; n++)
         {
-            var bottom = j < (div_count / 2);
-            for (let i = 0; i < div_count; ++i)
-            {
-                const left = i < (div_count / 2);
-                const a = (face * k + j) * k + i;
-                const b = (face * k + j) * k + i + 1;
-                const c = (face * k + j + 1) * k + i;
-                const d = (face * k + j + 1) * k + i + 1;
-                if (bottom ^ left) addQuadAlt(facelist, a, c, d, b)
-                else addQuad(facelist, a,b,c,d)
-            }
+            var x = Math.sin(Math.PI * m/horizontalLines) * Math.cos(2 * Math.PI * n/verticalLines);
+            var y = Math.sin(Math.PI * m/horizontalLines) * Math.sin(2 * Math.PI * n/verticalLines);
+            var z = Math.cos(Math.PI * m / horizontalLines);
+            vertices[index++] =  scale(radius, vec4(x, y, z, 1));
         }
     }
-    return facelist
+    return vertices;
 }
 
-function addQuad(list, a, b, c, d) {
 
-    list.push(b)
-    list.push(a)
-    list.push(c)
-    list.push(b)
-    list.push(d)
-
-}
-
-function addQuadAlt(list, a, b, c, d) {
-    //list.push(d)
-    //list.push(a)
-    //list.push(b)
-    //list.push(c)
-    //list.push(b)
-    //list.push(d)
-}
-class CubeSphere extends IndiceModel{
+class CubeSphere extends model{
 
     divisions= 1;
 
     constructor(_center) {
         super(_center);
-        this.vertexes = Sphereify_vertex(this.divisions);
-        this.indices = Sphereify_face(this.divisions)
+        this.vertexes = Sphereify_face(3,3,1)
         this.initDataToBuffers()
-        console.log(this.vertexes)
+
     }
 
     draw(camera){
 
         gl.useProgram(this.shader)
         if(this.dirtyShader) this.initDataToBuffers()
-
-        gl.drawElements(gl.TRIANGLE_STRIP, this.indices.length, gl.UNSIGNED_SHORT, 0);
+        gl.drawArrays(gl.TRIANGLES, 0, this.vertexes.length);
+        //gl.drawElements(gl.TRIANGLE_STRIP, this.indices.length, gl.UNSIGNED_SHORT, 0);
     }
 
 }

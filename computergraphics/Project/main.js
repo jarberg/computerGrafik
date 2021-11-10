@@ -1,22 +1,15 @@
 var max_verts = 100000;
-var objects = [];
+
 var lights =[];
 var program = null;
 var fpsOutput;
 var timer = null;
-var ground;
 
-var animatedModel = null;
 var lightPoint = null;
-var shadows;
-var shadowShader;
-var shadowRender;
-var shadowObjects;
-var jump = false;
-
 
 var interMan;
-
+var modelRenderer;
+var shadowRender;
 
 class InteractionManager{
 
@@ -27,6 +20,7 @@ class InteractionManager{
     this.selectionList = [];
     this.selectionRenderer = new SelectionRenderer();
     this.selecting = false;
+    this.drawIDs = false
 
   }
 
@@ -40,10 +34,11 @@ class InteractionManager{
 
   single_click_selection(coords){
     this.selectionList = [];
-    let id = this.selectionRenderer.selectionBuffer.get_pixelData(coords)
+
+    let id = this.selectionRenderer.draw(camera, modelRenderer.objects, coords)
     console.log(id)
     if(id > -1){
-      this.set_selectionList([objects[id]])
+      this.set_selectionList([modelRenderer.objects[id]])
     }
   }
 
@@ -61,19 +56,15 @@ class InteractionManager{
     this.selectionList = selection
   }
 
-  Draw(camera, objects){
-
-    this.selectionRenderer.draw(camera, objects)
-
+  draw(camera){
     if (this.selecting) {
       this.selectionRenderer.draw_selection_region_indicator()
     }
-    if(this.selectionList.length > 0){
+    if(this.selectionList.length > 0 ){
+      console.log(this.selectionList)
      this.selectionRenderer.draw_selection(camera, this.selectionList)
     }
-
   }
-
 }
 
 function init(){
@@ -89,22 +80,14 @@ function init(){
   gl.clearColor(0, 0.5843, 0.9294, 1.0)
   gl.enable(gl.CULL_FACE)
   gl.enable(gl.DEPTH_TEST)
-  shadowShader = initShaders(gl, "render/shaders/vertex_shadow.glsl", "render/shaders/fragment_shadow.glsl");
 }
 
 function setupControls(){
   fpsOutput = document.getElementById("fpsOutput")
-  let rotateCamera = document.getElementById("rotate_Camera")
-  rotateCamera.addEventListener('input', () =>{
-    camera.rotate = rotateCamera.checked
-  });
+
   let rotateLight = document.getElementById("rotate_light")
   rotateLight.addEventListener('input', () =>{
     light.rotate = rotateLight.checked
-  });
-  let jumpteapot = document.getElementById("jump_pot")
-  jumpteapot.addEventListener('input', () =>{
-    jump = jumpteapot.checked
   });
 
   // Mouse Events
@@ -158,7 +141,6 @@ function setupControls(){
           mouseY = e.clientY - rect.top;
           const pixelX = mouseX * gl.canvas.width / gl.canvas.clientWidth;
           const pixelY = gl.canvas.height -  mouseY * gl.canvas.height / gl.canvas.clientHeight - 1;
-
           interMan.single_click_selection(vec2(pixelX, pixelY))
         }
       }
@@ -197,7 +179,6 @@ function setupControls(){
 }
 
 
-
 function render(){
   gl.clear( gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
   timer = takeTime()
@@ -211,39 +192,15 @@ function render(){
   var lightup = vec3(0.0, 1.0, 0.0)
   lightPersp = lookAt(lighteye,lightat , lightup)
   lightpos = light.get_position()
-
-  shadowRender.render( shadowObjects, lightPersp, 1 )
   lightPoint.move(light.get_position())
 
 
+  shadowRender.render(lightPersp, 1 )
 
-  for (let i = 0; i < objects.length; i++) {
-    var obj = objects[i];
-    var shader = obj.shader;
-
-
-    
-    gl.useProgram(shader)
-    shadows.bindTexture(1)
-    lightpos = light.get_position()
-    gl.uniformMatrix4fv( gl.getUniformLocation(shader,"objTransform"), false,
-        flatten(obj.local_transformMatrix));
-    gl.uniformMatrix4fv(gl.getUniformLocation(shader,"projection"), false, flatten(camera.pMatrix));
-    gl.uniformMatrix4fv( gl.getUniformLocation(shader,"modelViewMatrix"), false, flatten(camera.mvMatrix));
-    gl.uniformMatrix4fv( gl.getUniformLocation(shader,"u_MvpMatrixFromLight"), false, flatten( mult( shadowRender.lightpMatrix, lightPersp )) );
-
-    gl.uniform4fv( gl.getUniformLocation(shader,"lightPosition"),  flatten( vec4( lightpos[0], lightpos[1], lightpos[2], 1.0 ) ));
-    gl.uniform1i(gl.getUniformLocation(shader, "diffuseTexture"), 1);
-    gl.uniform1i(gl.getUniformLocation(shader,"u_shadow"),0)
-    gl.uniform1i(gl.getUniformLocation(shader, "u_ShadowMap"), 1);
-
-    obj.draw(camera, false);
-  }
-
+  modelRenderer.draw(camera, light)
 
   gl.enable(gl.BLEND);
-  interMan.Draw(camera, objects)
-
+  interMan.draw(camera)
 
   requestAnimFrame(render);
 }
@@ -260,24 +217,20 @@ function main() {
   camera.near = -2;
 
   interMan = new InteractionManager();
-
-  shadows = new ShadowMapBuffer(1024, 1024)
-  shadowRender = new ShadowRenderer(shadowShader, shadows)
-  shadowObjects = [];
+  modelRenderer = new ModelRenderer([])
+  shadowRender = new ShadowRenderer()
 
   light = new OrbitPointLight(vec3(0,3,0))
+
   lightPoint = new Dot(vec3(0,0,0));
-
-  sphere1 = new CubeSphere(vec3(0,0,0));
-  sphere1.move(vec3(-1,1,0))
-  objects.push(sphere1)
-
+  sphere1 = new Sphere(vec3(0,0,0));
+  sphere1.move(vec3(-1,0,0))
   sphere2 = new Rectangle();
-  sphere2.move(vec3(1,0,0))
-  objects.push(sphere2)
+  sphere3 = new instance(sphere1, vec3(0,0,0))
+  sphere3.move(vec3(1,0,0))
 
-  shadowObjects.push(sphere2)
-  shadowObjects.push(sphere1)
+  modelRenderer.set_objects([sphere1, sphere2, sphere3, lightPoint])
+  shadowRender.set_objects([sphere1, sphere2,sphere3])
 
   gl.clearColor(0, 0.5843, 0.9294, 1.0)
   setupControls()

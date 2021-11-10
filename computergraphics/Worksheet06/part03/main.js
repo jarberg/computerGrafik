@@ -205,9 +205,18 @@ function render(){
   ];
 
   camera.update_projection_matrix(program)
-  objects.forEach(function(obj) {
+  for (let i = 0; i < objects.length; i++) {
+    var obj = objects[i];
+    var shader = obj.shader;
+    gl.useProgram(shader)
+
+    gl.uniformMatrix4fv( gl.getUniformLocation(shader,"objTransform"), false,
+        flatten(obj.local_transformMatrix));
+    gl.uniformMatrix4fv(gl.getUniformLocation(shader,"projection"), false, flatten(camera.pMatrix));
+    gl.uniformMatrix4fv( gl.getUniformLocation(shader,"modelViewMatrix"), false, flatten(camera.mvMatrix));
+
     obj.draw(camera, false);
-  });
+  }
 
   requestAnimFrame(render);
 }

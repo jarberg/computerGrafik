@@ -57,26 +57,6 @@ function loadObjFile(fileName, scale, reverse, onLoadCallback){
     request.send(); // Send the request
 }
 
-function initFramebufferObject(gl, width, height, slot)
-{
-    var framebuffer = gl.createFramebuffer(); gl.bindFramebuffer(gl.FRAMEBUFFER, framebuffer);
-    var renderbuffer = gl.createRenderbuffer(); gl.bindRenderbuffer(gl.RENDERBUFFER, renderbuffer);
-    gl.renderbufferStorage(gl.RENDERBUFFER, gl.DEPTH_COMPONENT16, width, height);
-    var shadowMap = gl.createTexture(); gl.activeTexture(gl.TEXTURE0+slot); gl.bindTexture(gl.TEXTURE_2D, shadowMap);
-    gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, width, height, 0, gl.RGBA, gl.UNSIGNED_BYTE, null);
-    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
-    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
-    framebuffer.texture = shadowMap;
-    gl.framebufferTexture2D(gl.FRAMEBUFFER, gl.COLOR_ATTACHMENT0, gl.TEXTURE_2D, shadowMap, 0);
-    gl.framebufferRenderbuffer(gl.FRAMEBUFFER, gl.DEPTH_ATTACHMENT, gl.RENDERBUFFER, renderbuffer);
-    var status = gl.checkFramebufferStatus(gl.FRAMEBUFFER);
-    if (status !== gl.FRAMEBUFFER_COMPLETE) { console.log('Framebuffer object is incomplete: ' + status.toString()); }
-    gl.bindFramebuffer(gl.FRAMEBUFFER, null); gl.bindRenderbuffer(gl.RENDERBUFFER, null);
-    framebuffer.width = width; framebuffer.height = height;
-    return framebuffer;
-}
-
-
 class transform{
     position = vec3(0,0,0)
     rotation = vec3(0,0,0)
@@ -84,9 +64,13 @@ class transform{
     local_transformMatrix = mat4()
     rotation_order = "XYZ"
 
+
+
     constructor(center=vec3(0,0,0)) {
         this.position = center
         this.update_transform()
+        this.parent = null;
+        this.children = []
     }
 
     update_transform(){
@@ -115,6 +99,10 @@ class transform{
     setScale(scale){
         this.scale = scale
         this.update_transform()
+    }
+
+    get_position(){
+        return this.position
     }
 
 }

@@ -85,7 +85,6 @@ class SelectionBuffer {
                 gl.RGBA,           // format
                 gl.UNSIGNED_BYTE,  // type
                 data);             // typed array to hold result
-            console.log(data)
             const id = data[0] + (data[1] << 8) + (data[2] << 16) + (data[3] << 24);
             return id-1
         }

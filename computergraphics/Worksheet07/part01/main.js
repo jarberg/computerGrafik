@@ -46,47 +46,7 @@ var diffuseProduct = mult(lightDiffuse, materialDiffuse);
 var specularProduct = mult(lightSpecular, materialSpecular);
 
 function setupControls(){
-  document.getElementById("button_nearest_min").onclick = function() {
-    gl.texParameteri( gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER,
-        gl.NEAREST );
-  };
-  document.getElementById("button_linear_min").onclick = function() {
-    gl.texParameteri( gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER,
-        gl.LINEAR );
-  };
-  document.getElementById("button_nearest_mag").onclick = function() {
-    gl.texParameteri( gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER,
-        gl.NEAREST );
-  };
-  document.getElementById("button_linear_mag").onclick = function() {
-    gl.texParameteri( gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER,
-        gl.LINEAR );
-  };
-  document.getElementById("button_repeat").onclick = function() {
-    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.REPEAT);
-    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.REPEAT);
-  };
-  document.getElementById("button_clamp").onclick = function() {
-    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
-    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
-  };
-  document.getElementById("button_mm_linearLinear_min").onclick = function() {
-    gl.texParameteri( gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER,
-        gl.LINEAR_MIPMAP_LINEAR );
-  };
-  document.getElementById("button_mm_linearNear_min").onclick = function() {
-    gl.texParameteri( gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER,
-        gl.LINEAR_MIPMAP_NEAREST );
-  };
-  document.getElementById("button_mm_nearestLinear_min").onclick = function() {
-    gl.texParameteri( gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER,
-        gl.NEAREST_MIPMAP_LINEAR );
-  };
-  document.getElementById("button_mm_nearestNear_min").onclick = function() {
-    gl.texParameteri( gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER,
-        gl.NEAREST_MIPMAP_NEAREST );
-  };
-;
+
   fpsOutput = document.getElementById("fpsOutput")
   let rotateCamera = document.getElementById("rotate_Camera")
   rotateCamera.addEventListener('input', () =>{

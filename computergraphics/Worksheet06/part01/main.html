@@ -2,8 +2,8 @@
 <html class="no-js" lang="">
 
 <head>
-    <title>Worksheet01</title>
-
+    <title>Worksheet06</title>
+    <link rel="stylesheet" href="../../general.css">
     <script id = "vertex-shader" type="x-shader/x-vertex">
         attribute vec4 a_Position;
         attribute vec4 vNormal;
@@ -75,16 +75,6 @@
                 <b>Camera</b><br>
                 <input type="checkbox" id="rotate_Camera" name="rotate"> Rotate<br><br>
 
-            </td></tr>
-
-            <!-- Sphere -->
-            <tr class="toolbox-row"><td>
-                <b>Sphere</b><br><br>
-                Subdivisions<br>
-                <input id="subdivisions" class="slider" type="range" min="0" max="8" value="0" step="1"><p id="subdivNum" style="margin: 0px;">0</p>
-            </td></tr>
-            </tbody></table></td>
-
         <td>
             <canvas id="glCanvas" width="400" height="400"></canvas>
 
@@ -92,22 +82,6 @@
 
         <!-- Right toolbox -->
         <td><table class="toolbox">
-            <tr class="toolbox-row"><td>
-                <b>Materials</b><br><br>
-                Diffuse<br>
-                <input id="mat-slider-diffuse" type="color" value="#404040" ><br>
-
-                Ambient<br>
-                <input id="mat-slider-ambient" type="color" value="#404040"><br>
-
-                Specular<br>
-                <input id="mat-slider-specular" type="color" value="#404040"><br>
-
-                Shine<br>
-                <input id="mat-slider-shine" class="slider" type="range" min="0.1" max="100" value="20" step="1"><p>20</p>
-
-            </td></tr>
-
 
 
 
