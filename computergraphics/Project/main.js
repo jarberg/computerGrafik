@@ -207,18 +207,22 @@ function render(){
 
   lightpos = light.get_position()
   var lighteye = lightpos;
-  var lightat = add( camera.at, vec3(0.1,0.1,0.1))
+  var lightat = add( camera.at, vec3(0.1,0.1,0.1) )
   var lightup = vec3(0.0, 1.0, 0.0)
   lightPersp = lookAt(lighteye,lightat , lightup)
   lightpos = light.get_position()
 
-  shadowRender.render(shadowObjects, lightPersp, 1)
+  shadowRender.render( shadowObjects, lightPersp, 1 )
   lightPoint.move(light.get_position())
+
 
 
   for (let i = 0; i < objects.length; i++) {
     var obj = objects[i];
     var shader = obj.shader;
+
+
+    
     gl.useProgram(shader)
     shadows.bindTexture(1)
     lightpos = light.get_position()
@@ -239,7 +243,6 @@ function render(){
 
   gl.enable(gl.BLEND);
   interMan.Draw(camera, objects)
-
 
 
   requestAnimFrame(render);
@@ -265,8 +268,8 @@ function main() {
   light = new OrbitPointLight(vec3(0,3,0))
   lightPoint = new Dot(vec3(0,0,0));
 
-  sphere1 = new Sphere();
-  sphere1.move(vec3(-1,0,0))
+  sphere1 = new CubeSphere(vec3(0,0,0));
+  sphere1.move(vec3(-1,1,0))
   objects.push(sphere1)
 
   sphere2 = new Rectangle();

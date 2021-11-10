@@ -5,6 +5,8 @@ class model extends transform{
     normals = [];
     texCoordsArray = [];
 
+    boundingBox = [vec3(0,0,0),vec3(0,0,0)]
+
     vPosition;
     vColor;
     vNormal;
@@ -20,6 +22,14 @@ class model extends transform{
         this.initBuffers()
         this.dirtyShader = true;
         this.shader = program
+    }
+
+    bBox(p1){
+        var p2 = this.boundingBox[0]
+        var p3 = this.boundingBox[1]
+
+        this.boundingBox[0] = vec3(Math.min(p1.x, p2.x), Math.min(p1.y, p2.y), Math.min(p1.z, p2.z))
+        this.boundingBox[1] = vec3(Math.max(p1.x, p3.x), Math.max(p1.y, p3.y), Math.max(p1.z, p3.z))
     }
 
     initBuffers(){
@@ -191,63 +201,112 @@ class Sphere extends model{
 }
 
 
-class Sphere_box extends model{
+function Sphereify_vertex(div_count) {
+    var returnArray =[]
 
-    divisions= 4;
+    var origins = [ vec3(-1.0, -1.0, -1.0),
+        vec3(1.0, -1.0, -1.0),
+        vec3(1.0, -1.0, 1.0),
+        vec3(-1.0, -1.0, 1.0),
+        vec3(-1.0, 1.0, -1.0),
+        vec3(-1.0, -1.0, 1.0)]
+    var rights = [ vec3(2.0, 0.0, 0.0),
+        vec3(0.0, 0.0, 2.0),
+        vec3(-2.0, 0.0, 0.0),
+        vec3(0.0, 0.0, -2.0),
+        vec3(2.0, 0.0, 0.0),
+        vec3(2.0, 0.0, 0.0)]
+    var ups = [ vec3(0.0, 2.0, 0.0),
+        vec3(0.0, 2.0, 0.0),
+        vec3(0.0, 2.0, 0.0),
+        vec3(0.0, 2.0, 0.0),
+        vec3(0.0, 0.0, 2.0),
+        vec3(0.0, 0.0, -2.0)]
+
+    var step = 1/div_count
+
+    for (let face = 0; face < 6; face++) {
+        var origin = origins[face]
+        var right = rights[face]
+        var up = ups[face]
+        for (let j = 0; j < div_count+1; j++) {
+
+            var uj = scale(j, up)
+
+            for (let i = 0; i < div_count+1; i++) {
+                var ri = scale(i, right)
+                var t = add(ri, uj)
+                var p = add(origin ,  scale(step,t))
+                var p2 = mult(p,p)
+                var rx = p[0]* Math.sqrt(1.0 - 0.5 * (p2[1] + p2[2]) + p2[1] * p2[2] / 3.0)
+                var ry = p[1]* Math.sqrt(1.0 - 0.5 * (p2[2] + p2[0]) + p2[2] * p2[0] / 3.0)
+                var rz = p[2]* Math.sqrt(1.0 - 0.5 * (p2[0] + p2[1]) + p2[0] * p2[1] / 3.0)
+                returnArray.push(vec4(rx, ry, rz, 1.0))
+            }
+        }
+    }
+    return returnArray
+}
+
+function Sphereify_face(div_count) {
+    var k = div_count+1 ;
+    var facelist = []
+    for (let face = 0; face < 2; ++face)
+    {
+        for (let j = 0; j < div_count; ++j)
+        {
+            var bottom = j < (div_count / 2);
+            for (let i = 0; i < div_count; ++i)
+            {
+                const left = i < (div_count / 2);
+                const a = (face * k + j) * k + i;
+                const b = (face * k + j) * k + i + 1;
+                const c = (face * k + j + 1) * k + i;
+                const d = (face * k + j + 1) * k + i + 1;
+                if (bottom ^ left) addQuadAlt(facelist, a, c, d, b)
+                else addQuad(facelist, a,b,c,d)
+            }
+        }
+    }
+    return facelist
+}
+
+function addQuad(list, a, b, c, d) {
+
+    list.push(b)
+    list.push(a)
+    list.push(c)
+    list.push(b)
+    list.push(d)
+
+}
+
+function addQuadAlt(list, a, b, c, d) {
+    //list.push(d)
+    //list.push(a)
+    //list.push(b)
+    //list.push(c)
+    //list.push(b)
+    //list.push(d)
+}
+class CubeSphere extends IndiceModel{
+
+    divisions= 1;
 
     constructor(_center) {
         super(_center);
-        var va = vec4(0.0, 0.0, -1.0, 1);
-        var vb = vec4(0.0, 0.942809, 0.333333, 1);
-        var vc = vec4(-0.816497, -0.471405, 0.333333, 1);
-        var vd = vec4(0.816497, -0.471405, 0.333333, 1);
-        tetrahedron(va,vb,vc,vd, this)
+        this.vertexes = Sphereify_vertex(this.divisions);
+        this.indices = Sphereify_face(this.divisions)
         this.initDataToBuffers()
+        console.log(this.vertexes)
     }
 
-    draw(camera,shadow){
-        this.vertexColors = [];
-        this.vertexes = [];
-        this.normals = [];
-        this.texCoordsArray = [];
-
-        var va = vec4(0.0, 0.0, -1.0, 1);
-        var vb = vec4(0.0, 0.942809, 0.333333, 1);
-        var vc = vec4(-0.816497, -0.471405, 0.333333, 1);
-        var vd = vec4(0.816497, -0.471405, 0.333333, 1);
-        tetrahedron(va,vb,vc,vd,this)
+    draw(camera){
 
         gl.useProgram(this.shader)
         if(this.dirtyShader) this.initDataToBuffers()
 
-        super.draw()
-
-        gl.bindBuffer(gl.ARRAY_BUFFER, this.vBuffer);
-        gl.bufferData(gl.ARRAY_BUFFER, flatten(this.vertexes), gl.STATIC_DRAW);
-
-        gl.bindBuffer(gl.ARRAY_BUFFER, this.nBuffer);
-        gl.bufferData(gl.ARRAY_BUFFER, flatten(this.vertexColors), gl.STATIC_DRAW);
-
-        gl.bindBuffer(gl.ARRAY_BUFFER, this.cBuffer);
-        gl.bufferData(gl.ARRAY_BUFFER, flatten(this.normals), gl.STATIC_DRAW);
-
-        gl.bindBuffer(gl.ARRAY_BUFFER, this.tBuffer);
-        gl.bufferData(gl.ARRAY_BUFFER, flatten(this.texCoordsArray), gl.STATIC_DRAW);
-
-
-        if (!shadow){
-            gl.uniformMatrix4fv(gl.getUniformLocation(this.shader,"objTransform"), false, flatten(this.local_transformMatrix));
-            if (this.use_vcol){
-                gl.uniform1i(gl.getUniformLocation(this.shader,"u_usev_col"), 1);
-            }
-        }
-
-        gl.uniformMatrix4fv( gl.getUniformLocation(this.shader,"mTex"), false, flatten(mat4()));
-        gl.uniform3fv( gl.getUniformLocation(this.shader,"eye"), flatten(camera.eye));
-
-        gl.uniform1i(gl.getUniformLocation(this.shader,"isreflective"), 1)
-
-        gl.drawArrays(gl.TRIANGLES, 0, this.vertexes.length);
+        gl.drawElements(gl.TRIANGLE_STRIP, this.indices.length, gl.UNSIGNED_SHORT, 0);
     }
 
 }
@@ -417,6 +476,9 @@ function triangle(a, b, c, obj){
     normalsArray.push(vec4(a[0],a[1],a[2],1.0));
     normalsArray.push(vec4(c[0],c[1],c[2],1.0));
 
+    obj.bBox(a)
+    obj.bBox(b)
+    obj.bBox(c)
 }
 
 function divideTriangle(a, b, c, count, obj) {
@@ -434,7 +496,8 @@ function divideTriangle(a, b, c, count, obj) {
     }
 }
 
-function tetrahedron(a, b, c, d, obj) {
+function
+tetrahedron(a, b, c, d, obj) {
     var n = obj.divisions
     divideTriangle(a, b, c, n, obj);
     divideTriangle(d, c, b, n, obj);
@@ -467,6 +530,11 @@ function quad(a, b, c, d, obj) {
     obj.vertexes.push(obj.vertices[d]);
     obj.vertexColors.push(obj.vertexColors[a]);
     obj.texCoordsArray.push(obj.texCoord[3]);
+
+    obj.bBox(a)
+    obj.bBox(b)
+    obj.bBox(c)
+    obj.bBox(d)
 
     obj.initDataToBuffers()
 }
