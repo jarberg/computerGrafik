@@ -42,12 +42,11 @@ class SelectionBuffer {
         gl.bindRenderbuffer(gl.RENDERBUFFER, null);
     }
 
-    bind(textureSlot) {
+    bind() {
         if( this.bound ) return;
         gl.bindFramebuffer(gl.FRAMEBUFFER, this.framebuffer);
         gl.bindRenderbuffer(gl.RENDERBUFFER, this.renderbuffer);
         gl.depthMask(true);
-        this.bindTexture(textureSlot);
         gl.disable(gl.BLEND);
         gl.depthFunc(gl.LESS )
         gl.clearColor(0, 0.5843, 0.9294, 1.0)
@@ -75,7 +74,7 @@ class SelectionBuffer {
     }
 
     get_pixelData(start, end){
-        this.bind(10)
+        this.bind()
         if(end==null){
             const data = new Uint8Array(4);
             gl.readPixels(

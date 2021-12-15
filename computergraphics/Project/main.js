@@ -278,7 +278,7 @@ function render(){
   lightpos = light.get_position()
   lightPoint.move(light.get_position())
 
-  shadowRender.render(lightPersp, 10)
+  shadowRender.render(lightPersp, 1)
   modelRenderer.draw(camera, light, drawBBox)
 
   interMan.draw(camera)
