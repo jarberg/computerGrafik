@@ -7,14 +7,13 @@ class SelectionRenderer{
     botLeft;
     botRight
 
-
-
     constructor() {
         this.selection_indicator_shader = initShaders(gl, "render/shaders/selectionShader/vertexShader.glsl", "render/shaders/selectionShader/fragmentShader.glsl")
         this.selection_ID_shader = initShaders(gl, "render/shaders/selectionIDShader/vertexShader.glsl", "render/shaders/selectionIDShader/fragmentShader.glsl")
         this.selectionBuffer = new SelectionBuffer(canvas.width, canvas.height)
         this.vBuffer = gl.createBuffer()
         this.tempBuffer = gl.createBuffer()
+        this.region_vertexArray=[]
     }
 
     stop(){
@@ -28,14 +27,12 @@ class SelectionRenderer{
         this.botRight = vec3(coords[0], this.start[1], 0);
     }
 
-
     draw(camera, objects, coords){
-        this.selectionBuffer.bind(10)
+
         if(objects == null) return;
         if(objects.length < 1) return;
-
+        this.selectionBuffer.bind(10)
         gl.useProgram(this.selection_ID_shader)
-
         let projection = camera.pMatrix;
         let viewMatrix = camera.mvMatrix;
 
@@ -43,10 +40,9 @@ class SelectionRenderer{
             let objtransform = objects[id].local_transformMatrix
             let objVertexArray = objects[id].get_vertexes()
             let realid = id+1
-            gl.uniform4fv(gl.getUniformLocation(this.selection_ID_shader,"u_id"), flatten(vec4(((realid >>  0) & 0xFF) / 0xFF,
-                                                                                                     ((realid >>  8) & 0xFF) / 0xFF,
-                                                                                                     ((realid >> 16) & 0xFF) / 0xFF,
-                                                                                                     ((realid >> 24) & 0xFF) / 0xFF,)));
+            let test = flatten(vec4(((realid >>  0) & 0xFF) / 0xFF,((realid >>  8) & 0xFF) / 0xFF,((realid >> 16) & 0xFF) / 0xFF,((realid >> 24) & 0xFF) / 0xFF))
+
+            gl.uniform4fv(gl.getUniformLocation(this.selection_ID_shader,"u_id"), test);
             gl.uniformMatrix4fv(gl.getUniformLocation(this.selection_ID_shader,"projection"), false, flatten(projection));
             gl.uniformMatrix4fv(gl.getUniformLocation(this.selection_ID_shader,"modelViewMatrix"), false, flatten(viewMatrix));
             gl.uniformMatrix4fv(gl.getUniformLocation(this.selection_ID_shader,"objTransform"), false, flatten(objtransform));
@@ -55,26 +51,23 @@ class SelectionRenderer{
 
             gl.drawArrays(gl.TRIANGLES, 0, objVertexArray.length);
         }
-        var id =  this.selectionBuffer.get_pixelData(coords)
+        var id = this.selectionBuffer.get_pixelData(coords)
         this.selectionBuffer.unbind()
         return id
     }
 
     draw_selection(camera, selection){
-
         gl.useProgram(this.selection_indicator_shader)
-
         gl.enable(gl.DEPTH_TEST);
         gl.depthFunc(gl.LEQUAL)
         gl.depthMask(false);
         gl.enable(gl.BLEND);
         gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA)
-
         let projection = camera.pMatrix;
         let viewMatrix = camera.mvMatrix;
         for (var id = 0; id < selection.length; id++) {
             var objtransform = selection[id].local_transformMatrix
-            var objVertexArray = selection[id].vertexes
+            var objVertexArray = selection[id].get_vertexes()
 
             gl.uniformMatrix4fv(gl.getUniformLocation(this.selection_indicator_shader,"projection"), false, flatten(projection));
             gl.uniformMatrix4fv(gl.getUniformLocation(this.selection_indicator_shader,"modelViewMatrix"), false, flatten(viewMatrix));
@@ -83,10 +76,10 @@ class SelectionRenderer{
             this.initDataToBuffers(this.selection_indicator_shader,  selection[id].get_vBuffer(), objVertexArray, 4)
             gl.drawArrays(gl.TRIANGLES, 0, objVertexArray.length);
         }
-
         gl.depthMask(true);
         gl.disable(gl.BLEND);
         gl.depthFunc(gl.LESS )
+
     }
 
     draw_selection_region_indicator(){

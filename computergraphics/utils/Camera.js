@@ -7,8 +7,8 @@ class Camera extends transform{
         this.radius = 8.0;
         this.theta  = 0.0;
         this.phi    = 0.0;
-        this.fovy = 90.0;  // Field-of-view in Y direction angle (in degrees)
-        this.aspect =1;       // Viewport aspect ratio
+        this.fovy = 90.0;     // Field-of-view in Y direction angle (in degrees)
+        this.aspect = 1;       // Viewport aspect ratio
 
         this.pMatrix = perspective( this.fovy,
             this.aspect,
@@ -17,16 +17,32 @@ class Camera extends transform{
 
         this.mvMatrix;
 
-        this.eye = vec3(0,0,0);
+        this.eye = vec3(1,1,0);
         this.up = vec3(0.0, 1.0, 0.0);
         this.at = vec3(this.position)
+
+        this.ip_normal = normalize(subtract(this.at, this.eye));
+        this.ip_x_axis = normalize(cross(this.ip_normal, this.up));
+        this.ip_y_axis = normalize(cross(this.ip_x_axis, this.ip_normal))
+
         this.update_projection_matrix()
     }
-
+    get_ray_direc(input){
+        var step1 =  scale(input[0], this.ip_x_axis)
+        var step2 =  scale(input[1], this.ip_y_axis)
+        var step3 =  scale(this.aspect, this.get_position())
+        var step4 =  scale(-this.near, this.ip_normal)
+        return add(add(add(step1, step2), step3), step4)
+    }
     move(vec){
         super.move(vec)
         this.updateEye()
     }
+
+    get_position(){
+        return add(super.get_position(), this.eye)
+    }
+
     set_fovy(angle){
         if (this.fovy !== angle){
             this.fovy = angle;
@@ -50,6 +66,10 @@ class Camera extends transform{
             vec3(this.mvMatrix[1][0], this.mvMatrix[1][1], this.mvMatrix[1][2]),
             vec3(this.mvMatrix[2][0], this.mvMatrix[2][1], this.mvMatrix[2][2])
         ];
+        this.ip_normal = normalize(subtract(this.at, this.eye));
+        this.ip_x_axis = normalize(cross(this.ip_normal, this.up));
+        this.ip_y_axis = cross(this.ip_x_axis, this.ip_normal)
+
         this.update_projection_matrix()
     }
 
@@ -85,6 +105,9 @@ class Camera extends transform{
             this.position[1]+-this.radius * Math.cos(vAngleRadians),
             this.position[2]+-this.radius * Math.sin(vAngleRadians) * Math.sin(hAngleRadians)
         ];
+        this.ip_normal = normalize(subtract(this.at, this.eye));
+        this.ip_x_axis = normalize(cross(this.ip_normal, this.up));
+        this.ip_y_axis = cross(this.ip_x_axis, this.ip_normal)
     }
 
 }
@@ -251,7 +274,6 @@ class QuaternionCamera extends transform{
     adjustRotation(xAdjustment, yAdjustment){
         let rotationIncrement = new Quaternion().make_rot_vec2vec([0,0,1], this.projectToSphere(xAdjustment, yAdjustment));
         this.rotation = this.rotation.multiply(rotationIncrement)
-        console.log(this.up)
         this.update_cam()
 
     }

@@ -3,6 +3,7 @@ class baseModel extends transform{
     vertexColors = [];
     normals = [];
     texCoordsArray = [];
+    boundingBox = [vec3(0,0,0),vec3(0,0,0),vec3(0,0,0),vec3(0,0,0)]
     shader=null;
 
     getShader(){
@@ -21,7 +22,17 @@ class baseModel extends transform{
     get_vBuffer(){
         return this.vBuffer
     }
+    bBox(p1){
+        var p2 = this.boundingBox[0]
+        var p3 = this.boundingBox[1]
+        var p4 = this.boundingBox[2]
+        var p5 = this.boundingBox[3]
 
+        this.boundingBox[0] = vec3(Math.min(p1[0], p2[0]), Math.min(p1[1], p2[1]), Math.min(p1[2], p2[2]))
+        this.boundingBox[1] = vec3(Math.max(p1[0], p3[0]), Math.min(p1[1], p3[1]), Math.min(p1[2], p3[2]))
+        this.boundingBox[2] = vec3(Math.min(p1[0], p4[0]), Math.max(p1[1], p4[1]), Math.min(p1[2], p4[2]))
+        this.boundingBox[3] = vec3(Math.min(p1[0], p5[0]), Math.min(p1[1], p5[1]), Math.max(p1[2], p5[2]))
+    }
 }
 class model extends baseModel{
     vertexes = [];
@@ -29,7 +40,6 @@ class model extends baseModel{
     normals = [];
     texCoordsArray = [];
 
-    boundingBox = [vec3(0,0,0),vec3(0,0,0)]
 
     vPosition;
     vColor;
@@ -48,14 +58,6 @@ class model extends baseModel{
         this.shader = program
     }
 
-    bBox(p1){
-        var p2 = this.boundingBox[0]
-        var p3 = this.boundingBox[1]
-
-        this.boundingBox[0] = vec3(Math.min(p1.x, p2.x), Math.min(p1.y, p2.y), Math.min(p1.z, p2.z))
-        this.boundingBox[1] = vec3(Math.max(p1.x, p3.x), Math.max(p1.y, p3.y), Math.max(p1.z, p3.z))
-    }
-
     initBuffers(){
         this.vBuffer = gl.createBuffer();
         this.cBuffer = gl.createBuffer();
@@ -66,6 +68,10 @@ class model extends baseModel{
 
 
     initDataToBuffers(){
+
+        for (let i = 0; i < this.vertexes.length; i++) {
+            this.bBox(this.vertexes[i])
+        }
 
         this.vPosition = gl.getAttribLocation(this.shader, "a_Position");
         this.vColor = gl.getAttribLocation(this.shader, "a_Color");
@@ -245,93 +251,6 @@ class Sphere extends model{
 
 }
 
-
-function Sphereify_vertex(div_count) {
-    var returnArray =[]
-
-    var origins = [ vec3(-1.0, -1.0, -1.0),
-        vec3(1.0, -1.0, -1.0),
-        vec3(1.0, -1.0, 1.0),
-        vec3(-1.0, -1.0, 1.0),
-        vec3(-1.0, 1.0, -1.0),
-        vec3(-1.0, -1.0, 1.0)]
-    var rights = [ vec3(2.0, 0.0, 0.0),
-        vec3(0.0, 0.0, 2.0),
-        vec3(-2.0, 0.0, 0.0),
-        vec3(0.0, 0.0, -2.0),
-        vec3(2.0, 0.0, 0.0),
-        vec3(2.0, 0.0, 0.0)]
-    var ups = [ vec3(0.0, 2.0, 0.0),
-        vec3(0.0, 2.0, 0.0),
-        vec3(0.0, 2.0, 0.0),
-        vec3(0.0, 2.0, 0.0),
-        vec3(0.0, 0.0, 2.0),
-        vec3(0.0, 0.0, -2.0)]
-
-    var step = 1/div_count
-
-    for (let face = 0; face < 6; face++) {
-        var origin = origins[face]
-        var right = rights[face]
-        var up = ups[face]
-        for (let j = 0; j < div_count+1; j++) {
-
-            var uj = scale(j, up)
-
-            for (let i = 0; i < div_count+1; i++) {
-                var ri = scale(i, right)
-                var t = add(ri, uj)
-                var p = add(origin ,  scale(step,t))
-                var p2 = mult(p,p)
-                var rx = p[0]* Math.sqrt(1.0 - 0.5 * (p2[1] + p2[2]) + p2[1] * p2[2] / 3.0)
-                var ry = p[1]* Math.sqrt(1.0 - 0.5 * (p2[2] + p2[0]) + p2[2] * p2[0] / 3.0)
-                var rz = p[2]* Math.sqrt(1.0 - 0.5 * (p2[0] + p2[1]) + p2[0] * p2[1] / 3.0)
-                returnArray.push(vec4(rx, ry, rz, 1.0))
-            }
-        }
-    }
-    return returnArray
-}
-
-function Sphereify_face(horizontalLines, verticalLines) {
-    var radius = 2
-    vertices = [horizontalLines * verticalLines];
-    var index = 0;
-    for (let m = 0; m < horizontalLines; m++) {
-        for (let n = 0; n < verticalLines - 1; n++)
-        {
-            var x = Math.sin(Math.PI * m/horizontalLines) * Math.cos(2 * Math.PI * n/verticalLines);
-            var y = Math.sin(Math.PI * m/horizontalLines) * Math.sin(2 * Math.PI * n/verticalLines);
-            var z = Math.cos(Math.PI * m / horizontalLines);
-            vertices[index++] =  scale(radius, vec4(x, y, z, 1));
-        }
-    }
-    return vertices;
-}
-
-
-class CubeSphere extends model{
-
-    divisions= 1;
-
-    constructor(_center) {
-        super(_center);
-        this.vertexes = Sphereify_face(3,3,1)
-        this.initDataToBuffers()
-
-    }
-
-    draw(camera){
-
-        gl.useProgram(this.shader)
-        if(this.dirtyShader) this.initDataToBuffers()
-        gl.drawArrays(gl.TRIANGLES, 0, this.vertexes.length);
-        //gl.drawElements(gl.TRIANGLE_STRIP, this.indices.length, gl.UNSIGNED_SHORT, 0);
-    }
-
-}
-
-
 class Dot extends model{
 
     constructor(_center) {
@@ -361,10 +280,10 @@ class Dot extends model{
 class Rectangle extends model{
 
     vertices = [
-        vec4( -4, -1,  10, 1.0 ),
-        vec4( 4,  -1,  10, 1.0 ),
-        vec4( 4,  -1,  -31, 1.0 ),
-        vec4( -4, -1,  -31, 1.0 ),
+        vec4( -4, 0,  10, 1.0 ),
+        vec4( 4,  0,  10, 1.0 ),
+        vec4( 4,  0,  -31, 1.0 ),
+        vec4( -4, 0,  -31, 1.0 ),
     ];
     texCoord = [
         vec2(-1.5, 0),
@@ -551,10 +470,10 @@ function quad(a, b, c, d, obj) {
     obj.vertexColors.push(obj.vertexColors[a]);
     obj.texCoordsArray.push(obj.texCoord[3]);
 
-    obj.bBox(a)
-    obj.bBox(b)
-    obj.bBox(c)
-    obj.bBox(d)
+    obj.bBox(obj.vertices[a])
+    obj.bBox(obj.vertices[b])
+    obj.bBox(obj.vertices[c])
+    obj.bBox(obj.vertices[d])
 
     obj.initDataToBuffers()
 }

@@ -24,8 +24,8 @@ void main(){
 
 
     float I = 5.0/(length(p)*length(p));
-
     float Kd = max( dot(L, N), 0.0 );
+
     vec4 tex = texture2D( diffuseTexture,fTexCoord);
     tex.a = 1.0;
     gl_FragColor = vec4(0.1,0.1,0.1,1)+((tex)*I)*visibility;
