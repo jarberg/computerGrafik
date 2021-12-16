@@ -293,16 +293,16 @@ class Dot extends model{
 class Rectangle extends model{
 
     vertices = [
-        vec4( -4, 0,  10, 0.0 ),
-        vec4( 4,  0,  10, 0.0 ),
-        vec4( 4,  0,  -31, 0.0 ),
-        vec4( -4, 0,  -31, 0 ),
-    ];
+        vec4(2,0,-5,1),
+        vec4(-2,0,-5,1),
+        vec4(-2,0,5,1),
+        vec4(2,0,5,1),
+    ]
     texCoord = [
-        vec2(-1.5, 0),
-        vec2(2.5, 0),
-        vec2(2.5, 10),
-        vec2(-1.5, 10)
+        vec2(0, 0),
+        vec2(0, 1),
+        vec2(1, 1),
+        vec2(1, 0)
     ];
 
 

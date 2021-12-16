@@ -82,6 +82,7 @@ function create_image_texture(imageName, callback, index){
 
 function create_cube_map(shader, invert=false, index=0){
         //console.log( location.origin+"/computerGrafik/computergraphics/"+'Images/cubeMap/cloudyhills_posx.jpg')
+
     var cubemapArray = [
         location.origin+"/computerGrafik/computergraphics/"+'Images/cubeMap/cloudyhills_posx.jpg',  // POSITIVE_X
         location.origin+"/computerGrafik/computergraphics/"+'Images/cubeMap/cloudyhills_negx.jpg',  // NEGATIVE_X

@@ -57,6 +57,7 @@ function setupControls(){
 var texture;
 function main() {
   init()
+
   sphere =new Sphere(vec3(0,0,0))
   sphere.setShader(program)
   objects.push(sphere)
@@ -69,7 +70,7 @@ function main() {
   setupControls();
 
   texture = create_cube_map(program, false, 0);
-
+  console.log(location.origin)
   render()
 }
 

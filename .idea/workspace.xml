@@ -5,29 +5,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5e3948d6-358c-4c60-8135-650537d75e3c" name="Default Changelist" comment="fix 1">
+    <list default="true" id="5e3948d6-358c-4c60-8135-650537d75e3c" name="Default Changelist" comment="finsihed">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computergraphics/Project/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Project/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computergraphics/Project/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Project/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computergraphics/Project/render/modelRenderer.js" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Project/render/modelRenderer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computergraphics/Project/render/selectionFrameBuffer.js" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Project/render/selectionFrameBuffer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computergraphics/Project/render/selectionRenderer.js" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Project/render/selectionRenderer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet03/part01_old/main.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet03/part01_old/main.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet03/part02_old/main.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet03/part02_old/main.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet04/part03/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Worksheet04/part03/main.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet04/part03/rest.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet04/part03_old/main.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet04/part03_old/main.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet04/part04/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Worksheet04/part04/main.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet06/part01/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Worksheet06/part01/main.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet06/part01/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Worksheet06/part01/main.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet07/part01/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Worksheet07/part01/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet07/part01/render/vertexShader.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Worksheet07/part01/render/vertexShader.glsl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet07/part03/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Worksheet07/part03/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computergraphics/utils/general.js" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/utils/general.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computergraphics/utils/geomitry.js" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/utils/geomitry.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/computergraphics/utils/textureUtils.js" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/utils/textureUtils.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -82,11 +62,11 @@
       <recent name="C:\Users\mjarb\WebstormProjects\computerGrafik\Project\render\shaders\selectionShader" />
     </key>
   </component>
-  <component name="RunManager" selected="JavaScript Debug.main.html (4)">
-    <configuration name="index.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/computerGrafik/computergraphics/Project/index.html" useBuiltInWebServerPort="true">
+  <component name="RunManager" selected="JavaScript Debug.main.html (3)">
+    <configuration name="main.html (1)" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/computerGrafik/computergraphics/Worksheet07/part02/main.html" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
-    <configuration name="main.html (1)" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/computerGrafik/computergraphics/Worksheet06/part02/main.html" useBuiltInWebServerPort="true">
+    <configuration name="main.html (2)" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/computerGrafik/computergraphics/Worksheet08/part02/main.html" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
     <configuration name="main.html (3)" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/computerGrafik/computergraphics/Worksheet06/part01/main.html" useBuiltInWebServerPort="true">
@@ -95,16 +75,16 @@
     <configuration name="main.html (4)" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/computerGrafik/computergraphics/Worksheet09/part02/main.html" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
-    <configuration name="main.html (5)" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/computerGrafik/computergraphics/Worksheet06/part03/main.html" useBuiltInWebServerPort="true">
+    <configuration name="main.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/computerGrafik/computergraphics/Worksheet07/part01/main.html" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JavaScript Debug.main.html (4)" />
-        <item itemvalue="JavaScript Debug.main.html (5)" />
-        <item itemvalue="JavaScript Debug.main.html (1)" />
         <item itemvalue="JavaScript Debug.main.html (3)" />
-        <item itemvalue="JavaScript Debug.index.html" />
+        <item itemvalue="JavaScript Debug.main.html (2)" />
+        <item itemvalue="JavaScript Debug.main.html (1)" />
+        <item itemvalue="JavaScript Debug.main.html" />
+        <item itemvalue="JavaScript Debug.main.html (4)" />
       </list>
     </recent_temporary>
   </component>
@@ -341,7 +321,14 @@
       <option name="project" value="LOCAL" />
       <updated>1639577919669</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="finsihed">
+      <created>1639665872467</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1639665872467</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -412,7 +399,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="worksheet 07 part 3 and all before should work now" />
     <MESSAGE value="reworked old code.&#10;made entire worksheet 7 actualy work" />
     <MESSAGE value="reworked old code&#10;worksheet 02 part 2 now uses single buffer for color and position" />
     <MESSAGE value="finished worksheet08&#10;started on worksheet09" />
@@ -437,7 +423,8 @@
     <MESSAGE value="readded worksheet10 part01" />
     <MESSAGE value="finished base implementation of selecting objects on screen" />
     <MESSAGE value="fix 1" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix 1" />
+    <MESSAGE value="finsihed" />
+    <option name="LAST_COMMIT_MESSAGE" value="finsihed" />
   </component>
   <component name="WindowStateProjectService">
     <state x="416" y="143" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1631515729357">
@@ -549,10 +536,11 @@
     </state>
     <state x="410" y="61" key="RollbackChangesDialog/0.0.1280.680@0.0.1280.680" timestamp="1634797283996" />
     <state x="615" y="104" key="RollbackChangesDialog/0.0.1920.1160/-1920.121.1920.1040@0.0.1920.1160" timestamp="1639663798054" />
-    <state x="233" y="74" key="Vcs.Push.Dialog.v2" timestamp="1635932313803">
-      <screen x="0" y="0" width="1280" height="680" />
+    <state x="350" y="126" key="Vcs.Push.Dialog.v2" timestamp="1639665882342">
+      <screen x="0" y="0" width="1920" height="1160" />
     </state>
     <state x="233" y="74" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1635932313803" />
+    <state x="350" y="126" key="Vcs.Push.Dialog.v2/0.0.1920.1160/-1920.121.1920.1040@0.0.1920.1160" timestamp="1639665882342" />
     <state x="93" y="93" width="1095" height="495" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1635931619466">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
