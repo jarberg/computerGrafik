@@ -70,8 +70,6 @@ function render(){
   camera.update_projection_matrix()
   for (let i = 0; i < objects.length; i++) {
     var obj = objects[i];
-
-
     obj.draw(camera);
   }
   requestAnimFrame(render);

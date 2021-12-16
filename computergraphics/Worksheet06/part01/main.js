@@ -38,7 +38,7 @@ function init(){
 
   program = initShaders(gl, "vertex-shader", "fragment-shader");
   gl.useProgram(program);
-  gl.enable(gl.CULL_FACE)
+  //gl.enable(gl.CULL_FACE)
   gl.enable(gl.DEPTH_TEST)
 
 }
@@ -68,14 +68,66 @@ function hexToRgb(hex) {
   } : null;
 }
 
-function setupControls(){
 
+function setupControls(){
   fpsOutput = document.getElementById("fpsOutput")
+
   let rotateCamera = document.getElementById("rotate_Camera")
   rotateCamera.addEventListener('input', () =>{
     camera.rotate = rotateCamera.checked
   });
+
+
+  // Mouse Events
+  rightMousePressed = false;
+  middleMousePressed = false;
+  leftMousePressed = false;
+
+  let canvas = document.getElementById("glCanvas")
+  canvas.addEventListener('contextmenu', function (e) {
+    // do something here...
+    e.preventDefault();
+  }, false);
+
+  canvas.onmouseup = (e) => {
+    e.preventDefault();
+    if (e.button === 0) {
+      rightMousePressed = false;
+    }
+    else if (e.button === 1) {
+      middleMousePressed = false;
+    }
+    else if (e.button === 2) {
+      leftMousePressed = false;
+
+    }
+  }
+  canvas.onmousemove = (e) => {
+    e.preventDefault();
+    if(leftMousePressed){
+
+    }
+
+
+    if( middleMousePressed ) {
+      if(e.altKey){
+        ''
+        pos = subtract(camera.eye,camera.at)
+        camera.move(add(camera.position, add(camera.eye, subtract(camera.eye,camera.at))))
+      }
+      else{
+        camera.updateHorizontal(e.movementX*0.25);
+        camera.updateVertical(e.movementY*0.25);
+      }
+    }
+  }
+  canvas.onwheel = (e) =>{
+    camera.adjustDistance(e.deltaY);
+    e.preventDefault();
+  }
 }
+
+
 
 function takeTime(){
   gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
@@ -117,10 +169,28 @@ function set_Texture_repeat(){
 
 function main() {
   init()
+  var ground = new Rectangle(vec3(0,0,0))
+  ground.vertices = [
+    vec4(2,0,-5,1),
+    vec4(-2,0,-5,1),
+    vec4(-2,0,51,1),
+    vec4(2,0,51,1),
+  ]
+  ground.texCoord = [
+    vec2(0, 0),
+    vec2(0, 1),
+    vec2(20, 1),
+    vec2(20, 0)
+  ];
+  ground.clear()
+  quad(0,1,2,3,ground)
+  ground.move(vec3(0,0,3))
+  objects.push(ground)
 
-  objects.push(new Rectangle(vec4(0,0,0,0)))
   camera = new OrbitCamera()
+  camera.theta = -45
 
+  camera.radius = 1
   gl.clearColor(0, 0.5843, 0.9294, 1.0);
 
   setupControls()
@@ -151,6 +221,7 @@ function render(){
 
 
   camera.update(takeTime())
+  camera.updateEye()
   gl.uniform4fv( gl.getUniformLocation(program,
       "ambientProduct"),flatten(ambientProduct) );
   gl.uniform4fv( gl.getUniformLocation(program,
@@ -162,17 +233,15 @@ function render(){
   gl.uniform1f( gl.getUniformLocation(program,
       "shininess"),materialShininess );
 
-  var normalMatrix = [
-    vec3(camera.mvMatrix[0][0], camera.mvMatrix[0][1], camera.mvMatrix[0][2]),
-    vec3(camera.mvMatrix[1][0], camera.mvMatrix[1][1], camera.mvMatrix[1][2]),
-    vec3(camera.mvMatrix[2][0], camera.mvMatrix[2][1], camera.mvMatrix[2][2])
-  ];
-  gl.uniformMatrix4fv( gl.getUniformLocation(program,"modelViewMatrix"), false, flatten(camera.mvMatrix));
-  gl.uniformMatrix3fv(gl.getUniformLocation( program, "normalMatrix" ), false, flatten(normalMatrix) );
 
   objects.forEach(function(obj) {
-    camera.update_projection_matrix(program)
-    obj.draw(camera);
+    gl.uniformMatrix4fv( gl.getUniformLocation(program,"objTransform"), false,
+        flatten(obj.local_transformMatrix));
+    gl.uniformMatrix4fv(gl.getUniformLocation(program,"projection"), false, flatten(camera.pMatrix));
+    gl.uniformMatrix4fv( gl.getUniformLocation(program,"modelViewMatrix"), false, flatten(camera.mvMatrix));
+
+
+    obj.draw()
   });
 
   requestAnimFrame(render);

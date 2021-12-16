@@ -59,14 +59,7 @@ function loadObjFile(fileName, scale, reverse, onLoadCallback){
 
 function SATtest(axis, ptSet ) {
     var minAlong=Infinity, maxAlong=-Infinity;
-
-    var edge1 = ptSet[1]-ptSet[0]
-    var edge2 = ptSet[2]-ptSet[0]
-    var edge3 = ptSet[3]-ptSet[0]
-
     for( let i = 0 ; i < ptSet.length ; i++ ) {
-        // just dot it to get the min/max along this axis.
-
         var dotVal = dot(ptSet[i], axis) ;
         if( dotVal < minAlong )  minAlong=dotVal;
         if( dotVal > maxAlong )  maxAlong=dotVal;
@@ -122,8 +115,6 @@ class transform{
     local_transformMatrix = mat4()
     rotation_order = "XYZ"
 
-
-
     constructor(center=vec3(0,0,0)) {
         this.position = center
         this.update_transform()
@@ -131,8 +122,12 @@ class transform{
         this.children = []
     }
 
+    get_local_transform(){
+        return this.local_transformMatrix
+    }
+
     update_transform(){
-        var tempMat = mult(mat4(), scalem(this.scale))
+        var tempMat = mult(scalem(this.scale),mat4())
         tempMat = this.checkRotationOrder(tempMat)
         tempMat = mult(translate(this.position), tempMat)
         this.local_transformMatrix = tempMat

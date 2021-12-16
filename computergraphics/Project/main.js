@@ -76,28 +76,32 @@ class InteractionManager{
   selection_move(coords){
     this.selectionRenderer.mouse_move( coords )
 
+    let inproject = inverse4(camera.pMatrix)
     let t1 = camera.get_ray_direc(this.selectionRenderer.botRight)
     let t2 = camera.get_ray_direc(this.selectionRenderer.start)
     let t3 = camera.get_ray_direc(this.selectionRenderer.end)
     let t4 = camera.get_ray_direc(this.selectionRenderer.botLeft)
+    let test2 = scale(camera.far-5 ,camera.ip_normal)
+    t4 = add(t4,test2)
 
-    let test2 = scale(camera.far-5 ,subtract(camera.at, camera.eye))
-    t4 = add(t4, test2)
-    var normals = make_normals([t1,t2,t3,t4])
+    let normals = make_normals([t1,t2,t3,t4])
 
     this.selectionRenderer.region_vertexArray = this.make_bBox_cube([t1,t2,t3,t4])
-
+    var found = []
     for( let i = 0 ; i < modelRenderer.objects.length; i++ ) {
       let realspace_pos = []
-      for (let j = 0; j < modelRenderer.objects[i].boundingBox.length; j++) {
-        let bBoxP = modelRenderer.objects[i].boundingBox[j]
-        let newpos = mult(modelRenderer.objects[i].local_transformMatrix, vec4(bBoxP[0],bBoxP[1],bBoxP[2], 1,0))
+      var bBox = modelRenderer.objects[i].get_b_box()
+      for (let j = 0; j < bBox.length; j++) {
+        let bBoxP = bBox[j]
+        let newpos = mult(modelRenderer.objects[i].get_local_transform(), vec4(bBoxP[0],bBoxP[1],bBoxP[2], 1,0))
         realspace_pos.push(vec3(newpos[0],newpos[1],newpos[2]))
       }
       if(intersects([t1,t2,t3,t4], realspace_pos, normals)){
-        console.log(modelRenderer.objects[i])
+        found.push(modelRenderer.objects[i])
       }
     }
+    this.add_selectionList(found)
+    return found
   }
 
   single_click_selection(coords){
@@ -121,6 +125,9 @@ class InteractionManager{
   set_selectionList(selection){
     this.selectionList = selection
   }
+  add_selectionList(selection){
+    this.selectionList=selection
+  }
 
   draw(camera){
     if (this.selecting) {
@@ -131,8 +138,8 @@ class InteractionManager{
      this.selectionRenderer.draw_selection(camera, this.selectionList)
     }
     if(drawSBox && this.selectionRenderer.region_vertexArray.length >0){
-      var projection = camera.pMatrix;
-      var viewMatrix = camera.mvMatrix;
+      let projection = camera.pMatrix;
+      let viewMatrix = camera.mvMatrix;
       gl.useProgram(this.selectionRenderer.selection_indicator_shader)
       gl.uniformMatrix4fv(gl.getUniformLocation(this.selectionRenderer.selection_indicator_shader,"projection"), false, flatten(projection));
       gl.uniformMatrix4fv(gl.getUniformLocation(this.selectionRenderer.selection_indicator_shader,"modelViewMatrix"), false, flatten(viewMatrix));
@@ -226,7 +233,12 @@ function setupControls(){
           var input = vec3(-1 + 2.0*((e.clientX-bBox.left)/canvas.width),
               -1 + 2*(canvas.height-e.clientY+bBox.top)/canvas.height,
               0)
-          interMan.single_click_selection(vec2(input[0], input[1]))
+          const rect = canvas.getBoundingClientRect();
+          mouseX = e.clientX - rect.left;
+          mouseY = e.clientY - rect.top;
+          const pixelX = mouseX * gl.canvas.width / gl.canvas.clientWidth;
+          const pixelY = gl.canvas.height -  mouseY * gl.canvas.height / gl.canvas.clientHeight - 1;
+          interMan.single_click_selection(vec2(pixelX, pixelY))
         }
       }
     }
@@ -280,8 +292,8 @@ function render(){
 
   shadowRender.render(lightPersp, 1)
   modelRenderer.draw(camera, light, drawBBox)
-
   interMan.draw(camera)
+
   requestAnimFrame(render);
 }
 
@@ -304,15 +316,14 @@ function main() {
 
   lightPoint = new Dot(vec3(0,0,0));
   sphere1 = new Sphere(vec3(0,0,0));
-  sphere1.move(vec3(-1,0,0))
-  sphere2 = new Rectangle(vec3(0,-1,0));
-  sphere2.move(vec3(0,-1,0))
-  sphere3 = new instance(sphere1, vec3(0,0,0))
-  sphere3.move(vec3(1,0,0))
+  sphere1.move(vec3(-1.5,0,0))
+  rect = new Rectangle(vec3(0,-1,0));
+  rect.move(vec3(0,-1.5,0))
+  inst = new instance(sphere1, vec3(0,0,0))
+  inst.move(vec3(1,0,0))
 
-  modelRenderer.set_objects([sphere1, sphere2, sphere3, lightPoint])
-  shadowRender.set_objects([sphere1, sphere2,sphere3])
-
+  modelRenderer.set_objects([sphere1, rect, inst, lightPoint])
+  shadowRender.set_objects([sphere1, rect,inst])
 
   gl.clearColor(0, 0.5843, 0.9294, 1.0)
   setupControls()

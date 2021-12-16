@@ -22,8 +22,8 @@ class ModelRenderer{
         gl.useProgram( this.bBoxShader)
         for (let i = 0; i < this.objects.length; i++) {
             var obj = this.objects[i];
-            let objtransform =obj.local_transformMatrix
-            let points = obj.boundingBox
+            let objtransform =obj.get_local_transform()
+            let points = obj.get_b_box()
 
             var vertexes = []
 
@@ -80,10 +80,12 @@ class ModelRenderer{
 
         }
     }
+
     draw(camera, light, drawBouding) {
         if(drawBouding){
             this.drawboudningbox(camera, light)
         }
+        else{
         var lightpos = light.get_position()
 
         for (let i = 0; i < this.objects.length; i++) {
@@ -106,7 +108,7 @@ class ModelRenderer{
             obj.draw(camera, false);
 
 
-
+        }
         }
     }
 

@@ -74,7 +74,6 @@ class SelectionBuffer {
     }
 
     get_pixelData(start, end){
-        this.bind()
         if(end==null){
             const data = new Uint8Array(4);
             gl.readPixels(
@@ -89,7 +88,6 @@ class SelectionBuffer {
             console.log(id-1)
             return id-1
         }
-        this.unbind()
     }
 
 }

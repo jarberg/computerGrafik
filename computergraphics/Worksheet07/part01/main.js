@@ -54,12 +54,12 @@ function setupControls(){
   });
 }
 
-
-
+var texture;
 function main() {
   init()
-
-  objects.push(new Sphere(vec3(0,0,0)))
+  sphere =new Sphere(vec3(0,0,0))
+  sphere.setShader(program)
+  objects.push(sphere)
   camera = new OrbitCamera()
   camera.fovy = 45;
   camera.radius = 2
@@ -68,7 +68,7 @@ function main() {
 
   setupControls();
 
-  create_cube_map(program);
+  texture = create_cube_map(program, false, 0);
 
   render()
 }
@@ -85,9 +85,15 @@ function render(){
   ];
   gl.uniformMatrix4fv( gl.getUniformLocation(program,"modelViewMatrix"), false, flatten(camera.mvMatrix));
   gl.uniformMatrix3fv(gl.getUniformLocation( program, "normalMatrix" ), false, flatten(normalMatrix) );
+  gl.bindTexture(gl.TEXTURE_CUBE_MAP, texture);
 
   objects.forEach(function(obj) {
-    obj.draw(camera);
+    gl.uniformMatrix4fv( gl.getUniformLocation(program,"objTransform"), false,
+    flatten(obj.get_local_transform()));
+    gl.uniform1i(gl.getUniformLocation(program,'texture'),0);
+    obj.initDataToBuffers()
+    gl.uniformMatrix4fv( gl.getUniformLocation(program,"mTex"), false, flatten(mat4()));
+    gl.drawArrays(gl.TRIANGLES, 0, obj.vertexes.length);
   });
 
   requestAnimFrame(render);

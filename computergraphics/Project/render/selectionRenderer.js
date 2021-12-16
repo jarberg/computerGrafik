@@ -31,13 +31,13 @@ class SelectionRenderer{
 
         if(objects == null) return;
         if(objects.length < 1) return;
-        this.selectionBuffer.bind(10)
+        this.selectionBuffer.bind()
         gl.useProgram(this.selection_ID_shader)
         let projection = camera.pMatrix;
         let viewMatrix = camera.mvMatrix;
 
         for (let id = 0; id < objects.length; id++) {
-            let objtransform = objects[id].local_transformMatrix
+            let objtransform = objects[id].get_local_transform()
             let objVertexArray = objects[id].get_vertexes()
             let realid = id+1
             let test = flatten(vec4(((realid >>  0) & 0xFF) / 0xFF,((realid >>  8) & 0xFF) / 0xFF,((realid >> 16) & 0xFF) / 0xFF,((realid >> 24) & 0xFF) / 0xFF))
@@ -58,26 +58,28 @@ class SelectionRenderer{
 
     draw_selection(camera, selection){
         gl.useProgram(this.selection_indicator_shader)
-        gl.enable(gl.DEPTH_TEST);
+        gl.enable(gl.DEPTH_TEST)
         gl.depthFunc(gl.LEQUAL)
-        gl.depthMask(false);
-        gl.enable(gl.BLEND);
+        gl.depthMask(false)
+        gl.enable(gl.BLEND)
         gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA)
-        let projection = camera.pMatrix;
-        let viewMatrix = camera.mvMatrix;
+        let projection = camera.pMatrix
+        let viewMatrix = camera.mvMatrix
+        let objtransform = null
+        let objVertexArray = null
         for (var id = 0; id < selection.length; id++) {
-            var objtransform = selection[id].local_transformMatrix
-            var objVertexArray = selection[id].get_vertexes()
+            objtransform = selection[id].get_local_transform()
+            objVertexArray = selection[id].get_vertexes()
 
-            gl.uniformMatrix4fv(gl.getUniformLocation(this.selection_indicator_shader,"projection"), false, flatten(projection));
-            gl.uniformMatrix4fv(gl.getUniformLocation(this.selection_indicator_shader,"modelViewMatrix"), false, flatten(viewMatrix));
-            gl.uniformMatrix4fv(gl.getUniformLocation(this.selection_indicator_shader,"objTransform"), false, flatten(objtransform));
+            gl.uniformMatrix4fv(gl.getUniformLocation(this.selection_indicator_shader,"projection"), false, flatten(projection))
+            gl.uniformMatrix4fv(gl.getUniformLocation(this.selection_indicator_shader,"modelViewMatrix"), false, flatten(viewMatrix))
+            gl.uniformMatrix4fv(gl.getUniformLocation(this.selection_indicator_shader,"objTransform"), false, flatten(objtransform))
 
             this.initDataToBuffers(this.selection_indicator_shader,  selection[id].get_vBuffer(), objVertexArray, 4)
-            gl.drawArrays(gl.TRIANGLES, 0, objVertexArray.length);
+            gl.drawArrays(gl.TRIANGLES, 0, objVertexArray.length)
         }
-        gl.depthMask(true);
-        gl.disable(gl.BLEND);
+        gl.depthMask(true)
+        gl.disable(gl.BLEND)
         gl.depthFunc(gl.LESS )
 
     }

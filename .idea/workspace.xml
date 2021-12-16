@@ -5,17 +5,30 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5e3948d6-358c-4c60-8135-650537d75e3c" name="Default Changelist" comment="started worksheet 10 part 02">
+    <list default="true" id="5e3948d6-358c-4c60-8135-650537d75e3c" name="Default Changelist" comment="fix 1">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/computergraphics/Project/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Project/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/computergraphics/Project/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Project/main.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/computergraphics/Project/render/modelRenderer.js" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Project/render/modelRenderer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/computergraphics/Project/render/selectionFrameBuffer.js" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Project/render/selectionFrameBuffer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/computergraphics/Project/render/selectionRenderer.js" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Project/render/selectionRenderer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet09/part02/render/shaders/fragmentShader.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Worksheet09/part02/render/shaders/fragmentShader.glsl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computergraphics/utils/Camera.js" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/utils/Camera.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet03/part01_old/main.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet03/part01_old/main.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet03/part02_old/main.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet03/part02_old/main.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet04/part03/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Worksheet04/part03/main.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet04/part03/rest.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet04/part03_old/main.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet04/part03_old/main.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet04/part04/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Worksheet04/part04/main.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet06/part01/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Worksheet06/part01/main.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet06/part01/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Worksheet06/part01/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet07/part01/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Worksheet07/part01/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet07/part01/render/vertexShader.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Worksheet07/part01/render/vertexShader.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/computergraphics/Worksheet07/part03/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/Worksheet07/part03/main.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/computergraphics/utils/general.js" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/utils/general.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/computergraphics/utils/geomitry.js" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/utils/geomitry.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/computergraphics/utils/textureUtils.js" beforeDir="false" afterPath="$PROJECT_DIR$/computergraphics/utils/textureUtils.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,7 +48,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="ae31b35bed221e4379a2f6e1345fdb872ea0b7f5" />
+        <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -69,29 +82,29 @@
       <recent name="C:\Users\mjarb\WebstormProjects\computerGrafik\Project\render\shaders\selectionShader" />
     </key>
   </component>
-  <component name="RunManager" selected="JavaScript Debug.index.html">
+  <component name="RunManager" selected="JavaScript Debug.main.html (4)">
     <configuration name="index.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/computerGrafik/computergraphics/Project/index.html" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
-    <configuration name="main.html (2)" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/computerGrafik/computergraphics/Worksheet01/part03/main.html" useBuiltInWebServerPort="true">
+    <configuration name="main.html (1)" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/computerGrafik/computergraphics/Worksheet06/part02/main.html" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
-    <configuration name="main.html (4)" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/computerGrafik/computergraphics/Worksheet01/part05/main.html" useBuiltInWebServerPort="true">
+    <configuration name="main.html (3)" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/computerGrafik/computergraphics/Worksheet06/part01/main.html" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
-    <configuration name="main.html (5)" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/computerGrafik/computergraphics/Worksheet01/part04/main.html" useBuiltInWebServerPort="true">
+    <configuration name="main.html (4)" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/computerGrafik/computergraphics/Worksheet09/part02/main.html" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
-    <configuration name="test.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/computerGrafik/test.html" useBuiltInWebServerPort="true">
+    <configuration name="main.html (5)" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/computerGrafik/computergraphics/Worksheet06/part03/main.html" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JavaScript Debug.index.html" />
-        <item itemvalue="JavaScript Debug.test.html" />
         <item itemvalue="JavaScript Debug.main.html (4)" />
         <item itemvalue="JavaScript Debug.main.html (5)" />
-        <item itemvalue="JavaScript Debug.main.html (2)" />
+        <item itemvalue="JavaScript Debug.main.html (1)" />
+        <item itemvalue="JavaScript Debug.main.html (3)" />
+        <item itemvalue="JavaScript Debug.index.html" />
       </list>
     </recent_temporary>
   </component>
@@ -122,6 +135,8 @@
       <workItem from="1639385025253" duration="10994000" />
       <workItem from="1639469355401" duration="19608000" />
       <workItem from="1639555309793" duration="12273000" />
+      <workItem from="1639641563740" duration="10891000" />
+      <workItem from="1639660851646" duration="4765000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <created>1629096644242</created>
@@ -319,7 +334,14 @@
       <option name="project" value="LOCAL" />
       <updated>1636026747238</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="fix 1">
+      <created>1639577919669</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1639577919669</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -390,7 +412,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="fixed bug where different geo would overridde previous renders with their own data" />
     <MESSAGE value="worksheet 07 part 3 and all before should work now" />
     <MESSAGE value="reworked old code.&#10;made entire worksheet 7 actualy work" />
     <MESSAGE value="reworked old code&#10;worksheet 02 part 2 now uses single buffer for color and position" />
@@ -415,7 +436,8 @@
     <MESSAGE value="started project" />
     <MESSAGE value="readded worksheet10 part01" />
     <MESSAGE value="finished base implementation of selecting objects on screen" />
-    <option name="LAST_COMMIT_MESSAGE" value="finished base implementation of selecting objects on screen" />
+    <MESSAGE value="fix 1" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix 1" />
   </component>
   <component name="WindowStateProjectService">
     <state x="416" y="143" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1631515729357">
@@ -430,102 +452,103 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="371" y="88" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1280.680@0.0.1280.680" timestamp="1635931964648" />
-    <state x="7" y="157" width="1643" height="845" key="DiffContextDialog" timestamp="1636215007453">
+    <state x="7" y="157" width="1643" height="845" key="DiffContextDialog" timestamp="1639578734943">
       <screen x="0" y="0" width="1920" height="1160" />
     </state>
-    <state x="7" y="157" width="1643" height="845" key="DiffContextDialog/0.0.1920.1160/-1920.121.1920.1040@0.0.1920.1160" timestamp="1636215007453" />
+    <state x="7" y="157" width="1643" height="845" key="DiffContextDialog/0.0.1920.1160/-1920.121.1920.1040@0.0.1920.1160" timestamp="1639578734943" />
     <state x="421" y="96" key="FileChooserDialogImpl" timestamp="1634759145919">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="421" y="96" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1634759145919" />
-    <state width="1899" height="256" key="GridCell.Tab.0.bottom" timestamp="1639576631217">
+    <state width="1899" height="256" key="GridCell.Tab.0.bottom" timestamp="1639660837616">
       <screen x="0" y="0" width="1920" height="1160" />
     </state>
     <state width="761" height="214" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1631600281939" />
-    <state width="1899" height="256" key="GridCell.Tab.0.bottom/0.0.1920.1160/-1920.121.1920.1040@0.0.1920.1160" timestamp="1639576631217" />
-    <state width="1899" height="256" key="GridCell.Tab.0.center" timestamp="1639576631217">
+    <state width="1899" height="256" key="GridCell.Tab.0.bottom/0.0.1920.1160/-1920.121.1920.1040@0.0.1920.1160" timestamp="1639660837616" />
+    <state width="1899" height="256" key="GridCell.Tab.0.center" timestamp="1639660837616">
       <screen x="0" y="0" width="1920" height="1160" />
     </state>
     <state width="761" height="214" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1631600281938" />
-    <state width="1899" height="256" key="GridCell.Tab.0.center/0.0.1920.1160/-1920.121.1920.1040@0.0.1920.1160" timestamp="1639576631217" />
-    <state width="1899" height="256" key="GridCell.Tab.0.left" timestamp="1639576631217">
+    <state width="1899" height="256" key="GridCell.Tab.0.center/0.0.1920.1160/-1920.121.1920.1040@0.0.1920.1160" timestamp="1639660837616" />
+    <state width="1899" height="256" key="GridCell.Tab.0.left" timestamp="1639660837616">
       <screen x="0" y="0" width="1920" height="1160" />
     </state>
     <state width="761" height="214" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1631600281938" />
-    <state width="1899" height="256" key="GridCell.Tab.0.left/0.0.1920.1160/-1920.121.1920.1040@0.0.1920.1160" timestamp="1639576631217" />
-    <state width="1899" height="256" key="GridCell.Tab.0.right" timestamp="1639576631217">
+    <state width="1899" height="256" key="GridCell.Tab.0.left/0.0.1920.1160/-1920.121.1920.1040@0.0.1920.1160" timestamp="1639660837616" />
+    <state width="1899" height="256" key="GridCell.Tab.0.right" timestamp="1639660837616">
       <screen x="0" y="0" width="1920" height="1160" />
     </state>
     <state width="761" height="214" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1631600281938" />
-    <state width="1899" height="256" key="GridCell.Tab.0.right/0.0.1920.1160/-1920.121.1920.1040@0.0.1920.1160" timestamp="1639576631217" />
-    <state width="1899" height="256" key="GridCell.Tab.1.bottom" timestamp="1639576638378">
+    <state width="1899" height="256" key="GridCell.Tab.0.right/0.0.1920.1160/-1920.121.1920.1040@0.0.1920.1160" timestamp="1639660837616" />
+    <state width="1899" height="256" key="GridCell.Tab.1.bottom" timestamp="1639660837616">
       <screen x="0" y="0" width="1920" height="1160" />
     </state>
     <state width="761" height="214" key="GridCell.Tab.1.bottom/0.0.1280.680@0.0.1280.680" timestamp="1631600284334" />
-    <state width="1899" height="256" key="GridCell.Tab.1.bottom/0.0.1920.1160/-1920.121.1920.1040@0.0.1920.1160" timestamp="1639576638378" />
-    <state width="1899" height="256" key="GridCell.Tab.1.center" timestamp="1639576638378">
+    <state width="1899" height="256" key="GridCell.Tab.1.bottom/0.0.1920.1160/-1920.121.1920.1040@0.0.1920.1160" timestamp="1639660837616" />
+    <state width="1899" height="256" key="GridCell.Tab.1.center" timestamp="1639660837616">
       <screen x="0" y="0" width="1920" height="1160" />
     </state>
     <state width="761" height="214" key="GridCell.Tab.1.center/0.0.1280.680@0.0.1280.680" timestamp="1631600284334" />
-    <state width="1899" height="256" key="GridCell.Tab.1.center/0.0.1920.1160/-1920.121.1920.1040@0.0.1920.1160" timestamp="1639576638378" />
-    <state width="1899" height="256" key="GridCell.Tab.1.left" timestamp="1639576638378">
+    <state width="1899" height="256" key="GridCell.Tab.1.center/0.0.1920.1160/-1920.121.1920.1040@0.0.1920.1160" timestamp="1639660837616" />
+    <state width="1899" height="256" key="GridCell.Tab.1.left" timestamp="1639660837616">
       <screen x="0" y="0" width="1920" height="1160" />
     </state>
     <state width="761" height="214" key="GridCell.Tab.1.left/0.0.1280.680@0.0.1280.680" timestamp="1631600284334" />
-    <state width="1899" height="256" key="GridCell.Tab.1.left/0.0.1920.1160/-1920.121.1920.1040@0.0.1920.1160" timestamp="1639576638378" />
-    <state width="1899" height="256" key="GridCell.Tab.1.right" timestamp="1639576638378">
+    <state width="1899" height="256" key="GridCell.Tab.1.left/0.0.1920.1160/-1920.121.1920.1040@0.0.1920.1160" timestamp="1639660837616" />
+    <state width="1899" height="256" key="GridCell.Tab.1.right" timestamp="1639660837616">
       <screen x="0" y="0" width="1920" height="1160" />
     </state>
     <state width="761" height="214" key="GridCell.Tab.1.right/0.0.1280.680@0.0.1280.680" timestamp="1631600284334" />
-    <state width="1899" height="256" key="GridCell.Tab.1.right/0.0.1920.1160/-1920.121.1920.1040@0.0.1920.1160" timestamp="1639576638378" />
-    <state width="1899" height="257" key="GridCell.Tab.2.bottom" timestamp="1639576631002">
+    <state width="1899" height="256" key="GridCell.Tab.1.right/0.0.1920.1160/-1920.121.1920.1040@0.0.1920.1160" timestamp="1639660837616" />
+    <state width="1899" height="256" key="GridCell.Tab.2.bottom" timestamp="1639660837616">
       <screen x="0" y="0" width="1920" height="1160" />
     </state>
     <state width="761" height="214" key="GridCell.Tab.2.bottom/0.0.1280.680@0.0.1280.680" timestamp="1631600281940" />
-    <state width="1899" height="257" key="GridCell.Tab.2.bottom/0.0.1920.1160/-1920.121.1920.1040@0.0.1920.1160" timestamp="1639576631002" />
-    <state width="1899" height="257" key="GridCell.Tab.2.center" timestamp="1639576631001">
+    <state width="1899" height="256" key="GridCell.Tab.2.bottom/0.0.1920.1160/-1920.121.1920.1040@0.0.1920.1160" timestamp="1639660837616" />
+    <state width="1899" height="256" key="GridCell.Tab.2.center" timestamp="1639660837616">
       <screen x="0" y="0" width="1920" height="1160" />
     </state>
     <state width="761" height="214" key="GridCell.Tab.2.center/0.0.1280.680@0.0.1280.680" timestamp="1631600281940" />
-    <state width="1899" height="257" key="GridCell.Tab.2.center/0.0.1920.1160/-1920.121.1920.1040@0.0.1920.1160" timestamp="1639576631001" />
-    <state width="1899" height="257" key="GridCell.Tab.2.left" timestamp="1639576631001">
+    <state width="1899" height="256" key="GridCell.Tab.2.center/0.0.1920.1160/-1920.121.1920.1040@0.0.1920.1160" timestamp="1639660837616" />
+    <state width="1899" height="256" key="GridCell.Tab.2.left" timestamp="1639660837616">
       <screen x="0" y="0" width="1920" height="1160" />
     </state>
     <state width="761" height="214" key="GridCell.Tab.2.left/0.0.1280.680@0.0.1280.680" timestamp="1631600281940" />
-    <state width="1899" height="257" key="GridCell.Tab.2.left/0.0.1920.1160/-1920.121.1920.1040@0.0.1920.1160" timestamp="1639576631001" />
-    <state width="1899" height="257" key="GridCell.Tab.2.right" timestamp="1639576631002">
+    <state width="1899" height="256" key="GridCell.Tab.2.left/0.0.1920.1160/-1920.121.1920.1040@0.0.1920.1160" timestamp="1639660837616" />
+    <state width="1899" height="256" key="GridCell.Tab.2.right" timestamp="1639660837616">
       <screen x="0" y="0" width="1920" height="1160" />
     </state>
     <state width="761" height="214" key="GridCell.Tab.2.right/0.0.1280.680@0.0.1280.680" timestamp="1631600281940" />
-    <state width="1899" height="257" key="GridCell.Tab.2.right/0.0.1920.1160/-1920.121.1920.1040@0.0.1920.1160" timestamp="1639576631002" />
-    <state width="1899" height="257" key="GridCell.Tab.3.bottom" timestamp="1639576631002">
+    <state width="1899" height="256" key="GridCell.Tab.2.right/0.0.1920.1160/-1920.121.1920.1040@0.0.1920.1160" timestamp="1639660837616" />
+    <state width="1899" height="256" key="GridCell.Tab.3.bottom" timestamp="1639660837617">
       <screen x="0" y="0" width="1920" height="1160" />
     </state>
     <state width="761" height="214" key="GridCell.Tab.3.bottom/0.0.1280.680@0.0.1280.680" timestamp="1631600283419" />
-    <state width="1899" height="257" key="GridCell.Tab.3.bottom/0.0.1920.1160/-1920.121.1920.1040@0.0.1920.1160" timestamp="1639576631002" />
-    <state width="1899" height="257" key="GridCell.Tab.3.center" timestamp="1639576631002">
+    <state width="1899" height="256" key="GridCell.Tab.3.bottom/0.0.1920.1160/-1920.121.1920.1040@0.0.1920.1160" timestamp="1639660837617" />
+    <state width="1899" height="256" key="GridCell.Tab.3.center" timestamp="1639660837617">
       <screen x="0" y="0" width="1920" height="1160" />
     </state>
     <state width="761" height="214" key="GridCell.Tab.3.center/0.0.1280.680@0.0.1280.680" timestamp="1631600283419" />
-    <state width="1899" height="257" key="GridCell.Tab.3.center/0.0.1920.1160/-1920.121.1920.1040@0.0.1920.1160" timestamp="1639576631002" />
-    <state width="1899" height="257" key="GridCell.Tab.3.left" timestamp="1639576631002">
+    <state width="1899" height="256" key="GridCell.Tab.3.center/0.0.1920.1160/-1920.121.1920.1040@0.0.1920.1160" timestamp="1639660837617" />
+    <state width="1899" height="256" key="GridCell.Tab.3.left" timestamp="1639660837617">
       <screen x="0" y="0" width="1920" height="1160" />
     </state>
     <state width="761" height="214" key="GridCell.Tab.3.left/0.0.1280.680@0.0.1280.680" timestamp="1631600283419" />
-    <state width="1899" height="257" key="GridCell.Tab.3.left/0.0.1920.1160/-1920.121.1920.1040@0.0.1920.1160" timestamp="1639576631002" />
-    <state width="1899" height="257" key="GridCell.Tab.3.right" timestamp="1639576631002">
+    <state width="1899" height="256" key="GridCell.Tab.3.left/0.0.1920.1160/-1920.121.1920.1040@0.0.1920.1160" timestamp="1639660837617" />
+    <state width="1899" height="256" key="GridCell.Tab.3.right" timestamp="1639660837617">
       <screen x="0" y="0" width="1920" height="1160" />
     </state>
     <state width="761" height="214" key="GridCell.Tab.3.right/0.0.1280.680@0.0.1280.680" timestamp="1631600283419" />
-    <state width="1899" height="257" key="GridCell.Tab.3.right/0.0.1920.1160/-1920.121.1920.1040@0.0.1920.1160" timestamp="1639576631002" />
+    <state width="1899" height="256" key="GridCell.Tab.3.right/0.0.1920.1160/-1920.121.1920.1040@0.0.1920.1160" timestamp="1639660837617" />
     <state x="184" y="98" key="MergeDialog" timestamp="1636616155293">
       <screen x="0" y="0" width="1920" height="1160" />
     </state>
     <state x="184" y="98" key="MergeDialog/0.0.1920.1160/-1920.121.1920.1040@0.0.1920.1160" timestamp="1636616155293" />
-    <state x="410" y="61" key="RollbackChangesDialog" timestamp="1634797283996">
-      <screen x="0" y="0" width="1280" height="680" />
+    <state x="615" y="104" key="RollbackChangesDialog" timestamp="1639663798054">
+      <screen x="0" y="0" width="1920" height="1160" />
     </state>
     <state x="410" y="61" key="RollbackChangesDialog/0.0.1280.680@0.0.1280.680" timestamp="1634797283996" />
+    <state x="615" y="104" key="RollbackChangesDialog/0.0.1920.1160/-1920.121.1920.1040@0.0.1920.1160" timestamp="1639663798054" />
     <state x="233" y="74" key="Vcs.Push.Dialog.v2" timestamp="1635932313803">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -584,6 +607,11 @@
           <url>file://$PROJECT_DIR$/computergraphics/Project/render/selectionRenderer.js</url>
           <line>42</line>
           <option name="timeStamp" value="27" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/computergraphics/Project/render/selectionRenderer.js</url>
+          <line>69</line>
+          <option name="timeStamp" value="28" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

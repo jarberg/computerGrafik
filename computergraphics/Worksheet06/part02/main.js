@@ -149,17 +149,28 @@ function configureTexture(image, size) {
 function main() {
   init()
 
-  objects.push(new Rectangle(vec4(0,0,0,0)))
-  camera = new OrbitCamera()
-
-  camera.fovy = 90;
-  objects[0].vertices = [
-    vec4( -4, -1,  10, 1.0 ),
-    vec4( 4,  -1,  10, 1.0 ),
-    vec4( 4,  -1,  -31, 1.0 ),
-    vec4( -4, -1,  -31, 1.0 ),
+  var ground = new Rectangle(vec3(0,0,0))
+  ground.vertices = [
+    vec4(2,0,-5,1),
+    vec4(-2,0,-5,1),
+    vec4(-2,0,51,1),
+    vec4(2,0,51,1),
+  ]
+  ground.texCoord = [
+    vec2(0, 0),
+    vec2(0, 1),
+    vec2(20, 1),
+    vec2(20, 0)
   ];
+  ground.clear()
+  quad(0,1,2,3,ground)
+  ground.move(vec3(0,0,3))
+  objects.push(ground)
 
+  camera = new OrbitCamera()
+  camera.theta = -45
+
+  camera.radius = 1
   gl.clearColor(0, 0.5843, 0.9294, 1.0);
 
   setupControls()

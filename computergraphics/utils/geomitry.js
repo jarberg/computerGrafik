@@ -5,7 +5,9 @@ class baseModel extends transform{
     texCoordsArray = [];
     boundingBox = [vec3(0,0,0),vec3(0,0,0),vec3(0,0,0),vec3(0,0,0)]
     shader=null;
-
+    get_b_box(){
+        return this.boundingBox
+    }
     getShader(){
         return this.shader
     }
@@ -34,6 +36,7 @@ class baseModel extends transform{
         this.boundingBox[3] = vec3(Math.min(p1[0], p5[0]), Math.min(p1[1], p5[1]), Math.max(p1[2], p5[2]))
     }
 }
+
 class model extends baseModel{
     vertexes = [];
     vertexColors = [];
@@ -79,17 +82,24 @@ class model extends baseModel{
         this.vTexCoord = gl.getAttribLocation(this.shader, "vTexCoord");
         this.dirtyShader = false;
 
+        if(this.vPosition>=0) {
         this.initAttributeVariable(this.vPosition, this. vBuffer, 4, gl.FLOAT)
         gl.bufferData(gl.ARRAY_BUFFER, flatten(this.vertexes), gl.STATIC_DRAW);
+        }
 
+        if(this.vColor>=0) {
         this.initAttributeVariable(this.vColor, this. cBuffer, 4, gl.FLOAT)
         gl.bufferData(gl.ARRAY_BUFFER, flatten(this.vertexColors), gl.STATIC_DRAW);
+        }
 
-        this.initAttributeVariable(this.vNormal, this. nBuffer, 4, gl.FLOAT)
-        gl.bufferData(gl.ARRAY_BUFFER, flatten(this.normals), gl.STATIC_DRAW);
-
+        if(this.vNormal>=0) {
+            this.initAttributeVariable(this.vNormal, this.nBuffer, 4, gl.FLOAT)
+            gl.bufferData(gl.ARRAY_BUFFER, flatten(this.normals), gl.STATIC_DRAW);
+        }
+        if(this.vTexCoord>=0) {
         this.initAttributeVariable(this.vTexCoord, this. tBuffer, 2, gl.FLOAT)
         gl.bufferData(gl.ARRAY_BUFFER, flatten(this.texCoordsArray), gl.STATIC_DRAW);
+        }
     }
 
     initAttributeVariable(a_attribute, buffer, size, type) {
@@ -167,12 +177,15 @@ class instance extends baseModel{
         this.vBuffer = originalModel.vBuffer
     }
 
+    get_b_box() {
+        return this.original.get_b_box();
+    }
+
     getShader(){
         return this.original.getShader()
     }
-
     get_vertexes(){
-        return this.original.vertexes
+        return this.original.get_vertexes()
     }
     get_vBuffer(){
         return this.original.get_vBuffer()
@@ -280,10 +293,10 @@ class Dot extends model{
 class Rectangle extends model{
 
     vertices = [
-        vec4( -4, 0,  10, 1.0 ),
-        vec4( 4,  0,  10, 1.0 ),
-        vec4( 4,  0,  -31, 1.0 ),
-        vec4( -4, 0,  -31, 1.0 ),
+        vec4( -4, 0,  10, 0.0 ),
+        vec4( 4,  0,  10, 0.0 ),
+        vec4( 4,  0,  -31, 0.0 ),
+        vec4( -4, 0,  -31, 0 ),
     ];
     texCoord = [
         vec2(-1.5, 0),
@@ -435,8 +448,7 @@ function divideTriangle(a, b, c, count, obj) {
     }
 }
 
-function
-tetrahedron(a, b, c, d, obj) {
+function tetrahedron(a, b, c, d, obj) {
     var n = obj.divisions
     divideTriangle(a, b, c, n, obj);
     divideTriangle(d, c, b, n, obj);

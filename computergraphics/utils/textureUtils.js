@@ -70,33 +70,25 @@ function configureTexture(image, size, index = 0) {
     gl.uniform1i(gl.getUniformLocation(program, "diffuseTexture"), index);
 }
 
-function fetchImageResourceFolder(){
-    if(location.origin === "https://www.student.dtu.dk"){
-        return "/~s185091/computergraphics"
-    }
-    else {
-        return "/DtuWebsite/computergraphics"
-    }
-}
-
 
 function create_image_texture(imageName, callback, index){
     let image = new Image()
     image.onload = function () {
         callback(image, index)
     };
-    //image.src = location.origin+fetchImageResourceFolder()+"/Images/"+imageName;
+
     image.src = "../../Images/"+imageName;
 }
 
 function create_cube_map(shader, invert=false, index=0){
+        //console.log( location.origin+"/computerGrafik/computergraphics/"+'Images/cubeMap/cloudyhills_posx.jpg')
     var cubemapArray = [
-        location.origin+fetchImageResourceFolder()+'/Images/cubeMap/cloudyhills_posx.jpg',  // POSITIVE_X
-        location.origin+fetchImageResourceFolder()+'/Images/cubeMap/cloudyhills_negx.jpg',  // NEGATIVE_X
-        location.origin+fetchImageResourceFolder()+'/Images/cubeMap/cloudyhills_posy.jpg',  // POSITIVE_Y
-        location.origin+fetchImageResourceFolder()+'/Images/cubeMap/cloudyhills_negy.jpg',  // NEGATIVE_Y
-        location.origin+fetchImageResourceFolder()+'/Images/cubeMap/cloudyhills_posz.jpg',  // POSITIVE_Z
-        location.origin+fetchImageResourceFolder()+'/Images/cubeMap/cloudyhills_negz.jpg'   // NEGATIVE_Z
+        location.origin+"/computerGrafik/computergraphics/"+'Images/cubeMap/cloudyhills_posx.jpg',  // POSITIVE_X
+        location.origin+"/computerGrafik/computergraphics/"+'Images/cubeMap/cloudyhills_negx.jpg',  // NEGATIVE_X
+        location.origin+"/computerGrafik/computergraphics/"+'Images/cubeMap/cloudyhills_posy.jpg',  // POSITIVE_Y
+        location.origin+"/computerGrafik/computergraphics/"+'Images/cubeMap/cloudyhills_negy.jpg',  // NEGATIVE_Y
+        location.origin+"/computerGrafik/computergraphics/"+'Images/cubeMap/cloudyhills_posz.jpg',  // POSITIVE_Z
+        location.origin+"/computerGrafik/computergraphics/"+'Images/cubeMap/cloudyhills_negz.jpg'   // NEGATIVE_Z
                         ];
 
     gl.activeTexture( gl.TEXTURE0+index);
@@ -107,6 +99,7 @@ function create_cube_map(shader, invert=false, index=0){
     for(let i = 0; i < cubemapArray.length; ++i) {
         images.push(new Image());
         images[i].onload = function(e) {
+            console.log(images[i].currentSrc)
             gl.bindTexture(gl.TEXTURE_CUBE_MAP, texture);
             gl.texImage2D(gl.TEXTURE_CUBE_MAP_POSITIVE_X + i, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, e.target)
         };
@@ -116,4 +109,5 @@ function create_cube_map(shader, invert=false, index=0){
     gl.texParameteri(gl.TEXTURE_CUBE_MAP, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
     var loc = gl.getUniformLocation(shader, "texture")
     gl.uniform1i(loc, index);
+    return texture
 }

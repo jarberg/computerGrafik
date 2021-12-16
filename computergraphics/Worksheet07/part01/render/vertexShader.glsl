@@ -11,7 +11,7 @@ uniform mat4 objTransform;
 
 uniform mat3 normalMatrix;
 
-varying vec3 R, N;
+varying vec3 R;
 varying vec4 v_Color;
 
 void main()
